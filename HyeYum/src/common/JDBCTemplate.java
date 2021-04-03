@@ -14,7 +14,6 @@ public class JDBCTemplate {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -41,7 +40,6 @@ public class JDBCTemplate {
 				conn.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -51,17 +49,15 @@ public class JDBCTemplate {
 				stmt.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public static void close(ResultSet rset) { //static은 new 없이 사용가능
+	public static void close(ResultSet rset) { 
 		try {
 			if(rset !=null && !rset.isClosed()) {
 				rset.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -72,7 +68,6 @@ public class JDBCTemplate {
 				conn.commit();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -83,7 +78,6 @@ public class JDBCTemplate {
 				conn.rollback();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
