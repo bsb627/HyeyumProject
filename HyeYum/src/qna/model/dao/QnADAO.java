@@ -1,4 +1,4 @@
-package qan.model.dao;
+package qna.model.dao;
 
 public class QnADAO {
 
