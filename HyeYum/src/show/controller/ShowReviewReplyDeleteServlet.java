@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ShowBoardDeleteServlet
  */
-@WebServlet("/showBoard/modify")
-public class ShowBoardModifyServlet extends HttpServlet {
+@WebServlet("/showReviewReply/delete")
+public class ShowReviewReplyDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowBoardModifyServlet() {
+    public ShowReviewReplyDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
