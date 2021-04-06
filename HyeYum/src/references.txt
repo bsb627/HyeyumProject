@@ -1,7 +1,7 @@
 # 참고사항
-# 김솔잎 : 영화 movie, member
-# 한정서 : 1:1문의 qna, product
-# 한정만 : 독서 book, company
+# 김솔잎 : 영화 movie, 회원 member, 메세지 message
+# 한정서 : 1:1문의 qna(answer/question), 제품 product
+# 한정만 : 독서 book, 기업 company, 파일 file
 # 이지애 : 공지사항 notice(수업시간에 할 예정)
-# 백승범 : 공연 show, order
+# 백승범 : 공연 show, 주문 order, 댓글 reply
 

@@ -1,4 +1,4 @@
-package board.model.vo;
+package reply.model.vo;
 
 import java.sql.Date;
 
