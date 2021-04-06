@@ -13,6 +13,7 @@ public class Company { // 기업
 	private String contents;// 목적 및 내용
 	private Date enrollDate;// 등록일
 	private String partnership; //제휴승인여부
+	
 	public Company() {
 		// TODO Auto-generated constructor stub
 	}
