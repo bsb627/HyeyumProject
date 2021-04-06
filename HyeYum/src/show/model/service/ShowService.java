@@ -2,6 +2,7 @@ package show.model.service;
 
 import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
+import show.model.vo.ShowReview;
 
 public class ShowService {
 	private JDBCTemplate factory;
@@ -21,9 +22,7 @@ public class ShowService {
 	}
 	
 	public ShowInfo insertShowInfo() {
-		
 		ShowInfo info = null;
-		
 		return info;
 	}
 	
@@ -32,9 +31,9 @@ public class ShowService {
 		return result ;
 	}
 	
-	public ShowInfo printShowReview() {
-		ShowInfo info = null;
-		return info;
+	public ShowReview printShowReview() {
+		ShowReview review = null;
+		return review;
 	}
 	
 	public int modifyShowReview() {
@@ -42,11 +41,9 @@ public class ShowService {
 		return result;
 	}
 	
-	public ShowInfo insertShowReview() {
-		
-		ShowInfo info = null;
-		
-		return info;
+	public ShowReview insertShowReview() {
+		ShowReview review = null;
+		return review;
 	}
 	
 	public int deleteShowReview() {
@@ -54,6 +51,13 @@ public class ShowService {
 		return result ;
 	}
 	
-
+	public int addHitsCount() {
+		int result = 0;
+		return result;
+	}
 	
+	public int addLikesCount() {
+		int result = 0;
+		return result;
+	}
 }

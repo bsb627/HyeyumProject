@@ -1,7 +1,7 @@
 package reply.model.service;
 
 import common.JDBCTemplate;
-import show.model.vo.ShowInfo;
+import reply.model.vo.BoardReply;
 
 public class ShowReplyService {
 	private JDBCTemplate factory;
@@ -10,9 +10,9 @@ public class ShowReplyService {
 		factory = JDBCTemplate.getConnection();
 	}
 	
-	public ShowInfo printShowReviewReply() {
-		ShowInfo info = null;
-		return info;
+	public BoardReply printShowReviewReply() {
+		BoardReply reply = null;
+		return reply;
 	}
 	
 	public int modifyShowReviewReply() {
@@ -20,11 +20,9 @@ public class ShowReplyService {
 		return result;
 	}
 	
-	public ShowInfo insertShowReviewReply() {
-		
-		ShowInfo info = null;
-		
-		return info;
+	public BoardReply insertShowReviewReply() {
+		BoardReply reply = null;
+		return reply;
 	}
 	
 	public int deleteShowReviewReply() {
