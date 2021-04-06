@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BookBoardEnrollServlet
  */
-@WebServlet("/shareBook/delete")
-public class ShareBookDeleteServlet extends HttpServlet {
+@WebServlet("/monthlyBook/enroll")
+public class BookContentsEnrollServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShareBookDeleteServlet() {
+    public BookContentsEnrollServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

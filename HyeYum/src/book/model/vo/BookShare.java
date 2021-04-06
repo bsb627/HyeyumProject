@@ -2,7 +2,8 @@ package book.model.vo;
 
 import java.sql.Date;
 
-public class ShareBook { // 나눔 게시판
+public class BookShare { // 나눔 게시판
+	private int no;
 	private String bookName; // 책이름
 	private String region; // 지역
 	private String title; // 제목
@@ -14,7 +15,7 @@ public class ShareBook { // 나눔 게시판
 	private int likes;// 좋아요
 	
 
-	public ShareBook() {
+	public BookShare() {
 		// TODO Auto-generated constructor stub
 	}
 	
