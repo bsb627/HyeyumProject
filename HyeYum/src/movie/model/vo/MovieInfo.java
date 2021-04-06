@@ -3,7 +3,7 @@ package movie.model.vo;
 import java.sql.Date;
 
 public class MovieInfo { // 영화 컨텐츠
-	private String contentsNo; // 컨텐츠 번호
+	private String infoNo; // 컨텐츠 번호
 	private String movieName;// 영화명
 	private String genre;// 장르
 	private String cast; // 출연진

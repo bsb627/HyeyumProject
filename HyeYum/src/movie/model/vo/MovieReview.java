@@ -3,6 +3,7 @@ package movie.model.vo;
 import board.model.vo.Board;
 
 public class MovieReview extends Board{ // 영화 리뷰 게시판
+	private int reviewNo;
 	private String movieName;// 영화명
 	private String starRating;// 평점
 	private String spoiler;// 스포일러 유무
