@@ -1,6 +1,8 @@
 package movie.model.vo;
 
-public class MovieReview { // 영화 리뷰 게시판
+import board.model.vo.Board;
+
+public class MovieReview extends Board{ // 영화 리뷰 게시판
 	private String movieName;// 영화명
 	private String starRating;// 평점
 	private String spoiler;// 스포일러 유무
