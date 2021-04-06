@@ -7,4 +7,8 @@ public class Message {
 	private String receiver; // 수신자
 	private String sender; // 발신자
 	
+	public Message() {
+		// TODO Auto-generated constructor stub
+	}
+	
 }

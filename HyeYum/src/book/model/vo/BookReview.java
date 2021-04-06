@@ -3,7 +3,6 @@ package book.model.vo;
 import board.model.vo.Board;
 
 public class BookReview extends Board{ // 도서 리뷰 게시판
-	private int reviewNo; // 글번호
 	private String bookName; // 책이름
 	private String division; // 분류
 	private String genre;// 장르
@@ -14,13 +13,7 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 	}
 	
 	// getter/setter
-	public int getReviewNo() {
-		return reviewNo;
-	}
 
-	public void setReviewNo(int reviewNo) {
-		this.reviewNo = reviewNo;
-	}
 
 	public String getBookName() {
 		return bookName;
