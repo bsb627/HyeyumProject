@@ -12,7 +12,6 @@ public class ShowInfo { // 공연 정보
 	private String termDate; // 공연기간
 	private String ageGroup; // 관람등급
 	private String runTime; // 관람시간
-	private String fileName; // 이미지파일
 	private String cast; // 출연진
 	private String price;// 가격
 	private Date enrollDate; // 등록일
