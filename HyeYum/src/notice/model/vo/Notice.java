@@ -1,13 +1,11 @@
 package notice.model.vo;
 
-import java.sql.Date;
 
-public class Notice { // 공지
+import board.model.vo.Board;
 
-	private int noticeNo; // 글번호
-	private String title; // 제목
-	private String userId; // 사용자(관리자)
-	private String contents; // 내용
-	private Date enrollDate; // 작성일자
-	private int hits; // 조회수
+public class Notice extends Board { // 공지사항
+
+	public Notice() {
+		// TODO Auto-generated constructor stub
+	}
 }
