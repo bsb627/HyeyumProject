@@ -11,5 +11,35 @@ public class ShowReview extends Board{ // 공연 게시판
 	public ShowReview() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getSnsLink() {
+		return snsLink;
+	}
+
+	public void setSnsLink(String snsLink) {
+		this.snsLink = snsLink;
+	}
+
+	public String getTicketNumber() {
+		return ticketNumber;
+	}
+
+	public void setTicketNumber(String ticketNumber) {
+		this.ticketNumber = ticketNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "ShowReview [no=" + super.no + ", title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ", enrollDate=" + super.enrollDate + "fileName=" + this.fileName + ", snsLink=" + this.snsLink + ", ticketNumber=" + this.ticketNumber + "]";
+	}
+	
 	
 }
