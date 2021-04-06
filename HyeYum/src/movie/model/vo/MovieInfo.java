@@ -2,8 +2,9 @@ package movie.model.vo;
 
 import java.sql.Date;
 
-public class MonthlyMovie { // 이달의 영화
-	private String movieTitle;// 영화제목
+public class MovieInfo { // 영화 컨텐츠
+	private String contentsNo; // 컨텐츠 번호
+	private String movieName;// 영화명
 	private String genre;// 장르
 	private String cast; // 출연진
 	private String director;// 감독
@@ -13,7 +14,7 @@ public class MonthlyMovie { // 이달의 영화
 	private String fileName; // 첨부파일명
 	private Date enrollDate; // 등록일
 
-	public MonthlyMovie() {
+	public MovieInfo() {
 		// TODO Auto-generated constructor stub
 	}
 }
