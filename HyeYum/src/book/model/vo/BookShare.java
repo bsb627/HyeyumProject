@@ -2,18 +2,14 @@ package book.model.vo;
 
 import board.model.vo.Board;
 
-public class BookReview extends Board{ // 도서 독후감 게시판
+public class BookShare extends Board{ // 나눔 게시판
 	private String bookName; // 책이름
-	private String division; // 분류
-	private String genre;// 장르
+	private String region; // 지역
 	private String fileName; // 파일이름
-	
-	public BookReview() {
+
+	public BookShare() {
 		// TODO Auto-generated constructor stub
 	}
-
-	
-	
 	
 	
 }
