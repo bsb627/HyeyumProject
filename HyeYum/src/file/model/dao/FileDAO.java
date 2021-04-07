@@ -14,8 +14,23 @@ public class FileDAO {
 	public int insertFileInfo(Connection conn, FileData fileData) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO FILETBL VALUES(?,?,?,?,?)";
-		
+		String fileType = fileData.getFileType();
+		String query="";
+		switch (fileType) {
+		case "book": query = "INSERT INTO BOOKFILETBL () VALUES(?,?,?,?,?)";
+			
+			break;
+		case "share": query = "INSERT INTO BOOKEFILETBL () VALUES(?,?,?,?,?)";
+			
+			break;
+		case "movie": query = "INSERT INTO SHAREFILETBL VALUES(?,?,?,?,?)";
+			
+			break;
+
+		default:
+			break;
+		}
+	
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, fileData.getFileName());

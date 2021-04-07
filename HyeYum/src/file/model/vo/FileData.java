@@ -9,6 +9,7 @@ public class FileData {
 	private String filePath;
 	private long fileSize;
 	private String fileUser;
+	private String fileType;
 	private Timestamp uploadTime; 
 	
 	// constructor
@@ -16,10 +17,21 @@ public class FileData {
 		// TODO Auto-generated constructor stub
 	}
 	// getter/setter
-
+	
+	
 	public String getFileName() {
 		return fileName;
 	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
 
 	public String getFileNo() {
 		return fileNo;
@@ -67,11 +79,13 @@ public class FileData {
 		this.uploadTime = uploadTime;
 	}
 
-	// toString 
+
 	@Override
 	public String toString() {
 		return "FileData [fileNo=" + fileNo + ", fileName=" + fileName + ", filePath=" + filePath + ", fileSize="
-				+ fileSize + ", fileUser=" + fileUser + ", uploadTime=" + uploadTime + "]";
+				+ fileSize + ", fileUser=" + fileUser + ", fileType=" + fileType + ", uploadTime=" + uploadTime + "]";
 	}
 
+	// toString 
+	
 }
