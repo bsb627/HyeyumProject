@@ -1,4 +1,4 @@
-package show.controller;
+package reply.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ShowBoardDeleteServlet
  */
-@WebServlet("/showInfo/modify")
-public class ShowInfoModifyServlet extends HttpServlet {
+@WebServlet("/shareReply/list")
+public class ShareReplyListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowInfoModifyServlet() {
+    public ShareReplyListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

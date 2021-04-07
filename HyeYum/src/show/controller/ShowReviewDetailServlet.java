@@ -1,4 +1,4 @@
-package order.controller;
+package show.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class OrderEnrollServlet
+ * Servlet implementation class ShowBoardDeleteServlet
  */
-@WebServlet("/order/info")
-public class OrderInfoServlet extends HttpServlet {
+@WebServlet("/showReview/detail")
+public class ShowReviewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderInfoServlet() {
+    public ShowReviewDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
