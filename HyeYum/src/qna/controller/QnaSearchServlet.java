@@ -1,4 +1,4 @@
-package answer.controller;
+package qna.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AnswerDeleteServlet
+ * Servlet implementation class QnaSearchServlet
  */
-@WebServlet("/answer/delete")
-public class AnswerDeleteServlet extends HttpServlet {
+@WebServlet("/qna/search")
+public class QnaSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerDeleteServlet() {
+    public QnaSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

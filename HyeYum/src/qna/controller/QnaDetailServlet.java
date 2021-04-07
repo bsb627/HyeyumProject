@@ -1,4 +1,4 @@
-package question.controller;
+package qna.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class QuestioniModifyServlet
+ * Servlet implementation class QnADeleteServlet
  */
-@WebServlet("/question/modify")
-public class QuestioniModifyServlet extends HttpServlet {
+@WebServlet("/qna/detail")
+public class QnaDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QuestioniModifyServlet() {
+    public QnaDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

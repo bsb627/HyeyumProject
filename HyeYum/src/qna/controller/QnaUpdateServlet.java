@@ -1,4 +1,4 @@
-package answer.controller;
+package qna.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AnswerEnrollServlet
+ * Servlet implementation class QuestioniModifyServlet
  */
-@WebServlet("/answer/enroll")
-public class AnswerEnrollServlet extends HttpServlet {
+@WebServlet("/qna/modify")
+public class QnaUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerEnrollServlet() {
+    public QnaUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
