@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MovieContentsInfoServlet
+ * Servlet implementation class MovieInfoListServlet
  */
 @WebServlet("/movieinfo/print")
 public class MovieInfoPrintServlet extends HttpServlet {

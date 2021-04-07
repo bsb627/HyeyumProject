@@ -17,4 +17,93 @@ public class MovieInfo { // 영화 컨텐츠
 	public MovieInfo() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public String getInfoNo() {
+		return infoNo;
+	}
+
+	public void setInfoNo(String infoNo) {
+		this.infoNo = infoNo;
+	}
+
+	public String getMovieName() {
+		return movieName;
+	}
+
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getCast() {
+		return cast;
+	}
+
+	public void setCast(String cast) {
+		this.cast = cast;
+	}
+
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public String getAgeGroup() {
+		return ageGroup;
+	}
+
+	public void setAgeGroup(String ageGroup) {
+		this.ageGroup = ageGroup;
+	}
+
+	public String getRunTime() {
+		return runTime;
+	}
+
+	public void setRunTime(String runTime) {
+		this.runTime = runTime;
+	}
+
+	public String getSynopsis() {
+		return synopsis;
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public Date getEnrollDate() {
+		return enrollDate;
+	}
+
+	public void setEnrollDate(Date enrollDate) {
+		this.enrollDate = enrollDate;
+	}
+
+	@Override
+	public String toString() {
+		return "MovieInfo [infoNo=" + infoNo + ", movieName=" + movieName + ", genre=" + genre + ", cast=" + cast
+				+ ", director=" + director + ", ageGroup=" + ageGroup + ", runTime=" + runTime + ", synopsis="
+				+ synopsis + ", fileName=" + fileName + ", enrollDate=" + enrollDate + "]";
+	}
+	
+	
 }

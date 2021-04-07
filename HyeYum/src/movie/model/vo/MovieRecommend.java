@@ -8,6 +8,20 @@ public class MovieRecommend extends Board { // 영화 추천 게시판
 	public MovieRecommend() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	@Override
+	public String toString() {
+		return "MovieRecommend [genre=" + genre + "]";
+	}
+	
 	
 	
 	
