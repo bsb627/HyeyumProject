@@ -33,7 +33,6 @@ public class ShowService {
 		return result;
 	}
 	
-	
 	public int deleteShowInfo() { // 공연정보 삭제
 		int result = 0;
 		return result ;

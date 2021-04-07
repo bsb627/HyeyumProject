@@ -7,17 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  * Servlet implementation class ShowBoardDeleteServlet
  */
-@WebServlet("/shareReply/list")
-public class ShareReplyListServlet extends HttpServlet {
+@WebServlet("/reply/delete")
+public class ReplyDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShareReplyListServlet() {
+    public ReplyDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
