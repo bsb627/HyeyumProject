@@ -94,14 +94,19 @@ public class BookService {
 		int result = 0;
 		return result ;
 	}
-	// 조회수
-	public int BookSharehits() {
-		
-		return 0;
+	public int addHitsCount() { // 조회수 증가
+		int result = 0;
+		return result;
 	}
-	// 좋아요
-	public int BookSharelikes() {
-		
-		return 0;
+	
+	public int plusLikesCount() { // 좋아요수 증가
+		int result = 0;
+		return result;
 	}
+	
+	public int minusLikesCount() { // 좋아요수 빼기
+		int result = 0;
+		return result;
+	}
+	
 }

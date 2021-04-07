@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BookBoardEnrollServlet
+ * Servlet implementation class AddHitsCountServlet
  */
-@WebServlet("/shareBook/info")
-public class BookShareInfoServlet extends HttpServlet {
+@WebServlet("/bookReview/plusLikes")
+public class ReviewPlusLikesCountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookShareInfoServlet() {
+    public ReviewPlusLikesCountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
