@@ -15,66 +15,93 @@ public class BookService {
 		factory = JDBCTemplate.getConnection();
 	}
 	
-	public BookInfo printShowInfo() {
+	// BookInfo
+	public BookInfo printAllBookInfo() {
 		BookInfo info = null;
 		return info;
+	}
+	public BookInfo printOneBookInfo() {
+		
+		return null;
 	}
 	public int modifyBookInfo() {
 		int result = 0;
 		return result;
 	}
-	public BookInfo insertShowInfo() {
+	public int registerBookInfo() {
 		BookInfo info = null;
-		return info;
+		return 0;
 	}
 	public int deleteBookInfo() {
 		int result = 0;
 		return result ;
 	}
-	
-	
-	public BookReview printBookReview() {
+	public int BookInfoHits() {
+		
+		return 0;
+	}
+	public int BookInfoLikes() {
+		
+		return 0;
+	}
+	// BookReview
+	public BookReview printAllBookReview() {
 		BookReview review = null;
 		return review;
 	}
-	
+	public BookReview printOneBookReview() {
+		
+		return null;
+	}
 	public int modifyBookReview() {
 		int result = 0;
 		return result;
 	}
-	
-	public BookReview insertBookReview() {
+	public int registerBookReview() {
 		
-		BookReview review = null;
-		
-		return review;
+		return 0;
 	}
-	
 	public int deleteBookReview() {
 		int result = 0;
 		return result ;
 	}
+	public int BookReviewHits() {
+		
+		return 0;
+	}
+	public int BookReviewLikes() {
+		
+		return 0;
+	}
 	
-	
-	public BookShare printBookShare() {
+	// BookShare
+	public BookShare printAllBookShare() {
 		BookShare review = null;
 		return review;
 	}
-	
+	public BookShare printOneBookShare() {
+		return null;
+	}
+	public int registerBookShare() {
+
+		return 0;
+	}
 	public int modifyBookShare() {
 		int result = 0;
 		return result;
 	}
-	
-	public BookShare insertBookShare() {
-		
-		BookShare share = null;
-		
-		return share;
-	}
-	
 	public int deleteBookShare() {
 		int result = 0;
 		return result ;
+	}
+	// 조회수
+	public int BookSharehits() {
+		
+		return 0;
+	}
+	// 좋아요
+	public int BookSharelikes() {
+		
+		return 0;
 	}
 }

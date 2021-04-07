@@ -9,7 +9,7 @@ public class FileData {
 	private String filePath;
 	private long fileSize;
 	private String fileUser;
-	private Timestamp uploadTime; // java.sql에 있는 TimeStamp를 임포트해줌
+	private Timestamp uploadTime; 
 	
 	// constructor
 	public FileData() {
@@ -67,8 +67,6 @@ public class FileData {
 		this.uploadTime = uploadTime;
 	}
 
-
-	
 	// toString 
 	@Override
 	public String toString() {
