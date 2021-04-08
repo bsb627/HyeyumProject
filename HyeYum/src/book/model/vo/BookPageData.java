@@ -12,4 +12,10 @@ public class BookPageData {
 	public BookPageData() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public void setReviewList(ArrayList<BookReview> selectSearchReviewList) {
+	}
+
+	public void setPageNavi(String searchReviewPageNavi) {
+	}
 }
