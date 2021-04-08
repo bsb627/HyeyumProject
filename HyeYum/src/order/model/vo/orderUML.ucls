@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="order.controller" project="HyeYum" file="/HyeYum/src/order/controller" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="420" width="1097" x="43" y="30"/>    
+    <position height="942" width="347" x="43" y="30"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="2" language="java" name="order.controller.ShippingUpdateServlet" project="HyeYum" 
     file="/HyeYum/src/order/controller/ShippingUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="219" y="363"/>    
+    <position height="-1" width="-1" x="213" y="595"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -17,7 +17,7 @@
   </class>  
   <class id="3" language="java" name="order.controller.OrderDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/order/controller/OrderDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="951" y="167"/>    
+    <position height="-1" width="-1" x="215" y="457"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" language="java" name="order.controller.OrderListServlet" project="HyeYum" 
     file="/HyeYum/src/order/controller/OrderListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="566" y="361"/>    
+    <position height="-1" width="-1" x="210" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +44,7 @@
   </class>  
   <class id="6" language="java" name="order.controller.OrderDetailServlet" project="HyeYum" 
     file="/HyeYum/src/order/controller/OrderDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="956" y="369"/>    
+    <position height="-1" width="-1" x="202" y="879"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -53,7 +53,7 @@
   </class>  
   <class id="7" language="java" name="order.controller.OrderUpdateServlet" project="HyeYum" 
     file="/HyeYum/src/order/controller/OrderUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="579" y="168"/>    
+    <position height="-1" width="-1" x="217" y="316"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -62,12 +62,12 @@
   </class>  
   <package id="8" language="java" name="order.model.dao" project="HyeYum" file="/HyeYum/src/order/model/dao" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="627" x="700" y="481"/>    
+    <position height="297" width="315" x="440" y="407"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="9" language="java" name="order.model.dao.OrderDAO" project="HyeYum" 
     file="/HyeYum/src/order/model/dao/OrderDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1022" y="652"/>    
+    <position height="-1" width="-1" x="594" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -76,12 +76,12 @@
   </class>  
   <package id="10" language="java" name="order.model.service" project="HyeYum" file="/HyeYum/src/order/model/service" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="304" width="413" x="50" y="494"/>    
+    <position height="304" width="264" x="440" y="46"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="11" language="java" name="order.model.service.OrderService" project="HyeYum" 
     file="/HyeYum/src/order/model/service/OrderService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="255" y="664"/>    
+    <position height="-1" width="-1" x="569" y="220"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -90,12 +90,12 @@
   </class>  
   <package id="12" language="java" name="order.model.vo" project="HyeYum" file="/HyeYum/src/order/model/vo" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="411" width="191" x="1155" y="39"/>    
+    <position height="849" width="250" x="827" y="53"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="13" language="java" name="order.model.vo.Order" project="HyeYum" 
     file="/HyeYum/src/order/model/vo/Order.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1254" y="327"/>    
+    <position height="-1" width="-1" x="952" y="605"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -104,7 +104,7 @@
   </class>  
   <class id="14" language="java" name="order.model.vo.OrderPageData" project="HyeYum" 
     file="/HyeYum/src/order/model/vo/OrderPageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1249" y="154"/>    
+    <position height="-1" width="-1" x="961" y="210"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -114,10 +114,10 @@
   <association id="15">    
     <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="16" name="orderList">        
-        <position height="0" width="0" x="200" y="-3"/>      
+        <position height="0" width="0" x="-102" y="275"/>      
       </attribute>      
       <multiplicity id="17" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="200" y="-3"/>      
+        <position height="0" width="0" x="-102" y="275"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    

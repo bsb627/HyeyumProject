@@ -6,7 +6,7 @@ import reply.model.vo.Reply;
 
 public class ReplyDAO {
 	
-	public ArrayList<Reply> selectAllList(Connection conn, int currentPage, String replyTpye) { // 댓글 전체보기
+	public ArrayList<Reply> selectAllList(Connection conn, int currentPage, String replyType) { // 댓글 전체보기
 		return null;
 	}
 
