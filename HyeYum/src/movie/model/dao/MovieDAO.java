@@ -10,7 +10,7 @@ import movie.model.vo.MovieReview;
 public class MovieDAO {
 	
 	// 이 달의 영화
-	public ArrayList<MovieInfo> selectAllMovieInfoList(Connection conn, int currentPage) { // 영화정보 전체보기
+	public ArrayList<MovieInfo> selectAllMovieInfoList(Connection conn) { // 영화정보 전체보기
 		
 		return null;
 	}

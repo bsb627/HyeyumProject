@@ -20,20 +20,18 @@ public class MovieService {
 	}
 	
 	// 이 달의 영화
-	public MoviePageData printAllMovieInfo(int currentPage) { // 영화정보 전체보기
+	public ArrayList<MovieInfo> printAllMovieInfo() { // 영화정보 전체보기
 		Connection conn = null;
-		MoviePageData mpd = new MoviePageData();
+		ArrayList<MovieInfo> mInfo = null;
 		try {
-			conn = factory.createConnection();
-			//selectAllMovieReview
-			mpd.setPageNavi((new MovieDAO().getMovieReviewPageNavi(conn, currentPage)));
+			conn = factory.createConnection();		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		return mpd;
+		return mInfo;
 	}
 	
 	public MovieInfo printOneMovieInfo(int infoNo) { // 영화정보 상세보기
