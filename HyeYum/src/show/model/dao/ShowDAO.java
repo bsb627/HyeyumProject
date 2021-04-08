@@ -15,12 +15,11 @@ public class ShowDAO {
 		return null;
 	}
 
-	public int insertInfo(Connection conn, ShowInfo review) { // 공연정보 등록
-		
+	public int insertInfo(Connection conn, ShowInfo showInfo) { // 공연정보 등록
 		return 0;
 	}
 
-	public int updateInfo(Connection conn, ShowInfo review) { // 공연정보 수정
+	public int updateInfo(Connection conn, ShowInfo showInfo) { // 공연정보 수정
 		return 0;
 	}
 	
@@ -57,15 +56,15 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public ArrayList<ShowReview> selectSearchReviewList(Connection conn, String search, int currentPage) { // 관람후기 검색결과 전체보기
+	public ArrayList<ShowReview> selectSearchReviewList(Connection conn, int currentPage, String search, String searchCategory) { // 관람후기 검색결과 전체보기
 		return null;
 	}
 
-	public String getSearchReviewPageNavi(Connection conn, String search, int currentPage) { // 관람후기 검색 페이징
+	public String getSearchReviewPageNavi(Connection conn, int currentPage, String search, String searchCategory) { // 관람후기 검색 페이징
 		return null;
 	}
 
-	public int searchTotalReviewCount(Connection conn, String search) { // 관람후기 검색 총 게시글 수
+	public int searchTotalReviewCount(Connection conn, String search, String searchCategory) { // 관람후기 검색 총 게시글 수
 		return 0;
 	}
 	

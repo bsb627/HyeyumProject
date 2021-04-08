@@ -35,12 +35,12 @@ public class ShowService {
 		return info;
 	}
 	
-	public ShowInfo registerShowInfo(ShowInfo review) { // 공연정보 등록
-		ShowInfo info = null;
-		return info;
+	public int registerShowInfo(ShowInfo showInfo) { // 공연정보 등록
+		int result = 0;
+		return result;
 	}
 	
-	public int modifyShowInfo(ShowInfo review) { // 공연정보 수정
+	public int modifyShowInfo(ShowInfo showInfo) { // 공연정보 수정
 		int result = 0;
 		return result;
 	}
@@ -70,12 +70,12 @@ public class ShowService {
 		return review;
 	}
 	
-	public ShowReview registerShowReview(int showNo) { // 관람후기 등록
-		ShowReview review = null;
-		return review;
+	public int registerShowReview(ShowReview review) { // 관람후기 등록
+		int result = 0;
+		return result;
 	}
 	
-	public int modifyShowReview(int showNo) { // 관람후기 수정
+	public int modifyShowReview(ShowReview review) { // 관람후기 수정
 		int result = 0;
 		return result;
 	}
@@ -85,7 +85,7 @@ public class ShowService {
 		return result ;
 	}
 	
-	public ShowPageData searchPrintAllShowReview(int currentPage) { // 관람후기 검색결과 전체보기
+	public ShowPageData searchPrintAllShowReview(int currentPage, String search, String searchCategory) { // 관람후기 검색결과 전체보기
 		Connection conn = null;
 		ShowPageData pd = new ShowPageData();
 		try {
