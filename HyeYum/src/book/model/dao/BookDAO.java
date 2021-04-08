@@ -135,21 +135,22 @@ public class BookDAO {
 	public int searchTotalReviewCount(Connection conn, String search, String searchCategory) { // 책리뷰 검색
 		return 0;
 	}
-	public int updateHitsReview(Connection conn, int bookNo) { //  게시글 조회수 증가
+	public int updateHitsReview(Connection conn, int reviewNo) { //  게시글 조회수 증가
 		return 0;
 	}
-	public int insertLikesReview(Connection conn, int bookNo, String userId) { // 게시글 좋아요 등록
+	public int insertLikesReview(Connection conn, int reviewNo, String userId) { // 게시글 좋아요 등록
 		return 0;
 	}
-	public int updateLikesReview(Connection conn, int showNo, String userId) { // 좋아요 취소
+	public int updateLikesReview(Connection conn, int reviewNo, String userId) { // 좋아요 취소
 		return 0;
 	}
+	
 	// BookShare
 	public ArrayList<BookShare> selectAllBookShare(Connection conn, int currentPage){ // 책나눔 전체보기
 		
 		return null;
 	}
-	public BookShare selectOneBookShare(Connection conn, int showNo) { // 책나눔 상세보기
+	public BookShare selectOneBookShare(Connection conn, int shareNo) { // 책나눔 상세보기
 		
 		return null;
 	}
@@ -186,7 +187,7 @@ public class BookDAO {
 	public int  updateHitsShare(Connection conn, int shareNo) { // 조회수
 		return 0;
 	}
-	public int insertLikesReview(Connection conn, int shareNo) { // 좋아요 등록
+	public int insertLikesShare(Connection conn, int shareNo) { // 좋아요 등록
 		return 0;
 	}
 	public int updateLikesShare(Connection conn, int shareNo, String userId) { //좋아요 취소
