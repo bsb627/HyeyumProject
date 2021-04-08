@@ -11,7 +11,7 @@ public class ShowDAO {
 		return null;
 	}
 	
-	public ShowInfo selectOneInfo(Connection conn, int showNo) { // 공연정보 상세보기
+	public ShowInfo selectOneInfo(Connection conn, int infoNo) { // 공연정보 상세보기
 		return null;
 	}
 
@@ -23,7 +23,15 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public int deleteInfo(Connection conn, int showNo) { // 공연정보 삭제
+	public int deleteInfo(Connection conn, int infoNo) { // 공연정보 삭제
+		return 0;
+	}
+	
+	public String getInfoPageNavi(Connection conn, int currentPage) { // 공연정보 페이징
+		return null;
+	}
+	
+	public int totaInfoCount(Connection conn) { // 공연정보 총 게시글 수
 		return 0;
 	}
 	
