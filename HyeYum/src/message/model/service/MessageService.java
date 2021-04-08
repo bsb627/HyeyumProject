@@ -51,13 +51,13 @@ public class MessageService {
 	}
 	
 	// 메시지 보내기
-	public int sendMessage(Message message, String userId) {
+	public int sendMessage(Message message) {
 		Connection conn = null;
 		int result = 0;
 		
 		try {
 			conn = factory.createConnection();
-			result = new MessageDAO().insertMessage(conn, message, userId);
+			result = new MessageDAO().insertMessage(conn, message);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

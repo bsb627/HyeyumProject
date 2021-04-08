@@ -52,8 +52,8 @@ public class QnaService {
 		return qna;
 	}
 	
-	// 글등록
-	public int registerAnswer(Qna qna) {
+	// 질문 등록
+	public int registerQuestion(Qna qna) {
 		Connection conn = null;
 		int result = 0;
 		try {
@@ -73,8 +73,8 @@ public class QnaService {
 		return result;
 		
 	}
-	
-	public int registerQuestion(Qna qna) {
+	// 답변 등록
+	public int registerAnswer(Qna qna) {
 		Connection conn = null;
 		int result = 0;
 		try {

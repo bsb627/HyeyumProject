@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class QnAServlet
+ * Servlet implementation class AnswerWriteServlet
  */
-@WebServlet("/qna/write")
-public class QnaWriteServlet extends HttpServlet {
+@WebServlet("/answer/write")
+public class AnswerWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaWriteServlet() {
+    public AnswerWriteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

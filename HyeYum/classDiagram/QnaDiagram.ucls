@@ -83,9 +83,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="qna.controller.QnaWriteServlet" project="HyeYum" 
-    file="/HyeYum/src/qna/controller/QnaWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1331" y="1017"/>    
+  <class id="11" language="java" name="qna.controller.QuestionWriteServlet" project="HyeYum" 
+    file="/HyeYum/src/qna/controller/QuestionWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1335" y="939"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,12 +120,21 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="16">    
+  <class id="16" language="java" name="qna.controller.AnswerWriteServlet" project="HyeYum" 
+    file="/HyeYum/src/qna/controller/AnswerWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1333" y="1106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="17">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="17" name="qnaList">        
+      <attribute id="18" name="qnaList">        
         <position height="0" width="0" x="12" y="0"/>      
       </attribute>      
-      <multiplicity id="18" minimum="0" maximum="2147483647">        
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="12" y="0"/>      
       </multiplicity>    
     </end>    
