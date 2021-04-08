@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ShowPageData {
 	
-	private ArrayList<ShowInfo> showList;
+	private ArrayList<ShowInfo> infoList;
 	private ArrayList<ShowReview> reviewList;
 	private String pageNavi;
 
@@ -12,12 +12,12 @@ public class ShowPageData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayList<ShowInfo> getShowList() {
-		return showList;
+	public ArrayList<ShowInfo> getInfoList() {
+		return infoList;
 	}
 
-	public void setShowList(ArrayList<ShowInfo> showList) {
-		this.showList = showList;
+	public void setInfoList(ArrayList<ShowInfo> infoList) {
+		this.infoList = infoList;
 	}
 
 	public ArrayList<ShowReview> getReviewList() {
@@ -38,7 +38,7 @@ public class ShowPageData {
 
 	@Override
 	public String toString() {
-		return "ShowPageData [showList=" + showList + ", reviewList=" + reviewList + ", pageNavi=" + pageNavi + "]";
+		return "ShowPageData [infoList=" + infoList + ", reviewList=" + reviewList + ", pageNavi=" + pageNavi + "]";
 	}
 	
 	

@@ -7,7 +7,7 @@ import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
 public class ShowDAO {
-	public ArrayList<ShowReview> selectAllInfoList(Connection conn, int currentPage) { // 공연정보 전체보기
+	public ArrayList<ShowInfo> selectAllInfoList(Connection conn, int currentPage) { // 공연정보 전체보기
 		return null;
 	}
 	

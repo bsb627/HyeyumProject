@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import order.model.dao.OrderDAO;
 import order.model.vo.Order;
 import order.model.vo.OrderPageData;
 import show.model.vo.ShowPageData;
@@ -21,7 +22,8 @@ public class OrderService {
 		OrderPageData pd = new OrderPageData();
 		try {
 			conn = factory.createConnection();
-			
+			pd.setOrderList(new OrderDAO().selectAllOrderList(conn, currentPage));
+			pd.setPageNavi(new OrderDAO().getReviewPageNavi(conn, currentPage));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,26 +35,68 @@ public class OrderService {
 	
 	public Order printOneOrder(int orderNo) { // 주문 상세보기
 		Order order = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			order = new OrderDAO().selectOneOrder(conn, orderNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return order;
 	}
 	
 	public int registerOrder(Order order) { // 주문하기
 		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			result = new OrderDAO().insertOrder(conn, order);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
 	public int updateShippingState(int orderNo, String shipping) { // 배송상태 변경
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new OrderDAO().updateShipping(conn, orderNo, shipping);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
 	public int updateOrder(Order order) { // 주문 변경 
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new OrderDAO().updateOrder(conn, order);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
 	public int deleteOrder(int orderNo) { // 주문 삭제
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new OrderDAO().deleteOrder(conn, orderNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 }
