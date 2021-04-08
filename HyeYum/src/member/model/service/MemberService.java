@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import member.model.dao.MemberDAO;
 import member.model.vo.Member;
 import member.model.vo.MemberPageData;
 
@@ -20,6 +21,13 @@ public class MemberService {
 		Connection conn = null;
 		Member member = null;
 		
+		try {
+			conn = factory.createConnection();
+			member = new MemberDAO().selectOneMember(conn, userId, userPwd);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return member;
 	}
 	

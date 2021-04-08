@@ -1,4 +1,4 @@
-package company.conroller;
+package company.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

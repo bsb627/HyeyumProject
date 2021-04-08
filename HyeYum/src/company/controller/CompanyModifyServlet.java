@@ -1,4 +1,4 @@
-package company.conroller;
+package company.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CompanyDeleteServlet
+ * Servlet implementation class CompanyModifyServlet
  */
-@WebServlet("/company/delete")
-public class CompanyDeleteServlet extends HttpServlet {
+@WebServlet("/company/modify")
+public class CompanyModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CompanyDeleteServlet() {
+    public CompanyModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

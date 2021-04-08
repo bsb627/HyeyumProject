@@ -1,167 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <package id="1" language="java" name="member.controller" project="HyeYum" file="/HyeYum/src/member/controller" 
+  <package id="1" language="java" name="member.model.vo" project="HyeYum" file="/HyeYum/src/member/model/vo" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="654" width="1370" x="228" y="533"/>    
+    <position height="738" width="371" x="15" y="14"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <package id="2" language="java" name="member.model.dao" project="HyeYum" file="/HyeYum/src/member/model/dao" 
+  <class id="2" language="java" name="member.model.vo.Member" project="HyeYum" 
+    file="/HyeYum/src/member/model/vo/Member.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="100" y="404"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="member.model.vo.MemberPageData" project="HyeYum" 
+    file="/HyeYum/src/member/model/vo/MemberPageData.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="279" y="143"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="4" language="java" name="member.model.dao" project="HyeYum" file="/HyeYum/src/member/model/dao" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="430" width="526" x="291" y="1271"/>    
+    <position height="321" width="298" x="405" y="15"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <package id="3" language="java" name="member.model.service" project="HyeYum" file="/HyeYum/src/member/model/service" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="756" width="609" x="958" y="1249"/>    
-    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <package id="4" language="java" name="member.model.vo" project="HyeYum" file="/HyeYum/src/member/model/vo" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="1140" width="951" x="1684" y="554"/>    
-    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="5" language="java" name="member.controller.LogoutServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/LogoutServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="468" y="702"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="member.controller.LoginServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/LoginServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="912" y="702"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="member.controller.ModifyServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/ModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1356" y="702"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="member.controller.RestoreServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/RestoreServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="468" y="872"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="member.controller.MyInfoServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/MyInfoServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="912" y="872"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="member.controller.EnrollServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/EnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1356" y="872"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="member.controller.DeleteServlet" project="HyeYum" 
-    file="/HyeYum/src/member/controller/DeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="472" y="1050"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="member.model.dao.MemberDAO" project="HyeYum" 
+  <class id="5" language="java" name="member.model.dao.MemberDAO" project="HyeYum" 
     file="/HyeYum/src/member/model/dao/MemberDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="558" y="1500"/>    
+    <position height="-1" width="-1" x="552" y="193"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="movie.model.service.MovieService" project="HyeYum" 
-    file="/HyeYum/src/movie/model/service/MovieService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1260" y="1640"/>    
+  <package id="6" language="java" name="member.model.service" project="HyeYum" file="/HyeYum/src/member/model/service" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="318" width="264" x="723" y="14"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="7" language="java" name="member.model.service.MemberService" project="HyeYum" 
+    file="/HyeYum/src/member/model/service/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="855" y="190"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="movie.model.vo.MovieInfo" project="HyeYum" 
-    file="/HyeYum/src/movie/model/vo/MovieInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1881" y="1064"/>    
+  <package id="8" language="java" name="member.controller" project="HyeYum" file="/HyeYum/src/member/controller" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="627" width="564" x="1007" y="16"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="9" language="java" name="member.controller.LogoutServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/LogoutServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1152" y="138"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="movie.model.vo.MoviePageData" project="HyeYum" 
-    file="/HyeYum/src/movie/model/vo/MoviePageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2300" y="1488"/>    
+  <class id="10" language="java" name="member.controller.LoginServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/LoginServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1424" y="139"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="movie.model.vo.MovieRecommend" project="HyeYum" 
-    file="/HyeYum/src/movie/model/vo/MovieRecommend.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2123" y="794"/>    
+  <class id="11" language="java" name="member.controller.ModifyServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/ModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1153" y="278"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="movie.model.vo.MovieReview" project="HyeYum" 
-    file="/HyeYum/src/movie/model/vo/MovieReview.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2371" y="884"/>    
+  <class id="12" language="java" name="member.controller.RestoreServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/RestoreServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1428" y="283"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="18">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="19" name="movieList"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+  <class id="13" language="java" name="member.controller.MyInfoServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/MyInfoServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1149" y="419"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="member.controller.EnrollServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/EnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1428" y="423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="member.controller.DeleteServlet" project="HyeYum" 
+    file="/HyeYum/src/member/controller/DeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1150" y="559"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="16">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="17" name="memberList"/>      
+      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="22" name="reviewList"/>      
-      <multiplicity id="23" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="25" name="recommendList"/>      
-      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

@@ -1,135 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <package id="1" language="java" name="notice.controller" project="HyeYum" file="/HyeYum/src/notice/controller" 
+  <package id="1" language="java" name="notice.model.vo" project="HyeYum" file="/HyeYum/src/notice/model/vo" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="170" y="198"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+    <position height="480" width="362" x="10" y="7"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="2" language="java" name="notice.controller.NoticeAddHitsCountServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="289"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="notice.controller.NoticeDeleteServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="423"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="notice.controller.NoticeDetailServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="558"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="notice.controller.NoticeListServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="693"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="notice.controller.NoticeSearchServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeSearchServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="827"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="notice.controller.NoticeUpdateServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="963"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="notice.controller.NoticeWriteServlet" project="HyeYum" 
-    file="/HyeYum/src/notice/controller/NoticeWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="175" y="1097"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="notice.model.dao.NoticeDAO" project="HyeYum" 
-    file="/HyeYum/src/notice/model/dao/NoticeDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="582" y="301"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <package id="10" language="java" name="notice.model.dao" project="HyeYum" file="/HyeYum/src/notice/model/dao" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="586" y="135"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <package id="11" language="java" name="notice.model.service" project="HyeYum" file="/HyeYum/src/notice/model/service" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="597" y="547"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="12" language="java" name="notice.model.service.NoticeService" project="HyeYum" 
-    file="/HyeYum/src/notice/model/service/NoticeService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="600" y="680"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <package id="13" language="java" name="notice.model.vo" project="HyeYum" file="/HyeYum/src/notice/model/vo" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="50" width="113" x="818" y="238"/>    
-    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="14" language="java" name="notice.model.vo.Notice" project="HyeYum" 
+  <class id="2" language="java" name="notice.model.vo.Notice" project="HyeYum" 
     file="/HyeYum/src/notice/model/vo/Notice.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="876" y="500"/>    
+    <position height="-1" width="-1" x="88" y="262"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="notice.model.vo.NoticePageData" project="HyeYum" 
+  <class id="3" language="java" name="notice.model.vo.NoticePageData" project="HyeYum" 
     file="/HyeYum/src/notice/model/vo/NoticePageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="206" x="798" y="778"/>    
+    <position height="-1" width="-1" x="268" y="137"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="16">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="17" name="noticeList">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <package id="4" language="java" name="notice.model.dao" project="HyeYum" file="/HyeYum/src/notice/model/dao" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="336" width="293" x="386" y="9"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="5" language="java" name="notice.model.dao.NoticeDAO" project="HyeYum" 
+    file="/HyeYum/src/notice/model/dao/NoticeDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="531" y="195"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="6" language="java" name="notice.model.service" project="HyeYum" file="/HyeYum/src/notice/model/service" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="289" width="226" x="692" y="6"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="7" language="java" name="notice.model.service.NoticeService" project="HyeYum" 
+    file="/HyeYum/src/notice/model/service/NoticeService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="804" y="169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="8" language="java" name="notice.controller" project="HyeYum" file="/HyeYum/src/notice/controller" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="612" width="560" x="932" y="7"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="9" language="java" name="notice.controller.NoticeDetailServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1074" y="122"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="notice.controller.NoticeAddHitsCountServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1345" y="122"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="notice.controller.NoticeDeleteServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1072" y="262"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="notice.controller.NoticeSearchServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeSearchServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1348" y="263"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="notice.controller.NoticeWriteServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1072" y="403"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="notice.controller.NoticeUpdateServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1351" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="notice.controller.NoticeListServlet" project="HyeYum" 
+    file="/HyeYum/src/notice/controller/NoticeListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1073" y="541"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="18">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="19" name="noticeList">        
+        <position height="15" width="48" x="125" y="192"/>      
       </attribute>      
-      <multiplicity id="18" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

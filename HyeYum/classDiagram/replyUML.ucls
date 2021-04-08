@@ -3,12 +3,12 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="reply.controller" project="HyeYum" file="/HyeYum/src/reply/controller" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="388" width="607" x="80" y="31"/>    
+    <position height="344" width="565" x="1050" y="19"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="2" language="java" name="reply.controller.ReplyWriteServlet" project="HyeYum" 
     file="/HyeYum/src/reply/controller/ReplyWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="246" y="180"/>    
+    <position height="-1" width="-1" x="1200" y="136"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -17,7 +17,7 @@
   </class>  
   <class id="3" language="java" name="reply.controller.ReplyDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/reply/controller/ReplyDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="246" y="325"/>    
+    <position height="-1" width="-1" x="1200" y="279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" language="java" name="reply.controller.ReplyListServlet" project="HyeYum" 
     file="/HyeYum/src/reply/controller/ReplyListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="522" y="324"/>    
+    <position height="-1" width="-1" x="1469" y="278"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -35,7 +35,7 @@
   </class>  
   <class id="5" language="java" name="reply.controller.ReplyUpdateServlet" project="HyeYum" 
     file="/HyeYum/src/reply/controller/ReplyUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="523" y="180"/>    
+    <position height="-1" width="-1" x="1470" y="136"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,17 +44,17 @@
   </class>  
   <package id="6" language="java" name="reply.model.dao" project="HyeYum" file="/HyeYum/src/reply/model/dao" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="274" width="294" x="418" y="462"/>    
+    <position height="256" width="287" x="474" y="18"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <package id="7" language="java" name="reply.model.vo" project="HyeYum" file="/HyeYum/src/reply/model/vo" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="511" width="423" x="774" y="46"/>    
+    <position height="484" width="428" x="22" y="16"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="8" language="java" name="reply.model.vo.Reply" project="HyeYum" 
     file="/HyeYum/src/reply/model/vo/Reply.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="870" y="321"/>    
+    <position height="-1" width="-1" x="124" y="275"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -63,7 +63,7 @@
   </class>  
   <class id="9" language="java" name="reply.model.vo.ReplyPageData" project="HyeYum" 
     file="/HyeYum/src/reply/model/vo/ReplyPageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1070" y="206"/>    
+    <position height="-1" width="-1" x="318" y="160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -72,12 +72,12 @@
   </class>  
   <package id="10" language="java" name="reply.model.service" project="HyeYum" file="/HyeYum/src/reply/model/service" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="233" width="257" x="80" y="466"/>    
+    <position height="233" width="244" x="790" y="20"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="11" language="java" name="reply.model.service.ReplyService" project="HyeYum" 
     file="/HyeYum/src/reply/model/service/ReplyService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="209" y="604"/>    
+    <position height="-1" width="-1" x="913" y="152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -86,7 +86,7 @@
   </class>  
   <class id="12" language="java" name="reply.model.dao.ReplyDAO" project="HyeYum" 
     file="/HyeYum/src/reply/model/dao/ReplyDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="557" y="620"/>    
+    <position height="-1" width="-1" x="617" y="164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -94,20 +94,24 @@
     </display>  
   </class>  
   <dependency id="13">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
   </dependency>  
   <association id="14">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="15" name="replyList"/>      
-      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
+      <attribute id="15" name="replyList">        
+        <position height="15" width="43" x="186" y="206"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-746" y="-46"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <dependency id="17">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

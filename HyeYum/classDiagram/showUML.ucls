@@ -3,22 +3,22 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="show.controller" project="HyeYum" file="/HyeYum/src/show/controller" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="963" width="882" x="34" y="-15"/>    
+    <position height="773" width="847" x="1354" y="3"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <package id="2" language="java" name="show.model.vo" project="HyeYum" file="/HyeYum/src/show/model/vo" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="812" width="486" x="954" y="543"/>    
+    <position height="812" width="576" x="8" y="-3"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <package id="3" language="java" name="show.model.dao" project="HyeYum" file="/HyeYum/src/show/model/dao" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="518" width="400" x="947" y="-8"/>    
+    <position height="500" width="390" x="609" y="2"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="4" language="java" name="show.model.vo.ShowInfo" project="HyeYum" 
     file="/HyeYum/src/show/model/vo/ShowInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1090" y="969"/>    
+    <position height="-1" width="-1" x="116" y="426"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -27,7 +27,7 @@
   </class>  
   <class id="5" language="java" name="show.model.vo.ShowPageData" project="HyeYum" 
     file="/HyeYum/src/show/model/vo/ShowPageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1318" y="723"/>    
+    <position height="-1" width="-1" x="309" y="405"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -36,7 +36,7 @@
   </class>  
   <class id="6" language="java" name="show.model.vo.ShowReview" project="HyeYum" 
     file="/HyeYum/src/show/model/vo/ShowReview.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1281" y="1007"/>    
+    <position height="-1" width="-1" x="309" y="160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -45,7 +45,7 @@
   </class>  
   <class id="7" language="java" name="show.model.dao.ShowDAO" project="HyeYum" 
     file="/HyeYum/src/show/model/dao/ShowDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1150" y="276"/>    
+    <position height="-1" width="-1" x="799" y="264"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -54,7 +54,7 @@
   </class>  
   <class id="8" language="java" name="show.controller.ShowInfoDetailServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowInfoDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="469" y="487"/>    
+    <position height="-1" width="-1" x="1779" y="407"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -63,7 +63,7 @@
   </class>  
   <class id="9" language="java" name="show.controller.AddHitsCountServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/AddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="185" y="122"/>    
+    <position height="-1" width="-1" x="1503" y="118"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -72,7 +72,7 @@
   </class>  
   <class id="10" language="java" name="show.controller.ShowReviewListServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowReviewListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="182" y="834"/>    
+    <position height="-1" width="-1" x="2048" y="548"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -81,7 +81,7 @@
   </class>  
   <class id="11" language="java" name="show.controller.ShowInfoDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowInfoDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="751" y="304"/>    
+    <position height="-1" width="-1" x="2045" y="264"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -90,7 +90,7 @@
   </class>  
   <class id="12" language="java" name="show.controller.ShowInfoListServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowInfoListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="172" y="481"/>    
+    <position height="-1" width="-1" x="1506" y="403"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -99,7 +99,7 @@
   </class>  
   <class id="13" language="java" name="show.controller.ShowReviewUpdateServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowReviewUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="480" y="672"/>    
+    <position height="-1" width="-1" x="1506" y="544"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -108,7 +108,7 @@
   </class>  
   <class id="14" language="java" name="show.controller.ShowReviewWriteServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowReviewWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="177" y="672"/>    
+    <position height="-1" width="-1" x="2047" y="408"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -117,7 +117,7 @@
   </class>  
   <class id="15" language="java" name="show.controller.ShowReviewSearchServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowReviewSearchServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="769" y="839"/>    
+    <position height="-1" width="-1" x="1777" y="689"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -126,7 +126,7 @@
   </class>  
   <class id="16" language="java" name="show.controller.ShowReviewDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowReviewDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="767" y="673"/>    
+    <position height="-1" width="-1" x="1779" y="547"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -135,7 +135,7 @@
   </class>  
   <class id="17" language="java" name="show.controller.ShowReviewDetailServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowReviewDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="473" y="838"/>    
+    <position height="-1" width="-1" x="1503" y="690"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -144,7 +144,7 @@
   </class>  
   <class id="18" language="java" name="show.controller.ShowInfoUpdateServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowInfoUpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="468" y="302"/>    
+    <position height="-1" width="-1" x="1776" y="262"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -153,7 +153,7 @@
   </class>  
   <class id="19" language="java" name="show.controller.MinusLikesCountServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/MinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="759" y="127"/>    
+    <position height="-1" width="-1" x="2041" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -162,7 +162,7 @@
   </class>  
   <class id="20" language="java" name="show.controller.PlusLikesCountServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/PlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="473" y="125"/>    
+    <position height="-1" width="-1" x="1773" y="121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -171,7 +171,7 @@
   </class>  
   <class id="21" language="java" name="show.controller.ShowInfoWriteServlet" project="HyeYum" 
     file="/HyeYum/src/show/controller/ShowInfoWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="177" y="300"/>    
+    <position height="-1" width="-1" x="1505" y="260"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -180,45 +180,54 @@
   </class>  
   <package id="22" language="java" name="show.model.service" project="HyeYum" file="/HyeYum/src/show/model/service" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="419" width="317" x="1403" y="14"/>    
+    <position height="419" width="317" x="1021" y="7"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="23" language="java" name="show.model.service.ShowService" project="HyeYum" 
     file="/HyeYum/src/show/model/service/ShowService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1566" y="244"/>    
+    <position height="-1" width="-1" x="1180" y="228"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <dependency id="24">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
+  <class id="24" language="java" name="board.model.vo.Board" project="HyeYum" 
+    file="/HyeYum/src/board/model/vo/Board.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="500" y="289"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <association id="25">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="26" name="infoList"/>      
-      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="29" name="reviewList">        
-        <position height="0" width="0" x="36" y="168"/>      
+      <attribute id="26" name="reviewList">        
+        <position height="0" width="0" x="-890" y="-628"/>      
       </attribute>      
-      <multiplicity id="30" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="36" y="168"/>      
+      <multiplicity id="27" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-890" y="-628"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
   <dependency id="31">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="TARGET" refId="4"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

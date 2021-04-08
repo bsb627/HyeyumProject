@@ -67,7 +67,7 @@ public class MessageDAO {
 		return null;
 	}
 	
-	private int searchTotalCount(Connection conn, String search, String searchCategory) {
+	public int searchTotalCount(Connection conn, String search, String searchCategory) {
 		return 0;
 		
 	}

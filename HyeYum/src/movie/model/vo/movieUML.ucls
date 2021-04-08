@@ -3,12 +3,12 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="movie.controller" project="HyeYum" file="/HyeYum/src/movie/controller" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="1466" width="1472" x="154" y="186"/>    
+    <position height="1199" width="847" x="1604" y="17"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="2" language="java" name="movie.controller.ReviewMinusLikesCountServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/ReviewMinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="440" y="358"/>    
+    <position height="-1" width="-1" x="1763" y="160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -17,7 +17,7 @@
   </class>  
   <class id="3" language="java" name="movie.controller.RecommendPlusLikesCountServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/RecommendPlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="884" y="358"/>    
+    <position height="-1" width="-1" x="2032" y="161"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" language="java" name="movie.controller.MovieRecommendDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieRecommendDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1328" y="358"/>    
+    <position height="-1" width="-1" x="2300" y="581"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -35,7 +35,7 @@
   </class>  
   <class id="5" language="java" name="movie.controller.MovieReviewModifyServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieReviewModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="438" y="524"/>    
+    <position height="-1" width="-1" x="1763" y="298"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +44,7 @@
   </class>  
   <class id="6" language="java" name="movie.controller.MovieReviewWriteServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieReviewWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="882" y="524"/>    
+    <position height="-1" width="-1" x="2032" y="298"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -53,7 +53,7 @@
   </class>  
   <class id="7" language="java" name="movie.controller.ReviewPlusLikesCountServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/ReviewPlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1326" y="524"/>    
+    <position height="-1" width="-1" x="2030" y="856"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -62,7 +62,7 @@
   </class>  
   <class id="8" language="java" name="movie.controller.MovieInfoModifyServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieInfoModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="444" y="686"/>    
+    <position height="-1" width="-1" x="1765" y="436"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -71,7 +71,7 @@
   </class>  
   <class id="9" language="java" name="movie.controller.MovieRecommendSearchServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieRecommendSearchServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="888" y="686"/>    
+    <position height="-1" width="-1" x="2033" y="440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -80,7 +80,7 @@
   </class>  
   <class id="10" language="java" name="movie.controller.MovieRecommendListServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieRecommendListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1332" y="686"/>    
+    <position height="-1" width="-1" x="2297" y="860"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -89,7 +89,7 @@
   </class>  
   <class id="11" language="java" name="movie.controller.MovieRecommendDetailServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieRecommendDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="448" y="854"/>    
+    <position height="-1" width="-1" x="1762" y="576"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -98,7 +98,7 @@
   </class>  
   <class id="12" language="java" name="movie.controller.MovieReviewSearchServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieReviewSearchServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="892" y="854"/>    
+    <position height="-1" width="-1" x="2032" y="581"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -107,7 +107,7 @@
   </class>  
   <class id="13" language="java" name="movie.controller.MovieRecommendModifyServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieRecommendModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1336" y="854"/>    
+    <position height="-1" width="-1" x="1760" y="998"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -116,7 +116,7 @@
   </class>  
   <class id="14" language="java" name="movie.controller.MovieRecommendWriteServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieRecommendWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="448" y="1018"/>    
+    <position height="-1" width="-1" x="1762" y="716"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -125,7 +125,7 @@
   </class>  
   <class id="15" language="java" name="movie.controller.MovieReviewDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieReviewDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="892" y="1018"/>    
+    <position height="-1" width="-1" x="2030" y="717"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -134,7 +134,7 @@
   </class>  
   <class id="16" language="java" name="movie.controller.MovieInfoDetailServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieInfoDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1336" y="1018"/>    
+    <position height="-1" width="-1" x="2029" y="997"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -143,139 +143,139 @@
   </class>  
   <class id="17" language="java" name="movie.controller.RecommendAddHitsCountServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/RecommendAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="448" y="1186"/>    
+    <position height="-1" width="-1" x="2299" y="161"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="movie.controller.ReviewAddHitsCountServlet" project="HyeYum" 
-    file="/HyeYum/src/movie/controller/ReviewAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="892" y="1186"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="19" language="java" name="movie.controller.MovieReviewDetailServlet" project="HyeYum" 
+  <class id="18" language="java" name="movie.controller.MovieReviewDetailServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieReviewDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1336" y="1186"/>    
+    <position height="-1" width="-1" x="2298" y="998"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="movie.controller.MovieReviewListServlet" project="HyeYum" 
+  <class id="19" language="java" name="movie.controller.MovieReviewListServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieReviewListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="448" y="1350"/>    
+    <position height="-1" width="-1" x="2298" y="298"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="movie.controller.MovieInfoListServlet" project="HyeYum" 
+  <class id="20" language="java" name="movie.controller.MovieInfoListServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieInfoListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="892" y="1350"/>    
+    <position height="-1" width="-1" x="2297" y="716"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="movie.controller.RecommendMinusLikesCountServlet" project="HyeYum" 
+  <class id="21" language="java" name="movie.controller.RecommendMinusLikesCountServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/RecommendMinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1336" y="1350"/>    
+    <position height="-1" width="-1" x="1760" y="1134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="movie.controller.MovieInfoDeleteServlet" project="HyeYum" 
+  <class id="22" language="java" name="movie.controller.MovieInfoDeleteServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieInfoDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="452" y="1514"/>    
+    <position height="-1" width="-1" x="2298" y="442"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="movie.controller.MovieInfoWriteServlet" project="HyeYum" 
+  <class id="23" language="java" name="movie.controller.MovieInfoWriteServlet" project="HyeYum" 
     file="/HyeYum/src/movie/controller/MovieInfoWriteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="896" y="1514"/>    
+    <position height="-1" width="-1" x="1761" y="856"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="25" language="java" name="movie.model.vo" project="HyeYum" file="/HyeYum/src/movie/model/vo" 
+  <package id="24" language="java" name="movie.model.vo" project="HyeYum" file="/HyeYum/src/movie/model/vo" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="1194" width="904" x="2585" y="329"/>    
+    <position height="696" width="649" x="21" y="21"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="26" language="java" name="movie.model.vo.MovieInfo" project="HyeYum" 
+  <class id="25" language="java" name="movie.model.vo.MovieInfo" project="HyeYum" 
     file="/HyeYum/src/movie/model/vo/MovieInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2781" y="1104"/>    
+    <position height="-1" width="-1" x="109" y="382"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="movie.model.vo.MoviePageData" project="HyeYum" 
+  <class id="26" language="java" name="movie.model.vo.MoviePageData" project="HyeYum" 
     file="/HyeYum/src/movie/model/vo/MoviePageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3044" y="556"/>    
+    <position height="-1" width="-1" x="340" y="534"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="movie.model.vo.MovieRecommend" project="HyeYum" 
+  <class id="27" language="java" name="movie.model.vo.MovieRecommend" project="HyeYum" 
     file="/HyeYum/src/movie/model/vo/MovieRecommend.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3331" y="1066"/>    
+    <position height="-1" width="-1" x="431" y="144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="movie.model.vo.MovieReview" project="HyeYum" 
+  <class id="28" language="java" name="movie.model.vo.MovieReview" project="HyeYum" 
     file="/HyeYum/src/movie/model/vo/MovieReview.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3051" y="1188"/>    
+    <position height="-1" width="-1" x="277" y="220"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="30" language="java" name="movie.model.dao" project="HyeYum" file="/HyeYum/src/movie/model/dao" 
+  <package id="29" language="java" name="movie.model.dao" project="HyeYum" file="/HyeYum/src/movie/model/dao" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="846" width="832" x="1676" y="205"/>    
+    <position height="706" width="473" x="702" y="21"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="31" language="java" name="movie.model.dao.MovieDAO" project="HyeYum" 
+  <class id="30" language="java" name="movie.model.dao.MovieDAO" project="HyeYum" 
     file="/HyeYum/src/movie/model/dao/MovieDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2100" y="644"/>    
+    <position height="-1" width="-1" x="940" y="386"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="32" language="java" name="movie.model.service" project="HyeYum" file="/HyeYum/src/movie/model/service" 
+  <package id="31" language="java" name="movie.model.service" project="HyeYum" file="/HyeYum/src/movie/model/service" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="690" width="622" x="1780" y="1085"/>    
+    <position height="568" width="365" x="1211" y="19"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="33" language="java" name="movie.model.service.MovieService" project="HyeYum" 
+  <class id="32" language="java" name="movie.model.service.MovieService" project="HyeYum" 
     file="/HyeYum/src/movie/model/service/MovieService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2096" y="1448"/>    
+    <position height="-1" width="-1" x="1394" y="325"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="board.model.vo.Board" project="HyeYum" 
+    file="/HyeYum/src/board/model/vo/Board.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="574" y="304"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -283,29 +283,65 @@
     </display>  
   </class>  
   <association id="34">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="35" name="reviewList"/>      
-      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="37">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="38" name="movieList"/>      
-      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="41" name="recommendList"/>      
-      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="35" name="reviewList">        
+        <position height="0" width="0" x="-2774" y="-968"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2774" y="-968"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="37">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="38" name="movieList">        
+        <position height="0" width="0" x="-2672" y="-722"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2672" y="-722"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <association id="42">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="43" name="recommendList">        
+        <position height="0" width="0" x="-2900" y="-922"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-2900" y="-922"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <generalization id="46">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="33"/>  
+  </generalization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="33"/>  
+  </generalization>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

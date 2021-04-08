@@ -13,9 +13,36 @@ public class BookPageData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setReviewList(ArrayList<BookReview> selectSearchReviewList) {
+	public ArrayList<BookInfo> getInfoList() {
+		return infoList;
 	}
 
-	public void setPageNavi(String searchReviewPageNavi) {
+	public void setInfoList(ArrayList<BookInfo> infoList) {
+		this.infoList = infoList;
 	}
+
+	public ArrayList<BookReview> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(ArrayList<BookReview> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	public String getPageNavi() {
+		return pageNavi;
+	}
+
+	public void setPageNavi(String pageNavi) {
+		this.pageNavi = pageNavi;
+	}
+
+	@Override
+	public String toString() {
+		return "BookPageData [infoList=" + infoList + ", reviewList=" + reviewList + ", pageNavi=" + pageNavi + "]";
+	}
+	
+	
+
+
 }
