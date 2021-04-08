@@ -9,7 +9,7 @@ public class OrderDAO {
 		return null;
 	}
 	
-	public Order selectOneOrder(Connection conn, int qnaNo) {
+	public Order selectOneOrder(Connection conn, int orderNo) {
 		return null;
 	}
 
@@ -17,7 +17,7 @@ public class OrderDAO {
 		return 0;
 	}
 
-	public int deleteOrder(Connection conn, int qnaNo) {
+	public int deleteOrder(Connection conn, int orderNo) {
 		return 0;
 	}
 

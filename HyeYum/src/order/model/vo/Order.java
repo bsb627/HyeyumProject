@@ -1,21 +1,15 @@
 package order.model.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
+public class Order {
 
-public class Order { // 주문
-	private int ordeNo; // 주문번호
-	private String productName;// 제품명
-	private int price;// 구매가격
-	private int quantity;// 구매수량
-	private int totalPrice; // 총 구매액
-	private String userId;// 주문자
-	private String shippingState;// 배송상태
-	private Date orderDate;// 주문일자
-	
-	public Order() {
-		// TODO Auto-generated constructor stub
-	}
-
+	private int orderNO;
+	private String productName;
+	private int price;
+	private int quantity;
+	private int totalPrice;
+	private String userId;
+	private String shippingState;
+	private Timestamp orderTime; // 주문시간
 }
-
