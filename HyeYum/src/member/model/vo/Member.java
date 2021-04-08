@@ -11,7 +11,34 @@ public class Member {
 	private String userAddress; // 주소
 	private String userPhone; // 전화번호
 	private String userEmail; // 이메일
-	private Date enrollDate; // 가입일짜
+	private Date enrollDate; // 가입일자
+	private Date outDate; // 탈퇴일자
+	private char outState; // 탈퇴여부
+	private String outReason; // 탈퇴사유
+
+	public Date getOutDate() {
+		return outDate;
+	}
+
+	public void setOutDate(Date outDate) {
+		this.outDate = outDate;
+	}
+
+	public char getOutState() {
+		return outState;
+	}
+
+	public void setOutState(char outState) {
+		this.outState = outState;
+	}
+
+	public String getOutReason() {
+		return outReason;
+	}
+
+	public void setOutReason(String outReason) {
+		this.outReason = outReason;
+	}
 
 	public Member() {
 		// TODO Auto-generated constructor stub
@@ -85,9 +112,10 @@ public class Member {
 	public String toString() {
 		return "Member [userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", userNick=" + userNick
 				+ ", userAddress=" + userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail
-				+ ", enrollDate=" + enrollDate + "]";
+				+ ", enrollDate=" + enrollDate + ", outDate=" + outDate + ", outState=" + outState + ", outReason="
+				+ outReason + "]";
 	}
-	
+
 	
 
 }

@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MovieRecommendInfoServlet
  */
-@WebServlet("/movierecommend/print")
-public class MovieRecommendPrintServlet extends HttpServlet {
+@WebServlet("/movieRecommend/list")
+public class MovieRecommendListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieRecommendPrintServlet() {
+    public MovieRecommendListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

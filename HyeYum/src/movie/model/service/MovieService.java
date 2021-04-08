@@ -1,10 +1,13 @@
 package movie.model.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import movie.model.dao.MovieDAO;
 import movie.model.vo.MovieInfo;
+import movie.model.vo.MoviePageData;
 import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
 
@@ -17,135 +20,177 @@ public class MovieService {
 	}
 	
 	// 이 달의 영화
-	public MovieInfo printAllMovieInfo() {
+	public MoviePageData printAllMovieInfo(int currentPage) { // 영화정보 전체보기
 		Connection conn = null;
-		ArrayList<MovieInfo> mInfo =null;
-		MovieInfo info = new MovieInfo();
-	
-		return info;
+		MoviePageData mpd = new MoviePageData();
+		try {
+			conn = factory.createConnection();
+			//selectAllMovieReview
+			mpd.setPageNavi((new MovieDAO().getMovieReviewPageNavi(conn, currentPage)));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mpd;
 	}
 	
-	public MovieInfo printOneMovieInfo() {
+	public MovieInfo printOneMovieInfo(int infoNo) { // 영화정보 상세보기
 		Connection conn = null;
 		MovieInfo info = null;
 		return info;
 	}
 	
-	public int modifyShowInfo() {
+	public MovieInfo registerMovieInfo(MovieInfo movieInfo) { // 영화정보 등록
+		Connection conn = null;
+		MovieInfo info = null;
+		return info;
+	}
+	
+	public int modifyShowInfo(MovieInfo movieInfo) { // 영화정보 수정
 		Connection conn = null;
 		int result = 0;
 		return result;
 	}
 	
-	public MovieInfo registerMovieInfo() {
-		Connection conn = null;
-		MovieInfo info = null;
-		return info;
-	}
-	
-	public int deleteMovieInfo() {
+	public int deleteMovieInfo(int infoNo) { // 영화정보 삭제
 		Connection conn = null;
 		int result = 0;
 		return result;
 	}
 	
 	// 영화 리뷰
-	public MovieReview printAllMovieReview() {
+	public MoviePageData printAllMovieReviewList(int currentPage) { // 영화리뷰 전체보기 
 		Connection conn = null;
-		ArrayList<MovieReview> mReview =null;
-		MovieReview review = new MovieReview();
-	
-		return review;
+		MoviePageData mpd = new MoviePageData();
+		try {
+			conn = factory.createConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mpd;
 	}
 	
-	public MovieReview printOneMovieReview() {
-		Connection conn = null;
-		MovieReview review = null;
-		return review;
-	}
-	
-	public int modifyMovieReview() {
-		Connection conn = null;
-		int result = 0;
-		return result;
-	}
-	
-	public MovieReview registerMovieReview() {
+	public MovieReview printOneMovieReview(int currentPage) { // 영화리뷰 상세보기
 		Connection conn = null;
 		MovieReview review = null;
 		return review;
 	}
 	
-	public int deleteMovieReview() {
+	public MovieReview registerMovieReview(MovieReview movieReview) { // 영화리뷰 등록
+		Connection conn = null;
+		MovieReview review = null;
+		return review;
+	}
+	
+	public int modifyMovieReview(MovieReview movieReview) { // 영화리뷰 수정
 		Connection conn = null;
 		int result = 0;
 		return result;
 	}
 	
-	public int MovieReviewLikes() { // 좋아요 수 
+	public int deleteMovieReview(int reviewNo) { // 영화리뷰 삭제
+		Connection conn = null;
+		int result = 0;
+		return result;
+	}
+	
+	public int ReviewPlusLikesCount(int reviewNo, String userId) { // 영화리뷰 좋아요 수 증가
 		return 0;
 	}
 	
-	public int MovieReviewHits() { // 조회 수 
+	public int ReviewMinusLikesCount(int reviewNo, String userId) { // 영화리뷰 좋아요 수 감소
 		return 0;
+	}
+	
+	public int ReviewHitsCount(int reviewNo) { // 영화리뷰 조회 수 증가
+		return 0;
+	}
+	
+	public MoviePageData searchPrintAllMovieReview(int currentPage, String search, String searchCategory) { // 영화리뷰 검색결과 전체보기
+		Connection conn = null;
+		MoviePageData mpd = new MoviePageData();
+		
+		try {
+			conn = factory.createConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mpd;
 	}
 	
 	// 추천혜윰
-	public MovieRecommend printAllMovieRecommend() {
+	public MoviePageData printAllMovieRecommend(int currentPage) { // 추천글 전체보기
 		Connection conn = null;
-		ArrayList<MovieRecommend> mRecommend = null;
-		MovieRecommend recommend = new MovieRecommend();
+		MoviePageData mpd = new MoviePageData();
 		
-		return recommend;
+		try {
+			conn = factory.createConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mpd;
 	}
 	
-	public MovieRecommend printOneMovieRecommend() {
+	public MovieRecommend printOneMovieRecommend(int recommendNo) { // 추천글 상세보기
+		Connection conn = null;
+		MovieRecommend recommend = null;
+		return recommend;
+	}
+
+	public MovieRecommend registerMovieRecommend(MovieRecommend movieRecommend) { // 추천글 등록
 		Connection conn = null;
 		MovieRecommend recommend = null;
 		return recommend;
 	}
 	
-	public int modifyMovieRecommend() {
+	public int modifyMovieRecommend(MovieRecommend movieRecommend) { // 추천글 수정 
 		Connection conn = null;
 		int result = 0;
 		return result;
 	}
 	
-	public MovieRecommend registerMovieRecommend() {
-		Connection conn = null;
-		MovieRecommend recommend = null;
-		return recommend;
-	}
-	
-	public int deleteMovieRecommend() {
+	public int deleteMovieRecommend(int recommendNo) { // 추천글 삭제
 		Connection conn = null;
 		int result = 0;
 		return result;
 	}
 	
-	public MovieReview printSearchMovieReviewList() {
+	public MoviePageData printSearchAllMovieRecommendList() { // 추천글 검색결과 전체보기
 		Connection conn = null;
-		MovieReview review = new MovieReview();
+		MoviePageData mpd = new MoviePageData();
 		
-		return review;
+		try {
+			conn = factory.createConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mpd;
+	}
+
+	public int RecommendPlusLikesCount(int recommendNo, String userId) { // 추천글 좋아요 수 증가
+		return 0;
 	}
 	
-	public MovieRecommend printSearchMovieRecommendList() {
-		Connection conn = null;
-		MovieRecommend recommend = new MovieRecommend();
-		
-		return recommend;
+	public int RecommendMinusLikesCount(int recommendNo, String userId) { // 추천글 좋아요 수 감소
+		return 0;
 	}
 	
-	public int MovieRecommendLikes() {
-		Connection conn = null;
-		int result = 0;
-		return result;
+	public int RecommendHitsCount(int recommendNo) { // 추천글 조회 수 증가
+		return 0;
 	}
 	
-	public int MovieRecommendHits() {
-		Connection conn = null;
-		int result = 0;
-		return result;
-	}
 }

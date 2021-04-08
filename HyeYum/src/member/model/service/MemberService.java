@@ -20,7 +20,7 @@ public class MemberService {
 		return null;
 	}
 	
-	public Member selectOneById() {
+	public Member selectOneById() { // 마이페이지 - 내 정보
 		Connection conn = null;
 		
 		return null;
@@ -32,6 +32,11 @@ public class MemberService {
 		
 		return list;
 	}
+	
+	// 탈퇴멤버선택
+	
+	// 탈퇴멤버리스트
+	
 	
 	public int modifyMember() {
 		return 0;

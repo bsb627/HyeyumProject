@@ -3,7 +3,7 @@ package movie.model.vo;
 import java.sql.Date;
 
 public class MovieInfo { // 영화 컨텐츠
-	private String infoNo; // 컨텐츠 번호
+	private int infoNo; // 컨텐츠 번호
 	private String movieName;// 영화명
 	private String genre;// 장르
 	private String cast; // 출연진
@@ -18,11 +18,11 @@ public class MovieInfo { // 영화 컨텐츠
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getInfoNo() {
+	public int getInfoNo() {
 		return infoNo;
 	}
 
-	public void setInfoNo(String infoNo) {
+	public void setInfoNo(int infoNo) {
 		this.infoNo = infoNo;
 	}
 
