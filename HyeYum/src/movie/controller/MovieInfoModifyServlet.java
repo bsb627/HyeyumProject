@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MovieContentsModifyServlet
  */
-@WebServlet("/movieinfo/modify")
+@WebServlet("/movieInfo/modify")
 public class MovieInfoModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
