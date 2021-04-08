@@ -82,7 +82,7 @@ public class BookService {
 		try {
 			conn = factory.createConnection();
 			pd.setReviewList(new BookDAO().selectAllBookReview(conn, currentPage));
-			pd.setPageNavi(new BookDAO().getSharePageNavi(conn, currentPage));
+			pd.setPageNavi(new BookDAO().getReviewPageNavi(conn, currentPage));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
