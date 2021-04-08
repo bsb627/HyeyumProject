@@ -8,6 +8,7 @@ import common.JDBCTemplate;
 import qna.model.dao.QnaDAO;
 import qna.model.vo.Qna;
 import qna.model.vo.QnaPageData;
+import show.model.dao.ShowDAO;
 
 public class QnaService {
 
@@ -154,4 +155,18 @@ public class QnaService {
 		
 	}
 	
-}//클래스
+	//조회수
+	public int addHitsCount(int qnaNo) { // 조회수 증가
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new QnaDAO().updateHitsQna(conn, qnaNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+}
