@@ -10,7 +10,6 @@ public class ShowReview extends Board{ // 공연 게시판
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	public String getSnsLink() {
 		return snsLink;
 	}

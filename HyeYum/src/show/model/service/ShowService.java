@@ -105,12 +105,12 @@ public class ShowService {
 		return result;
 	}
 	
-	public int plusLikesCount(String userId, int ShowNo) { // 좋아요수 증가
+	public int plusLikesCount(int ShowNo, String userId) { // 좋아요수 증가
 		int result = 0;
 		return result;
 	}
 	
-	public int minusLikesCount(String userId, int ShowNo) { // 좋아요수 취소 상태 변경
+	public int minusLikesCount(int ShowNo, String userId) { // 좋아요수 취소 상태 변경
 		int result = 0;
 		return result;
 	}

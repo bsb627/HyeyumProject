@@ -10,5 +10,28 @@ public class ReplyPageData {
 	public ReplyPageData() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public ArrayList<Reply> getReplyList() {
+		return replyList;
+	}
+
+	public void setReplyList(ArrayList<Reply> replyList) {
+		this.replyList = replyList;
+	}
+
+	public String getPageNavi() {
+		return pageNavi;
+	}
+
+	public void setPageNavi(String pageNavi) {
+		this.pageNavi = pageNavi;
+	}
+
+	@Override
+	public String toString() {
+		return "ReplyPageData [replyList=" + replyList + ", pageNavi=" + pageNavi + "]";
+	}
+	
+	
 	
 }

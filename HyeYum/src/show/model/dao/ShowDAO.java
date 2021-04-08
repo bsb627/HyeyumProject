@@ -76,15 +76,15 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public int updateHitsReview(Connection conn, String showNo) { // 해당 게시글 조회수 증가
+	public int updateHitsReview(Connection conn, int showNo) { // 해당 게시글 조회수 증가
 		return 0;
 	}
 	
-	public int insertLikesReview(Connection conn, String showNo) { // 해당 게시글 좋아요 등록
+	public int insertLikesReview(Connection conn, int showNo, String userId) { // 해당 게시글 좋아요 등록
 		return 0;
 	}
 	
-	public int updateLikesReview(Connection conn, String showNo) { // 해당 게시글 좋아요 취소
+	public int updateLikesReview(Connection conn, int showNo, String userId) { // 해당 게시글 좋아요 취소
 		return 0;
 	}
 	
