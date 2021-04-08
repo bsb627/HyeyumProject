@@ -139,12 +139,12 @@ public class ShowService {
 		return result;
 	}
 	
-	public int deleteShowReview(int showNo) { // 관람후기 삭제
+	public int deleteShowReview(int reviewNo) { // 관람후기 삭제
 		int result = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			result = new ShowDAO().deleteReview(conn, showNo);
+			result = new ShowDAO().deleteReview(conn, reviewNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

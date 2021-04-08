@@ -52,7 +52,7 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public int deleteReview(Connection conn, int showNo) { // 관람후기 삭제
+	public int deleteReview(Connection conn, int reviewNo) { // 관람후기 삭제
 		return 0;
 	}
 	
