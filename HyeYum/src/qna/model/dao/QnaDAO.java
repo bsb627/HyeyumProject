@@ -71,5 +71,10 @@ public class QnaDAO {
 		return 0;
 		
 	}
+
+	public int updateHitsQna(Connection conn, int qnaNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }
