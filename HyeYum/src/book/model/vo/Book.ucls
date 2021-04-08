@@ -1,265 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="book.controller.BookInfoDeleteServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookInfoDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="138" y="1123"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
+  <package id="1" language="java" name="book.controller" project="HyeYum" file="/HyeYum/src/book/controller" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1423" width="1364" x="-38" y="886"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
   <class id="2" language="java" name="book.controller.BookInfoEnrollServlet" project="HyeYum" 
     file="/HyeYum/src/book/controller/BookInfoEnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="136" y="567"/>    
+    <position height="-1" width="-1" x="182" y="1055"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="book.controller.BookInfoModifyServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookInfoModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="136" y="982"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="book.controller.BookReviewEnrollServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookReviewEnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="500" y="561"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="book.controller.BookInfoListServlet" project="HyeYum" 
+  <class id="3" language="java" name="book.controller.BookInfoListServlet" project="HyeYum" 
     file="/HyeYum/src/book/controller/BookInfoListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="137" y="703"/>    
+    <position height="-1" width="-1" x="184" y="1214"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="book.controller.BookInfoDetailServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookInfoDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="134" y="841"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="book.controller.BookReviewListServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookReviewListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="499" y="700"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="book.controller.BookReviewDetailServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookReviewDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="500" y="837"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="book.controller.BookReviewModifyServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookReviewModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="502" y="976"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="book.controller.BookReviewDeleteServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookReviewDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="499" y="1117"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="book.controller.BookShareEnrollServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookShareEnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="845" y="558"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="book.controller.ReviewAddHitsCountServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/ReviewAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="500" y="1255"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="book.controller.ReviewMinusLikesCountServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/ReviewMinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="498" y="1393"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="book.controller.ReviewPlusLikesCountServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/ReviewPlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="498" y="1532"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="book.controller.BookShareListServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookShareListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="848" y="699"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="book.controller.BookShareDetailServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookShareDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="847" y="839"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="17" language="java" name="book.controller.BookShareModifyServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookShareModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="848" y="977"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="book.controller.BookShareDeleteServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/BookShareDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="847" y="1115"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="19" language="java" name="book.controller.ShareAddHitsCountServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/ShareAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="847" y="1255"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="20" language="java" name="book.controller.ShareMinusLikesCountServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/ShareMinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="845" y="1392"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="21" language="java" name="book.controller.SharePlusLikesCountServlet" project="HyeYum" 
-    file="/HyeYum/src/book/controller/SharePlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="843" y="1531"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="22" language="java" name="book.model.vo.BookInfo" project="HyeYum" 
+  <package id="4" language="java" name="book.model.vo" project="HyeYum" file="/HyeYum/src/book/model/vo" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="609" width="697" x="-34" y="-36"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="5" language="java" name="book.model.vo.BookInfo" project="HyeYum" 
     file="/HyeYum/src/book/model/vo/BookInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="64" y="149"/>    
+    <position height="-1" width="-1" x="85" y="282"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="book.model.vo.BookPageData" project="HyeYum" 
+  <class id="6" language="java" name="book.model.vo.BookPageData" project="HyeYum" 
     file="/HyeYum/src/book/model/vo/BookPageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="362" y="-39"/>    
+    <position height="-1" width="-1" x="391" y="440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="book.model.vo.BookReview" project="HyeYum" 
+  <class id="7" language="java" name="book.model.vo.BookReview" project="HyeYum" 
     file="/HyeYum/src/book/model/vo/BookReview.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="564" y="257"/>    
+    <position height="-1" width="-1" x="525" y="164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="book.model.vo.BookShare" project="HyeYum" 
+  <class id="8" language="java" name="book.model.vo.BookShare" project="HyeYum" 
     file="/HyeYum/src/book/model/vo/BookShare.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="669" y="-41"/>    
+    <position height="-1" width="-1" x="312" y="239"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="book.model.service.BookService" project="HyeYum" 
+  <class id="9" language="java" name="book.controller.BookInfoDetailServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookInfoDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="186" y="1378"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="book.controller.BookInfoModifyServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookInfoModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="188" y="1555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="book.controller.BookInfoDeleteServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookInfoDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="192" y="1722"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="book.controller.BookReviewEnrollServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookReviewEnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="643" y="1052"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="book.controller.BookReviewListServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookReviewListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="646" y="1210"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="book.controller.BookReviewDetailServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookReviewDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="642" y="1379"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="book.controller.BookReviewModifyServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookReviewModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="643" y="1550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="book.controller.BookReviewDeleteServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookReviewDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="640" y="1718"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="book.controller.BookShareEnrollServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookShareEnrollServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1098" y="1048"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="book.controller.BookShareListServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookShareListServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1100" y="1210"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="book.controller.BookShareDetailServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookShareDetailServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1101" y="1374"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="book.controller.BookShareModifyServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookShareModifyServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1100" y="1546"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="book.controller.BookShareDeleteServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/BookShareDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1099" y="1712"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="book.controller.ReviewAddHitsCountServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/ReviewAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="639" y="1901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="book.controller.ReviewPlusLikesCountServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/ReviewPlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="644" y="2066"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="book.controller.ReviewMinusLikesCountServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/ReviewMinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="640" y="2229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="book.controller.ShareAddHitsCountServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/ShareAddHitsCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1098" y="1895"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="book.controller.SharePlusLikesCountServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/SharePlusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1099" y="2066"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="book.controller.ShareMinusLikesCountServlet" project="HyeYum" 
+    file="/HyeYum/src/book/controller/ShareMinusLikesCountServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1101" y="2233"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="28" language="java" name="book.model" project="HyeYum" file="/HyeYum/src/book/model" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="936" width="1168" x="685" y="-43"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="29" language="java" name="book.model.dao" project="HyeYum" file="/HyeYum/src/book/model/dao" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="857" width="642" x="1205" y="-9"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="30" language="java" name="book.model.service" project="HyeYum" file="/HyeYum/src/book/model/service" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="706" width="473" x="698" y="-21"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="31" language="java" name="book.model.service.BookService" project="HyeYum" 
     file="/HyeYum/src/book/model/service/BookService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="987" y="142"/>    
+    <position height="-1" width="-1" x="938" y="344"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="book.model.dao.BookDAO" project="HyeYum" 
+  <class id="32" language="java" name="book.model.dao.BookDAO" project="HyeYum" 
     file="/HyeYum/src/book/model/dao/BookDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1603" y="156"/>    
+    <position height="-1" width="-1" x="1523" y="417"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="28">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="29" name="reviewList"/>      
-      <multiplicity id="30" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="32" name="infoList"/>      
-      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
