@@ -8,6 +8,7 @@ import common.JDBCTemplate;
 import notice.model.dao.NoticeDAO;
 import notice.model.vo.Notice;
 import notice.model.vo.NoticePageData;
+import show.model.dao.ShowDAO;
 
 
 public class NoticeService {
@@ -36,6 +37,19 @@ public class NoticeService {
 		}
 		return pd; // ?
 	
+	}
+	
+	public int noticeAddHitsCount(int noticeNo) { // 조회수 증가
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new NoticeDAO().updateHitsReview(conn, noticeNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public Notice printOne(int noticeNo) {

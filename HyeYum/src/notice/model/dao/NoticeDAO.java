@@ -294,6 +294,9 @@ public class NoticeDAO {
 		}
 		return result;
 	}
-
+	public int updateHitsReview(Connection conn, int showNo) { // 해당 게시글 조회수 증가
+		return 0;
+	}
+	
 
 }

@@ -13,7 +13,7 @@ public class CompanyService {
 	private JDBCTemplate factory;
 
 	public CompanyService() {
-		factory = new JDBCTemplate().getConnection();
+		factory = JDBCTemplate.getConnection();
 		
 	}
 	

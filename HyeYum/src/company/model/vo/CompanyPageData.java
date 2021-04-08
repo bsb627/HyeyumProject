@@ -15,7 +15,7 @@ public class CompanyPageData {
 		return companyList;
 	}
 
-	public void setNoticeList(ArrayList<Company> compnayList) {
+	public void setNoticeList(ArrayList<Company> companyList) {
 		this.companyList = companyList;
 	}
 
