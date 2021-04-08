@@ -1,9 +1,11 @@
 package show.model.service;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
+import show.model.vo.ShowPageData;
 import show.model.vo.ShowReview;
 
 public class ShowService {
@@ -13,72 +15,102 @@ public class ShowService {
 		factory = JDBCTemplate.getConnection();
 	}
 	
-	public ArrayList<ShowInfo> printAllShowInfo() { // 공연정보 전체보기
-		ArrayList<ShowInfo> list = null;
-		return list;
+	public ShowPageData printAllShowInfo(int currentPage) { // 공연정보 전체보기
+		Connection conn = null;
+		ShowPageData pd = new ShowPageData();
+		try {
+			conn = factory.createConnection();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return pd;
 	}
 	
-	public ShowInfo printOneShowInfo() { // 공연정보 상세보기
+	public ShowInfo printOneShowInfo(int showNo) { // 공연정보 상세보기
 		ShowInfo info = null;
 		return info;
 	}
 	
-	public ShowInfo registerShowInfo() { // 공연정보 등록
+	public ShowInfo registerShowInfo(ShowInfo review) { // 공연정보 등록
 		ShowInfo info = null;
 		return info;
 	}
 	
-	public int modifyShowInfo() { // 공연정보 수정
+	public int modifyShowInfo(ShowInfo review) { // 공연정보 수정
 		int result = 0;
 		return result;
 	}
 	
-	public int deleteShowInfo() { // 공연정보 삭제
+	public int deleteShowInfo(int showNo) { // 공연정보 삭제
 		int result = 0;
 		return result ;
 	}
 	
-	public ArrayList<ShowReview> printAllShowReview() { // 관람후기 전체보기
-		ArrayList<ShowReview> list = null;
-		return list;
+	public ShowPageData printAllShowReview(int currentPage) { // 관람후기 전체보기
+		Connection conn = null;
+		ShowPageData pd = new ShowPageData();
+		try {
+			conn = factory.createConnection();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return pd;
 	}
 	
-	public ShowReview printOneShowReview() { // 관람후기 상세보기
+	public ShowReview printOneShowReview(int showNo) { // 관람후기 상세보기
 		ShowReview review = null;
 		return review;
 	}
 	
-	public ShowReview registerShowReview() { // 관람후기 등록
+	public ShowReview registerShowReview(int showNo) { // 관람후기 등록
 		ShowReview review = null;
 		return review;
 	}
 	
-	public int modifyShowReview() { // 관람후기 수정
+	public int modifyShowReview(int showNo) { // 관람후기 수정
 		int result = 0;
 		return result;
 	}
 	
-	public int deleteShowReview() { // 관람후기 삭제
+	public int deleteShowReview(int showNo) { // 관람후기 삭제
 		int result = 0;
 		return result ;
 	}
 	
-	public ArrayList<ShowReview> searchPrintAllShowReview() { // 관람후기 검색결과 전체보기
-		ArrayList<ShowReview> list = null;
-		return list;
+	public ShowPageData searchPrintAllShowReview(int currentPage) { // 관람후기 검색결과 전체보기
+		Connection conn = null;
+		ShowPageData pd = new ShowPageData();
+		try {
+			conn = factory.createConnection();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return pd;
 	}
 	
-	public int addHitsCount() { // 조회수 증가
+	public int addHitsCount(int ShowNo) { // 조회수 증가
 		int result = 0;
 		return result;
 	}
 	
-	public int plusLikesCount() { // 좋아요수 증가
+	public int plusLikesCount(String userId, int ShowNo) { // 좋아요수 증가
 		int result = 0;
 		return result;
 	}
 	
-	public int minusLikesCount() { // 좋아요수 빼기
+	public int minusLikesCount(String userId, int ShowNo) { // 좋아요수 취소 상태 변경
 		int result = 0;
 		return result;
 	}
