@@ -25,8 +25,8 @@
 			<td><a href="/notice/detail?noticeNo=<%= notice.getNoticeNo()%>">
 				<%= notice.getTitle() %></a>
 			</td>
-			<td><%= notice.getUserId() %></td>
 			<td><%= notice.getHits() %></td>
+			<td><%= notice.getUserId() %></td>
 			<td><%= notice.getEnrollDate() %></td>
 		</tr>
 		<% } %>
