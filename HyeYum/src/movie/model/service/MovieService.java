@@ -105,10 +105,6 @@ public class MovieService {
 		return 0;
 	}
 	
-	public int ReviewHitsCount(int reviewNo) { // 영화리뷰 조회 수 증가
-		return 0;
-	}
-	
 	public MoviePageData searchPrintAllMovieReview(int currentPage, String search, String searchCategory) { // 영화리뷰 검색결과 전체보기
 		Connection conn = null;
 		MoviePageData mpd = new MoviePageData();
@@ -164,7 +160,7 @@ public class MovieService {
 		return result;
 	}
 	
-	public MoviePageData printSearchAllMovieRecommendList() { // 추천글 검색결과 전체보기
+	public MoviePageData printSearchAllMovieRecommendList(int currentPage, String search, String searchCategory) { // 추천글 검색결과 전체보기
 		Connection conn = null;
 		MoviePageData mpd = new MoviePageData();
 		

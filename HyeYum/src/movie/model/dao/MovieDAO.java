@@ -89,10 +89,6 @@ public class MovieDAO {
 		return 0;
 	}
 	
-	public int updateHitsReview(Connection conn, int reviewNo) { // 해당 게시글 조회수 증가
-		return 0;
-	}
-	
 	public int insertLikesReview(Connection conn, int reviewNo, String userId) { // 해당 게시글 좋아요 등록
 		return 0;
 	}
@@ -133,7 +129,7 @@ public class MovieDAO {
 		return result;
 	}
 	
-	public int deleteMovieRecommend(Connection conn, MovieRecommend movieRecommend) { // 추천글 삭제
+	public int deleteMovieRecommend(Connection conn, int recommendNo) { // 추천글 삭제
 		int result = 0;
 		
 		return result;
