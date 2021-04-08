@@ -1,36 +1,113 @@
 package book.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import book.model.vo.BookInfo;
 import book.model.vo.BookReview;
 import book.model.vo.BookShare;
+import common.JDBCTemplate;
 
 public class BookDAO {
 	//BookInfo
-	public ArrayList<BookInfo> selectAllBookInfo(Connection conn, int currentPage){ // 책정보 전체보기
-		return null;
+	public ArrayList<BookInfo> selectAllBookInfo(Connection conn){ // 책정보 전체보기
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<BookInfo>bList = null;
+		String query = "SELECT * FROM BOOKINFO";
+				
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			bList = new ArrayList<BookInfo>();
+			while(rset.next()) {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return bList;
 	}
-	public BookInfo selectOneBookInfo(Connection conn, int showNo) { // 책정보 상세보기
+	public BookInfo selectOneBookInfo(Connection conn, int infoNo) { // 책정보 상세보기
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM BOOKINFO WHERE INFONO = ?";
+		BookInfo info = null;
 		
-		return null;
+		return info;
 	}
 	public int insertBookInfo(Connection conn, BookInfo bookInfo) { // 책정보 등록
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query ="";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setLong(1, bookInfo.getInfoNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	public int updateBookInfo(Connection conn, BookInfo bookInfo) { // 책정보 수정
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setLong(1,  bookInfo.getInfoNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	public int deleteBookInfo(Connection conn, int BookNo) { // 책정보 삭제
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		return result;
 	}
 	
 	// BookReview
 	public ArrayList<BookReview> selectAllBookReview(Connection conn, int currentPage){ // 책리뷰 전체보기
-		return null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<BookReview> bList = null;
+		String query = "SELECT * FROM BOOKINFO";
+				
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			bList = new ArrayList<BookReview>();
+			while(rset.next()) {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return bList;
 	}
-	public BookReview selectOneBookReview(Connection conn, int showNo) { //책리뷰 상세보기
+	public BookReview selectOneBookReview(Connection conn, int reviewNo) { //책리뷰 상세보기
 		
 		return null;
 	}
