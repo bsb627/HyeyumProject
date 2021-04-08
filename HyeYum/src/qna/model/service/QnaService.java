@@ -18,7 +18,7 @@ public class QnaService {
 	}
 	
 	// 전체출력 
-	public QnaPageData printAllList(int currentPage) {
+	public QnaPageData printAllQna(int currentPage) {
 		Connection conn = null;
 		QnaPageData pd = new QnaPageData();
 		try {
@@ -136,13 +136,13 @@ public class QnaService {
 	}
 	
 	// 글검색
-	public QnaPageData printSearchList(String search, int currentPage) {
+	public QnaPageData printSearchList(String search, String searchCategory, int currentPage) {
 		Connection conn = null;
 		QnaPageData pd = new QnaPageData();
 		try {
 			conn = factory.createConnection();
-			pd.setQnaList(new QnaDAO().selectSearchList(conn, search, currentPage));
-			pd.setPageNavi(new QnaDAO().getSearchPageNavi(conn, search, currentPage));
+			pd.setQnaList(new QnaDAO().selectSearchList(conn, search, searchCategory, currentPage));
+			pd.setPageNavi(new QnaDAO().getSearchPageNavi(conn, search, searchCategory, currentPage));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
