@@ -26,9 +26,9 @@ public class JDBCTemplate {
 	}
 	
 	public Connection createConnection() throws SQLException{
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String user = "LIBRARY";
-		String pwd = "LIBRARY";
+		String url = "jdbc:oracle:thin:@sonof.iptime.org:8521:XE";
+		String user = "HYEYUM";
+		String pwd = "HYEYUM";
 		Connection conn = DriverManager.getConnection(url, user, pwd);
 		conn.setAutoCommit(false);
 		return conn;

@@ -26,8 +26,15 @@ public class ShowReviewDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String[] noArr = request.getParameterValues("showNo");
+		
+		for(String no : noArr) {
+			if(no.equals(noArr[noArr.length-1]) ) {
+				System.out.println(no);
+			}else {
+				System.out.print(no+",");
+			}
+		}
 	}
 
 	/**

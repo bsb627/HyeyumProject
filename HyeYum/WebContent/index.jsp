@@ -7,6 +7,12 @@
 <title>혜윰</title>
 </head>
 <body>
-	<h3> 혜윰 프로젝트</h3>
+	<jsp:include page="header.html" />
+	
+	<div style="position: relative;">
+		<h3>메인페이지 테스트</h3>
+	</div>
+	
+	<jsp:include page="footer.html" />
 </body>
 </html>

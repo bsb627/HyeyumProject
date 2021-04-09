@@ -23,7 +23,7 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public int deleteInfo(Connection conn, int infoNo) { // 공연정보 삭제
+	public int deleteInfo(Connection conn, String infoNo) { // 공연정보 삭제
 		return 0;
 	}
 	
@@ -35,7 +35,7 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public ArrayList<ShowReview> selectAllReviewList(Connection conn, int currentPage) { // 관람후기 검색결과 전체보기
+	public ArrayList<ShowReview> selectAllReviewList(Connection conn, int currentPage) { // 관람후기 전체보기
 		return null;
 	}
 	
@@ -52,7 +52,7 @@ public class ShowDAO {
 		return 0;
 	}
 	
-	public int deleteReview(Connection conn, int reviewNo) { // 관람후기 삭제
+	public int deleteReview(Connection conn, String reviewNo) { // 관람후기 삭제
 		return 0;
 	}
 	

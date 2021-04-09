@@ -2,6 +2,7 @@ package show.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import show.model.dao.ShowDAO;
@@ -71,7 +72,7 @@ public class ShowService {
 		return result;
 	}
 	
-	public int deleteShowInfo(int infoNo) { // 공연정보 삭제
+	public int deleteShowInfo(String infoNo) { // 공연정보 삭제
 		int result = 0;
 		Connection conn = null;
 		try {
@@ -139,7 +140,7 @@ public class ShowService {
 		return result;
 	}
 	
-	public int deleteShowReview(int reviewNo) { // 관람후기 삭제
+	public int deleteShowReview(String reviewNo) { // 관람후기 삭제
 		int result = 0;
 		Connection conn = null;
 		try {
