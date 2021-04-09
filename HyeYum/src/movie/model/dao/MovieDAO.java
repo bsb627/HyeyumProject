@@ -39,7 +39,7 @@ public class MovieDAO {
 	}
 	
 	// 영화 리뷰
-	public ArrayList<MovieReview> selectAllMovieReview(Connection conn) { // 영화리뷰 전체보기
+	public ArrayList<MovieReview> selectAllMovieReview(Connection conn,int currentPage) { // 영화리뷰 전체보기
 		ArrayList<MovieReview> mReview = null;	
 		return mReview;
 	}
@@ -99,7 +99,7 @@ public class MovieDAO {
 	
 	
 	// 추천혜윰
-	public ArrayList<MovieRecommend> selectAllMovieRecommend(Connection conn) { // 추천글 전체보기
+	public ArrayList<MovieRecommend> selectAllMovieRecommend(Connection conn, int currentPage) { // 추천글 전체보기
 		ArrayList<MovieRecommend> mRecommend = null;
 			return mRecommend;
 		}
@@ -112,7 +112,7 @@ public class MovieDAO {
 		return 0;
 	}
 	
-	public MovieReview selectOneMovieRecommend(Connection conn, int recommendNo) { // 추천글 상세보기
+	public MovieRecommend selectOneMovieRecommend(Connection conn, int recommendNo) { // 추천글 상세보기
 		
 		return null;
 	}
