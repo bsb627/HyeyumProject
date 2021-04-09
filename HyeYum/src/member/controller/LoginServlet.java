@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class loginServlet
@@ -26,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("들어옴");
 		request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
 	}
 
@@ -33,8 +38,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String userId = request.getParameter("user-id");
+		String userPwd = request.getParameter("user-pwd");
+		
+		Member member = new MemberService().selectOneMember(userId, userPwd);
+		
+		if(member!=null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", member.getUserId());
+			response.sendRedirect("/index.jsp");
+		} else {
+			request.getRequestDispatcher("/WEB-INF/views/member/memberError.html").forward(request, response);
+		}
 	}
 
 }

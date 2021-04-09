@@ -27,6 +27,8 @@ public class MemberService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return member;
 	}
