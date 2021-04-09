@@ -63,7 +63,7 @@
   </class>  
   <class id="9" language="java" name="reply.model.vo.ReplyPageData" project="HyeYum" 
     file="/HyeYum/src/reply/model/vo/ReplyPageData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="318" y="160"/>    
+    <position height="-1" width="-1" x="338" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -97,22 +97,22 @@
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="14">    
+  <dependency id="14">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="15">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="15" name="replyList">        
+      <attribute id="16" name="replyList">        
         <position height="15" width="43" x="186" y="206"/>      
       </attribute>      
-      <multiplicity id="16" minimum="0" maximum="2147483647">        
+      <multiplicity id="17" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-746" y="-46"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="17">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

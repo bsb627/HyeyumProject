@@ -49,7 +49,7 @@
   </class>  
   <class id="7" language="java" name="book.model.vo.BookReview" project="HyeYum" 
     file="/HyeYum/src/book/model/vo/BookReview.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="255" y="374"/>    
+    <position height="-1" width="-1" x="261" y="328"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -58,7 +58,7 @@
   </class>  
   <class id="8" language="java" name="book.model.vo.BookShare" project="HyeYum" 
     file="/HyeYum/src/book/model/vo/BookShare.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="248" y="96"/>    
+    <position height="-1" width="-1" x="265" y="96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -257,7 +257,7 @@
   </class>  
   <class id="31" language="java" name="book.model.dao.BookDAO" project="HyeYum" 
     file="/HyeYum/src/book/model/dao/BookDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="742" y="348"/>    
+    <position height="-1" width="-1" x="746" y="351"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -266,7 +266,7 @@
   </class>  
   <class id="32" language="java" name="board.model.vo.Board" project="HyeYum" 
     file="/HyeYum/src/board/model/vo/Board.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="408" y="266"/>    
+    <position height="-1" width="-1" x="421" y="269"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -277,46 +277,50 @@
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="32"/>  
   </generalization>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <association id="35">    
+  <dependency id="34">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="31"/>  
+  </dependency>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="36">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="36" name="infoList">        
+      <attribute id="37" name="infoList">        
         <position height="15" width="38" x="149" y="512"/>      
       </attribute>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+      <multiplicity id="38" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="38">    
+  <dependency id="39">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="40">    
     <end type="SOURCE" refId="31"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="39">    
+  <association id="41">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="40" name="reviewList">        
-        <position height="15" width="49" x="201" y="512"/>      
+      <attribute id="42" name="reviewList">        
+        <position height="18" width="59" x="227" y="483"/>      
       </attribute>      
-      <multiplicity id="41" minimum="0" maximum="2147483647"/>    
+      <multiplicity id="43" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="6" y="-46"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="42">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="43">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="44">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="31"/>  
-  </dependency>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
