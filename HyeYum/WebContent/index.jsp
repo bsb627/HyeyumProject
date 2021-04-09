@@ -63,8 +63,8 @@
           </li>
            <li class="dropdown"><a href="#"><span>도서</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">독서혜윰</a></li>
-              <li><a href="#">나눔혜윰</a></li>
+              <li><a href="/bookReview/list">독서혜윰</a></li>
+              <li><a href="/bookShare/list">나눔혜윰</a></li>
             </ul>
           </li>
 		  <li class="dropdown"><a href="#"><span>영화</span> <i class="bi bi-chevron-down"></i></a>

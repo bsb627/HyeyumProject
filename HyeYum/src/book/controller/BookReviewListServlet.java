@@ -1,11 +1,19 @@
 package book.controller;
 
+import java.awt.print.Book;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import book.model.service.BookService;
+import book.model.vo.BookPageData;
+import book.model.vo.BookReview;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -26,8 +34,25 @@ public class BookReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int currentPage = 0;
+		if(request.getParameter("currentPage") == null) {
+			currentPage = 1;
+		}else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		BookPageData pageData = new BookService().printAllBookReview(currentPage);
+		ArrayList<BookReview> reviewList = pageData.getBookList();
+		String pageNavi = pageData.getPageNavi();
+		
+		if(!reviewList.isEmpty()) {
+			request.setAttribute("reviewList",reviewList);
+			request.setAttribute("pageNavi", pageNavi);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
+			view.forward(request, response);
+		}else {
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
+			view.forward(request, response);
+		}
 	}
 
 	/**
