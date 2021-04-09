@@ -38,7 +38,7 @@ public class MessageDAO {
 		return null;
 	}
 	
-	public int deleteMessage(Connection conn, int messageNo) {
+	public int deleteMessage(Connection conn, ArrayList<Message> Message) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

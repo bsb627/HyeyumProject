@@ -82,7 +82,7 @@
               <li><a href="#">참여혜윰</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#">로그인</a></li>
+          <li><a class="nav-link scrollto" href="/member/login">로그인</a></li>
           <li><a class="getstarted scrollto" href="#">제휴문의</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

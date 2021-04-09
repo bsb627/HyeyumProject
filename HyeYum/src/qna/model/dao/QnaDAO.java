@@ -42,7 +42,7 @@ public class QnaDAO {
 		return 0;
 	}
 
-	public int deleteQna(Connection conn, int qnaNo) {
+	public int deleteQna(Connection conn, ArrayList<Qna> qna) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

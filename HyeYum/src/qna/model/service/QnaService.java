@@ -2,7 +2,7 @@ package qna.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import qna.model.dao.QnaDAO;
@@ -96,12 +96,12 @@ public class QnaService {
 	}
 	
 	// 글삭제
-	public int deleteQna(int qnaNo) {
+	public int deleteQna(ArrayList<Qna> qna) {
 		Connection conn = null;
 		int result = 0;
 		try {
 			conn = factory.createConnection();
-			result = new QnaDAO().deleteQna(conn, qnaNo);
+			result = new QnaDAO().deleteQna(conn, qna);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
 			} else {

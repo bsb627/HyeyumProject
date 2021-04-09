@@ -85,14 +85,14 @@ public class MessageService {
 	}
 
 	// 메시지 삭제
-	public int deleteMessage(int MessageNo) {
+	public int deleteMessage(ArrayList<Message> Message) {
 
 		Connection conn = null;
 		int result = 0;
 		
 		try {
 			conn = factory.createConnection();
-			result = new MessageDAO().deleteMessage(conn, MessageNo);
+			result = new MessageDAO().deleteMessage(conn, Message);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
