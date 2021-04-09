@@ -76,7 +76,7 @@ public class MovieService {
 		return result;
 	}
 	
-	public int deleteMovieInfo(int infoNo) { // 영화정보 삭제
+	public int deleteMovieInfo(ArrayList<Integer> infoNo) { // 영화정보 삭제
 		Connection conn = null;
 		int result = 0;
 		try {
@@ -151,7 +151,7 @@ public class MovieService {
 		return result;
 	}
 	
-	public int deleteMovieReview(int reviewNo) { // 영화리뷰 삭제
+	public int deleteMovieReview(ArrayList<Integer> reviewNo) { // 영화리뷰 삭제
 		Connection conn = null;
 		int result = 0;
 		try {
@@ -274,7 +274,7 @@ public class MovieService {
 		return result;
 	}
 	
-	public int deleteMovieRecommend(int recommendNo) { // 추천글 삭제
+	public int deleteMovieRecommend(ArrayList<Integer> recommendNo) { // 추천글 삭제
 		Connection conn = null;
 		int result = 0;
 		try {

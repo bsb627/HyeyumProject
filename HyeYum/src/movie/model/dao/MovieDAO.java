@@ -32,7 +32,7 @@ public class MovieDAO {
 		return result;
 	}
 	
-	public int deleteMovieInfo(Connection conn, int infoNo) { // 영화정보 삭제
+	public int deleteMovieInfo(Connection conn, ArrayList<Integer> infoNo) { // 영화정보 삭제
 		int result = 0;
 		
 		return result;
@@ -40,8 +40,9 @@ public class MovieDAO {
 	
 	// 영화 리뷰
 	public ArrayList<MovieReview> selectAllMovieReview(Connection conn,int currentPage) { // 영화리뷰 전체보기
-		ArrayList<MovieReview> mReview = null;	
-		return mReview;
+		ArrayList<MovieReview> review = null;
+		
+		return review;
 	}
 	
 	public String getMovieReviewPageNavi(Connection conn, int currentPage) { // 영화리뷰 페이징
@@ -69,16 +70,16 @@ public class MovieDAO {
 		return result;
 	}
 	
-	public int deleteMovieReview(Connection conn, int reviewNo) { // 영화리뷰 삭제
+	public int deleteMovieReview(Connection conn, ArrayList<Integer> reviewNo) { // 영화리뷰 삭제
 		int result = 0;
 		
 		return result;
 	}
 	
 	public ArrayList<MovieReview> selectSearchReviewList(Connection conn, int currentPage, String search, String searchCategory) { // 영화리뷰 검색결과 전체보기
-		ArrayList<MovieReview> mReview = null;
+		ArrayList<MovieReview> review = null;
 		
-		return mReview;
+		return review;
 	}
 	
 	public String getSearchReviewPageNavi(Connection conn, int currentPage, String search, String searchCategory) { // 영화리뷰 검색 페이징
@@ -100,8 +101,8 @@ public class MovieDAO {
 	
 	// 추천혜윰
 	public ArrayList<MovieRecommend> selectAllMovieRecommend(Connection conn, int currentPage) { // 추천글 전체보기
-		ArrayList<MovieRecommend> mRecommend = null;
-			return mRecommend;
+		ArrayList<MovieRecommend> recommend = null;
+			return recommend;
 		}
 	
 	public String getMovieRecommendPageNavi(Connection conn, int currentPage)  { // 추천글 페이징
@@ -129,7 +130,7 @@ public class MovieDAO {
 		return result;
 	}
 	
-	public int deleteMovieRecommend(Connection conn, int recommendNo) { // 추천글 삭제
+	public int deleteMovieRecommend(Connection conn, ArrayList<Integer> recommendNo) { // 추천글 삭제
 		int result = 0;
 		
 		return result;
