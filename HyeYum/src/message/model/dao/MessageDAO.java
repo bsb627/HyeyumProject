@@ -10,7 +10,13 @@ import message.model.vo.Message;
 
 public class MessageDAO {
 
-	public ArrayList<Message> selectAllList(Connection conn, int currentPage) {
+	public ArrayList<Message> selectAllSentList(Connection conn, int currentPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	public ArrayList<Message> selectAllRecievedList(Connection conn, int currentPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -71,6 +77,7 @@ public class MessageDAO {
 		return 0;
 		
 	}
-	
+
+
 
 }

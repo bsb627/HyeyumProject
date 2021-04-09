@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MessageSerachServlet
  */
 @WebServlet("/message/search")
-public class MessageSerachServlet extends HttpServlet {
+public class MsgSerachServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageSerachServlet() {
+    public MsgSerachServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

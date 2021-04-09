@@ -16,14 +16,32 @@ public class MessageService {
 	public MessageService() {
 		factory = new JDBCTemplate().getConnection();
 	}
-	// 메시지 전제출력
-	public MsgPageData printAllMsg(int currentPage) {
+	// 보낸 메시지 전제출력
+	public MsgPageData printAllSentList(int currentPage) {
 		Connection conn = null;
 		MsgPageData pd = new MsgPageData();
 		
 		try {
 			conn = factory.createConnection();
-			pd.setMsgList(new MessageDAO().selectAllList(conn, currentPage));
+			pd.setMsgList(new MessageDAO().selectAllSentList(conn, currentPage));
+			pd.setPageNavi(new MessageDAO().getPageNavi(conn, currentPage));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return pd;
+	}
+	
+	//받은 메시지 전체 출력
+	public MsgPageData printAllRecievedList(int currentPage) {
+		Connection conn = null;
+		MsgPageData pd = new MsgPageData();
+		
+		try {
+			conn = factory.createConnection();
+			pd.setMsgList(new MessageDAO().selectAllRecievedList(conn, currentPage));
 			pd.setPageNavi(new MessageDAO().getPageNavi(conn, currentPage));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,7 +84,7 @@ public class MessageService {
 		
 	}
 
-	
+	// 메시지 삭제
 	public int deleteMessage(int MessageNo) {
 
 		Connection conn = null;

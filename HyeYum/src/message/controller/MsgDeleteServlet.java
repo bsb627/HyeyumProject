@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MessageDeleteServlet
  */
 @WebServlet("/message/delete")
-public class MessageDeleteServlet extends HttpServlet {
+public class MsgDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageDeleteServlet() {
+    public MsgDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
