@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 d-flex flex-column justify-content-center">
-				<h1 data-aos="fade-up">문화나눔, 혜윰2</h1>
+				<h1 data-aos="fade-up">문화나눔, 혜윰</h1>
 				<h2 data-aos="fade-up" data-aos-delay="400">[혜윰 : 생각이라는 순 우리말]</h2>
 				<div data-aos="fade-up" data-aos-delay="600">
 					<div class="text-center text-lg-start">
@@ -106,10 +106,10 @@
 			<div class="row" data-aos="fade-up" data-aos-delay="100">
 				<div class="col-lg-12 d-flex justify-content-center">
 					<ul id="portfolio-flters">
-						<li data-filter="*" class="filter-active">All</li>
-						<li data-filter=".filter-app">App</li>
-						<li data-filter=".filter-card">Card</li>
-						<li data-filter=".filter-web">Web</li>
+						<li data-filter="*" class="filter-active">전체</li>
+						<li data-filter=".filter-app">도서</li>
+						<li data-filter=".filter-card">영화</li>
+						<li data-filter=".filter-web">공연</li>
 					</ul>
 				</div>
 			</div>
@@ -282,6 +282,46 @@
 		</div>
 	</section>
 	<!-- End Portfolio Section -->
+
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>goods</h2>
+          <p>혜윰굿즈</p>
+        </header>
+
+        <div class="row gy-4" data-aos="fade-left">
+
+
+
+          <div class="col-lg-12 col-md-12" data-aos="zoom-in" data-aos-delay="200">
+            <div class="box">
+              <span class="featured">혜윰굿즈</span>
+              <h3 style="color: #65c600;">혜윰팔찌</h3>
+              <div class="price"><sup>￦</sup>33,000<span> / ko</span></div>
+              <img src="assets/img/pricing-starter.png" class="img-fluid" alt="">
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <a href="#" class="btn-buy">참여하기</a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section><!-- End Pricing Section -->
+
 
 	<!-- ======= Clients Section ======= -->
 	<section id="clients" class="clients">

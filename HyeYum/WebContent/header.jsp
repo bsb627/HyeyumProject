@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>문화나눔, 혜윰 - Index</title>
+  <title>문화나눔, 혜윰</title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
@@ -57,33 +57,33 @@
         <ul>
                   <li class="dropdown"><a href="#"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">혜윰이란?</a></li>
-              <li><a href="#">혜윰 벗</a></li>
-              <li><a href="#">혜윰소식</a></li>
+              <li><a href="/intro/aboutUs.jsp">혜윰이란?</a></li>
+              <li><a href="/intro/partners.jsp">혜윰 벗</a></li>
+              <li><a href="/notice/list">혜윰소식</a></li>
             </ul>
           </li>
-           <li class="dropdown"><a href="#"><span>도서</span> <i class="bi bi-chevron-down"></i></a>
+           <li class="dropdown"><a href="#portfolio"><span>도서</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">독서혜윰</a></li>
-              <li><a href="#">나눔혜윰</a></li>
+              <li><a href="/bookReview/list">독서혜윰</a></li>
+              <li><a href="/bookShare/list">나눔혜윰</a></li>
             </ul>
           </li>
-		  <li class="dropdown"><a href="#"><span>영화</span> <i class="bi bi-chevron-down"></i></a>
+		  <li class="dropdown"><a href="#portfolio"><span>영화</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">감상혜윰</a></li>
-              <li><a href="#">추천혜윰</a></li>
+              <li><a href="/movieReview/list">감상혜윰</a></li>
+              <li><a href="/movieRecommend/list">추천혜윰</a></li>
             </ul>
           </li>
-		 <li class="dropdown"><a href="#"><span>공연</span> <i class="bi bi-chevron-down"></i></a>
+		 <li class="dropdown"><a href="#portfolio"><span>공연</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/showInfo/list">언제혜윰</a></li>
               <li><a href="/showReview/list">관람혜윰</a></li>
             </ul>
           </li>
-           <li class="dropdown"><a href="#"><span>마당</span> <i class="bi bi-chevron-down"></i></a>
+           <li class="dropdown"><a href="#pricing"><span>마당</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">문의혜윰</a></li>
-              <li><a href="#">참여혜윰</a></li>
+              <li><a href="/qna/list">문의혜윰</a></li>
+              <li><a href="#pricing">참여혜윰</a></li>
             </ul>
           </li>
           <% if(userId == null) {  %>

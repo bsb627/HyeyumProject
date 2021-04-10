@@ -34,25 +34,22 @@ public class BookReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int currentPage = 0;
-		if(request.getParameter("currentPage") == null) {
-			currentPage = 1;
-		}else {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		}
-		BookPageData pageData = new BookService().printAllBookReview(currentPage);
-		ArrayList<BookReview> reviewList = pageData.getBookList();
-		String pageNavi = pageData.getPageNavi();
-		
-		if(!reviewList.isEmpty()) {
-			request.setAttribute("reviewList",reviewList);
-			request.setAttribute("pageNavi", pageNavi);
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
-			view.forward(request, response);
-		}else {
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
-			view.forward(request, response);
-		}
+		/*
+		 * int currentPage = 0; if(request.getParameter("currentPage") == null) {
+		 * currentPage = 1; }else { currentPage =
+		 * Integer.parseInt(request.getParameter("currentPage")); } BookPageData
+		 * pageData = new BookService().printAllBookReview(currentPage);
+		 * ArrayList<BookReview> reviewList = pageData.getBookList(); String pageNavi =
+		 * pageData.getPageNavi();
+		 * 
+		 * if(!reviewList.isEmpty()) { request.setAttribute("reviewList",reviewList);
+		 * request.setAttribute("pageNavi", pageNavi); RequestDispatcher view =
+		 * request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
+		 * view.forward(request, response); }else { RequestDispatcher view =
+		 * request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
+		 * view.forward(request, response); }
+		 */
+		request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp").forward(request, response);
 	}
 
 	/**
