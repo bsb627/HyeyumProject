@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 d-flex flex-column justify-content-center">
-				<h1 data-aos="fade-up">문화나눔, 혜윰</h1>
+				<h1 data-aos="fade-up">문화나눔, 혜윰2</h1>
 				<h2 data-aos="fade-up" data-aos-delay="400">[혜윰 : 생각이라는 순 우리말]</h2>
 				<div data-aos="fade-up" data-aos-delay="600">
 					<div class="text-center text-lg-start">
