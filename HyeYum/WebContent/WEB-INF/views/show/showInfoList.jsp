@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<head>
 <title>문화나눔, 혜윰 - Show</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/show-custom.css" rel="stylesheet">
-</head>
 <main id="main">
 
 	<!-- ======= Breadcrumbs ======= -->
@@ -32,10 +30,8 @@
 					<p>이달의 컨텐츠</p>
 				</header>
 
-				<div class="col-lg-3">
+				<div class="col-lg-12">
 
-					<div class="sidebar">
-						<h3 class="sidebar-title">어디서 혜윰</h3>
 
 						<div class="row" data-aos="fade-up" data-aos-delay="100">
 							<div class="col-lg-12 d-flex justify-content-center">
@@ -51,29 +47,12 @@
 
 						<!-- End sidebar categories-->
 
-						<h3 class="sidebar-title">Tags</h3>
-						<div class="sidebar-item tags">
-							<ul>
-								<li><a href="#">콘서트</a></li>
-								<li><a href="#">연극</a></li>
-								<li><a href="#">뮤지컬</a></li>
-								<li><a href="#">마술</a></li>
-								<li><a href="#">클래식</a></li>
-								<li><a href="#">전시/행사</a></li>
-								<li><a href="#">레저</a></li>
-								<li><a href="#">가족</a></li>
-								<li><a href="#">스포츠</a></li>
-							</ul>
-						</div>
-						<!-- End sidebar tags-->
-
-					</div>
 					<!-- End sidebar -->
 
 				</div>
 				<!-- End blog sidebar -->
 
-				<div class="col-lg-9 entries">
+				<div class="col-lg-12 entries">
 					<div class="row gy-4 portfolio-container" data-aos="fade-up"
 						data-aos-delay="200">
 						<article class="entry row">
@@ -229,8 +208,8 @@
 					<!-- End blog entry -->
 
 
-
-
+				</div>
+				<!-- End blog entries list -->
 					<div class="blog-pagination">
 						<ul class="justify-content-center">
 							<li><a href="#">1</a></li>
@@ -238,9 +217,6 @@
 							<li><a href="#">3</a></li>
 						</ul>
 					</div>
-
-				</div>
-				<!-- End blog entries list -->
 
 
 			</div>
