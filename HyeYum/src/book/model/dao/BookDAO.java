@@ -89,7 +89,7 @@ public class BookDAO {
 		Statement stmt = null;
 		ResultSet rset = null;
 		ArrayList<BookReview> bList = null;
-		String query = "SELECT * FROM BOOKINFO";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY BOOKREVIEW_NO DESC) AS NUM, BOOKREVIEW_NO, DIVISION, TITLE, ENROLL_DATE, HITS, LIKES";
 				
 		try {
 			stmt = conn.createStatement();
