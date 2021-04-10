@@ -33,6 +33,10 @@
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/custom.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.2.0
@@ -62,7 +66,7 @@
               <li><a href="/notice/list">혜윰소식</a></li>
             </ul>
           </li>
-           <li class="dropdown"><a href="#portfolio"><span>도서</span> <i class="bi bi-chevron-down"></i></a>
+           <li class="dropdown"><a href="#portfolio" ><span id="navBook">도서</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/bookReview/list">독서혜윰</a></li>
               <li><a href="/bookShare/list">나눔혜윰</a></li>
