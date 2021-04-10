@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.blog {
+    padding: 118px 0 185px 0;
+}
+
+.blog .entry {
+  padding: 30px;
+  margin-bottom: 60px;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.portfolio-item{
+	margin-top: 25px;
+}
+
+.blog-pagination{
+	margin-top: 25px;
+}

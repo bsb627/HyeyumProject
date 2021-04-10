@@ -6,7 +6,7 @@
 
 	<div class="footer-top">
 		<div class="container">
-			<div class="col-lg-5 col-md-12 footer-info">
+			<div class="col-lg-12 col-md-12 footer-info">
 				<a href="/index.jsp" class="logo d-flex align-items-center"> <img
 					src="/assets/img/logo.png" alt=""> <span>문화나눔, 혜윰</span>
 				</a>
