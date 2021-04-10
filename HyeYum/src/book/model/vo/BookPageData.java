@@ -1,5 +1,6 @@
 package book.model.vo;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 
 
@@ -40,6 +41,11 @@ public class BookPageData {
 	@Override
 	public String toString() {
 		return "BookPageData [infoList=" + infoList + ", reviewList=" + reviewList + ", pageNavi=" + pageNavi + "]";
+	}
+
+	public ArrayList<BookReview> getBookList() {
+		
+		return reviewList;
 	}
 	
 	
