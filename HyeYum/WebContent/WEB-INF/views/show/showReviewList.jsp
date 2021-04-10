@@ -9,7 +9,7 @@
 %>
 <script type="text/javascript">
 	if (confirm("로그인 후 이용가능합니다.")) {
-		history.back();
+		location.href="/member/login";
 	} else {
 		history.back();
 	}
@@ -90,15 +90,9 @@
 								<article class="entry">
 
 									<div class="entry-img">
-										<img src="/assets/img/blog/blog-4.jpg" alt=""
+										<img src="/assets/img/blog/blog-1.jpg" alt=""
 											class="img-fluid">
 									</div>
-
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non rem rerum nam cum quo
-											minus. Dolor distinctio deleniti explicabo eius
-											exercitationem.</a>
-									</h2>
 
 									<div class="entry-meta">
 										<ul>
@@ -113,6 +107,13 @@
 													Comments</a></li>
 										</ul>
 									</div>
+									
+									<h2 class="entry-title">
+										<a href="blog-single.html">Non rem rerum nam cum quo
+											minus. Dolor distinctio deleniti explicabo eius
+											exercitationem.</a>
+									</h2>
+
 
 									<div class="entry-content">
 										<div class="read-more">
@@ -129,15 +130,9 @@
 								<article class="entry">
 
 									<div class="entry-img">
-										<img src="/assets/img/blog/blog-4.jpg" alt=""
+										<img src="/assets/img/blog/blog-2.jpg" alt=""
 											class="img-fluid">
 									</div>
-
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non rem rerum nam cum quo
-											minus. Dolor distinctio deleniti explicabo eius
-											exercitationem.</a>
-									</h2>
 
 									<div class="entry-meta">
 										<ul>
@@ -152,6 +147,12 @@
 													Comments</a></li>
 										</ul>
 									</div>
+									
+									<h2 class="entry-title">
+										<a href="blog-single.html"> deleniti explicabo eius
+											exercitationem.</a>
+									</h2>
+
 
 									<div class="entry-content">
 										<p>Aspernatur rerum perferendis et sint. Voluptates
@@ -176,14 +177,9 @@
 								<article class="entry">
 
 									<div class="entry-img">
-										<img src="/assets/img/blog/blog-4.jpg" alt=""
+										<img src="/assets/img/blog/blog-3.jpg" alt=""
 											class="img-fluid">
 									</div>
-
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non r explicabo eius
-											exercitationem.</a>
-									</h2>
 
 									<div class="entry-meta">
 										<ul>
@@ -198,6 +194,11 @@
 													Comments</a></li>
 										</ul>
 									</div>
+
+									<h2 class="entry-title">
+										<a href="blog-single.html">Non r explicabo eius
+											exercitationem.</a>
+									</h2>
 
 									<div class="entry-content">
 										<p>Aspernatuunt qui aut est non omnis. Inventore
@@ -221,12 +222,6 @@
 											class="img-fluid">
 									</div>
 
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non rem rerum nam cum quo
-											minus. Dolor distinctio deleniti explicabo eius
-											exercitationem.</a>
-									</h2>
-
 									<div class="entry-meta">
 										<ul>
 											<li class="d-flex align-items-center"><i
@@ -240,6 +235,12 @@
 													Comments</a></li>
 										</ul>
 									</div>
+									
+									<h2 class="entry-title">
+										<a href="blog-single.html">Non rem rerum nam cum quo
+											minus. Dolor distinctio deleniti explicabo eius
+											exercitationem.</a>
+									</h2>
 
 									<div class="entry-content">
 										<p>Aspernatur rerum perferendis et sint. Voluptates
