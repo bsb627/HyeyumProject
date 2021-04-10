@@ -39,15 +39,13 @@
 
 						<div class="row" data-aos="fade-up" data-aos-delay="100">
 							<div class="col-lg-12 d-flex justify-content-center">
-								<div class="sidebar-item categories">
 									<ul id="portfolio-flters">
-										<li data-filter="*" class="filter-active">전체 <span>(25)</span></li>
-										<li data-filter=".filter-app">서울 <span>(12)</span></li>
-										<li data-filter=".filter-card">인천 <span>(7)</span></li>
-										<li data-filter=".filter-web">경기도 <span>(8)</span></li>
+										<li data-filter="*" class="filter-active">전체</li>
+										<li data-filter=".filter-app">서울</li>
+										<li data-filter=".filter-card">인천</li>
+										<li data-filter=".filter-web">경기도</li>
 
 									</ul>
-								</div>
 							</div>
 						</div>
 
