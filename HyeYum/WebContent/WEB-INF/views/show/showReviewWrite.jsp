@@ -20,9 +20,26 @@
 <link href="/assets/css/show-custom.css" rel="stylesheet">
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+	<script src="/assets/note/summernote-lite.js"></script>
+<script src="/assets/note//lang/summernote-ko-KR.js"></script>
+
+<link rel="stylesheet" href="/assets/note/summernote-lite.css">
 </head>
 <main id="main">
-
+<script type="text/javascript">
+$(document).ready(function() {
+	//여기 아래 부분
+	$('#summernote').summernote({
+		  height: 300,                 // 에디터 높이
+		  minHeight: null,             // 최소 높이
+		  maxHeight: null,             // 최대 높이
+		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+		  lang: "ko-KR",					// 한글 설정
+		  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
+          
+	});
+});
+</script>
 	<!-- ======= Breadcrumbs ======= -->
 	<section class="breadcrumbs">
 		<div class="container">
@@ -47,7 +64,7 @@
 
 
 
-			<form>
+			<form action="/showReview/write" method="post">
 
 
 				<div class="row border col-md-12">
@@ -56,47 +73,48 @@
 
 
 					<div class="col-md-12">
-						<select class="form-select">
-							<option value="" hidden>공연을 선택해주세요</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
+						<select class="form-select" name="info-no">
+							<option value="" hidden="hidden">공연을 선택해주세요</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
 						</select>
 						<hr>
 					</div>
 
 					<div class="form-outline col-md-6">
 					<div class="col-md-10">
-						<input type="text" id="typeText" class="form-control" /> <label
-							class="form-label" for="typeText">예매 일련번호</label>
+						<input type="text" id="ticket-number" class="form-control" name="ticket-number"/> <label
+							class="form-label" for="ticket-number">예매 일련번호</label>
 					<hr>
 					</div>
 					</div>
 
 					<div class="form-outline col-md-6">
 					<div class="col-md-12">
-						<input type="text" id="typeText" class="form-control" /> <label
-							class="form-label" for="typeText">SNS</label>
+						<input type="text" id="sns-link" class="form-control" name="sns-link"/> <label
+							class="form-label" for="sns-link">SNS</label>
 						<hr>
 					</div>
 					</div>
 
 					<div class="form-outline col-md-12">
-						<input type="text" id="typeText" class="form-control" /> <label
-							class="form-label" for="typeText">제목</label>
+						<input type="text" id="show-title" class="form-control" name="show-title"/> <label
+							class="form-label" for="show-title">제목</label>
 					<hr>
 					</div>
 
-					<!-- SmartEditor2 -->
-					<div class="jsx-2303464893 editor">
+				<!-- SmartEditor2 -->
+				<!-- 	<div class="jsx-2303464893 editor">
 						<div class="fr-box fr-basic fr-top" role="application">
 							<div class="fr-wrapper show-placeholder" dir="auto"
 								style="overflow: hidden;">
-								<textarea name="notice_content" id="smartEditor"
+								<textarea name="show-content" id="smartEditor"
 									style="width: 100%; height: 412px;"></textarea>
 							</div>
 						</div>
-					</div>
+					</div> -->
+					 <textarea id="summernote" name="show-content"></textarea>
 					<br>
 					<div>
 					 <label class="form-label" for="customFile"></label> <input

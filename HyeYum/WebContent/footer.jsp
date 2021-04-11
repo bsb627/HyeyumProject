@@ -112,7 +112,6 @@
 
 <!-- Template Main JS File -->
 <script src="/assets/js/main.js"></script>
-<!-- SmartEditor2 --> <script type="text/javascript" src = "/assets/js/smart-write.js"></script>
 
 </body>
 

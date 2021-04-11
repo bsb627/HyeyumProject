@@ -1,8 +1,11 @@
 package show.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
@@ -45,7 +48,27 @@ public class ShowDAO {
 
 	public int insertReview(Connection conn, ShowReview review) { // 관람후기 등록
 		
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="INSERT INTO SHOW_REVIEW VALUES(SEQ_SHOW_REVIEW_NO.NEXTVAL,?,?,?,0,?,SYSDATE,?,?)";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, review.getTitle());
+			pstmt.setString(2, review.getContents());
+			pstmt.setString(3, review.getSnsLink());
+			pstmt.setString(4, review.getTicketNumber());
+			pstmt.setString(5, review.getNick());
+			pstmt.setInt(6, review.getInfoNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 
 	public int updateReview(Connection conn, ShowReview review) { // 관람후기 수정
