@@ -22,3 +22,12 @@
 .blog-pagination{
 	margin-top: 25px;
 }
+
+.testimonials .testimonial-item .testimonial-img {
+	width: 90%;
+    border-radius: 0;
+
+}
+.swiper-wrapper{
+	height: 70%;
+}

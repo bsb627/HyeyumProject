@@ -32,16 +32,140 @@
 		</div>
 	</section>
 	<!-- End Breadcrumbs -->
+	
+	
+	 <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials portfolio">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Testimonials</h2>
+          <p>What they are saying about us</p>
+        </header>
+
+        <div class="testimonials-slider swiper-container " data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-wrapper">
+
+           				<div class="swiper-slide">
+						<div class="testimonial-item">
+							<div class="portfolio-wrap">
+								<img src="/assets/img/show-info/show1.jpg" alt=""
+									class="img-fluid">
+								<div class="portfolio-info">
+									<h4>App 1</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="/assets/img/show-info/show1.jpg"
+											data-gallery="portfolioGallery" class="portfokio-lightbox"
+											title="App 1"><i class="bi bi-plus"></i></a> <a
+											href="portfolio-details.html" title="More Details"><i
+											class="bi bi-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End testimonial item -->
+
+					<div class="swiper-slide">
+						<div class="testimonial-item">
+							<div class="portfolio-wrap">
+								<img src="/assets/img/show-info/show1.jpg" alt=""
+									class="img-fluid">
+								<div class="portfolio-info">
+									<h4>App 1</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="/assets/img/show-info/show1.jpg"
+											data-gallery="portfolioGallery" class="portfokio-lightbox"
+											title="App 1"><i class="bi bi-plus"></i></a> <a
+											href="portfolio-details.html" title="More Details"><i
+											class="bi bi-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End testimonial item -->
+
+								<div class="swiper-slide">
+						<div class="testimonial-item">
+							<div class="portfolio-wrap">
+								<img src="/assets/img/show-info/show1.jpg" alt=""
+									class="img-fluid">
+								<div class="portfolio-info">
+									<h4>App 1</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="/assets/img/show-info/show1.jpg"
+											data-gallery="portfolioGallery" class="portfokio-lightbox"
+											title="App 1"><i class="bi bi-plus"></i></a> <a
+											href="portfolio-details.html" title="More Details"><i
+											class="bi bi-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End testimonial item -->
+
+        				<div class="swiper-slide">
+						<div class="testimonial-item">
+							<div class="portfolio-wrap">
+								<img src="/assets/img/show-info/show1.jpg" alt=""
+									class="img-fluid">
+								<div class="portfolio-info">
+									<h4>App 1</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="/assets/img/show-info/show1.jpg"
+											data-gallery="portfolioGallery" class="portfokio-lightbox"
+											title="App 1"><i class="bi bi-plus"></i></a> <a
+											href="portfolio-details.html" title="More Details"><i
+											class="bi bi-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End testimonial item -->
+
+            				<div class="swiper-slide">
+						<div class="testimonial-item">
+							<div class="portfolio-wrap">
+								<img src="/assets/img/show-info/show1.jpg" alt=""
+									class="img-fluid">
+								<div class="portfolio-info">
+									<h4>App 1</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="/assets/img/show-info/show1.jpg"
+											data-gallery="portfolioGallery" class="portfokio-lightbox"
+											title="App 1"><i class="bi bi-plus"></i></a> <a
+											href="portfolio-details.html" title="More Details"><i
+											class="bi bi-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- End Testimonials Section -->
+ 
 
 	<!-- ======= Blog Section ======= -->
 	<section id="blog" class="blog portfolio">
 		<div class="container" data-aos="fade-up">
 
 			<div class="row">
-				<header class="section-header">
-					<h2>A photo review</h2>
-					<p>관람 포토 후기</p>
-				</header>
 
 				<div class="col-lg-12">
 
