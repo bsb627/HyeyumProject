@@ -5,7 +5,7 @@ import java.util.Date;
 public class Qna  { // 1:1 문의
 	
 	private int qnaNo; // 글번호 
-	private int group; // 글그룹
+	private int family; // 글그룹
 	private int step; // 그룹내 순서
 	private String category; // 카테고리
 	private String title; // 제목 
@@ -19,20 +19,20 @@ public class Qna  { // 1:1 문의
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getQuestionNo() {
+	public int getQnaNo() {
 		return qnaNo;
 	}
 
-	public void setQuestionNo(int questionNo) {
-		this.qnaNo = questionNo;
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
 	}
 
-	public int getGroup() {
-		return group;
+	public int getFamily() {
+		return family;
 	}
 
-	public void setGroup(int group) {
-		this.group = group;
+	public void setFamily(int family) {
+		this.family = family;
 	}
 
 	public int getStep() {
@@ -101,10 +101,12 @@ public class Qna  { // 1:1 문의
 
 	@Override
 	public String toString() {
-		return "Qna [qnaNo=" + qnaNo + ", group=" + group + ", step=" + step + ", category=" + category
-				+ ", title=" + title + ", nick=" + nick + ", questionPwd=" + questionPwd + ", contents=" + contents
-				+ ", enrollDate=" + enrollDate + ", hits=" + hits + "]";
+		return "Qna [qnaNo=" + qnaNo + ", family=" + family + ", step=" + step + ", category=" + category + ", title="
+				+ title + ", nick=" + nick + ", questionPwd=" + questionPwd + ", contents=" + contents + ", enrollDate="
+				+ enrollDate + ", hits=" + hits + "]";
 	}
+
+	
 	
 	
 }
