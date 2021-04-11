@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+hr{
+	margin-top:0;
+	margin-bottom:50px;
+}
 .blog {
     padding: 118px 0 185px 0;
 }
@@ -46,4 +50,12 @@
     border-radius: 4px;
     color: #fff;
 
+}
+.btn-set{
+	text-align: center;
+	margin-top:5%;
+}
+
+.border{
+	padding:10%;
 }

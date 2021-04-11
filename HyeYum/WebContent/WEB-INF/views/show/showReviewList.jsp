@@ -258,8 +258,10 @@
             </div>
           </div>
 
+        <div>
+<a href="/showReview/write"><button class="btn btn-primary btn-write">글쓰기</button></a>
         </div>
-<a href="/showInfo/write"><button class="btn btn-primary btn-write">글쓰기</button></a>
+        </div>
 				<div class="blog-pagination">
 					<ul class="justify-content-center">
 						<li><a href="#">1</a></li>
