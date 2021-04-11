@@ -40,7 +40,7 @@ public class MemberService {
 		return member;
 	}
 	
-	public ArrayList<Member> selectMemberList() {
+	public ArrayList<Member> selectMemberList() { // 회원 전체 출력
 		ArrayList<Member> list = null;
 		Connection conn = null;
 		
@@ -61,31 +61,87 @@ public class MemberService {
 		return mpd;
 	}
 	
-	public int modifyMember(Member member) {
+	public int modifyMember(Member member) { //회원 정보 수정
 		Connection conn = null;
 		int result = 0;
 		
+		try {
+			conn = factory.createConnection();
+			result = new MemberDAO().updateMember(conn, member);
+			if (result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
 	
-	public int registerMember(Member member) {
+	public int registerMember(Member member) { // 회원가입
 		Connection conn = null;
 		int result = 0;
 		
+		try {
+			conn = factory.createConnection();
+			result = new MemberDAO().insertMember(conn, member);
+			if (result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
 	
-	public int deleteMember(String userId) {
+	public int deleteMember(String userId) { // 회원 탈퇴
 		Connection conn = null;
 		int result = 0;
 		
+		try {
+			conn = factory.createConnection();
+			result = new MemberDAO().deleteMember(conn, userId);
+			if (result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
 	
-	public int restoreMember(String userId) {
+	public int restoreMember(Member member) { // 탈퇴회원 복구 
 		Connection conn = null;
 		int result = 0;
 		
+		try {
+			conn = factory.createConnection();
+			result = new MemberDAO().restoreMember(conn, member);
+			if (result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
 

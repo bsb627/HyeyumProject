@@ -59,6 +59,8 @@ public class MovieService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
@@ -72,19 +74,24 @@ public class MovieService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
 	
-	public int deleteMovieInfo(ArrayList<Integer> infoNo) { // 영화정보 삭제
+	public int deleteMovieInfo(int infoNo) { // 영화정보 삭제
 		Connection conn = null;
 		int result = 0;
+		
 		try {
 			conn = factory.createConnection();
 			result = new MovieDAO().deleteMovieInfo(conn, infoNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}

@@ -72,7 +72,7 @@
           </li>
 		  <li class="dropdown"><a href="#portfolio"><span>영화</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/movieReview/list">감상혜윰</a></li>
+              <li><a href="/movieInfo/list">감상혜윰</a></li>
               <li><a href="/movieRecommend/list">추천혜윰</a></li>
             </ul>
           </li>
