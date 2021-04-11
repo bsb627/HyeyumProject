@@ -53,30 +53,39 @@
 				<div class="row border col-md-12">
 
 
-					<div class="form-outline col-md-6">
-						<input type="text" id="typeText" class="form-control" /> <label
-							class="form-label" for="typeText">작성자</label>
+
+
+					<div class="col-md-12">
+						<select class="form-select">
+							<option value="" hidden>공연을 선택해주세요</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+						</select>
 						<hr>
 					</div>
 
+					<div class="form-outline col-md-6">
+					<div class="col-md-10">
+						<input type="text" id="typeText" class="form-control" /> <label
+							class="form-label" for="typeText">예매 일련번호</label>
+					<hr>
+					</div>
+					</div>
 
 					<div class="form-outline col-md-6">
+					<div class="col-md-12">
 						<input type="text" id="typeText" class="form-control" /> <label
 							class="form-label" for="typeText">SNS</label>
 						<hr>
 					</div>
-
-					<div class="form-outline">
-						<input type="text" id="typeText" class="form-control" /> <label
-							class="form-label" for="typeText">예매 일련번호</label>
 					</div>
-					<hr>
 
-					<div class="form-outline">
+					<div class="form-outline col-md-12">
 						<input type="text" id="typeText" class="form-control" /> <label
 							class="form-label" for="typeText">제목</label>
-					</div>
 					<hr>
+					</div>
 
 					<!-- SmartEditor2 -->
 					<div class="jsx-2303464893 editor">
