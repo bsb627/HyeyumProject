@@ -1,14 +1,15 @@
 package reply.model.vo;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Reply {
 	private int no; // 글번호
 	private int replyNo; // 댓글번호
 	private String contents; // 내용
 	private String userId; // 작성자
+	private String nick; // 닉네임
 	private String replyType; // 게시판타입
-	private Timestamp enrollDate; // 작성일
+	private Date enrollDate; // 작성일
 	
 	public Reply() {
 		// TODO Auto-generated constructor stub
@@ -45,6 +46,16 @@ public class Reply {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
+	
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 
 	public String getReplyType() {
 		return replyType;
@@ -54,11 +65,11 @@ public class Reply {
 		this.replyType = replyType;
 	}
 
-	public Timestamp getEnrollDate() {
+	public Date getEnrollDate() {
 		return enrollDate;
 	}
 
-	public void setEnrollDate(Timestamp enrollDate) {
+	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
 

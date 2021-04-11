@@ -1,12 +1,18 @@
+<%@page import="reply.model.vo.Reply"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="show.model.vo.ShowReview"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	ShowReview review = (ShowReview)request.getAttribute("review");
+	String pageNavi = (String)request.getAttribute("pageNavi");
+	int totalCount = (int)request.getAttribute("totalCount");
+	ArrayList<Reply> replyList = (ArrayList<Reply>)request.getAttribute("replyList");
 %>
 <%@include file="/header.jsp"%>
 <head>
   <title>문화나눔, 혜윰 - 디테일</title>
+  <link href="/assets/css/show-custom.css" rel="stylesheet">
 </head>
  <main id="main">
 
@@ -24,7 +30,7 @@
     </section><!-- End Breadcrumbs -->
 
    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
+    <section id="portfolio-details" class="portfolio-details blog">
       <div class="container">
 
         <div class="row gy-4">
@@ -69,6 +75,62 @@
           </div>
 
         </div>
+        
+               <div class="blog-comments">
+
+              <h4 class="comments-count"><%=totalCount %> Comments</h4>
+
+			<% for(Reply reply : replyList){ %>
+			 <div id="comment-1" class="comment">
+                <div class="d-flex">
+                  <div class="comment-img"><img src="/assets/img/blog/comments-2.jpg" alt=""></div>
+                  <div>
+                    <h5><a href="#"><%=reply.getNick() %></a></h5>
+                    <time datetime="2020-01-01"><%=reply.getEnrollDate() %></time>
+                    <p>
+                      <%=reply.getContents() %>
+                    </p>
+                  </div>
+                </div>
+              </div><!-- End comment #1 -->
+			<%} %>
+             
+					<div class="blog-pagination">
+									<ul class="justify-content-center">
+										<!-- 	<li><a href="#">1</a></li>
+											<li class="active"><a href="#">2</a></li>
+											<li><a href="#">3</a></li> -->
+										<%=pageNavi%>
+									</ul>
+								</div>
+              <div class="reply-form">
+                <h4>댓글</h4>
+                <p>댓글만 달아도 기부를 할 수 있습니다. 💌<p>
+                <form action="/reply/write">
+                 <%--  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input name="name" type="text" class="form-control" placeholder="Your Name*" value="<%=userId %>" readonly>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                    </div>
+                  </div> --%>
+				<input type="hidden" name="type" value="show">                
+				<input type="hidden" name="review-no" value="<%=review.getNo()%>">                
+                  <div class="row">
+                    <div class="col form-group">
+                      <textarea rows="6" name="comment" class="form-control" placeholder="댓글을 남겨주세요"></textarea>
+                    </div>
+                  </div>
+                  <div align="right">
+                  <button type="submit" class="btn btn-reply">등록하기</button>
+                  </div>
+
+                </form>
+
+              </div>
+
+            </div><!-- End blog comments -->
 
       </div>
     </section><!-- End Portfolio Details Section -->

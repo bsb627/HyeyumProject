@@ -16,6 +16,7 @@ import qna.model.service.QnaService;
 import qna.model.vo.Qna;
 import qna.model.vo.QnaPageData;
 import show.model.service.ShowService;
+import show.model.vo.ShowData;
 import show.model.vo.ShowPageData;
 import show.model.vo.ShowReview;
 
@@ -47,9 +48,11 @@ public class ShowReviewListServlet extends HttpServlet {
 		ShowPageData pageData = new ShowService().printAllShowReview(currentPage);
 		ArrayList<ShowReview> showList = pageData.getReviewList();
 		String pageNavi = pageData.getPageNavi();
+		ArrayList<ShowData> replyCount = new ShowService().printReplyCount();
 		if(!showList.isEmpty()) {
 			request.setAttribute("showList", showList);
 			request.setAttribute("pageNavi", pageNavi);
+			request.setAttribute("replyCount", replyCount);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewList.jsp").forward(request, response);
 		}else {
 			

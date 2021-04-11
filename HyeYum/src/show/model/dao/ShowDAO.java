@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import qna.model.vo.Qna;
+import show.model.vo.ShowData;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
@@ -236,6 +237,34 @@ public class ShowDAO {
 	
 	public int updateLikesReview(Connection conn, int showNo, String userId) { // 해당 게시글 좋아요 취소
 		return 0;
+	}
+
+	public ArrayList<ShowData> selectReplyCount(Connection conn) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT,REVIEW_NO FROM SHOW_REVIEW_REPLY GROUP BY REVIEW_NO";
+		ArrayList<ShowData> rList = null;
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				rList = new ArrayList<ShowData>();
+				while (rset.next()) {
+					ShowData data = new ShowData();
+					data.setShowNo(rset.getInt("REVIEW_NO"));
+					data.setTotalCount(rset.getInt("TOTALCOUNT"));
+					rList.add(data);
+					
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return rList;
 	}
 	
 	

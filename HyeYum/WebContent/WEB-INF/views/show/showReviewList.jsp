@@ -1,9 +1,11 @@
+<%@page import="show.model.vo.ShowData"%>
 <%@page import="show.model.vo.ShowReview"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 ArrayList<ShowReview> showList = (ArrayList<ShowReview>)request.getAttribute("showList");
+ArrayList<ShowData> replyCount = (ArrayList<ShowData>)request.getAttribute("replyCount");
 String pageNavi = (String)request.getAttribute("pageNavi");
 
 %>
@@ -95,9 +97,13 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 							<img src="/assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
 						</div>
 
-						<span class="post-date"><i class="bi bi-pen"><%=review.getNick()%></i><i
-							class="bi bi-heart"> 11</i><i class="bi bi-chat-square-dots"> <%=review.getHits()%></i><i
-							class="bi bi-clock"> <%=review.getEnrollDate() %></i></span>
+						<span class="post-date"><i class="bi bi-pen"><%=review.getNick()%></i>
+							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i>
+							<%for(ShowData reply : replyCount){ %>
+							<%if(review.getNo() == reply.getShowNo()){ %>
+							<i class="bi bi-chat-square-dots"> <%=reply.getTotalCount()%></i>
+							<%} }%>
+							<i class="bi bi-heart"> 11</i></span>
 						<h3 class="post-title"> <%=review.getTitle() %></h3>
 						<a href="/showReview/detail?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"><span>Read
 								More</span><i class="bi bi-arrow-right"></i></a>

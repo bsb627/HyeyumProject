@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import show.model.dao.ShowDAO;
+import show.model.vo.ShowData;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowPageData;
 import show.model.vo.ShowReview;
@@ -213,5 +214,18 @@ public class ShowService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public ArrayList<ShowData> printReplyCount() {
+		ArrayList<ShowData> rList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			rList = new ShowDAO().selectReplyCount(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rList;
 	}
 }
