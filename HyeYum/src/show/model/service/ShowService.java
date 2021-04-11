@@ -108,8 +108,9 @@ public class ShowService {
 			conn = factory.createConnection();
 			review = new ShowDAO().selectOneReview(conn, showNo);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return review;
 	}

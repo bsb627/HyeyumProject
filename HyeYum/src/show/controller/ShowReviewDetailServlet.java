@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import show.model.service.ShowService;
+import show.model.vo.ShowReview;
+
 /**
  * Servlet implementation class ShowBoardDeleteServlet
  */
@@ -26,8 +29,16 @@ public class ShowReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int showNo = Integer.parseInt(request.getParameter("no"));
+		
+		ShowReview review = new ShowService().printOneShowReview(showNo);
+		if(review != null) {
+			request.setAttribute("review", review);
+			request.getRequestDispatcher("/WEB-INF/views/show/showReviewDetail.jsp").forward(request, response);
+			
+		}else {
+			
+		}
 	}
 
 	/**

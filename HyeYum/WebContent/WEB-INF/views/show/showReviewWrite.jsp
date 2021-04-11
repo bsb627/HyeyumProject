@@ -35,10 +35,21 @@ $(document).ready(function() {
 		  maxHeight: null,             // 최대 높이
 		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
 		  lang: "ko-KR",					// 한글 설정
-		  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-          
+		  placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정		  
+		  toolbar: [
+		    // [groupName, [list of button]]
+		    ['style', ['bold', 'italic', 'underline', 'clear']],
+		    ['font', ['strikethrough', 'superscript', 'subscript']],
+		    ['fontsize', ['fontsize']],
+		    ['color', ['color']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']]
+		  ]
 	});
+			
+	
 });
+
 </script>
 	<!-- ======= Breadcrumbs ======= -->
 	<section class="breadcrumbs">
@@ -73,7 +84,7 @@ $(document).ready(function() {
 
 
 					<div class="col-md-12">
-						<select class="form-select" name="info-no">
+						<select class="form-select" name="info-no" required>
 							<option value="" hidden="hidden">공연을 선택해주세요</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -84,7 +95,7 @@ $(document).ready(function() {
 
 					<div class="form-outline col-md-6">
 					<div class="col-md-10">
-						<input type="text" id="ticket-number" class="form-control" name="ticket-number"/> <label
+						<input type="text" id="ticket-number" class="form-control" name="ticket-number" autocomplete="off" required/> <label
 							class="form-label" for="ticket-number">예매 일련번호</label>
 					<hr>
 					</div>
@@ -92,14 +103,14 @@ $(document).ready(function() {
 
 					<div class="form-outline col-md-6">
 					<div class="col-md-12">
-						<input type="text" id="sns-link" class="form-control" name="sns-link"/> <label
+						<input type="text" id="sns-link" class="form-control" name="sns-link" autocomplete="off" required/> <label
 							class="form-label" for="sns-link">SNS</label>
 						<hr>
 					</div>
 					</div>
 
 					<div class="form-outline col-md-12">
-						<input type="text" id="show-title" class="form-control" name="show-title"/> <label
+						<input type="text" id="show-title" class="form-control" name="show-title" autocomplete="off" required/> <label
 							class="form-label" for="show-title">제목</label>
 					<hr>
 					</div>

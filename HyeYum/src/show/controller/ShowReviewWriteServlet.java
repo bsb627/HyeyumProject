@@ -50,9 +50,8 @@ public class ShowReviewWriteServlet extends HttpServlet {
 		review.setNick((String)session.getAttribute("userId"));
 		
 		int result = new ShowService().registerShowReview(review);
-		
 		if(result > 0) {
-			request.getRequestDispatcher("/WEB-INF/views/show/showReviewList.jsp").forward(request, response);
+			request.getRequestDispatcher("/showReview/list").forward(request, response);
 		}else {
 			
 		}
