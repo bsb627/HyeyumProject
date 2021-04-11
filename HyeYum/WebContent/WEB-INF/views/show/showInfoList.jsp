@@ -26,8 +26,8 @@
 
 			<div class="row">
 				<header class="section-header">
-					<h2>Monthly Contents</h2>
-					<p>이달의 컨텐츠</p>
+					<h2>Where to do it</h2>
+					<p>어디서 혜윰?</p>
 				</header>
 
 				<div class="col-lg-12">

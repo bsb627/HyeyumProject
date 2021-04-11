@@ -38,10 +38,10 @@
     <section id="testimonials" class="testimonials portfolio">
 
       <div class="container" data-aos="fade-up">
-
+<div class="row">
         <header class="section-header">
-          <h2>Testimonials</h2>
-          <p>What they are saying about us</p>
+          <h2>Monthly Contents</h2>
+					<p>이달의 컨텐츠</p>
         </header>
 
         <div class="testimonials-slider swiper-container " data-aos="fade-up" data-aos-delay="200">
@@ -153,257 +153,129 @@
 					<!-- End testimonial item -->
 
           </div>
-          <div class="swiper-pagination"></div>
+         <!--  <div class="swiper-pagination"></div> -->
         </div>
 
+      </div>
       </div>
 
     </section><!-- End Testimonials Section -->
  
 
-	<!-- ======= Blog Section ======= -->
-	<section id="blog" class="blog portfolio">
-		<div class="container" data-aos="fade-up">
+	 <!-- ======= Recent Blog Posts Section ======= -->
+    <section id="recent-blog-posts" class="blog recent-blog-posts">
 
-			<div class="row">
+      <div class="container" data-aos="fade-up">
 
-				<div class="col-lg-12">
+        <header class="section-header">
+          <h2>Photo Review</h2>
+          <p>관람 포토 후기</p>
+        </header>
 
-					<div class="sidebar">
-						<!-- End sidebar categories-->
+  <div class="sidebar">
+			
+<h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+              
+                <h3 class="sidebar-title">Tags</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">App</a></li>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Business</a></li>
+                  <li><a href="#">Mac</a></li>
+                  <li><a href="#">Design</a></li>
+                  <li><a href="#">Office</a></li>
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Studio</a></li>
+                  <li><a href="#">Smart</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">Marketing</a></li>
+                </ul>
+              </div><!-- End sidebar tags-->
+</div>
 
-						<h3 class="sidebar-title">검색</h3>
-						<div class="sidebar-item search-form">
-							<form action="">
-								<input type="text">
-								<button type="submit">
-									<i class="bi bi-search"></i>
-								</button>
-							</form>
-						</div>
-						<!-- End sidebar search formn-->
+        <div class="row">
+        
 
-						<h3 class="sidebar-title">태그</h3>
-						<div class="sidebar-item tags">
-							<ul>
-								<li><a href="#">콘서트</a></li>
-								<li><a href="#">연극</a></li>
-								<li><a href="#">뮤지컬</a></li>
-								<li><a href="#">마술</a></li>
-								<li><a href="#">클래식</a></li>
-								<li><a href="#">전시/행사</a></li>
-								<li><a href="#">레저</a></li>
-								<li><a href="#">가족</a></li>
-								<li><a href="#">스포츠</a></li>
-							</ul>
-						</div>
-						<!-- End sidebar tags-->
+          <div class="post-card col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="/assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
+             
+              <span class="post-date"><i class="bi bi-pen">홍길동</i><i class="bi bi-heart"> 11</i><i class="bi bi-chat-square-dots"> 12</i><i class="bi bi-clock"> 2021-04-10</i></span>
+              <h3 class="post-title">오늘 오페라의 유령봤다~~꿀잼쓰~~</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
 
-					</div>
-					<!-- End sidebar -->
+          <div class="post-card col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="/assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
+              <span class="post-date">Fri, August 28</span>
+              <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
 
+          <div class="post-card col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="/assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
+              <span class="post-date">Mon, July 11</span>
+              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          
+                   <div class="post-card col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="/assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
+              <span class="post-date">Mon, July 11</span>
+              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          
+                   <div class="post-card col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="/assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
+              <span class="post-date">Mon, July 11</span>
+              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          
+                   <div class="post-card col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="/assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
+              <span class="post-date">Mon, July 11</span>
+              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+<a href="/showInfo/write"><button class="btn btn-primary btn-write">글쓰기</button></a>
+				<div class="blog-pagination">
+					<ul class="justify-content-center">
+						<li><a href="#">1</a></li>
+						<li class="active"><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+					</ul>
 				</div>
-				<!-- End blog sidebar -->
+      </div>
 
-				<div class="col-lg-12 entries">
-					<div class="row gy-4 portfolio-container" data-aos="fade-up"
-						data-aos-delay="200">
-						<article class="entry row">
+           
 
-							<div class="col-md-6 col-sm-6 col-6 portfolio-item filter-app">
-								<article class="entry">
-
-									<div class="entry-img">
-										<img src="/assets/img/blog/blog-1.jpg" alt=""
-											class="img-fluid">
-									</div>
-
-									<div class="entry-meta">
-										<ul>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-person"></i> <a href="blog-single.html">John
-													Doe</a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-clock"></i> <a href="blog-single.html"><time
-														datetime="2020-01-01">Jan 1, 2020</time></a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-chat-dots"></i> <a href="blog-single.html">12
-													Comments</a></li>
-										</ul>
-									</div>
-									
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non rem rerum nam cum quo
-											minus. Dolor distinctio deleniti explicabo eius
-											exercitationem.</a>
-									</h2>
-
-
-									<div class="entry-content">
-										<div class="read-more">
-											<a href="blog-single.html">Read More</a>
-										</div>
-									</div>
-
-								</article>
-								<!-- End blog entry -->
-
-							</div>
-
-							<div class="col-md-6 col-sm-6 col-6 portfolio-item filter-app">
-								<article class="entry">
-
-									<div class="entry-img">
-										<img src="/assets/img/blog/blog-2.jpg" alt=""
-											class="img-fluid">
-									</div>
-
-									<div class="entry-meta">
-										<ul>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-person"></i> <a href="blog-single.html">John
-													Doe</a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-clock"></i> <a href="blog-single.html"><time
-														datetime="2020-01-01">Jan 1, 2020</time></a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-chat-dots"></i> <a href="blog-single.html">12
-													Comments</a></li>
-										</ul>
-									</div>
-									
-									<h2 class="entry-title">
-										<a href="blog-single.html"> deleniti explicabo eius
-											exercitationem.</a>
-									</h2>
-
-
-									<div class="entry-content">
-										<p>Aspernatur rerum perferendis et sint. Voluptates
-											cupiditate voluptas atque quae. Rem veritatis rerum enim et
-											autem. Saepe atque cum eligendi eaque iste omnis a qui. Quia
-											sed sunt. Ea asperiores expedita et et delectus voluptates
-											rerum. Id saepe ut itaque quod qui voluptas nobis porro
-											rerum. Quam quia nesciunt qui aut est non omnis. Inventore
-											occaecati et quaerat magni itaque nam voluptas. Voluptatem
-											ducimus sint id earum ut nesciunt sed corrupti nemo.</p>
-										<div class="read-more">
-											<a href="blog-single.html">Read More</a>
-										</div>
-									</div>
-
-								</article>
-								<!-- End blog entry -->
-
-							</div>
-							
-							<div class="col-md-6 col-sm-6 col-6 portfolio-item filter-app">
-								<article class="entry">
-
-									<div class="entry-img">
-										<img src="/assets/img/blog/blog-3.jpg" alt=""
-											class="img-fluid">
-									</div>
-
-									<div class="entry-meta">
-										<ul>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-person"></i> <a href="blog-single.html">John
-													Doe</a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-clock"></i> <a href="blog-single.html"><time
-														datetime="2020-01-01">Jan 1, 2020</time></a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-chat-dots"></i> <a href="blog-single.html">12
-													Comments</a></li>
-										</ul>
-									</div>
-
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non r explicabo eius
-											exercitationem.</a>
-									</h2>
-
-									<div class="entry-content">
-										<p>Aspernatuunt qui aut est non omnis. Inventore
-											occaecati et quaerat magni itaque nam voluptas. Voluptatem
-											ducimus sint id earum ut nesciunt sed corrupti nemo.</p>
-										<div class="read-more">
-											<a href="blog-single.html">Read More</a>
-										</div>
-									</div>
-
-								</article>
-								<!-- End blog entry -->
-
-							</div>
-							
-							<div class="col-md-6 col-sm-6 col-6 portfolio-item filter-app">
-								<article class="entry">
-
-									<div class="entry-img">
-										<img src="/assets/img/blog/blog-4.jpg" alt=""
-											class="img-fluid">
-									</div>
-
-									<div class="entry-meta">
-										<ul>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-person"></i> <a href="blog-single.html">John
-													Doe</a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-clock"></i> <a href="blog-single.html"><time
-														datetime="2020-01-01">Jan 1, 2020</time></a></li>
-											<li class="d-flex align-items-center"><i
-												class="bi bi-chat-dots"></i> <a href="blog-single.html">12
-													Comments</a></li>
-										</ul>
-									</div>
-									
-									<h2 class="entry-title">
-										<a href="blog-single.html">Non rem rerum nam cum quo
-											minus. Dolor distinctio deleniti explicabo eius
-											exercitationem.</a>
-									</h2>
-
-									<div class="entry-content">
-										<p>Aspernatur rerum perferendis et sint. Voluptates
-											cupiditate voluptas edita et et delectus voluptates
-											rerum. ui aut est non omnis. Inventore
-											occaecati et quaerat magni itaque nam voluptas. Voluptatem
-											ducimus sint id earum ut nesciunt sed corrupti nemo.</p>
-										<div class="read-more">
-											<a href="blog-single.html">Read More</a>
-										</div>
-									</div>
-
-								</article>
-								<!-- End blog entry -->
-
-							</div>
-
-					</article>
-					</div>
+    </section><!-- End Recent Blog Posts Section -->
 
 
 
-				</div>
-				<!-- End blog entries list -->
 
-
-					<div class="blog-pagination">
-						<ul class="justify-content-center">
-							<li><a href="#">1</a></li>
-							<li class="active"><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-						</ul>
-					</div>
-
-			</div>
-
-		</div>
-	</section>
-	<!-- End Blog Section -->
 
 </main>
 <!-- End #main -->

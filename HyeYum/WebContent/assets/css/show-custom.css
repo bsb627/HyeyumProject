@@ -3,6 +3,9 @@
 .blog {
     padding: 118px 0 185px 0;
 }
+.testimonials{
+	padding: 118px 0 0 0;
+}
 
 .blog .entry {
   padding: 30px;
@@ -23,11 +26,24 @@
 	margin-top: 25px;
 }
 
-.testimonials .testimonial-item .testimonial-img {
-	width: 90%;
-    border-radius: 0;
-
-}
 .swiper-wrapper{
-	height: 70%;
+	/* height: 65%; */
+}
+
+.post-card{
+	margin-bottom : 5%;
+}
+
+.post-date > i {
+	margin-right:5%
+}
+
+.btn-write{
+	float:right;
+	background: #4154f1;
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 4px;
+    color: #fff;
+
 }
