@@ -34,23 +34,31 @@ public class BookReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * int currentPage = 0; if(request.getParameter("currentPage") == null) {
-		 * currentPage = 1; }else { currentPage =
-		 * Integer.parseInt(request.getParameter("currentPage")); } BookPageData
-		 * pageData = new BookService().printAllBookReview(currentPage);
-		 * ArrayList<BookReview> reviewList = pageData.getBookList(); String pageNavi =
-		 * pageData.getPageNavi();
-		 * 
-		 * if(!reviewList.isEmpty()) { request.setAttribute("reviewList",reviewList);
-		 * request.setAttribute("pageNavi", pageNavi); RequestDispatcher view =
-		 * request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
-		 * view.forward(request, response); }else { RequestDispatcher view =
-		 * request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
-		 * view.forward(request, response); }
-		 */
-		request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp").forward(request, response);
+		System.out.println("들어옴");
+		int currentPage = 0; 
+		if(request.getParameter("currentPage") == null) {
+			currentPage = 1; 
+		}else { 
+			currentPage = Integer.parseInt(request.getParameter("currentPage")); 
+		} 
+		BookPageData pageData = new BookService().printAllBookReview(currentPage);
+		ArrayList<BookReview> bList = pageData.getReviewList(); 
+		String pageNavi = pageData.getPageNavi();
+		
+		System.out.println("blist : " + bList);
+		
+		if(!bList.isEmpty()) { 
+			System.out.println("imf까지 들어옴");
+			request.setAttribute("bList",bList);
+			request.setAttribute("pageNavi", pageNavi); RequestDispatcher view =
+			request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
+			view.forward(request, response); 
+		}else { 
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
+			view.forward(request, response); 
+		}
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

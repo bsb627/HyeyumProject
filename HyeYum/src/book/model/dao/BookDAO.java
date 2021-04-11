@@ -18,7 +18,7 @@ public class BookDAO {
 		Statement stmt = null;
 		ResultSet rset = null;
 		ArrayList<BookInfo>bList = null;
-		String query = "SELECT * FROM BOOKINFO";
+		String query = "SELECT A.BOOKNO, A.TITLE, A.NICK, A.REGDATE, A.HITS, A.LIKES FROM (SELECT BOOKNO, TITLE, NICK, REGDATE, HITS, LIKES ORDER BY REGDATE) A WHERE ROWNUM BETWEEN ? AND ?";
 				
 		try {
 			stmt = conn.createStatement();
@@ -39,7 +39,7 @@ public class BookDAO {
 	public BookInfo selectOneBookInfo(Connection conn, int infoNo) { // 책정보 상세보기
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM BOOKINFO WHERE INFONO = ?";
+		String query = "SELECT A.BOOKNO, A.TITLE, A.NICK, A.REGDATE, A.HITS, A.LIKES FROM (SELECT BOOKNO, TITLE, NICK, REGDATE, HITS, LIKES ORDER BY REGDATE) A WHERE ROWNUM BETWEEN ? AND ?";
 		BookInfo info = null;
 		
 		return info;
@@ -86,25 +86,38 @@ public class BookDAO {
 	
 	// BookReview
 	public ArrayList<BookReview> selectAllBookReview(Connection conn, int currentPage){ // 책리뷰 전체보기
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<BookReview> bList = null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY BOOKREVIEW_NO DESC) AS NUM, BOOKREVIEW_NO, DIVISION, TITLE, ENROLL_DATE, HITS, LIKES";
-				
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY ENROLL_DATE DESC) AS NUM, REVIEW_NO, DIVISION, TITLE, NICK, ENROLL_DATE, HITS FROM BOOK_REVIEW JOIN MEMBER USING(USER_ID))WHERE NUM BETWEEN ? AND ?";
+		int recordCountPerPage = 10;
+		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
+		int end = currentPage*recordCountPerPage;
+		
 		try {
-			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,  start);
+			pstmt.setInt(2, end);
+			rset = pstmt.executeQuery();
 			bList = new ArrayList<BookReview>();
 			while(rset.next()) {
-				
+				BookReview review = new BookReview();
+				review.setNo(rset.getInt("REVIEW_NO"));
+				review.setDivision(rset.getString("DIVISION"));
+				review.setTitle(rset.getString("TITLE"));
+				review.setNick(rset.getString("NICK"));
+				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				review.setHits(rset.getInt("HITS"));
+				bList.add(review);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rset);
-			JDBCTemplate.close(stmt);
+			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("DAO list" + bList);
 		return bList;
 	}
 	public BookReview selectOneBookReview(Connection conn, int reviewNo) { //책리뷰 상세보기
