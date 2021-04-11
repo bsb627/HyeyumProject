@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import javafx.scene.control.Alert;
 import qna.model.dao.QnaDAO;
 import qna.model.vo.Qna;
 import qna.model.vo.QnaPageData;
@@ -15,17 +16,22 @@ public class QnaService {
 	private JDBCTemplate factory;
 	
 	public QnaService() {
-		factory = new JDBCTemplate().getConnection();
+		factory = JDBCTemplate.getConnection();
 	}
 	
 	// 전체출력 
 	public QnaPageData printAllQna(int currentPage) {
 		Connection conn = null;
 		QnaPageData pd = new QnaPageData();
+		System.out.println("서비스 들어옴");
+		
 		try {
+			
 			conn = factory.createConnection();
 			pd.setQnaList(new QnaDAO().selectAllList(conn, currentPage));
 			pd.setPageNavi(new QnaDAO().getPageNavi(conn, currentPage));
+			
+			System.out.println("서비스 pd" + pd);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,6 +67,7 @@ public class QnaService {
 			result = new QnaDAO().insertQuestion(conn, qna);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
+				
 			} else {
 				JDBCTemplate.rollback(conn);
 			}
