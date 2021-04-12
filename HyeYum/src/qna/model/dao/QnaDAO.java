@@ -27,14 +27,13 @@ public class QnaDAO {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rset = pstmt.executeQuery();
-			System.out.println("rset: " + rset);
 			qnaList = new ArrayList<Qna>();
 			while(rset.next()) {
 				Qna qna = new Qna();
 				qna.setQnaNo(rset.getInt("QNA_NO"));
 				qna.setCategory(rset.getString("CATEGORY"));
 				qna.setTitle(rset.getString("TITLE"));
-				qna.setNick(rset.getString("USER_ID"));
+				qna.setUserId(rset.getString("USER_ID"));
 				qna.setQuestionPwd(rset.getString("QUESTION_PWD"));
 				qna.setContents(rset.getString("CONTENTS"));
 				qna.setEnrollDate(rset.getDate("ENROLL_DATE"));
@@ -50,7 +49,6 @@ public class QnaDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		System.out.println("dao" + qnaList);
 		return qnaList;
 	}
 
@@ -86,13 +84,13 @@ public class QnaDAO {
 		}
 		StringBuilder sb = new StringBuilder();
 		if( needPrev ) {
-			sb.append("<a href='#'" + (startNavi-1) + "'> < </a>");
+			sb.append("<a href='/qna/list?currentPage=" + (startNavi-1) + "'> < </a>");
 		}
 		for(int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='#'" + i + "'>" + i + "   </a>");
+			sb.append("<a href='/qna/list?currentPage=" + i + "'>" +"<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>  </a>");
 		}
 		if( needNext) {
-			sb.append("<a href='#'" + (endNavi + 1) + "'> > </a>");
+			sb.append("<a href='/qna/list?currentPage=" + (endNavi + 1) + "'> > </a>");
 		}
 		return sb.toString();
 	}
@@ -119,8 +117,35 @@ public class QnaDAO {
 	}
 
 	public Qna selectOne(Connection conn, int qnaNo) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Qna qna = null;
+		String query = "SELECT * FROM QNA WHERE QNA_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				qna = new Qna();
+				qna.setQnaNo(rset.getInt("QNA_NO"));
+				qna.setCategory(rset.getString("CATEGORY"));
+				qna.setTitle(rset.getString("TITLE"));
+				qna.setUserId(rset.getString("USER_ID"));
+				qna.setQuestionPwd(rset.getString("QUESTION_PWD"));
+				qna.setContents(rset.getString("CONTENTS"));
+				qna.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				qna.setHits(rset.getInt("HITS"));
+				qna.setFamily(rset.getInt("FAMILY"));
+				qna.setStep(rset.getInt("STEP"));
+			}
+		} catch (SQLException e) {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		
+		return qna;
 	}
 
 	public int insertQuestion(Connection conn, Qna qna) {
@@ -132,7 +157,7 @@ public class QnaDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, qna.getCategory());
 			pstmt.setString(2, qna.getTitle());
-			pstmt.setString(3, qna.getNick());
+			pstmt.setString(3, qna.getUserId());
 			pstmt.setString(4, qna.getQuestionPwd());
 			pstmt.setString(5, qna.getContents());
 			result = pstmt.executeUpdate();
@@ -162,28 +187,148 @@ public class QnaDAO {
 	}
 
 	public ArrayList<Qna> selectSearchList(Connection conn, String search, String searchCategory, int currentPage) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement pstmt  = null;
+		ResultSet rset = null;
+		String query = "SELECT *FROM ( SELECT ROW_NUMBER() OVER (ORDER BY FAMILY DESC)AS NUM, QNA_NO, CATEGORY, TITLE, USER_ID, QUESTION_PWD, CONTENTS, ENROLL_DATE, HITS, FAMILY, STEP FROM QNA WHERE "+ searchCategory + " LIKE ? ORDER BY FAMILY DESC, STEP ASC ) WHERE NUM BETWEEN ? AND ?";
+		ArrayList<Qna> searchList = null;
+		int recordCountPerPage = 10 ; //페이지에 몇개의 게시물을 보여줄건지 나타내는 변수
+		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
+		int end = currentPage*recordCountPerPage;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			//pstmt.setString(1, searchCategory);
+			pstmt.setString(1, "%" + search +"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			System.out.println("rset : " + rset);
+			searchList = new ArrayList<Qna>();
+			while(rset.next()) {
+				Qna qna = new Qna();
+				qna.setQnaNo(rset.getInt("QNA_NO"));
+				qna.setCategory(rset.getString("CATEGORY"));
+				qna.setTitle(rset.getString("TITLE"));
+				qna.setUserId(rset.getString("USER_ID"));
+				qna.setQuestionPwd(rset.getString("QUESTION_PWD"));
+				qna.setContents(rset.getString("CONTENTS"));
+				qna.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				qna.setHits(rset.getInt("HITS"));
+				qna.setFamily(rset.getInt("FAMILY"));
+				qna.setStep(rset.getInt("STEP"));
+				searchList.add(qna);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("서치 디에이오 searchList : " + searchList);
+		return searchList;
 	}
 
 	public String getSearchPageNavi(Connection conn, String search, String searchCategory, int currentPage) {
 		PreparedStatement pstmt= null;
 		
-		int recordCountPerPage = 10; // 게시물을 10개씩 
-		int naviCountPerPage = 10; // 네비를 10개씩 보여줄거
-		int recordTotalCount = searchTotalCount(conn, search, searchCategory); // 전체 게시물 수
-		return null;
+		int recordCountPerPage = 10;
+		int naviCountPerPage = 10; 
+		int recordTotalCount = searchTotalCount(conn, search, searchCategory); 
+		
+		int pageTotalCount = 0; 
+		if( recordTotalCount % recordCountPerPage > 0) { 
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+		// ====오류 방지용 코드 ==== //
+		if (currentPage < 1 ) {
+			currentPage = 1; // 
+		} else if(currentPage > pageTotalCount) {
+			currentPage = pageTotalCount; 
+		}
+							
+		int startNavi = ((currentPage -1) / naviCountPerPage ) * naviCountPerPage + 1;
+		int endNavi = startNavi + naviCountPerPage -1; 
+		if(endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+		
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) {
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		
+		// a태그 만드는 코드
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) {
+			sb.append("<a href='/qna/search?search-keyword="+search+ "&currentPage="+ (startNavi-1)+"'> 이전 </a>");
+		}
+		for(int i = startNavi; i <= endNavi; i++) {
+			sb.append("<a href='/qna/search?search-keyword="+search+ "&currentPage=" + i + "'>"+ i + "    </a>");
+		}
+		if(needNext) {
+			sb.append("<a href='/qna/search?search-keyword="+search+ "&currentPage="+ (endNavi+1)+"'> 다음 </a>");
+		}
+		return sb.toString();
 	}
 
 
+	
 	private int searchTotalCount(Connection conn, String search, String searchCategory) {
-		return 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM QNA WHERE " + searchCategory+ " LIKE ? ";
+		int recordTotalCount = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			//pstmt.setString(1, searchCategory);
+			pstmt.setString(1, "%" + search + "%" );
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return recordTotalCount;
 		
 	}
 
 	public int updateHitsQna(Connection conn, int qnaNo) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	//////////////////////////////////////
+	public String getPass(Connection conn, int qnaNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String qnaPwd = null;
+		String query = "SELECT QUESTION_PWD FROM QNA WHERE QNA_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				qnaPwd = rset.getString("QUESTION_PWD");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return qnaPwd;
+		
 	}
 	
 }

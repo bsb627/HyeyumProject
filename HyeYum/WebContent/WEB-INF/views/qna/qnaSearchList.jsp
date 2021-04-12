@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	ArrayList<Qna> qnaList = (ArrayList<Qna>)request.getAttribute("qnaList");
+	ArrayList<Qna> qnaList = (ArrayList<Qna>)request.getAttribute("searchList");
 	String pageNavi = (String)request.getAttribute("pageNavi");
 %>
 <%@include file="/header.jsp"%>
@@ -55,7 +55,7 @@
 		</form>
 		</div>
 		<div  style = "float : left" class = "col-auto" align = "right">
-			<form class="row g-3" class = "form-inline"" action = "/qna/search" method = "get">
+			<form class="row g-3" class = "form-inline"" action ="/qna/search" method = "get">
 			  <div class="col-auto">
 			    <select name = "search-category" class="form-select">
 			      	<option value = "USER_ID" >아이디</option>
@@ -88,9 +88,8 @@
       				<td><a href="/qna/detail?qnaNum=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
       				<td><%= qna.getUserId()%></td>
       				<td><%= qna.getEnrollDate()%></td>
-      				<td><%= qna.getHits() %>5</td>
-      			<td style = "hidden">
-			</td>
+      				<td><%= qna.getHits() %></td>
+
 			</tr>
       		<% } %>
       		</table>

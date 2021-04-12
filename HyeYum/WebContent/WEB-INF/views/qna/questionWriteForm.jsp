@@ -4,6 +4,30 @@
 <%@include file="/header.jsp"%>
 <head>
 <head>
+	<script>
+	 $(document).ready(function() {
+		$("#qna-form").submit(function() {
+			var title = $("#title");
+			var password = $("#password");
+			var contents = $("#contents")
+			
+			if(title.val() =="") {
+				alert("제목을 입력해주세요. ");
+				return false;
+			}else if(password.val() == "") {
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}else if (contents.val() == "") {
+				alert("내용을 입력해주세요.");
+				return false;
+			}
+			return true;
+		})
+	 });
+		
+	</script>
+
+
   <title>문화나눔, 혜윰 - QnA</title>
 
 </head>
@@ -22,7 +46,7 @@
 
       </div>
     </section><!-- End Breadcrumbs -->
-
+ 
 <!-- ----------------------------시작 --------------------------- -->
     <section class="inner-page">
     			
@@ -33,14 +57,14 @@
       	
 	
 	
-		<form action = "/question/write" method = "post">
+		<form action = "/question/write" method = "post" id="qna-form">
 		  <div class="col-12">
 		    <label for="title" class="form-label">제목</label>
 		    <input type="text" class="form-control" id="title" name = "title">
 		  </div>
 		  <div class="col-12">
 		    <label for="password" class="form-label">비밀번호</label>
-		    <input type="password" class="form-control" id="password" name = "password">
+		    <input type="password" class="form-control" id="qna-pwd" name = "qna-pwd">
 		  </div>
 		  <div class="col-12">
 		    <label for="category" class="form-label">문의 분류</label>
