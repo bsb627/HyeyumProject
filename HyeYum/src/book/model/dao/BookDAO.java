@@ -134,10 +134,71 @@ public class BookDAO {
 		return 0;
 	}
 	public String getReviewPageNavi(Connection conn, int currentPage) { // 책리뷰 페이징
-		return null;
+		int recordTotalCount = totalReviewCount(conn);
+		int recordCountPerPage = 10;
+		// 10개로 안떨어지는 상황 떄문에 추가로 변수 선언
+		int pageTotalCount = 0;
+		if ( recordTotalCount % recordCountPerPage > 0) {
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		}else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+		// 오류방지코드
+		if(currentPage < 1) {
+			currentPage = 1;
+		}else if(currentPage > pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
+		int naviCountPerPage = 10;
+		int startNavi = ((currentPage -1)/ naviCountPerPage) * naviCountPerPage + 1;
+		
+		int endNavi = startNavi + naviCountPerPage - 1;
+		if(endNavi > pageTotalCount) {
+			endNavi = pageTotalCount; 
+		}
+		
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) { // 맨 처음 페이지
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) { // 맨마지막 페이지
+			needNext = false;
+		}
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) { 
+			sb.append("<a href='/bookReview/list?currentPage="+ (startNavi-1)+"'> < </a>");
+		}
+		for(int i = startNavi; i <= endNavi; i++) {
+			sb.append("<a href='/bookReview/list?currentPage=" + i + "'>" + i + " </a>"); // 버튼을 눌렀을 때 다음페이지로 넘어가도록 주소를 줌
+		}
+		if(needNext) {
+			sb.append("<a href='/bookReview/list?currentPage=" + (endNavi+1)+ "'> > </a>");
+		}
+		return sb.toString();
 	}
 	public int totalReviewCount(Connection conn) { //책리뷰 총 게시글 수
-		return 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM BOOK_REVIEW";
+		// 전체 게시물의 개수
+		// AS 는 별칭을 준 것. 컬럼명이 있어야 필드값 가져올 수 있기 때문에
+		int recordTotalCount = 0;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return recordTotalCount;
 	}
 	public ArrayList<BookReview> selectSearchReviewList(Connection conn, int currentPage, String searchCategory){ // 책리뷰 검색결과 전체보기
 		return null;

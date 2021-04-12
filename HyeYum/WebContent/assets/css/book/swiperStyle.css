@@ -27,4 +27,8 @@ body{
       height: 300px;
 	  background: #000;
 	  display: flex;
+	  opacity:0.4; 
+	  transition:opacity 0.3s;
     }
+   
+	.swiper-slide-active{opacity:1};

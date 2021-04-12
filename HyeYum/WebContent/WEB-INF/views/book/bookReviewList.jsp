@@ -50,7 +50,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+<%-- 								<tr>
 									<td>Argentina</td>
 									<td>Spanish (official), English, Italian, German, French</td>
 									<td>41,803,125</td>
@@ -99,11 +99,27 @@
 									<td>449,954</td>
 									<td>449,954</td>
 									<%= bList %>
+								</tr> --%>
+								<% for(BookReview review : bList) { %>
+								<tr>
+									<td><%= review.getNo() %></td>
+									<td><a href="/bookReview/detail?no==<%= review.getNo()%>">
+										 [<%= review.getDivision() %>]
+										<%= review.getTitle() %></a>
+									</td>
+									<td><%= review.getNick() %></td>
+									<td><%= review.getEnrollDate() %></td>
+									<td><%= review.getHits() %></td>
+     								<td><%= review.getHits() %></td>
 								</tr>
+								<% } %>
+							<div>
+								<a href="/bookReview/enroll"><button	class="btn btn-primary btn-write">글쓰기</button></a>
+							</div>
 							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="5" class="text-center">검색
+									<td colspan="6" class="text-center"><%=pageNavi%>
 									</td>
 								</tr>
 							</tfoot>
