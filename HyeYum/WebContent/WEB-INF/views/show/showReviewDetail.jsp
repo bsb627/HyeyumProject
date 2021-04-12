@@ -88,11 +88,15 @@
               <h4 class="comments-count"><%=totalCount %> Comments</h4>
 
 			<% for(Reply reply : replyList){ %>
-			 <div id="comment-1" class="comment">
-                <div class="d-flex">
+			 <div id="comment-1" class="comment"> 
+                <div class="d-flex"> 
                   <div class="comment-img"><img src="/assets/img/blog/comments-2.jpg" alt=""></div>
                   <div>
-                    <h5><a href="#"><%=reply.getNick() %></a></h5>
+                    <h5><a href="#"><%=reply.getNick() %></a> 
+                    <%if(review.getUserId().equals(userId)){ %>
+                    <button class="btn btn-sm btn-outline-success">수정</button> <a href="/reply/delete?replyNo=<%=reply.getReplyNo() %>&reviewNo=<%=reply.getNo() %>&type=show"><button class="btn btn-sm btn-outline-danger">삭제</button></a>
+                    <%} %>
+                    </h5> 
                     <time datetime="2020-01-01"><%=reply.getEnrollDate() %></time>
                     <p>
                       <%=reply.getContents() %>
@@ -136,7 +140,13 @@
                 </form>
               </div>
 					<div class="btn-set">
-					<a href="/showReview/list"><button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
+					<%if(review.getUserId().equals(userId)) {%>
+					<a href="/showReview/update?no=<%=review.getNo()%>"><button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
+					  수정
+					</button>
+					</a>
+					<%} %>
+					<a href="/showReview/list"><button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark">
 					  목록으로
 					</button>
 					</a>

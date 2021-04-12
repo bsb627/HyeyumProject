@@ -87,7 +87,7 @@ public class ShowDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ShowReview review = null;
-		String query = "SELECT REVIEW_NO,TITLE,CONTENTS,SNS_LINK,HITS,TICKET_NUMBER,ENROLL_DATE,USER_ID,NICK,INFO_NO FROM SHOW_REVIEW JOIN MEMBER USING (USER_ID) WHERE REVIEW_NO = ?";
+		String query = "SELECT REVIEW_NO,TITLE,CONTENTS,SNS_LINK,HITS,TICKET_NUMBER,ENROLL_DATE,USER_ID,NICK,INFO_NO,USER_ID FROM SHOW_REVIEW JOIN MEMBER USING (USER_ID) WHERE REVIEW_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -103,6 +103,7 @@ public class ShowDAO {
 				review.setTicketNumber(rset.getString("TICKET_NUMBER"));
 				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				review.setNick(rset.getString("NICK"));
+				review.setUserId(rset.getString("USER_ID"));
 				review.setInfoNo(rset.getInt("INFO_NO"));
 			}
 		} catch (SQLException e) {
@@ -140,7 +141,27 @@ public class ShowDAO {
 	}
 
 	public int updateReview(Connection conn, ShowReview review) { // 관람후기 수정
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE SHOW_REVIEW SET TITLE = ?, CONTENTS = ?, SNS_LINK = ?, TICKET_NUMBER = ?, INFO_NO=? WHERE REVIEW_NO = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, review.getTitle());
+			pstmt.setString(2, review.getContents());
+			pstmt.setString(3, review.getSnsLink());
+			pstmt.setString(4, review.getTicketNumber());
+			pstmt.setInt(5, review.getInfoNo());
+			pstmt.setInt(6, review.getNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	
 	public int deleteReview(Connection conn, String reviewNo) { // 관람후기 삭제

@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import reply.model.service.ReplyService;
+import reply.model.vo.Reply;
 
 
 /**
@@ -27,8 +31,34 @@ public class ReplyDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		String type = request.getParameter("type");
+		int result = new ReplyService().deleteReply(replyNo,type);
+		if(result > 0) {
+			switch (type) {
+			case "book":
+				
+				break;
+			case "share":
+				
+				break;
+			case "movie":
+				
+				break;
+			case "show":
+				request.setAttribute("no", reviewNo);
+				request.getRequestDispatcher("/showReview/detail").forward(request, response);
+				break;
+
+			default:
+				break;
+			}
+		}else {
+			
+		}
 	}
 
 	/**

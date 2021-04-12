@@ -7,6 +7,7 @@ public class Board {
 	protected String title; //제목
 	protected String contents; // 내용
 	protected String nick; // 작성자
+	protected String userId; // 아이디
 	protected int hits; // 조회 수
 	protected int likes; // 좋아요 수
 	protected Date enrollDate; // 작성일
@@ -45,6 +46,16 @@ public class Board {
 
 	public void setNick(String nick) {
 		this.nick = nick;
+	}
+	
+	
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getHits() {

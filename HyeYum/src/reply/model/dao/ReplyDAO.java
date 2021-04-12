@@ -107,8 +107,39 @@ public class ReplyDAO {
 		return 0;
 	}
 
-	public int deleteReply(Connection conn, int replyNo) { // 댓글 삭제
-		return 0;
+	public int deleteReply(Connection conn, int replyNo, String type) { // 댓글 삭제
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		switch (type) {
+		case "book":
+			
+			break;
+		case "share":
+			
+			break;
+		case "movie":
+			
+			break;
+		case "show":
+			query = "DELETE FROM SHOW_REVIEW_REPLY WHERE REPLY_NO = ?";
+			break;
+
+		default:
+			break;
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, replyNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 	
 	public String getPageNavi(Connection conn, int currentPage, String replyType,int showNo) { // 댓글 페이징
