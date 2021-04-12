@@ -8,11 +8,13 @@
 	String pageNavi = (String)request.getAttribute("pageNavi");
 	int totalCount = (int)request.getAttribute("totalCount");
 	ArrayList<Reply> replyList = (ArrayList<Reply>)request.getAttribute("replyList");
+	int likes = (int)request.getAttribute("likes");
 %>
 <%@include file="/header.jsp"%>
 <head>
   <title>문화나눔, 혜윰 - 디테일</title>
   <link href="/assets/css/show-custom.css" rel="stylesheet">
+  <script src="/assets/js/show-custom.js"></script>
 </head>
  <main id="main">
 
@@ -64,6 +66,11 @@
                 <li><strong>작성자 </strong>: <%=review.getNick() %></li>
                 <li><strong>작성일 </strong>: <%=review.getEnrollDate() %></li>
                 <li><strong>SNS 링크</strong>: <a href="#"><%=review.getSnsLink() %></a></li>
+                <%if(likes == 0){ %>
+                <li><a href="/showReview/plusLikes?no=<%=review.getNo()%>"><button class="btn btn-sm btn-outline-danger"><i class="bi bi-heart"></i> 좋아요</button></a></li>
+                <%} else { %>
+                <li><a href="/showReview/minusLikes?no=<%=review.getNo()%>"><button class="btn btn-sm btn-outline-danger"><i class="bi bi-heart-fill" style="color:#dc3545"></i> 좋아요 취소</button></a></li>
+                <%} %>
               </ul>
             </div>
             <div class="portfolio-description">
@@ -127,8 +134,14 @@
                   </div>
 
                 </form>
-
               </div>
+					<div class="btn-set">
+					<a href="/showReview/list"><button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
+					  목록으로
+					</button>
+					</a>
+					
+					</div>
 
             </div><!-- End blog comments -->
 

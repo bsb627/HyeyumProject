@@ -232,11 +232,42 @@ public class ShowDAO {
 	}
 	
 	public int insertLikesReview(Connection conn, int showNo, String userId) { // 해당 게시글 좋아요 등록
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO SHOW_LIKES VALUES(SEQ_SHOW_LIKES_NO.NEXTVAL,1,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, showNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
-	public int updateLikesReview(Connection conn, int showNo, String userId) { // 해당 게시글 좋아요 취소
-		return 0;
+	public int updateLikesReview(Connection conn, int showNo, String userId, String state) { // 해당 게시글 좋아요 취소
+		PreparedStatement pstmt = null;
+		int likes = 0;
+		String query = "UPDATE SHOW_LIKES SET IS_CHECK = ? WHERE USER_ID = ? AND REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, state);
+			pstmt.setString(2, userId);
+			pstmt.setInt(3, showNo);
+			likes = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return likes;
 	}
 
 	public ArrayList<ShowData> selectReplyCount(Connection conn) {
@@ -265,6 +296,49 @@ public class ShowDAO {
 		
 		
 		return rList;
+	}
+
+	public int selectLikes(Connection conn, String userId, int showNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int likes = 0;
+		String query = "SELECT * FROM SHOW_LIKES WHERE USER_ID = ? AND REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, showNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				likes = Integer.parseInt(rset.getString("IS_CHECK"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return likes;
+	}
+
+	public int checkShowLikes(Connection conn, int showNo, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int check = 0;
+		String query = "SELECT COUNT(*)AS ISCHECK FROM SHOW_LIKES WHERE USER_ID = ? AND REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, showNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				check = rset.getInt("ISCHECK");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return check;
 	}
 	
 	

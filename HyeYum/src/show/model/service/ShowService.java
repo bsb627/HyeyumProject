@@ -196,24 +196,38 @@ public class ShowService {
 		try {
 			conn = factory.createConnection();
 			result = new ShowDAO().insertLikesReview(conn, showNo, userId);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
 	
-	public int minusLikesCount(int showNo, String userId) { // 좋아요수 취소 상태 변경
-		int result = 0;
+	public int minusLikesCount(int showNo, String userId, String state) { // 좋아요수 취소 상태 변경
+		int likes = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			result = new ShowDAO().updateHitsReview(conn, showNo);
+			likes = new ShowDAO().updateLikesReview(conn, showNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
-		return result;
+		return likes;
 	}
 
 	public ArrayList<ShowData> printReplyCount() {
@@ -227,5 +241,56 @@ public class ShowService {
 			e.printStackTrace();
 		}
 		return rList;
+	}
+
+	public int getLikes(String userId, int showNo) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new ShowDAO().selectLikes(conn,userId,showNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+
+	public int checkLikes(int showNo, String userId) {
+		int result =0;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			result = new ShowDAO().checkShowLikes(conn, showNo, userId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public int updateLikesCount(int showNo, String userId,String state) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new ShowDAO().updateLikesReview(conn, showNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
 	}
 }

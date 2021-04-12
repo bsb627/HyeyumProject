@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import reply.model.service.ReplyService;
 import reply.model.vo.Reply;
@@ -34,6 +35,8 @@ public class ShowReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		int showNo = 0;
 		try {
 			showNo = Integer.parseInt(request.getParameter("no"));
@@ -51,6 +54,13 @@ public class ShowReviewDetailServlet extends HttpServlet {
 		}else {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+		
+		int likes = 0;
+		if (request.getParameter("likes") !=  null) {
+			likes = Integer.parseInt(request.getParameter("likes"));
+		}else {
+			likes = new ShowService().getLikes(userId,showNo);
+		}
 		ShowReview review = new ShowService().printOneShowReview(showNo);
 		ReplyPageData pageData = new ReplyService().printAllReply(currentPage, replyType,showNo);
 		ArrayList<Reply> replyList = pageData.getReplyList();
@@ -61,6 +71,7 @@ public class ShowReviewDetailServlet extends HttpServlet {
 			request.setAttribute("replyList", replyList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("likes", likes);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewDetail.jsp").forward(request, response);
 			
 		}else {
