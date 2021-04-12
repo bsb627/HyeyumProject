@@ -340,6 +340,29 @@ public class ShowDAO {
 		}
 		return check;
 	}
+
+	public ArrayList<ShowData> selectLikesCount(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT,REVIEW_NO FROM SHOW_LIKES GROUP BY REVIEW_NO";
+		ArrayList<ShowData> rList = null;
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				rList = new ArrayList<ShowData>();
+				while (rset.next()) {
+					ShowData data = new ShowData();
+					data.setShowNo(rset.getInt("REVIEW_NO"));
+					data.setLikesCount(rset.getInt("TOTALCOUNT"));
+					rList.add(data);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rList;
+	}
 	
 	
 

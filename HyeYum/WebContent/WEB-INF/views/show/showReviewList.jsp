@@ -6,6 +6,7 @@
 <%
 ArrayList<ShowReview> showList = (ArrayList<ShowReview>)request.getAttribute("showList");
 ArrayList<ShowData> replyCount = (ArrayList<ShowData>)request.getAttribute("replyCount");
+ArrayList<ShowData> likesCount = (ArrayList<ShowData>)request.getAttribute("likesCount");
 String pageNavi = (String)request.getAttribute("pageNavi");
 
 %>
@@ -103,7 +104,10 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 							<%if(review.getNo() == reply.getShowNo()){ %>
 							<i class="bi bi-chat-square-dots"> <%=reply.getTotalCount()%></i>
 							<%} }%>
-							<i class="bi bi-heart"> 11</i></span>
+							<%for(ShowData likes : likesCount) {%>
+							<%if(review.getNo() == likes.getShowNo()) {%>
+							<i class="bi bi-heart"> <%=likes.getLikesCount() %></i></span>
+							<%} }%>
 						<h3 class="post-title"> <%=review.getTitle() %></h3>
 						<a href="/showReview/detail?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"><span>Read
 								More</span><i class="bi bi-arrow-right"></i></a>

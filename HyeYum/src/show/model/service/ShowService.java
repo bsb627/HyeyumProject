@@ -293,4 +293,17 @@ public class ShowService {
 		}
 		return likes;
 	}
+
+	public ArrayList<ShowData> printLikesCount() {
+		ArrayList<ShowData> lList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			lList = new ShowDAO().selectLikesCount(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lList;
+	}
 }
