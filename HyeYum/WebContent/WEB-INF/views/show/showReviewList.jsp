@@ -110,8 +110,8 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 							<i class="bi bi-heart"> <%=likes.getLikesCount() %></i></span>
 							<%} }%>
 						<h3 class="post-title"> <%=review.getTitle() %></h3>
-						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"><span>Read
-								More</span><i class="bi bi-arrow-right"></i></a>
+						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto">
+						<span>자세히보기</span><i class="bi bi-arrow-right"></i></a>
 					</div>
 				</div>
 

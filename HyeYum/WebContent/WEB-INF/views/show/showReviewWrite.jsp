@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 
 
-			<form action="/showReview/write" method="post">
+			<form action="/showReview/write" method="post" enctype="multipart/form-data">
 
 
 				<div class="row border col-md-12">
@@ -127,9 +127,10 @@ $(document).ready(function() {
 					</div> -->
 					 <textarea id="summernote" name="show-content"></textarea>
 					<br>
+					
 					<div>
 					 <label class="form-label" for="customFile"></label> <input
-						type="file" class="form-control" id="customFile" />
+						type="file" class="form-control" id="customFile" name="up-file"/>
 					</div>
 
 

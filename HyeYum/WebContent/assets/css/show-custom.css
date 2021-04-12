@@ -80,3 +80,9 @@ hr{
 .border{
 	padding:10%;
 }
+
+.blog .blog-comments .comment .comment-img img{
+	
+ border-radius: 50%;
+	
+}

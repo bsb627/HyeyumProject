@@ -3,8 +3,8 @@ package file.model.vo;
 import java.sql.Timestamp;
 
 public class FileData {
-	
-	private String fileNo;
+	private int no;
+	private int fileNo;
 	private String fileName;
 	private String filePath;
 	private long fileSize;
@@ -33,11 +33,22 @@ public class FileData {
 	}
 
 
-	public String getFileNo() {
+	
+	public int getNo() {
+		return no;
+	}
+
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+
+	public int getFileNo() {
 		return fileNo;
 	}
 
-	public void setFileNo(String fileNo) {
+	public void setFileNo(int fileNo) {
 		this.fileNo = fileNo;
 	}
 

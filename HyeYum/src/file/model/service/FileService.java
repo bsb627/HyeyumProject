@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import file.model.dao.FileDAO;
 import file.model.vo.FileData;
+import show.model.vo.ShowReview;
 
 public class FileService {
 	
@@ -16,13 +17,13 @@ public class FileService {
 		factory = JDBCTemplate.getConnection();
 	}
 	
-	public int registerFileInfo(FileData fileData) {
+	public int registerFileInfo(FileData fileData, ShowReview review) {
 		Connection conn = null;
 		int result = 0;
 		
 		try {
 			conn = factory.createConnection();
-			result = new FileDAO().insertFileInfo(conn, fileData);
+			result = new FileDAO().insertFileInfo(conn, fileData, review);
 			if(result> 0) {
 				JDBCTemplate.commit(conn);
 			}else {

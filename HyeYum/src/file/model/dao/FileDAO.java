@@ -8,24 +8,28 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import file.model.vo.FileData;
+import show.model.vo.ShowReview;
 
 public class FileDAO {
 
-	public int insertFileInfo(Connection conn, FileData fileData) {
+	public int insertFileInfo(Connection conn, FileData fileData, ShowReview review) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String fileType = fileData.getFileType();
 		String query="";
 		switch (fileType) {
-		case "book": query = "INSERT INTO BOOKFILETBL () VALUES(?,?,?,?,?)";
+		case "book": query = "";
 			
 			break;
-		case "share": query = "INSERT INTO BOOKEFILETBL () VALUES(?,?,?,?,?)";
+		case "share": query = "";
 			
 			break;
-		case "movie": query = "INSERT INTO SHAREFILETBL VALUES(?,?,?,?,?)";
+		case "movie": query = "";
 			
 			break;
+		case "show": query = "INSERT INTO SHOW_FILE VALUES(SEQ_SHOW_FILE_NO.NEXTVAL,?,?,?,?,?,NULL)";
+		
+		break;
 
 		default:
 			break;
@@ -36,16 +40,11 @@ public class FileDAO {
 			pstmt.setString(1, fileData.getFileName());
 			pstmt.setString(2, fileData.getFilePath());
 			pstmt.setLong(3, fileData.getFileSize());
-			pstmt.setString(4, fileData.getFileUser());
-			pstmt.setTimestamp(5, fileData.getUploadTime());
+			pstmt.setTimestamp(4, fileData.getUploadTime());
+			pstmt.setInt(5, getReviewNo(conn,review));
 			result = pstmt.executeUpdate();
 			
-			System.out.println(fileData.getFileName());
-			System.out.println(fileData.getFilePath());
-			System.out.println(fileData.getFileUser());
-			System.out.println(fileData.getFileSize());
-			System.out.println(fileData.getUploadTime());
-			
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +52,31 @@ public class FileDAO {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	private int getReviewNo(Connection conn, ShowReview review) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT REVIEW_NO FROM SHOW_REVIEW WHERE TITLE = ? AND CONTENTS = ? AND SNS_LINK = ? AND TICKET_NUMBER = ? AND USER_ID =? ORDER BY ENROLL_DATE DESC";
+		int showNo =  0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, review.getTitle());
+			pstmt.setString(2, review.getContents());
+			pstmt.setString(3, review.getSnsLink());
+			pstmt.setString(4, review.getTicketNumber());
+			pstmt.setString(5, review.getNick());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				showNo = rset.getInt("REVIEW_NO");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return showNo;
+		
 	}
 
 	public ArrayList<FileData> selectFileList(Connection conn, String userId) {
