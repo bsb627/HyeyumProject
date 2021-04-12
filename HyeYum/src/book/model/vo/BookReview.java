@@ -6,6 +6,7 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 	private String bookName; // 책이름
 	private String division; // 분류
 	private String genre;// 장르
+	private int infoNo;// 도서번호
 	
 	// constructor
 	public BookReview() {
@@ -38,15 +39,19 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+	
+	public int getInfoNo() {
+		return infoNo;
+	}
+
+	public void setInfoNo(int infoNo) {
+		this.infoNo = infoNo;
+	}
 
 	@Override
 	public String toString() {
-		return "BookReview [title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ", enrollDate=" + super.enrollDate+ "bookName=" + this.bookName + ", division=" + this.division + ", genre=" + this.genre + 
-				  "]";
+		return "BookReview [bookName=" + bookName + ", division=" + division + ", genre=" + genre + ", infoNo=" + infoNo
+				+ "]";
 	}
 
-	
-	
-	
-	
 }

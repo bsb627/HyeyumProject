@@ -1,6 +1,8 @@
 package book.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import book.model.service.BookService;
 import book.model.vo.BookReview;
-import show.model.vo.ShowReview;
 
 /**
  * Servlet implementation class ShowBoardEnrollServlet
@@ -41,19 +42,24 @@ public class BookReviewEnrollServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
-		
-		BookReview review = new BookReview();
-		review.setNo(Integer.parseInt(request.getParameter("info-no")));
-		review.setDivision(request.getParameter("division"));
-		review.setTitle(request.getParameter("review-title"));
-		review.setContents(request.getParameter("review-content"));
-		review.setNick((String)session.getAttribute("userId"));
-		
-		int result = new BookService().registerBookReview(review);
-		if(result > 0) {
-			request.getRequestDispatcher("/bookReview/list").forward(request, response);
+		if(session != null && (session.getAttribute("userId")) != null) {
+			String userId = (String)session.getAttribute("userId");
+			BookReview review = new BookReview();
+			review.setNo(Integer.parseInt(request.getParameter("info-no")));
+			review.setDivision(request.getParameter("division"));
+			review.setTitle(request.getParameter("review-title"));
+			review.setContents(request.getParameter("review-content"));
+			review.setNick((String)session.getAttribute("userId"));
+			
+			int result = new BookService().registerBookReview(review);
+			if(result > 0) {
+				request.getRequestDispatcher("/bookReview/list").forward(request, response);
+			}else {
+				request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
+			}
+			
 		}else {
-			request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
+			request.getRequestDispatcher("/WEB-INF/views/book/serviceFailed.html").forward(request, response);
 		}
 	}
 }

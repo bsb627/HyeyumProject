@@ -146,7 +146,25 @@ public class BookDAO {
 		return review;
 	}
 	public int insertBookReview(Connection conn, BookReview review) { // 책리뷰 등록
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO BOOK_REVIEW VALUES(SEQ_BOOK_REVIEW.NEXTVAL,?,?,?,ENROLL_DATE,?,?,?)";
+		
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, review.getDivision());
+				pstmt.setString(2, review.getTitle());
+				pstmt.setString(3, review.getContents());
+				pstmt.setInt(4, review.getHits());
+				pstmt.setString(5, review.getUserId());
+				pstmt.setInt(6, review.getInfoNo());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(conn);
+			}
+		return result;
 	}
 	public int updateBookReview(Connection conn, BookReview review) { // 책리뷰 수정
 		return 0;
