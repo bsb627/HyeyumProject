@@ -28,9 +28,9 @@
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">
 		</div>
 		
-		<form action = "#" method = "post">
+		<form action = "qna/detail/qnaNum=" method = "post">
 		비밀번호를 입력하세요.
-		<input type = "password" name = "questionPwd">
+		<input type = "password" name = "qna-passs">
 		<input type = "submit" value = "확인">
 		</form>
       	
