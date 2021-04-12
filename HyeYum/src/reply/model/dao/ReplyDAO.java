@@ -72,7 +72,6 @@ public class ReplyDAO {
 		int result = 0;
 		String query = "";
 		String type = reply.getReplyType();
-		System.out.println("type : "+ type);
 		switch (type) {
 		case "book":
 			

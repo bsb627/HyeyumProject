@@ -93,7 +93,7 @@
                   <div class="comment-img"><img src="/assets/img/blog/comments-2.jpg" alt=""></div>
                   <div>
                     <h5><a href="#"><%=reply.getNick() %></a> 
-                    <%if(review.getUserId().equals(userId)){ %>
+                    <%if(reply.getUserId().equals(userId)){ %>
                     <button class="btn btn-sm btn-outline-success">수정</button> <a href="/reply/delete?replyNo=<%=reply.getReplyNo() %>&reviewNo=<%=reply.getNo() %>&type=show"><button class="btn btn-sm btn-outline-danger">삭제</button></a>
                     <%} %>
                     </h5> 
