@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 
 
-			<form action="/showReview/update" method="post">
+			<form action="/showReview/update" method="post" enctype="multipart/form-data">
 
 
 				<div class="row border col-md-12">
@@ -132,7 +132,7 @@ $(document).ready(function() {
 					<br>
 					<div>
 					 <label class="form-label" for="customFile"></label> <input
-						type="file" class="form-control" id="customFile" />
+						type="file" class="form-control" id="customFile" name="up-file"/>
 					</div>
 
 					<input type="hidden" name="no" value="<%=review.getNo()%>"/>

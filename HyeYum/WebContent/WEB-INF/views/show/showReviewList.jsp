@@ -1,3 +1,5 @@
+<%@page import="file.controller.FileListServlet"%>
+<%@page import="file.model.vo.FileData"%>
 <%@page import="show.model.vo.ShowData"%>
 <%@page import="show.model.vo.ShowReview"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,6 +9,7 @@
 ArrayList<ShowReview> showList = (ArrayList<ShowReview>)request.getAttribute("showList");
 ArrayList<ShowData> replyCount = (ArrayList<ShowData>)request.getAttribute("replyCount");
 ArrayList<ShowData> likesCount = (ArrayList<ShowData>)request.getAttribute("likesCount");
+ArrayList<FileData> fileList = (ArrayList<FileData>)request.getAttribute("fList");
 String pageNavi = (String)request.getAttribute("pageNavi");
 
 %>
@@ -94,9 +97,12 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 				<%for(ShowReview review : showList){ %>
 				<div class="post-card col-lg-4">
 					<div class="post-box">
+						<%for (FileData fd : fileList){ %>
+						<%if(review.getNo() == fd.getNo()){ %>
 						<div class="post-img">
-							<img src="/assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
+							<img src="/upload/show/<%=fd.getFileName() %>" class="img-fluid" alt="">
 						</div>
+						<%} }%>
 
 						<span class="post-date"><i class="bi bi-pen"><%=review.getNick()%></i>
 							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i><br>

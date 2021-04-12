@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import file.model.service.FileService;
+import file.model.vo.FileData;
 import qna.model.service.QnaService;
 import qna.model.vo.Qna;
 import qna.model.vo.QnaPageData;
@@ -50,11 +52,15 @@ public class ShowReviewListServlet extends HttpServlet {
 		String pageNavi = pageData.getPageNavi();
 		ArrayList<ShowData> replyCount = new ShowService().printReplyCount();
 		ArrayList<ShowData> likesCount = new ShowService().printLikesCount();
+		FileData fd = new FileData();
+		fd.setFileType("show");
+		ArrayList<FileData> fList = new FileService().printFileList("show");
 		if(!showList.isEmpty()) {
 			request.setAttribute("showList", showList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.setAttribute("replyCount", replyCount);
 			request.setAttribute("likesCount", likesCount);
+			request.setAttribute("fList", fList);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewList.jsp").forward(request, response);
 		}else {
 			

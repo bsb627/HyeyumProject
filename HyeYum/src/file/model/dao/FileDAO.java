@@ -79,27 +79,47 @@ public class FileDAO {
 		
 	}
 
-	public ArrayList<FileData> selectFileList(Connection conn, String userId) {
+	public ArrayList<FileData> selectFileList(Connection conn, String type) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<FileData> list = null;
-		String query = "SELECT * FROM FILETBL WHERE FILEUSER = ?";
+		String query = "";
+		switch (type) {
+		case "book":
+			
+			break;
+		case "share":
+			
+			break;
+		case "movie":
+			
+			break;
+		case "show":
+			query="SELECT REVIEW_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,USER_ID,UPLOAD_TIME FROM SHOW_FILE JOIN SHOW_REVIEW USING (REVIEW_NO) WHERE REVIEW_NO IS NOT NULL";
+			
+			break;
+
+		default:
+			break;
+		}
 		
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setNString(1, userId);
 			rset = pstmt.executeQuery();
 			list = new ArrayList<FileData>();
 			while(rset.next()) {
 				FileData data = new FileData();
-				data.setFileName(rset.getString("FILENAME"));
-				data.setFilePath(rset.getString("FILEPATH"));
-				data.setFileSize(rset.getLong("FILESIZE"));
-				data.setFileUser(rset.getString("FILEUSER"));
-				data.setUploadTime(rset.getTimestamp("UPLOADTIME"));
-				list.add(data); // 최종 저장소인 list에 한 개의 행을 하나씩 저장함
+				data.setNo(rset.getInt("REVIEW_NO"));
+				data.setFileNo(rset.getInt("FILE_NO"));
+				data.setFileName(rset.getString("FILE_NAME"));
+				data.setFilePath(rset.getString("FILE_PATH"));
+				data.setFileSize(rset.getLong("FILE_SIZE"));
+				data.setFileUser(rset.getString("USER_ID"));
+				data.setFileType(type);
+				data.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
+				list.add(data);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -122,6 +142,48 @@ public class FileDAO {
 			pstmt.setString(2, fileUser);
 			result = pstmt.executeUpdate();
 			System.out.println("DAOresult : " + result );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateFileInfo(Connection conn, FileData fileData, ShowReview review) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String fileType = fileData.getFileType();
+		String query="";
+		switch (fileType) {
+		case "book": query = "";
+			
+			break;
+		case "share": query = "";
+			
+			break;
+		case "movie": query = "";
+			
+			break;
+		case "show": query = "UPDATE SHOW_FILE SET FILE_NAME =?, FILE_PATH=?,FILE_SIZE=?,UPLOAD_TIME=? WHERE REVIEW_NO =?";
+		
+		break;
+
+		default:
+			break;
+		}
+	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, fileData.getFileName());
+			pstmt.setString(2, fileData.getFilePath());
+			pstmt.setLong(3, fileData.getFileSize());
+			pstmt.setTimestamp(4, fileData.getUploadTime());
+			pstmt.setInt(5, review.getNo());
+			result = pstmt.executeUpdate();
+			
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

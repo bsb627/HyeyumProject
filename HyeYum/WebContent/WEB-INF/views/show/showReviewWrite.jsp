@@ -130,7 +130,7 @@ $(document).ready(function() {
 					
 					<div>
 					 <label class="form-label" for="customFile"></label> <input
-						type="file" class="form-control" id="customFile" name="up-file"/>
+						type="file" class="form-control" id="customFile" name="up-file" required/>
 					</div>
 
 
