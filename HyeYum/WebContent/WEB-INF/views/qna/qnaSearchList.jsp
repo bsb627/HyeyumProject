@@ -85,7 +85,7 @@
       			<tr>
       				<td><%= qna.getQnaNo()%></td>
       				<td><%= qna.getCategory() %> </td>
-      				<td><a href="/qna/detail?qnaNum=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
+      				<td><a href="/qna/pass?qnaNum=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
       				<td><%= qna.getUserId()%></td>
       				<td><%= qna.getEnrollDate()%></td>
       				<td><%= qna.getHits() %></td>

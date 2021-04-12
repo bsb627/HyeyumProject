@@ -1,8 +1,6 @@
 package qna.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,16 @@ import qna.model.service.QnaService;
 import qna.model.vo.Qna;
 
 /**
- * Servlet implementation class QnADeleteServlet
+ * Servlet implementation class QnaPasswordServlet
  */
-@WebServlet("/qna/detail")
-public class QnaDetailServlet extends HttpServlet {
+@WebServlet("/qna/pass")
+public class QnaPassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaDetailServlet() {
+    public QnaPassServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +30,11 @@ public class QnaDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int qnaNo = Integer.parseInt(request.getParameter("qnaNum"));
-		
+		String qnaPass = request.getParameter("qna-pass");
+		Qna qna = new QnaService().printOne(qnaNo);
+		if( qna!= null ) {
+			request.setAttribute("qna", qna); //
+		}
 	}
 
 	/**
@@ -40,20 +42,7 @@ public class QnaDetailServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
-
-	
-		int qnaNo = Integer.parseInt(request.getParameter("qnaNum")); //jsp파일에 ?이거
-		Qna qna = new QnaService().printOne(qnaNo);
-		if( qna!= null) {
-			request.setAttribute("qna", qna);
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaDetailForm.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");
-			view.forward(request, response);
-		}
-		
+		doGet(request, response);
 	}
 
 }

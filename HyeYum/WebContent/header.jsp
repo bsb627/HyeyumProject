@@ -85,7 +85,7 @@
            <li class="dropdown"><a href="#pricing"><span>마당</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/qna/list">문의혜윰</a></li>
-              <li><a href="#pricing">참여혜윰</a></li>
+              <li><a href="/intro/product/productForm.jsp">참여혜윰</a></li>
             </ul>
           </li>
           <% if(userId == null) {  %>
