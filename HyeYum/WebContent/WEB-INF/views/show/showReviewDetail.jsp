@@ -1,3 +1,4 @@
+<%@page import="file.model.vo.FileData"%>
 <%@page import="reply.model.vo.Reply"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="show.model.vo.ShowReview"%>
@@ -9,6 +10,7 @@
 	int totalCount = (int)request.getAttribute("totalCount");
 	ArrayList<Reply> replyList = (ArrayList<Reply>)request.getAttribute("replyList");
 	int likes = (int)request.getAttribute("likes");
+	FileData fileData = (FileData)request.getAttribute("fileData");
 %>
 <%@include file="/header.jsp"%>
 <head>
@@ -41,7 +43,7 @@
             <div class="portfolio-details-slider swiper-container">
               <div class="swiper-wrapper align-items-center">
 
-                <div class="swiper-slide">
+             <!--    <div class="swiper-slide">
                   <img src="/assets/img/portfolio/portfolio-1.jpg" alt="">
                 </div>
 
@@ -51,8 +53,11 @@
 
                 <div class="swiper-slide">
                   <img src="/assets/img/portfolio/portfolio-3.jpg" alt="">
-                </div>
-
+                </div> -->
+                
+			<div class="swiper-slide">
+	                  <img src="/upload/show/<%=fileData.getFileName() %>" alt="">
+	                </div>
               </div>
               <div class="swiper-pagination"></div>
             </div>

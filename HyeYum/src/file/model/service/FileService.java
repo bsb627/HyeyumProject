@@ -97,4 +97,19 @@ public class FileService {
 		}
 		return result;
 	}
+
+	public FileData printFile(int showNo) {
+		FileData fileData = null;
+		Connection conn = null;
+		System.out.println("써비스");
+		try {
+			conn = factory.createConnection();
+			fileData = new FileDAO().selectFileOne(conn,showNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return fileData;
+	}
 }

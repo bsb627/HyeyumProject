@@ -193,4 +193,36 @@ public class FileDAO {
 		return result;
 	}
 
+	public FileData selectFileOne(Connection conn, int showNo) {
+		System.out.println("디에이오");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM SHOW_FILE WHERE REVIEW_NO=?";
+		FileData fileData = null;
+		System.out.println(showNo);
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, showNo);
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				fileData = new FileData();
+				fileData.setFileNo(rset.getInt("FILE_NO"));
+				fileData.setFileName(rset.getString("FILE_NAME"));
+				fileData.setFilePath(rset.getString("FILE_PATH"));
+				fileData.setFileSize(rset.getLong("FILE_SIZE"));
+				fileData.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
+				fileData.setNo(rset.getInt("REVIEW_NO"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return fileData;
+	}
+
 }

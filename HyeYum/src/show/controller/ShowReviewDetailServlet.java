@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import file.model.service.FileService;
+import file.model.vo.FileData;
 import reply.model.service.ReplyService;
 import reply.model.vo.Reply;
 import reply.model.vo.ReplyPageData;
@@ -35,6 +37,7 @@ public class ShowReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("써블릿");
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		int showNo = 0;
@@ -66,12 +69,17 @@ public class ShowReviewDetailServlet extends HttpServlet {
 		ArrayList<Reply> replyList = pageData.getReplyList();
 		String pageNavi = pageData.getPageNavi();
 		int totalCount = new ReplyService().totalCount(showNo);
+		
+		System.out.println("나올까 ?: "+showNo );
+		FileData fileData = new FileService().printFile(showNo);
+		System.out.println("file : "+fileData);
 		if(review != null) {
 			request.setAttribute("review", review);
 			request.setAttribute("replyList", replyList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("likes", likes);
+			request.setAttribute("fileData", fileData);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewDetail.jsp").forward(request, response);
 			
 		}else {

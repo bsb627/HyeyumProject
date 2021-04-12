@@ -86,3 +86,9 @@ hr{
  border-radius: 50%;
 	
 }
+
+.recent-blog-posts .post-box .post-img {
+    overflow: hidden;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+}
