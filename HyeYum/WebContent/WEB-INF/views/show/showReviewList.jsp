@@ -7,8 +7,8 @@
 	pageEncoding="UTF-8"%>
 <%
 ArrayList<ShowReview> showList = (ArrayList<ShowReview>)request.getAttribute("showList");
-ArrayList<ShowData> replyCount = (ArrayList<ShowData>)request.getAttribute("replyCount");
-ArrayList<ShowData> likesCount = (ArrayList<ShowData>)request.getAttribute("likesCount");
+/* ArrayList<ShowData> replyCount = (ArrayList<ShowData>)request.getAttribute("replyCount");
+ArrayList<ShowData> likesCount = (ArrayList<ShowData>)request.getAttribute("likesCount"); */
 ArrayList<FileData> fileList = (ArrayList<FileData>)request.getAttribute("fList");
 String pageNavi = (String)request.getAttribute("pageNavi");
 
@@ -92,9 +92,37 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 			</div>
 
 			<div class="row">
+			
+			
+			<%for(ShowReview review : showList){ %>
+				<div class="post-card col-lg-4">
+					<div class="post-box">
+						<%for (FileData fd : fileList){ %>
+						<%if(review.getNo() == fd.getNo()){ %>
+						<div class="post-img">
+							<img src="/upload/show/<%=fd.getFileName() %>" class="img-fluid" alt="">
+						</div>
+						<%} }%>
 
+						<span class="post-date">
+							<i class="bi bi-eye"> <%=review.getHits()%></i>							
+							<i class="bi bi-chat-square-dots"> <%=review.getReplys() %></i>
+							<i class="bi bi-heart"> <%=review.getLikes() %></i>
+						</span>
+							
+						<h3 class="post-title"> <%=review.getTitle() %></h3>
+						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
+						
+						<span class="post-date-right">
+							<i class="bi bi-pen"> <%=review.getNick() %></i><br>
+							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i>
+						</span>
+					</div>
+				</div>
+				
+			<%} %>
 
-				<%for(ShowReview review : showList){ %>
+			<%-- 	<%for(ShowReview review : showList){ %>
 				<div class="post-card col-lg-4">
 					<div class="post-box">
 						<%for (FileData fd : fileList){ %>
@@ -116,12 +144,11 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 							<i class="bi bi-heart"> <%=likes.getLikesCount() %></i></span>
 							<%} }%>
 						<h3 class="post-title"> <%=review.getTitle() %></h3>
-						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto">
-						<span>자세히보기</span><i class="bi bi-arrow-right"></i></a>
+						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
 					</div>
 				</div>
 
-				<%} %>
+				<%} %> --%>
 
 
 

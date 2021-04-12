@@ -50,16 +50,20 @@ public class ShowReviewListServlet extends HttpServlet {
 		ShowPageData pageData = new ShowService().printAllShowReview(currentPage);
 		ArrayList<ShowReview> showList = pageData.getReviewList();
 		String pageNavi = pageData.getPageNavi();
-		ArrayList<ShowData> replyCount = new ShowService().printReplyCount();
-		ArrayList<ShowData> likesCount = new ShowService().printLikesCount();
+		/*
+		 * ArrayList<ShowData> replyCount = new ShowService().printReplyCount();
+		 * ArrayList<ShowData> likesCount = new ShowService().printLikesCount();
+		 */
 		FileData fd = new FileData();
 		fd.setFileType("show");
 		ArrayList<FileData> fList = new FileService().printFileList("show");
 		if(!showList.isEmpty()) {
 			request.setAttribute("showList", showList);
 			request.setAttribute("pageNavi", pageNavi);
-			request.setAttribute("replyCount", replyCount);
-			request.setAttribute("likesCount", likesCount);
+			/*
+			 * request.setAttribute("replyCount", replyCount);
+			 * request.setAttribute("likesCount", likesCount);
+			 */
 			request.setAttribute("fList", fList);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewList.jsp").forward(request, response);
 		}else {

@@ -70,6 +70,8 @@ public class ShowDAO {
 					review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 					review.setNick(rset.getString("NICK"));
 					review.setInfoNo(rset.getInt("INFO_NO"));
+					review.setReplys(getReplyCount(conn,rset.getInt("REVIEW_NO")));
+					review.setLikes(getLikeCount(conn,rset.getInt("REVIEW_NO")));
 					showList.add(review);
 				}
 			}
@@ -83,6 +85,45 @@ public class ShowDAO {
 		return showList;
 	}
 	
+	private int getLikeCount(Connection conn, int reviewNo) { // 좋아요 수 가져오기
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM SHOW_LIKES WHERE REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	private int getReplyCount(Connection conn ,int reviewNo) { // 리플 수 가져오기
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM SHOW_REVIEW_REPLY WHERE REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count ;
+	}
+
 	public ShowReview selectOneReview(Connection conn, int showNo) { // 관람후기 상세보기
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

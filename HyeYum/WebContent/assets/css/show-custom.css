@@ -89,6 +89,29 @@ hr{
 
 .recent-blog-posts .post-box .post-img {
     overflow: hidden;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 15px 0px;
     position: relative;
+    height: 300px;
+    text-align: center;
+}
+.recent-blog-posts .post-box .post-img img {
+    transition: 0.5s;
+    object-fit: scale-down;
+    height: 100%;
+}
+.portfolio-details .portfolio-details-slider img {
+    width: 100%;
+    object-fit: scale-down;
+}
+.post-date-right {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(1, 41, 112, 0.6);
+    display: block;
+    margin-bottom: 10px;
+    text-align: right;
+}
+.post-date{
+	//text-align: center;
+	
 }

@@ -10,6 +10,7 @@ public class Board {
 	protected String userId; // 아이디
 	protected int hits; // 조회 수
 	protected int likes; // 좋아요 수
+	protected int replys; // 댓글 수 
 	protected Date enrollDate; // 작성일
 	
 	public Board() {
@@ -72,6 +73,15 @@ public class Board {
 
 	public void setLikes(int likes) {
 		this.likes = likes;
+	}
+
+	
+	public int getReplys() {
+		return replys;
+	}
+
+	public void setReplys(int replys) {
+		this.replys = replys;
 	}
 
 	public Date getEnrollDate() {
