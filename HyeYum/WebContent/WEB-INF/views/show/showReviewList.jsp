@@ -47,7 +47,7 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 
 
 	<!-- ======= Recent Blog Posts Section ======= -->
-	<section id="recent-blog-posts" class="blog recent-blog-posts">
+	<section id="recent-blog-posts" class="blog recent-blog-posts portfolio">
 
 		<div class="container" data-aos="fade-up">
 
@@ -60,8 +60,8 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 
 				<h3 class="sidebar-title">Search</h3>
 				<div class="sidebar-item search-form">
-					<form action="">
-						<input type="text">
+					<form action="/showReview/search" method="get">
+						<input type="text" name="search" autocomplete="off">
 						<button type="submit">
 							<i class="bi bi-search"></i>
 						</button>
@@ -69,10 +69,10 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 				</div>
 				<!-- End sidebar search formn-->
 
-				<h3 class="sidebar-title">Tags</h3>
+				<!-- <h3 class="sidebar-title">Tags</h3>
 				<div class="sidebar-item tags">
-					<ul>
-						<li><a href="#">App</a></li>
+					<ul id="portfolio-flters">
+						<li ><a href="#">App</a></li>
 						<li><a href="#">IT</a></li>
 						<li><a href="#">Business</a></li>
 						<li><a href="#">Mac</a></li>
@@ -84,7 +84,7 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 						<li><a href="#">Tips</a></li>
 						<li><a href="#">Marketing</a></li>
 					</ul>
-				</div>
+				</div> -->
 				<!-- End sidebar tags-->
 			</div>
 
@@ -99,7 +99,8 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 						</div>
 
 						<span class="post-date"><i class="bi bi-pen"><%=review.getNick()%></i>
-							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i>
+							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i><br>
+							<i class="bi bi-eye"> <%=review.getHits() %></i>
 							<%for(ShowData reply : replyCount){ %>
 							<%if(review.getNo() == reply.getShowNo()){ %>
 							<i class="bi bi-chat-square-dots"> <%=reply.getTotalCount()%></i>

@@ -66,6 +66,7 @@ public class ShowReviewDetailServlet extends HttpServlet {
 		ArrayList<Reply> replyList = pageData.getReplyList();
 		String pageNavi = pageData.getPageNavi();
 		int totalCount = new ReplyService().totalCount(showNo);
+		int addHits = new ShowService().addHitsCount(showNo);
 		if(review != null) {
 			request.setAttribute("review", review);
 			request.setAttribute("replyList", replyList);

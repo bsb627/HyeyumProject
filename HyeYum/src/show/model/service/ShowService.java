@@ -161,13 +161,13 @@ public class ShowService {
 		return result ;
 	}
 	
-	public ShowPageData searchPrintAllShowReview(int currentPage, String search, String searchCategory) { // 관람후기 검색결과 전체보기
+	public ShowPageData searchPrintAllShowReview(int currentPage, String search) { // 관람후기 검색결과 전체보기
 		Connection conn = null;
 		ShowPageData pd = new ShowPageData();
 		try {
 			conn = factory.createConnection();
-			pd.setReviewList(new ShowDAO().selectSearchReviewList(conn, currentPage, search, searchCategory));
-			pd.setPageNavi(new ShowDAO().getSearchReviewPageNavi(conn, currentPage, searchCategory, searchCategory));
+			pd.setReviewList(new ShowDAO().selectSearchReviewList(conn, currentPage, search));
+			pd.setPageNavi(new ShowDAO().getSearchReviewPageNavi(conn, currentPage, search));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -183,9 +183,16 @@ public class ShowService {
 		try {
 			conn = factory.createConnection();
 			result = new ShowDAO().updateHitsReview(conn, showNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
