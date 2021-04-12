@@ -7,10 +7,12 @@
 	String pageNavi = (String)request.getAttribute("pageNavi");
 %>
 
-<head>
+
 <title>문화나눔, 혜윰 - 추천혜윰</title>
 <%@include file="/header.jsp"%>
-</head>
+<link href="/assets/css/style.css" rel="stylesheet">
+
+
 <%
 	if (userId == null) {
 %>
@@ -51,8 +53,8 @@
 	</section>
 
 	<!--  ============= 추천 게시판 글 목록 =========== -->
-	<div class="container">
-		<section class="inner-page">
+	<div class="container" data-aos="fade-up">
+		<section class="inner-page blog" >
 
 			<!-- <div class="input-group"> -->
 			<div style="float: right">
@@ -104,11 +106,11 @@
 
 
 			<!-- 글 목록 시작 -->
-			
+
 			<div class="contaioner">
-				<table class="table table-hover" style="text-align: center">
+				<table class="table table-hover table-borderless" style="text-align: center">
 					<thead>
-						<tr>
+						<tr class="table-light">
 							<th scope="col">글번호</th>
 							<th scope="col">장르</th>
 							<th scope="col">제목</th>
@@ -119,25 +121,41 @@
 						</tr>
 					</thead>
 					<tbody>
-					<% for(MovieRecommend mRecommend : recommend) {%>
-						<tr class="table-light">
-							<th><%=mRecommend.getRowNo() %></th>
+						<% for(MovieRecommend mRecommend : recommend) {%>
+						<tr >
+							<th><p class="text-center"><%=mRecommend.getRowNo() %></p></th>
 							<td><%= mRecommend.getGenre()%></td>
-							<td><a href="/movieRecommend/detail?recommendNo=<%=mRecommend.getNo() %>"><%= mRecommend.getTitle()%></a></td>
+							<td><a
+								href="/movieRecommend/detail?recommendNo=<%=mRecommend.getRowNo() %>"><%= mRecommend.getTitle()%></a></td>
 							<td><%= mRecommend.getNick() %></td>
 							<td><%= mRecommend.getEnrollDate() %></td>
 							<td><%= mRecommend.getHits() %></td>
 							<td><%= mRecommend.getLikes() %></td>
 						</tr>
 						<% } %>
-						
+
 					</tbody>
+					
 				</table>
+
 			</div>
-			<form action="/movieRecommend/write" method="get">
-				<div style="float: right">
-					<input type="submit" class="btn btn-primary" value="글쓰기">
-			</form>
+				
+			<!-- 페이징 처리 할 곳 !! -->
+
+			<div class="contaioner">
+				
+				<div style="float:right">
+					<a href="/movieRecommend/write"><button
+							class="btn btn-primary btn-write">글쓰기</button></a>
+				</div>
+			
+			<div class="blog-pagination">
+				<ul class="justify-content-center">
+					<%= pageNavi %>
+				</ul>
+			</div>
+			
+			</div>
 		</section>
 	</div>
 

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <head>
 <title>문화나눔, 혜윰 - 추천 글쓰기</title>
-<%@include file="/header.jsp"%>
+
 <!-- Font Awesome -->
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -15,6 +15,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
 	rel="stylesheet" />
+	<%@include file="/header.jsp"%>
 <!-- MDB -->
 <link href="/assets/css/show-custom.css" rel="stylesheet">
 <script type="text/javascript"
@@ -74,8 +75,8 @@ $(document).ready(function() {
 			</header>
 
 
-
-			<form action="/movieRecommend/write" method="post">
+			<!-- 파일 할 때 enctype="multipart/form-data" 작성 -->
+			<form action="/movieRecommend/write" method="post" >
 
 
 				<div class="row border col-md-12">
@@ -83,28 +84,19 @@ $(document).ready(function() {
 					<div class="col-md-4">
 						<label class="form-label" for="title">장르</label>
 						<select class="form-select" name="genre" required>
-							<option selected>드라마/로맨스</option>
-							<option>판타지/SF</option>
-							<option>스릴러</option>
-							<option>코믹/액션</option>
-							<option>애니메이션</option>
-							<option>기타</option>
+							<option value="" hidden="hidden">장르를 선택해주세요</option>
+							<option value="드라마/로맨스">드라마/로맨스</option>
+							<option value="판타지/SF">판타지/SF</option>
+							<option value="스릴러">스릴러</option>
+							<option value="코믹/액션">코믹/액션</option>
+							<option value="애니메이션">애니메이션</option>
+							<option value="기타">기타</option>
 						</select>
 						<hr>
 					</div>
 
-
 					<div class="form-outline col-md-12">
-						<div class="col-md-6">
-							<input type="text" id="ticket-number" class="form-control"
-								name="ticket-number" autocomplete="off" required /> <label
-								class="form-label" for="ticket-number">예매 일련번호</label>
-							<hr>
-						</div>
-					</div>
-
-					<div class="form-outline col-md-12">
-						<input type="text" id="show-title" class="form-control"
+						<input type="text" id="movie-title" class="form-control"
 							name="movie-title" autocomplete="off" required maxlength="50" />
 						<label class="form-label" for="show-title">제목</label>
 						<hr>
@@ -120,7 +112,7 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div> -->
-					<textarea id="summernote" name="recommend-content"></textarea>
+					<textarea id="summernote" name="content"></textarea>
 					<br>
 					<div>
 						<label class="form-label" for="customFile"></label> <input
@@ -133,7 +125,7 @@ $(document).ready(function() {
 						<a href="/movieRecommend/list"><button type="button"
 								class="btn btn-outline-warning" data-mdb-ripple-color="dark">
 								취소</button> </a>
-						<button type="submit" class="btn btn-outline-primary "
+						<button type="submit" class="btn btn-outline-primary"
 							data-mdb-ripple-color="dark">등록</button>
 					</div>
 

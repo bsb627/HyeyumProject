@@ -194,44 +194,44 @@ public class MovieDAO {
 		int pageTotalCount = 0;
 		if (recordTotalCount % recordCountPerPage > 0) {
 			pageTotalCount = recordTotalCount / recordCountPerPage + 1; // 1 : 나머지 게시물 담는 곳
-		} else { 
+		} else {
 			pageTotalCount = recordTotalCount / recordCountPerPage;
 		}
 		// 오류방지 코드
-					if(currentPage < 1 ) {
-					currentPage=1;
-				} else if (currentPage > pageTotalCount) {
-					currentPage = pageTotalCount;
-				}
+		if (currentPage < 1) {
+			currentPage = 1;
+		} else if (currentPage > pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
 		int naviCountPerPage = 5; // 페이지 바, 5개씩 ( 이전 1 2 3 4 5 다음 )
-		int startNavi = ((currentPage - 1 ) / naviCountPerPage) * naviCountPerPage + 1;
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
 		int endNavi = startNavi + naviCountPerPage - 1;
 		// 오류방지 코드
-				if(endNavi > pageTotalCount) {
-					endNavi = pageTotalCount; // 마지막 페이지를 표시할 때 
-				}
-				boolean needPrev = true;
-				boolean needNext = true;
-				if(startNavi == 1) {
-					needPrev = false;
-				}
-				if(endNavi == pageTotalCount) {
-					needNext = false;
-				}
-				
-			StringBuilder sb = new StringBuilder();
-			if(needPrev) { // 이전 페이지 ( < )
-				sb.append("<a href='/notice/list?currentPage=" + (startNavi-1) + "'> 이전 </a>");
-			}
-			for(int i = startNavi; i<=endNavi; i++) {
-				sb.append("<a href='/notice/list?currentPage=" + i + "'>" + i + " </a>");
-			}
-			if(needNext) { // 다음 페이지 ( > )
-				sb.append("<a href='/notice/list?currentPage=" + (endNavi+1) + "'> 다음 </a>");
-			}
+		if (endNavi > pageTotalCount) {
+			endNavi = pageTotalCount; // 마지막 페이지를 표시할 때
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if (startNavi == 1) {
+			needPrev = false;
+		}
+		if (endNavi == pageTotalCount) {
+			needNext = false;
+		}
+
+		StringBuilder sb = new StringBuilder();
+		if (needPrev) { // 이전 페이지 ( < )
+			sb.append("<a href='/movieRecommend/list?currentPage=" + (startNavi - 1) + "'> 이전 </a>");
+		}
+		for (int i = startNavi; i <= endNavi; i++) {
+			sb.append("<a href='/movieRecommend/list?currentPage=" + i + "'>" + i + " </a>");
+		}
+		if (needNext) { // 다음 페이지 ( > )
+			sb.append("<a href='/movieRecommend/list?currentPage=" + (endNavi + 1) + "'> 다음 </a>");
+		}
 		return sb.toString();
 	}
-	
+
 	public int totalReviewCount(Connection conn) { // 영화리뷰 총 게시글 수
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -266,7 +266,7 @@ public class MovieDAO {
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				MovieReview mReview = new MovieReview();
-				mReview.setNo(rset.getInt("REVIEW_NO"));
+				mReview.setNo(rset.getInt("NUM"));
 				mReview.setStarRating(rset.getInt("STAR_RATING"));
 				mReview.setContents(rset.getString("CONTENTS"));
 				mReview.setEnrollDate(rset.getDate("ENROLL_DATE"));
@@ -333,7 +333,7 @@ public class MovieDAO {
 		ResultSet rset = null;
 		ArrayList<MovieRecommend> recommend = null;
 		//RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, USER_ID
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID)) WHERE NUM BETWEEN ? AND ? ORDER BY NUM DESC";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID)) WHERE NUM BETWEEN ? AND ? ";
 		int recordCountPerPage = 5;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
 		int end = currentPage*recordCountPerPage;
@@ -346,8 +346,8 @@ public class MovieDAO {
 			recommend = new ArrayList<MovieRecommend>();
 			while(rset.next()) {
 				MovieRecommend mRecommend = new MovieRecommend();
-				mRecommend.setRowNo(rset.getInt("NUM"));
-				mRecommend.setNo(rset.getInt("RECOMMEND_NO"));
+				mRecommend.setRowNo(rset.getInt("RECOMMEND_NO")); // 인덱스 번호 
+				mRecommend.setNo(rset.getInt("NUM")); // 행 번호
 				mRecommend.setGenre(rset.getString("GENRE"));
 				mRecommend.setTitle(rset.getString("TITLE"));
 				mRecommend.setContents(rset.getString("CONTENTS"));
@@ -367,7 +367,7 @@ public class MovieDAO {
 		}
 	
 	public String getMovieRecommendPageNavi(Connection conn, int currentPage)  { // 추천글 페이징
-		int recordTotalCount = totalReviewCount(conn); // 전체 게시물
+		int recordTotalCount = totalRecommendCount(conn); // 전체 게시물
 		int recordCountPerPage = 5; // 5개씩
 		int pageTotalCount = 0;
 		if (recordTotalCount % recordCountPerPage > 0) {
@@ -399,13 +399,13 @@ public class MovieDAO {
 				
 			StringBuilder sb = new StringBuilder();
 			if(needPrev) { // 이전 페이지 ( < )
-				sb.append("<a href='/notice/list?currentPage=" + (startNavi-1) + "'> 이전 </a>");
+				sb.append("<li><a href='/movieRecommend/list?currentPage=" + (startNavi-1) + "'> 이전 </a></li>");
 			}
 			for(int i = startNavi; i<=endNavi; i++) {
-				sb.append("<a href='/notice/list?currentPage=" + i + "'>" + i + " </a>");
+				sb.append("<li><a href='/movieRecommend/list?currentPage=" + i + "'>" + i + " </a></li>");
 			}
 			if(needNext) { // 다음 페이지 ( > )
-				sb.append("<a href='/notice/list?currentPage=" + (endNavi+1) + "'> 다음 </a>");
+				sb.append("<li><a href='/movieRecommend/list?currentPage=" + (endNavi+1) + "'> 다음 </a></li>");
 			}
 		return sb.toString();
 	}
@@ -472,8 +472,8 @@ public class MovieDAO {
 			pstmt.setString(1, movieRecommend.getGenre());
 			pstmt.setString(2, movieRecommend.getTitle());
 			pstmt.setString(3, movieRecommend.getContents());
-			pstmt.setInt(4, movieRecommend.getHits());
-			pstmt.setString(2, movieRecommend.getNick());
+			pstmt.setString(4, movieRecommend.getNick());
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

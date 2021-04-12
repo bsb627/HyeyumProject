@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.blank-content {
+	padding : 5%;
+
+}
+
+.blog .entry .entry-meta {
+    margin-bottom: 15px;
+    color: #808080;
+}
+
+.btn-reply{
+	background-color: #4154f1;
+	background: #4154f1;
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 4px;
+    color: #fff;
+}
