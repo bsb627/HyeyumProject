@@ -333,7 +333,7 @@ public class MovieDAO {
 		ResultSet rset = null;
 		ArrayList<MovieRecommend> recommend = null;
 		//RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, USER_ID
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FORM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID)) WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID)) WHERE NUM BETWEEN ? AND ? ORDER BY NUM DESC";
 		int recordCountPerPage = 5;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
 		int end = currentPage*recordCountPerPage;
@@ -346,6 +346,7 @@ public class MovieDAO {
 			recommend = new ArrayList<MovieRecommend>();
 			while(rset.next()) {
 				MovieRecommend mRecommend = new MovieRecommend();
+				mRecommend.setRowNo(rset.getInt("NUM"));
 				mRecommend.setNo(rset.getInt("RECOMMEND_NO"));
 				mRecommend.setGenre(rset.getString("GENRE"));
 				mRecommend.setTitle(rset.getString("TITLE"));
@@ -353,6 +354,7 @@ public class MovieDAO {
 				mRecommend.setHits(rset.getInt("HITS"));
 				mRecommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mRecommend.setNick(rset.getString("NICK"));
+				recommend.add(mRecommend);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -433,15 +435,15 @@ public class MovieDAO {
 	public MovieRecommend selectOneMovieRecommend(Connection conn, int recommendNo) { // 추천글 상세보기
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		MovieRecommend recommend = null;
-		String query = "SELECT * FROM MOVIE_RECOMMEND WHERE RECOMMEND_NO='" + recommendNo + "'";
-		
+		MovieRecommend mRecommend = null;
+		String query = "SELECT * FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE RECOMMEND_NO = ?" ;
+		// SELECT * FROM MOVIE_RECOMMEND JOIN MEMBER USING(USER_ID) WHERE RECOMMEND_NO= '3' ;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1,recommendNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				MovieRecommend mRecommend = new MovieRecommend();
+				mRecommend = new MovieRecommend();
 				mRecommend.setNo(rset.getInt("RECOMMEND_NO"));
 				mRecommend.setGenre(rset.getString("GENRE"));
 				mRecommend.setTitle(rset.getString("TITLE"));
@@ -453,10 +455,11 @@ public class MovieDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}  finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		
-		
-		return null;
+		return mRecommend;
 	}
 	
 	public int insertMovieRecommend(Connection conn, MovieRecommend movieRecommend) { // 추천글 등록
@@ -495,11 +498,11 @@ public class MovieDAO {
 	public ArrayList<MovieRecommend> selectSearchRecommendList(Connection conn, int currentPage, String search, String searchCategory) { //추천글 검색결과 전체보기
 		PreparedStatement ptsmt = null;
 		ResultSet rset= null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE " +
+		//String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE " +
 		
-		ArrayList<MovieRecommend> mRecommend = null;
+		/*ArrayList<MovieRecommend> mRecommend = null;
 		
-		return mRecommend;
+		return mRecommend;*/
 	}
 	
 	public String getSearchRecommendPageNavi(Connection conn, int currentPage, String search, String searchCategory) { // 추천글 검색 페이징

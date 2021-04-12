@@ -1,11 +1,17 @@
 package movie.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import movie.model.service.MovieService;
+import movie.model.vo.MoviePageData;
+import movie.model.vo.MovieRecommend;
 
 /**
  * Servlet implementation class MovieRecommendInfoServlet
@@ -26,7 +32,25 @@ public class MovieRecommendListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendList.jsp").forward(request, response);
+		int currentPage = 0;
+		if(request.getParameter("currentPage") == null) {
+			currentPage = 1;
+		} else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		MoviePageData mPageData = new MovieService().printAllMovieRecommend(currentPage);
+		ArrayList<MovieRecommend> recommend = mPageData.getRecommendList();
+		String pageNavi = mPageData.getPageNavi();
+		
+		if(!recommend.isEmpty()) {
+			request.setAttribute("recommend", recommend);
+			request.setAttribute("pageNavi", pageNavi);
+			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendList.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**

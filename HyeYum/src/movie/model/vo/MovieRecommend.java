@@ -3,6 +3,7 @@ package movie.model.vo;
 import board.model.vo.Board;
 
 public class MovieRecommend extends Board { // 영화 추천 게시판
+	private int rowNo; // 글번호
 	private String genre; // 장르
 	
 	public MovieRecommend() {
@@ -15,6 +16,14 @@ public class MovieRecommend extends Board { // 영화 추천 게시판
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public int getRowNo() {
+		return rowNo;
+	}
+
+	public void setRowNo(int rowNo) {
+		this.rowNo = rowNo;
 	}
 
 	@Override
