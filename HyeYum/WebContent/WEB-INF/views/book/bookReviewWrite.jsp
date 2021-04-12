@@ -104,11 +104,11 @@ function removeAll(e){
 				<p>글쓰기</p>
 			</header>
 
-			<form action="/bookReview/enroll" method="post">
+			<form action="/bookReview/enroll" method="post" name="form">
 
 				<div class="row border col-md-12">
 
-					<div class="col-md-12">
+					<div class="col-md-8">
 					    <select name="selOne" id="selOne" onchange="doChange(this, 'selTwo')">
 					        <option value="default">---Select Something---</option>
 					        <option value="languages">언어</option>
@@ -117,9 +117,24 @@ function removeAll(e){
 					    <select name="selTwo" id="selTwo">
 					        <option value="default">---Select Something---</option>
 					    </select>
-						<hr>
 					</div>
-
+					<!-- 파일첨부 -->
+					<!-- <div>
+					 <label class="form-label" for="customFile"></label> 
+					 	<input type="file" class="form-control" id="customFile" />
+					 	<input type="submit" class="form-control" value="업로드" onclick="javascript: form.action='/file/upload'"><br>
+						<input type="reset" class="form-control" value="취소">
+					</div> -->
+						<div class="col-md-4">
+						<label for="InputSubject1">파일첨부</label>
+							
+							<input type="text" id="userfile" name="userfile" disabled="">
+							<span class="group-span-filestyle input-group-btn" tabindex="0">
+								<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
+									
+								
+							</span>
+						</div>
 					<!-- <div class="form-outline col-md-6">
 					<div class="col-md-10">
 						<input type="text" id="ticket-number" class="form-control" name="ticket-number" autocomplete="off" required/> <label
@@ -141,6 +156,7 @@ function removeAll(e){
 							class="form-label" for="show-title">제목</label>
 					<hr>
 					</div>
+				
 
 				<!-- SmartEditor2 -->
 				<!-- 	<div class="jsx-2303464893 editor">
@@ -154,11 +170,7 @@ function removeAll(e){
 					</div> -->
 					 <textarea id="summernote" name="review-content"></textarea>
 					<br>
-					<div>
-					 <label class="form-label" for="customFile"></label> 
-					 	<input type="file" class="form-control" id="customFile" />
-					</div>
-
+				
 
 					<!-- Submit button -->
 					<div class="btn-set">
@@ -166,7 +178,7 @@ function removeAll(e){
 					  취소
 					</button>
 					</a>
-					<button type="submit" class="btn btn-outline-primary " data-mdb-ripple-color="dark">
+					<button type="submit" class="btn btn-outline-primary " data-mdb-ripple-color="dark" onclick="javascript: form.action='bookReview/enroll'">
 					  등록
 					</button>
 					</div>

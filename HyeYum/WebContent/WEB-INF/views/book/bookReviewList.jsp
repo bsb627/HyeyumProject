@@ -103,7 +103,7 @@
 								<% for(BookReview review : bList) { %>
 								<tr>
 									<td><%= review.getNo() %></td>
-									<td><a href="/bookReview/detail?no==<%= review.getNo()%>">
+									<td><a href="/bookReview/detail?reviewNo=<%= review.getNo()%>">
 										 [<%= review.getDivision() %>]
 										<%= review.getTitle() %></a>
 									</td>

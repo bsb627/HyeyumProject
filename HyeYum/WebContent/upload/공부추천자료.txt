@@ -1,0 +1,33 @@
+1. 책
+- 자바의 정석 : 남궁성 저자
+(네이버 카페)
+- 이것이 자바다 : 신용권 저자
+(유튜브 무료강의)
+- 나는 자바를 정말 공부한적이 없다구요
+ : 윤성우 저자
+(http://www.orentec.co.kr/teachlist/JAVA_BASIC_1/teach_sub1.php)
+ㄴ시간이 많이듬.
+ㄴ사이트 가입시 무료강의
+
+2. 사이트
+- 점프투자바(무료)
+https://wikidocs.net/book/31
+- 생활코딩 바로실습(무료)
+https://edu.goorm.io/learn/lecture/41/%EB%B0%94%EB%A1%9C%EC%8B%A4%EC%8A%B5-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9-%EC%9E%90%EB%B0%94-java/lesson/39161/%EC%96%B8%EC%96%B4-%EC%86%8C%EA%B0%9C
+- 코드잇(유료)
+https://www.codeit.kr/
+ㄴ괜찮음. 그러나 유료라서 취업하고 들어볼 것.
+
+3. 영타연습
+http://www.speedcoder.net
+
+4. 유용한 블로그
+http://blog.naver.com/PostList.nhn?blogId=heartflow89&from=postList&categoryNo=1&parentCategoryNo=1
+ㄴ초반에 유용함(자바~ 오라클정도)
+ㄴ학원 강의 내용과 비슷함
+
+https://blog.naver.com/itisik
+ㄴ다 옮긴듯
+
+뉴렉처(유투브 검색)
+ㄴ유명하진 않은데 강의가 괜찮음

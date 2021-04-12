@@ -34,7 +34,7 @@ public class BookReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("들어옴");
+		request.setCharacterEncoding("utf-8");
 		int currentPage = 0; 
 		if(request.getParameter("currentPage") == null) {
 			currentPage = 1; 

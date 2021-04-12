@@ -121,8 +121,29 @@ public class BookDAO {
 		return bList;
 	}
 	public BookReview selectOneBookReview(Connection conn, int reviewNo) { //책리뷰 상세보기
-		
-		return null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		BookReview review = null;
+		String query = "SELECT DIVISION, REVIEW_NO, TITLE, CONTENTS, ENROLL_DATE, HITS, NICK FROM BOOK_REVIEW JOIN MEMBER USING(USER_ID)WHERE REVIEW_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				review = new BookReview();
+				review.setNo(rset.getInt("REVIEW_NO"));
+				review.setDivision(rset.getString("DIVISION"));
+				review.setTitle(rset.getString("TITLE"));
+				review.setNick(rset.getString("NICK"));
+				review.setContents(rset.getString("CONTENTS"));
+				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				review.setHits(rset.getInt("HITS"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return review;
 	}
 	public int insertBookReview(Connection conn, BookReview review) { // 책리뷰 등록
 		return 0;

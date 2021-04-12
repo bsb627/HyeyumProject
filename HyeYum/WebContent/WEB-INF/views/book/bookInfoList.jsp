@@ -14,11 +14,11 @@
 <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-4.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-5.jpg)"></div>
+      <div class="swiper-slide"></div>
+      <div class="swiper-slide"></div>
+      <div class="swiper-slide"></div>
+      <div class="swiper-slide"></div>
+      <div class="swiper-slide"></div>
       
     </div>
       	<!-- 네비게이션 -->
