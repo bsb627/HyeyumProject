@@ -9,7 +9,7 @@ public class Qna  { // 1:1 문의
 	private int step; // 그룹내 순서
 	private String category; // 카테고리
 	private String title; // 제목 
-	private String nick; // 닉네임
+	private String userId; // 아이디
 	private String questionPwd; //비밀번호
 	private String contents; //내용 
 	private Date enrollDate; //작성일자
@@ -59,12 +59,12 @@ public class Qna  { // 1:1 문의
 		this.title = title;
 	}
 
-	public String getNick() {
-		return nick;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getQuestionPwd() {
@@ -98,15 +98,6 @@ public class Qna  { // 1:1 문의
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-
-	@Override
-	public String toString() {
-		return "Qna [qnaNo=" + qnaNo + ", family=" + family + ", step=" + step + ", category=" + category + ", title="
-				+ title + ", nick=" + nick + ", questionPwd=" + questionPwd + ", contents=" + contents + ", enrollDate="
-				+ enrollDate + ", hits=" + hits + "]";
-	}
-
-	
 	
 	
 }

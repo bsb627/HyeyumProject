@@ -53,6 +53,8 @@ public class QuestionWriteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session != null && (session.getAttribute("userId")) != null) {
+
+			
 			String userId = (String)session.getAttribute("userId");
 			Qna qna = new Qna();
 			qna.setTitle(title);
@@ -60,17 +62,17 @@ public class QuestionWriteServlet extends HttpServlet {
 			qna.setCategory(category);
 			qna.setContents(contents);
 			
-			qna.setNick(userId);
+			qna.setUserId(userId);
 			int result = new QnaService().registerQuestion(qna);
 			
 			if(result > 0 ) {
-				response.sendRedirect("/qna/list"); // 전달값으로 페이지를 주는 것이 아니라 url을 넘겨준다는 것
+				response.sendRedirect("/qna/list");
 			} else {
-				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");
-				view.forward(request, response);
+				RequestDispatcher view2 = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");
+				view2.forward(request, response);
 			 } 
 		}else {
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/serviceFailed.html");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/serviceFailed.html");
 			view.forward(request, response);
 		}
 	}
