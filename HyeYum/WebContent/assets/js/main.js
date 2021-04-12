@@ -287,3 +287,38 @@
   });
 
 })();
+
+/*차트*/
+Highcharts.chart('container', {
+  chart: {
+    type: 'pie',
+    options3d: {
+      enabled: true,
+      alpha: 45
+    }
+  },
+  /*title: {
+    text: '문화나눔, 혜윰의 지난해 성과'
+  },*/
+  subtitle: {
+    text: '기부금의 사용처'
+  },
+  plotOptions: {
+    pie: {
+      innerSize: 100,
+      depth: 45
+    }
+  },
+  series: [{
+    name: '기부금액(단위: 천만원)',
+    data: [
+      ['어린이 도서관 건립', 1700],
+      ['문화발전 기금에 기부', 500],
+      ['예술가들을 위한 기금에 기부', 1100],
+      ['혜화동 소극장 지원사업', 470],
+      ['한국을 빛낸 독립영화 지원사업', 320]
+/*      ['Reddish (bag)', 2200],
+      ['Grapes (bunch)', 770]*/
+    ]
+  }]
+});

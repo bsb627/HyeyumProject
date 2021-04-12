@@ -88,7 +88,18 @@
 <main id="main">
 	<!--  ============ Chart ============== -->
 	<div style="text-align: center;">
-		<h1>차트 들어올거임</h1>
+	<h2>문화나눔, 혜윰의 지난해 성과</h2>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		
+		<figure class="highcharts-figure">
+		  <div id="container"></div>
+		  <p class="highcharts-description">
+		  </p>
+		</figure>
 	</div>
 	<!--  ============ End Chart ============== -->
 
