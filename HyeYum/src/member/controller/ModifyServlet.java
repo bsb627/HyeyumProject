@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class loginServlet
  */
@@ -27,7 +29,9 @@ public class ModifyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("UTF-8");
+		Member member = new Member();
+		// 불러올 정보:USER_ID 수정할 정보 : MEMBER_PWD, USER_PHONE, EMAIL, ADDRESS
 	}
 
 	/**

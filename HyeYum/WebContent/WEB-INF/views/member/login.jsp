@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="/assets/css/member.css">
+    <link rel="stylesheet" href="/assets/css/member/member.css">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="/assets/img/login/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="/member/enroll" class="signup-image-link">회원가입</a>
+                        <a href="/member/enroll" class="signup-image-link">회원가입</a><a href="/index.jsp" class="signup-image-link">메인페이지</a><br>
                     </div>
 
                     <div class="signin-form">
@@ -49,9 +49,9 @@
                         <div class="social-login">
                             <span class="social-label">SNS 계정으로 로그인</span>
                             <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                <li><a href="/WEB-INF/views/member/kakaoLogin.html"><i class="display-flex-center zmdi zmdi-naver"></i></a></li>
+                                <li><a href="/WEB-INF/views/member/kakaoLogin.html"><i class="display-flex-center zmdi zmdi-kakao"></i></a></li>
+                                <!-- <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -60,7 +60,28 @@
         </section>
 
     </div>
-
+<!-- 	<a href="javascript:kakaoLogin()"><img src="https://play-lh.googleusercontent.com/8_0SDfkFXAFm12A7XEqkyChCdGC055J6fC8JR7qynNuO3qNOczIoNHo4U4lad8xYMJOL" style="height:60px;width:auto;"></a>
+   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+   <script>
+   //9af5bb49e91b4be276f23399b1d13feb
+   window.Kakao.init("9af5bb49e91b4be276f23399b1d13feb");
+   
+   function kakaoLogin() { 
+	   window.Kakao.Auth.login({
+		  scope:'profile, account_email,gender',
+		  success : funtion(auth0bj) {
+			  console.log(auth0bj);
+			  window.Kakao.API.request({
+				  url:'/v2/user/me',
+				  success : res => {
+					  const kakao_account = res.kakao_account;
+					  console.log(kakao_account);
+				  }
+			  });
+		  }
+	   });
+   }
+   </script> -->
     <!-- JS -->
      <script src="/assets/vendor/jquery/jquery.min.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->

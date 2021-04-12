@@ -23,7 +23,8 @@
     <section class="inner-page">
       <div class="container">
         <p>
-          Example inner page template
+          Example inner page template => 리뷰 폼을 인포폼에 넣어버릴 것!!! 스크립틀릿 안에 
+          (이 파일은 지울 거!!)
         </p>
       </div>
     </section>

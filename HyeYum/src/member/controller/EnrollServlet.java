@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class loginServlet
  */
@@ -25,7 +28,9 @@ public class EnrollServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("들어옴");
 		request.getRequestDispatcher("/WEB-INF/views/member/enroll.jsp").forward(request, response);
 	}
 
@@ -33,8 +38,25 @@ public class EnrollServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		  request.setCharacterEncoding("UTF-8"); 
+		  // user-id, user-pwd , user-repwd,user-name, user-nick, user-email,
+		   // user-address, 
+		  Member member = new Member(); 
+		  member.setUserId(request.getParameter("user-id"));
+		  member.setUserPwd(request.getParameter("user-pwd"));
+		  member.setUserName(request.getParameter("user-name"));
+		  member.setUserNick(request.getParameter("user-nick"));
+		  member.setUserEmail(request.getParameter("user-email"));
+		  member.setUserAddress(request.getParameter("user-address"));
+		  
+		 int result = new MemberService().registerMember(member); 
+		  if (result > 0) { //회원가입 성공 
+			  response.sendRedirect("/index.jsp"); 
+		  } else {
+		 response.sendRedirect("/WEB-INF/views/member/memberError.html"); }
+		
+		
 	}
 
 }

@@ -13,7 +13,7 @@ public class Member {
 	private String userEmail; // 이메일
 	private Date enrollDate; // 가입일자
 	private Date outDate; // 탈퇴일자
-	private char outState; // 탈퇴여부
+	private String outState; // 탈퇴여부
 	private String outReason; // 탈퇴사유
 
 	public Date getOutDate() {
@@ -24,11 +24,11 @@ public class Member {
 		this.outDate = outDate;
 	}
 
-	public char getOutState() {
+	public String getOutState() {
 		return outState;
 	}
 
-	public void setOutState(char outState) {
+	public void setOutState(String outState) {
 		this.outState = outState;
 	}
 

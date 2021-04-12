@@ -58,7 +58,7 @@ public class MemberDAO {
 				member.setUserAddress(rset.getString("ADDRESS"));
 				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				member.setOutDate(rset.getDate("OUT_DATE"));
-				member.setOutState(rset.getString("OUT_STATE").charAt(0));
+				member.setOutState(rset.getString("OUT_STATE"));
 				member.setOutReason(rset.getString("OUT_REASON"));
 			}
 		} catch (SQLException e) {
@@ -92,7 +92,7 @@ public class MemberDAO {
 				member.setUserAddress(rset.getString("ADDRESS"));
 				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				member.setOutDate(rset.getDate("OUT_DATE"));
-				member.setOutState(rset.getString("OUT_STATE").charAt(0));
+				member.setOutState(rset.getString("OUT_STATE"));
 				member.setOutReason(rset.getString("OUT_REASON"));
 				list.add(member);
 			}
@@ -148,7 +148,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = "UPDATE MEMBER SET MEMBER_PWD=?, USER_PHONE=?, EMAIL=?, ADDRESS=? WHERE USER_ID = ?";
-		
+		// 불러올 정보:USER_ID 수정할 정보 : MEMBER_PWD, USER_PHONE, EMAIL, ADDRESS
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member.getUserPwd());
@@ -191,7 +191,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			//pstmt.setString(1, member.getOutState()); char형?!
+			pstmt.setString(1, member.getOutState()); 
 			pstmt.setString(2, member.getUserId());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class loginServlet
  */
@@ -26,8 +29,14 @@ public class MyInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		String userId = request.getParameter("user-id");
+		Member member = new MemberService().selectOneById(userId);
+		if(member != null) {
+			request.setAttribute("member", member);
+			request.getRequestDispatcher("/WEB-INF/views/member/memberInfo.jsp").forward(request, response);
+		} else {
+			response.sendRedirect("/WEB-INF/views/member/memberError.html");
+		}
 	}
 
 	/**

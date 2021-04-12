@@ -1,0 +1,43 @@
+/* h2 {
+  text-align: center;
+  padding: 20px 0;
+} */
+
+/* .table-bordered {
+  border: 1px solid #ddd !important;
+}
+
+table caption {
+	padding: .5em 0;
+} */
+
+/* @media screen and (max-width: 767px) {
+  table caption {
+    display: none;
+  }
+} */
+
+.breadcrumbs {
+  padding: 15px 0;
+  background: #012970;
+  min-height: 40px;
+  margin-top: 82px;
+  color: #fff;
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+
+
+.btn-write{
+	float:right;
+	background: #4154f1;
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 4px;
+    color: #fff;
+
+}
