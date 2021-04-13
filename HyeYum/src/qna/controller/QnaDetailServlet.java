@@ -51,18 +51,18 @@ public class QnaDetailServlet extends HttpServlet {
 		response.setContentType("text/html; charset = UTF-8");
 
 		
-		int qnaNo = Integer.parseInt(request.getParameter("qna-no")); //jsp파일에 ?이거
+		
+		
+		int qnaNo = Integer.parseInt(request.getParameter("qna-no")); 
 		String qnaPass  = request.getParameter("qna-pass");
 		Qna qna = new QnaService().printOne(qnaNo, qnaPass);
-
+		
 		
 		HttpSession session  = request.getSession();
 		String userId = (String) session.getAttribute("userId");
-		
-
-		
+	
 		if(userId.equals(qna.getUserId()) && qna!=null) {
-			
+			new QnaService().addHitsCount(qnaNo);
 			request.setAttribute("qna", qna);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaDetailForm.jsp");
 			view.forward(request, response);
@@ -71,21 +71,6 @@ public class QnaDetailServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('작성자와 비밀번호가 일치하지 않습니다')</script>");
 		}
-		
-		
-		
-
-		
-				
-//			if(qna!=null) {
-//				System.out.println("qna null 여기오냐고");
-//				request.setAttribute("qna", qna);
-//				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaDetailForm.jsp");
-//				view.forward(request, response);
-//				} else {
-//				PrintWriter out = response.getWriter();
-//				out.println("<script>alert('작성자와 비밀번호가 일치하지 않습니다')</script>");
-//				}
 		
 		} 
 

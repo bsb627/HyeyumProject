@@ -339,9 +339,22 @@ public class QnaDAO {
 	}
 
 	public int updateHitsQna(Connection conn, int qnaNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE QNA SET HITS = NVL(HITS,0) + 1 WHERE QNA_NO = ?";
 		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
 		
-		return qnaNo;
+		return result;
 	}
 	
 	//////////////////////////////////////

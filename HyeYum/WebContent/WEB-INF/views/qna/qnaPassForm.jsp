@@ -40,7 +40,7 @@ int qnaNo = (int)request.getAttribute("qnaNo");
 		<input type = "hidden" name = "qna-no" value ="<%= qnaNo %>"> <!--!!!!!!!!!!1 여기여기여기여기 !!!!!!!!!!!!-->
 		<input type = "password" class="form-control" style = "width : 30%" name ="qna-pass">
 		<br>
-		<input type = "reset" class ="btn btn-outline-dark" value = "취소">
+		<a href = "/qna/list"><input type = "button" class ="btn btn-outline-dark" value = "취소"></a>
 		<input type = "submit" class = "btn btn-dark "value = "확인">
 		</form>
 		</div>

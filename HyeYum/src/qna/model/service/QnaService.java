@@ -174,9 +174,16 @@ public class QnaService {
 		try {
 			conn = factory.createConnection();
 			result = new QnaDAO().updateHitsQna(conn, qnaNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}

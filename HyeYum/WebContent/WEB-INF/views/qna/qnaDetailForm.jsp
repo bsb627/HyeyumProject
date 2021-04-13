@@ -41,56 +41,66 @@
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <section class="inner-page">
-    			
-      <div class="container">
+    <section class="inner-page">		
+    	
       	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">
 		</div>
 		
 		
-		<table class = "table">
-			<tr>
-				<td>글 번호  :</td>
-				<td><%= qna.getQnaNo() %></td>
-				<td>문의 분류 :</td>
-				<td><%= qna.getCategory() %></td>
-			</tr>
-			<tr>
-				<td>제목 : </td>
-			</tr>
-			<tr>
-				<td><%= qna.getTitle() %></td>
-			</tr>
-			<tr>
-				<td>내용 : </td>
-			</tr>
-			<tr>
-				<td><%= qna.getContents() %></td>
-			</tr>
-		</table>
+		 <section id="blog" class="blog">
+     		 <div class="container" data-aos="fade-up" style ="width : 80%">
+          <div class="col-lg-12 entries">
+            <article class="entry entry-single">
+                <h2 class="entry-title">
+                <a href="#"><%= qna.getTitle() %></a>
+              </h2>
+              <div class="entry-meta">
+                <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i>[작성자]  <%= qna.getUserId() %></li>
+                <li class="d-flex align-items-center"><i class="bi bi-tag"></i> [문의분류]  <%= qna.getCategory() %></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i>[등록일]  <%= qna.getEnrollDate() %></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> [조회수]  <%= qna.getHits() %></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+               <%= qna.getContents() %>
+              </div>
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">첨부파일</a></li>
+                  </ul>
+              </div>
+              </article>
+            </div>
+      	</div>
+    </section>
 		
-		<div align = "right">
-		<form action="/qna/modify" method = "get" id = "modify-form">
+
+		
+		<div align = "right" style = "width:90%">
+		<form action="/qna/modify" method = "get" id = "modify-form" style = "float:right">
 			<input type = "hidden" name = "qna-no" value = "<%= qna.getQnaNo() %>">
 			<input type = "hidden" name = "qna-pwd" value ="<%= qna.getQuestionPwd() %>" >
 			<input type = "submit" value = "수정" class= "btn btn-primary" id = "modify">
 		</form>     
-		<form action = "/qna/delete" method = "post" id = "delete-form" >
+		<form action = "/qna/delete" method = "post" id = "delete-form" style ="float:right">
 			<input type = "hidden" name = "qna-no" value = "<%= qna.getQnaNo() %>">
 			<input type = "submit" value = "삭제" class = "btn btn-outline-primary" id="delete">
 		</form>
 		</div>
 		<br>
+
+
+      
+    </section>
+
+  </main><!-- End #main -->
 		<div align = "center">
 		<form action="/qna/list" >
 			<input type = "submit"  value = "목록" class = "btn btn-primary">
 		</form>
 		</div>
-
-      </div>
-    </section>
-
-  </main><!-- End #main -->
-
 <%@include file="/footer.jsp"%>

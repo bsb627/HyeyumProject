@@ -36,13 +36,9 @@
 		
 		<!--  시작  -->
 		
-		<div class = "col-7" style = "float : left">
-		<form action = "/question/write" method = "get" class = "form-inline">
-			<input type = "submit" value = "문의 등록" class ="btn btn-primary mb-3" >
-		</form>
-		</div>
-		<div  style = "float : left" class = "col-auto" align = "right">
-			<form class="row g-3" class = "form-inline" action = "/qna/search" method = "get">
+
+		<div style = "float : right">
+			<form class="row g-3" action = "/qna/search" method = "get">
 			  <div class="col-auto">
 			    <select name = "search-category" class="form-select">
 			      	<option value = "USER_ID" >아이디</option>
@@ -81,6 +77,12 @@
       		<% } %>
       		</table>
       		<div align = "center"><%= pageNavi %></div>
+      		
+      		<div style = "float : right">
+				<form action = "/question/write" method = "get" >
+					<input type = "submit" value = "문의 등록" class ="btn btn-primary mb-3" >
+				</form>
+			</div>
       	</div>
 
       
