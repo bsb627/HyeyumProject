@@ -96,9 +96,9 @@ $(document).ready(function() {
 					</div>
 
 					<div class="form-outline col-md-12">
+					<label class="form-label" for="movie-title">제목</label>
 						<input type="text" id="movie-title" class="form-control"
 							name="movie-title" autocomplete="off" required maxlength="50" />
-						<label class="form-label" for="show-title">제목</label>
 						<hr>
 					</div>
 

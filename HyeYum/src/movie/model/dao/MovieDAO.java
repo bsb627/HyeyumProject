@@ -329,12 +329,13 @@ public class MovieDAO {
 	
 	// 추천혜윰
 	public ArrayList<MovieRecommend> selectAllMovieRecommend(Connection conn, int currentPage) { // 추천글 전체보기
+		System.out.println("리스트dao 들어옴");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<MovieRecommend> recommend = null;
 		//RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, USER_ID
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID)) WHERE NUM BETWEEN ? AND ? ";
-		int recordCountPerPage = 5;
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK,USER_ID FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID)) WHERE NUM BETWEEN ? AND ? ";
+		int recordCountPerPage = 10;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
 		int end = currentPage*recordCountPerPage;
 		
@@ -354,6 +355,7 @@ public class MovieDAO {
 				mRecommend.setHits(rset.getInt("HITS"));
 				mRecommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mRecommend.setNick(rset.getString("NICK"));
+				mRecommend.setUserId(rset.getString("USER_ID"));
 				recommend.add(mRecommend);
 			}
 		} catch (SQLException e) {
@@ -363,12 +365,13 @@ public class MovieDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
+			System.out.println("dao 받아옴" + recommend);
 			return recommend;
 		}
 	
 	public String getMovieRecommendPageNavi(Connection conn, int currentPage)  { // 추천글 페이징
 		int recordTotalCount = totalRecommendCount(conn); // 전체 게시물
-		int recordCountPerPage = 5; // 5개씩
+		int recordCountPerPage = 10; // 5개씩
 		int pageTotalCount = 0;
 		if (recordTotalCount % recordCountPerPage > 0) {
 			pageTotalCount = recordTotalCount / recordCountPerPage + 1; // 1 : 나머지 게시물 담는 곳
@@ -451,6 +454,7 @@ public class MovieDAO {
 				mRecommend.setHits(rset.getInt("HITS"));
 				mRecommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mRecommend.setNick(rset.getString("NICK"));
+				mRecommend.setUserId(rset.getString("USER_ID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -484,42 +488,193 @@ public class MovieDAO {
 	}
 	
 	public int updateMovieRecommend(Connection conn, MovieRecommend movieRecommend) { // 추천글 수정
+		PreparedStatement pstmt = null;
 		int result = 0;
-		
+		String query ="UPDATE MOVIE_RECOMMEND SET GENRE=? ,TITLE=? , CONTENTS=? WHERE RECOMMEND_NO = ? ";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, movieRecommend.getGenre());
+			pstmt.setString(2, movieRecommend.getTitle());
+			pstmt.setString(3, movieRecommend.getContents());
+			pstmt.setInt(4, movieRecommend.getNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		return result;
 	}
 	
-	public int deleteMovieRecommend(Connection conn, ArrayList<Integer> recommendNo) { // 추천글 삭제
+	public int deleteMovieRecommend(Connection conn, int recommendNo) { // 추천글 삭제
+		PreparedStatement pstmt = null;
 		int result = 0;
+			System.out.println("no:"  + recommendNo);
+		String query = "DELETE FROM MOVIE_RECOMMEND WHERE RECOMMEND_NO = ?";
 		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, recommendNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			JDBCTemplate.close(pstmt);
+		}
+			System.out.println("result : " + result);
 		return result;
 	}
 	
 	public ArrayList<MovieRecommend> selectSearchRecommendList(Connection conn, int currentPage, String search, String searchCategory) { //추천글 검색결과 전체보기
-		PreparedStatement ptsmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset= null;
-		//String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE " +
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE " + searchCategory + " LIKE ? ) WHERE NUM BETWEEN ? AND ?";
+		ArrayList<MovieRecommend> mRecommend = null;
+		int recordCountPerPage = 5;
+		int start = currentPage*recordCountPerPage - (recordCountPerPage -1);
+		int end = currentPage*recordCountPerPage;
 		
-		/*ArrayList<MovieRecommend> mRecommend = null;
-		
-		return mRecommend;*/
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, '%' + search + '%');
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+				System.out.println("rset :" + rset);
+			mRecommend = new ArrayList<MovieRecommend>();
+			while(rset.next()) {
+				MovieRecommend recommend = new MovieRecommend();
+				recommend.setRowNo(rset.getInt("RECOMMEND_NO")); // 인덱스 번호 
+				recommend.setNo(rset.getInt("NUM")); // 행 번호
+				recommend.setGenre(rset.getString("GENRE"));
+				recommend.setTitle(rset.getString("TITLE"));
+				recommend.setContents(rset.getString("CONTENTS"));
+				recommend.setHits(rset.getInt("HITS"));
+				recommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				recommend.setNick(rset.getString("NICK"));
+				mRecommend.add(recommend);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+			System.out.println("search DAO mRecommend : " + mRecommend);
+		return mRecommend;
 	}
 	
 	public String getSearchRecommendPageNavi(Connection conn, int currentPage, String search, String searchCategory) { // 추천글 검색 페이징
-		
-		return null;
+		int recordCountPerPage = 5;
+		int naviCountPerPage = 5; // 1 2 3 4 5 6 7 8 9 10, 1 2 3 4 5
+		int recordTotalCount =searchTotalRecommendCount(conn, search, searchCategory);
+		// 123개의 게시물을 10개씩 보여준다고 가정할 때 페이지의 갯수는 13개
+		int pageTotalCount = 0; // 페이지의 갯수
+		if(recordTotalCount % recordCountPerPage > 0) {
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+		if(currentPage < 1) {
+			currentPage = 1;
+		} else if (currentPage > pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
+		int startNavi = ((currentPage - 1) / naviCountPerPage) * naviCountPerPage + 1;
+		int endNavi = startNavi + naviCountPerPage - 1;
+		if(endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1 ) {
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		// a 태그를 만드는 코드
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) { ///notice/search?currentPage=1&searchKeyword=search
+			sb.append("<a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + (startNavi-1) + "'> 이전 </a>");
+		}
+		for(int i = startNavi; i<=endNavi; i++) {
+			sb.append("<a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + i + "'>" + i + " </a>");
+		}
+		if(needNext) {
+			sb.append("<a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + (endNavi+1) + "'> 다음 </a>");
+		}
+		return sb.toString();
 	}
 	
 	public int searchTotalRecommendCount(Connection conn, String search, String searchCategory) { // 추천글 검색 총 게시글 수
-		return 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String qeury = "SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_RECOMMEND WHERE TITLE LIKE ?";
+		int recordTotalCount = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(qeury);
+			pstmt.setString(1,'%' + search + '%');
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return recordTotalCount;
 	}
 	
 	public int updateHitsRecommend(Connection conn, int recommendNo) { // 해당 게시글 조회수 증가
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE MOVIE_RECOMMEND SET HITS = NVL(HITS,0) + 1 WHERE RECOMMEND_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, recommendNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	
 	public int insertLikesRecommend(Connection conn, int recommendNo, String userId) { // 해당 게시글 좋아요 등록
-		return 0;
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_LIKES WHERE RECOMMEND_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, recommendNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return count;
 	}
 	
 	public int updateLikesRecommend(Connection conn, int recommendNo, String userId) { // 해당 게시글 좋아요 취소

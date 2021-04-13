@@ -94,7 +94,7 @@
           <% if(userId != null && userId !="") { %>
             <li class="dropdown"><a href="#"><span>내정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">마이페이지</a></li>
+              <li><a href="/member/myInfo">마이페이지</a></li>
               <li><a href="/member/logout">로그아웃</a></li>
             </ul>
           </li>

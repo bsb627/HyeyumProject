@@ -54,7 +54,7 @@
 
 	<!--  ============= 추천 게시판 글 목록 =========== -->
 	<div class="container" data-aos="fade-up">
-		<section class="inner-page blog" >
+		<section class="inner-page blog">
 
 			<!-- <div class="input-group"> -->
 			<div style="float: right">
@@ -63,17 +63,18 @@
 						<form action="" method="get">
 
 							<div class="input-group">
-								<select name="search" id="" class="form-select">
-									<option value="user-nick">작성자</option>
-									<option value="title">제목</option>
-									<option value="content">내용</option>
+								<select name="search-category" class="form-select">
+									<option value="작성자">작성자</option>
+									<option value="제목">제목</option>
+									<option value="내용">내용</option>
 								</select>
 								<!-- aria-label="Search" -->
 								<div class="col-auto">
-									<input type="search" class="form-control rounded"
-										placeholder="Search" aria-describedby="search-addon" />
+									<input type="search" name="search-keyword"
+										class="form-control rounded" placeholder="Search"
+										aria-describedby="search-addon" />
 								</div>
-								<button type="button" class="btn btn-primary">검색</button>
+								<input type="submit" class="btn btn-primary" value="검색">
 							</div>
 						</form>
 					</div>
@@ -108,7 +109,8 @@
 			<!-- 글 목록 시작 -->
 
 			<div class="contaioner">
-				<table class="table table-hover table-borderless" style="text-align: center">
+				<table class="table table-hover table-borderless"
+					style="text-align: center">
 					<thead>
 						<tr class="table-light">
 							<th scope="col">글번호</th>
@@ -122,11 +124,11 @@
 					</thead>
 					<tbody>
 						<% for(MovieRecommend mRecommend : recommend) {%>
-						<tr >
+						<tr>
 							<th><p class="text-center"><%=mRecommend.getRowNo() %></p></th>
 							<td><%= mRecommend.getGenre()%></td>
 							<td><a
-								href="/movieRecommend/detail?recommendNo=<%=mRecommend.getRowNo() %>"><%= mRecommend.getTitle()%></a></td>
+								href="/movieRecommend/detail?recommendNo=<%=mRecommend.getRowNo()%>"><%= mRecommend.getTitle()%></a></td>
 							<td><%= mRecommend.getNick() %></td>
 							<td><%= mRecommend.getEnrollDate() %></td>
 							<td><%= mRecommend.getHits() %></td>
@@ -135,26 +137,26 @@
 						<% } %>
 
 					</tbody>
-					
+
 				</table>
 
 			</div>
-				
-			<!-- 페이징 처리 할 곳 !! -->
+
+
 
 			<div class="contaioner">
-				
-				<div style="float:right">
+
+				<div style="float: right">
 					<a href="/movieRecommend/write"><button
 							class="btn btn-primary btn-write">글쓰기</button></a>
 				</div>
-			
+			</div>
+			<br><br><br>
+			<!-- 페이징 처리 할 곳 !! -->
 			<div class="blog-pagination">
 				<ul class="justify-content-center">
-					<%= pageNavi %>
+					<%=pageNavi%>
 				</ul>
-			</div>
-			
 			</div>
 		</section>
 	</div>

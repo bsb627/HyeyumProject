@@ -56,10 +56,7 @@ public class MemberDAO {
 				member.setUserPhone(rset.getString("USER_PHONE"));
 				member.setUserEmail(rset.getString("EMAIL"));
 				member.setUserAddress(rset.getString("ADDRESS"));
-				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
-				member.setOutDate(rset.getDate("OUT_DATE"));
-				member.setOutState(rset.getString("OUT_STATE"));
-				member.setOutReason(rset.getString("OUT_REASON"));
+				member.setRegDate(rset.getDate("REG_DATE"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -90,7 +87,7 @@ public class MemberDAO {
 				member.setUserPhone(rset.getString("USER_PHONE"));
 				member.setUserEmail(rset.getString("EMAIL"));
 				member.setUserAddress(rset.getString("ADDRESS"));
-				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				member.setRegDate(rset.getDate("REG_DATE"));
 				member.setOutDate(rset.getDate("OUT_DATE"));
 				member.setOutState(rset.getString("OUT_STATE"));
 				member.setOutReason(rset.getString("OUT_REASON"));

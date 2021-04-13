@@ -35,8 +35,8 @@
 				<h2>MOVIE RECOMMEND</h2>
 				<p>이 영화를 추천합니다!</p>
 			</header>
-			<div class="row">
 
+			<div class="row">
 				<div class="col-lg-8 entries">
 
 					<article class="entry entry-single">
@@ -56,14 +56,14 @@
 
 						<div class="entry-meta">
 							<ul>
+								<!-- 닉네임, 시간, 조회수 -->
 								<li class="d-flex align-items-center"><i
 									class="bi bi-person"></i> <%=recommend.getNick()%></li>
 								<li class="d-flex align-items-center"><i
 									class="bi bi-clock"></i> <%=recommend.getEnrollDate()%><time
 										datetime="2020-01-01"></time></li>
 								<li class="d-flex align-items-center"><i
-									class="bi bi-chat-dots"></i> <a href="blog-single.html">12
-										Comments</a></li>
+									class="bi bi-card-text"></i><%=recommend.getHits()%></li>
 							</ul>
 						</div>
 
@@ -87,6 +87,7 @@
 								<li><a href="#">Tips</a></li>
 								<li><a href="#">Marketing</a></li>
 							</ul>
+
 						</div>
 
 					</article>
@@ -98,41 +99,11 @@
 
 						<h4 class="comments-count">8 Comments</h4>
 
-						<div id="comment-1" class="comment">
-							<div class="d-flex">
-								<div class="comment-img">
-									<img src="/assets/img/blog/comments-1.jpg" alt="">
-								</div>
-								<div>
-									<h5>
-										<a href="">Georgia Reader</a> <a href="#" class="reply"><i
-											class="bi bi-reply-fill"></i> Reply</a>
-									</h5>
-									<time datetime="2020-01-01">01 Jan, 2020</time>
-									<p>Et rerum totam nisi. Molestiae vel quam dolorum vel
-										voluptatem et et. Est ad aut sapiente quis molestiae est qui
-										cum soluta. Vero aut rerum vel. Rerum quos laboriosam placeat
-										ex qui. Sint qui facilis et.</p>
-								</div>
-							</div>
-						</div>
+						<div id="comment-1" class="comment"></div>
 						<!-- End comment #1 -->
 
 						<div id="comment-2" class="comment">
-							<div class="d-flex">
-								<div class="comment-img">
-									<img src="/assets/img/blog/comments-2.jpg" alt="">
-								</div>
-								<div>
-									<h5>
-										<a href="">Aron Alvarado</a> <a href="#" class="reply"><i
-											class="bi bi-reply-fill"></i> Reply</a>
-									</h5>
-									<time datetime="2020-01-01">01 Jan, 2020</time>
-									<p>Ipsam tempora sequi voluptatem quis sapiente non. Autem
-										itaque eveniet saepe. Officiis illo ut beatae.</p>
-								</div>
-							</div>
+
 
 
 							<div class="reply-form">
@@ -176,22 +147,53 @@
 
 					<div class="sidebar">
 
-						<h3 class="sidebar-title">조회수/좋아요/넣을거!!</h3>
-						<hr>
-						<div class="sidebar-item categories">
-							<ul>
-								<li>조회 수 : 조회수 넣어야함!!</li>
-								<li>작성자 : <%=recommend.getNick()%></li>
-								<li>작성일 : <%=recommend.getEnrollDate()%></li>
-								<li>좋아요</li>
-								<li>General</li>
-							</ul>
-						</div>
+						<div class="portfolio-info">
+							<h5>
+								<b>정보</b>
+							</h5>
 
+							<hr>
+							<div class="sidebar-item categories">
+								<ul>
+									<li><strong>조회수</strong> <%=recommend.getHits()%></li>
+									<li><strong>작성자</strong> <%=recommend.getNick()%></li>
+									<li><strong>작성일</strong> <%=recommend.getEnrollDate()%></li>
+									<br>
+									<%--if(likes == 0){ --%>
+									<li><a href=""><button
+												class="btn btn-sm btn-outline-danger">
+												<i class="bi bi-heart"></i> 좋아요
+											</button></a></li>
+									<%-- } else { --%>
+									<li><a href=""><button
+												class="btn btn-sm btn-outline-danger">
+												<i class="bi bi-heart-fill" style="color: #dc3545"></i> 좋아요
+												취소
+											</button></a></li>
+									<%-- } --%>
+								</ul>
+							</div>
+							<hr>
+							<div align="center">
+								<%
+									if (recommend.getUserId().equals(userId)) {
+								%>
+								<a href="/movieRecommend/modify?no=<%=recommend.getNo()%>">
+									<input type="button" class="btn btn-primary " value="수정">
+								</a> <a href="/movieRecommend/delete?no=<%=recommend.getNo()%>"><input
+									type="button" class="btn btn-primary" value="삭제"></a>
+								<%
+									}
+								%>
+								<a href="/movieRecommend/list"><input type="submit"
+									class="btn btn-primary" value="목록으로"></a>
+							</div>
+						</div>
 					</div>
 				</div>
-
 			</div>
+		</div>
+
 	</section>
 </main>
 <!-- End #main -->

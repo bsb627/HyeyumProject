@@ -11,7 +11,7 @@ public class Member {
 	private String userAddress; // 주소
 	private String userPhone; // 전화번호
 	private String userEmail; // 이메일
-	private Date enrollDate; // 가입일자
+	private Date regDate; // 가입일자
 	private Date outDate; // 탈퇴일자
 	private String outState; // 탈퇴여부
 	private String outReason; // 탈퇴사유
@@ -100,19 +100,20 @@ public class Member {
 		this.userEmail = userEmail;
 	}
 
-	public Date getEnrollDate() {
-		return enrollDate;
+
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	@Override
 	public String toString() {
 		return "Member [userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", userNick=" + userNick
 				+ ", userAddress=" + userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail
-				+ ", enrollDate=" + enrollDate + ", outDate=" + outDate + ", outState=" + outState + ", outReason="
+				+ ", regDate=" + regDate + ", outDate=" + outDate + ", outState=" + outState + ", outReason="
 				+ outReason + "]";
 	}
 

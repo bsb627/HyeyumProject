@@ -46,14 +46,14 @@
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
                             </div>
                         </form>
-                        <div class="social-login">
+                       <!--  <div class="social-login">
                             <span class="social-label">SNS 계정으로 로그인</span>
                             <ul class="socials">
                                 <li><a href="/WEB-INF/views/member/kakaoLogin.html"><i class="display-flex-center zmdi zmdi-naver"></i></a></li>
                                 <li><a href="/WEB-INF/views/member/kakaoLogin.html"><i class="display-flex-center zmdi zmdi-kakao"></i></a></li>
-                                <!-- <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li> -->
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

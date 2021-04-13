@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import movie.model.service.MovieService;
 import movie.model.vo.MovieRecommend;
@@ -29,10 +30,16 @@ public class MovieRecommendDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("디테일들어옴");
-		int recommendNo = Integer.parseInt(request.getParameter("recommendNo"));
+		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		
+		int recommendNo = Integer.parseInt(request.getParameter("recommendNo")); 
+
 		MovieRecommend recommend = new MovieService().printOneMovieRecommend(recommendNo);
 		if(recommend != null) {
+			
+		new MovieService().RecommendHitsCount(recommendNo); // 게시글 조회수
 			request.setAttribute("recommend", recommend);
 			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendDetail.jsp").forward(request, response);
 		} else {

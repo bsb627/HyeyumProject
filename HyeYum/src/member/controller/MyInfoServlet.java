@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.service.MemberService;
 import member.model.vo.Member;
@@ -13,7 +14,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet("/member/myinfo")
+@WebServlet("/member/myInfo")
 public class MyInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,11 +30,17 @@ public class MyInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("user-id");
+		HttpSession session = request.getSession();
+		session.getAttribute("userId");
+		
+		String userId = (String)session.getAttribute("userId");
+			System.out.println(userId);
 		Member member = new MemberService().selectOneById(userId);
+		System.out.println("=>" + member);
+
 		if(member != null) {
 			request.setAttribute("member", member);
-			request.getRequestDispatcher("/WEB-INF/views/member/memberInfo.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/member/memberInfoDetail.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("/WEB-INF/views/member/memberError.html");
 		}

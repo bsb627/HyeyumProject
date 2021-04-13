@@ -67,7 +67,6 @@ public class MovieRecommendWriteServlet extends HttpServlet {
 				out.println("location.href='/movieRecommend/list';");
 				out.println("</script>");
 			} else {
-				System.out.println(result + "result");
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			}
 		} else {

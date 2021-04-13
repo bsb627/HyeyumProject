@@ -37,6 +37,16 @@ public class MemberService {
 		Connection conn = null;
 		Member member = null;
 		
+		try {
+			conn = factory.createConnection();
+			member = new MemberDAO().selectOneById(conn, userId);
+				System.out.println(member.toString());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);;
+		}
 		return member;
 	}
 	
@@ -44,6 +54,16 @@ public class MemberService {
 		ArrayList<Member> list = null;
 		Connection conn = null;
 		
+		try {
+			conn = factory.createConnection();
+			list =new MemberDAO().selectMemberList(conn);
+				System.out.println(list.get(0).toString());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return list;
 	}
 	
