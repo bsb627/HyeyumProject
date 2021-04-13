@@ -1,5 +1,6 @@
 package qna.model.dao;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -116,19 +117,20 @@ public class QnaDAO {
 		return recordTotalCount;
 	}
 
-	public Qna selectOne(Connection conn, int qnaNo) {
+	public Qna selectOne(Connection conn, int qnaNo, String qnaPass) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Qna qna = null;
-		String query = "SELECT * FROM QNA WHERE QNA_NO = ?";
+		Qna qna = new Qna();
+		String query = "SELECT * FROM QNA WHERE QNA_NO = ? AND QUESTION_PWD = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, qnaNo);
+			pstmt.setString(2, qnaPass);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				qna = new Qna();
+				
 				qna.setQnaNo(rset.getInt("QNA_NO"));
 				qna.setCategory(rset.getString("CATEGORY"));
 				qna.setTitle(rset.getString("TITLE"));
@@ -144,7 +146,7 @@ public class QnaDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		
+		System.out.println("디테일dao qna : " + qna);
 		return qna;
 	}
 
@@ -172,13 +174,24 @@ public class QnaDAO {
 	}
 	
 	public int insertAnswer(Connection conn, Qna qna) {
-		
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int deleteQna(Connection conn, ArrayList<Qna> qna) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteQna(Connection conn, int qnaNo) {
+		PreparedStatement pstmt = null;
+		String query = "DELETE FROM QNA WHERE QNA_NO = ?";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qnaNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public int updateQna(Connection conn, Qna qna) {

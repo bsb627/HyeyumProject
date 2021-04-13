@@ -42,13 +42,12 @@ public class QnaService {
 	}
 	
 	// 하나출력
-	public Qna printOne(int qnaNo) {
-
+	public Qna printOne(int qnaNo, String qnaPass) {
 		Connection conn = null;
 		Qna qna = null;
 		try {
 			conn = factory.createConnection();
-			qna = new QnaDAO().selectOne(conn, qnaNo);
+			qna = new QnaDAO().selectOne(conn, qnaNo, qnaPass);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,12 +102,12 @@ public class QnaService {
 	}
 	
 	// 글삭제
-	public int deleteQna(ArrayList<Qna> qna) {
+	public int deleteQna(int qnaNo) {
 		Connection conn = null;
 		int result = 0;
 		try {
 			conn = factory.createConnection();
-			result = new QnaDAO().deleteQna(conn, qna);
+			result = new QnaDAO().deleteQna(conn, qnaNo);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
 			} else {

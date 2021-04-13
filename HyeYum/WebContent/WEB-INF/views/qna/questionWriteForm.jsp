@@ -8,8 +8,8 @@
 	 $(document).ready(function() {
 		$("#qna-form").submit(function() {
 			var title = $("#title");
-			var password = $("#password");
-			var contents = $("#contents")
+			var password = $("#qna-pwd");
+			var contents = $("#contents");
 			
 			if(title.val() =="") {
 				alert("제목을 입력해주세요. ");
@@ -21,8 +21,9 @@
 				alert("내용을 입력해주세요.");
 				return false;
 			}
+			alert("등록하시겠습니까?");
 			return true;
-		})
+		});
 	 });
 		
 	</script>
@@ -86,7 +87,7 @@
 		 
 		
 		  <div class="col-12" > <br>
-		    <input type="submit" style = "float : right" class="btn btn-primary" value = "등록">
+		    <input type="submit" style = "float : right" class="btn btn-primary" value = "등록" id="write">
 		  </div>
 		</form>
 		       

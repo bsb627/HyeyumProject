@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/header.jsp"%>
+<%
+
+int qnaNo = (int)request.getAttribute("qnaNo");
+
+%>
 <head>
   <title>문화나눔, 혜윰 - QnA</title>
 
@@ -24,16 +29,21 @@
     <section class="inner-page">
     			
       <div class="container">
-      	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
+<!--       	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">
-		</div>
+		</div> -->
 		
-		<form action = "qna/detail/qnaNum=" method = "post">
-		비밀번호를 입력하세요.
-		<input type = "password" name = "qna-passs">
-		<input type = "submit" value = "확인">
+		<div align = "center">
+		<img src = "/assets/img/qna/pwd.png">
+		<form action = "/qna/detail" method = "post">
+		비밀번호를 입력하세요. <br><br>
+		<input type = "hidden" name = "qna-no" value ="<%= qnaNo %>"> <!--!!!!!!!!!!1 여기여기여기여기 !!!!!!!!!!!!-->
+		<input type = "password" class="form-control" style = "width : 30%" name ="qna-pass">
+		<br>
+		<input type = "reset" class ="btn btn-outline-dark" value = "취소">
+		<input type = "submit" class = "btn btn-dark "value = "확인">
 		</form>
-      	
+		</div>
       </div>
     </section>
 

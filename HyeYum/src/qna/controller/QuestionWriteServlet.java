@@ -70,10 +70,7 @@ public class QuestionWriteServlet extends HttpServlet {
 			} else {
 				RequestDispatcher view2 = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");
 				view2.forward(request, response);
-			 } 
-		}else {
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/serviceFailed.html");
-			view.forward(request, response);
+			} 
 		}
 	}
 

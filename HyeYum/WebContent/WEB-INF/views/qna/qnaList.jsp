@@ -11,18 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-	<!-- <script>
-	$('#exampleModal').on('show.bs.modal', function (event) {
-		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var recipient = button.data('') // Extract info from data-* attributes
-		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-		  var modal = $(this)
-		  modal.find('.modal-title').text('New message to ' + recipient)
-		  modal.find('.modal-body input').val(recipient)
-		})
-	</script> -->
-
+	
   <title>문화나눔, 혜윰 - QnA</title>
 
 </head>
@@ -85,42 +74,17 @@
       			<tr>
       				<td><%= qna.getQnaNo()%></td>
       				<td><%= qna.getCategory() %> </td>
-      				<td><a href="/qna/pass?qnaNum=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
+      				<td><a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
       				<td><%= qna.getUserId()%></td>
       				<td><%= qna.getEnrollDate()%></td>
       				<td><%= qna.getHits() %></td>
-      			<td style = "hidden">
-			</td>
+
 			</tr>
       		<% } %>
       		</table>
       		<div align = "center"><%= pageNavi %></div>
       	</div>
-      <!--===============================비밀번호 모달 창==========================================  -->
-<!-- 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">비밀번호를 입력해주세요.</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-       <form action = "#" method = "post">
-     	 <div class="modal-body form-group" align = "center">
-     	 	<img src = "/assets/img/qna/pwd.png">
-     	 	<br>
-         	<input type="text" class="form-control" id="qna-pwd" name = "qna-pwd">
-        <div class="modal-footer">
-        	<button type="reset" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        	<button type="submit" class="btn btn-primary">확인</button>
-        </div>    
-       </div>
-      </form>  
-    </div>
-  </div>
-</div> -->
+
       
     </section>
 
