@@ -45,7 +45,7 @@ public class QuestionWriteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 보내는 내용이 한글이 있을 수 있기 때문에 인코딩
 	
 		String title = request.getParameter("title"); 
-		String questionPwd = request.getParameter("password");
+		String pass = request.getParameter("qna-pwd");
 		String category = request.getParameter("category");
 		String contents = request.getParameter("contents");
 		//파일 어뜨케 ... 
@@ -58,7 +58,7 @@ public class QuestionWriteServlet extends HttpServlet {
 			String userId = (String)session.getAttribute("userId");
 			Qna qna = new Qna();
 			qna.setTitle(title);
-			qna.setQuestionPwd(questionPwd);
+			qna.setQuestionPwd(pass);
 			qna.setCategory(category);
 			qna.setContents(contents);
 			

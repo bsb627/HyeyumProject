@@ -58,16 +58,16 @@ public class QnaDetailServlet extends HttpServlet {
 		
 		HttpSession session  = request.getSession();
 		String userId = (String) session.getAttribute("userId");
-		System.out.println("디테일서블릿 : " + qna.getUserId());
+		
 
 		
 		if(userId.equals(qna.getUserId()) && qna!=null) {
-			System.out.println("이리로오오로라~");
+			
 			request.setAttribute("qna", qna);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaDetailForm.jsp");
 			view.forward(request, response);
 		} else {
-			System.out.println("틀렷어");
+			
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('작성자와 비밀번호가 일치하지 않습니다')</script>");
 		}

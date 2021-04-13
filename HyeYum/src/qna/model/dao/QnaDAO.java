@@ -88,7 +88,8 @@ public class QnaDAO {
 			sb.append("<a href='/qna/list?currentPage=" + (startNavi-1) + "'> < </a>");
 		}
 		for(int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='/qna/list?currentPage=" + i + "'>" +"<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>  </a>");
+			if( currentPage == i) { sb.append("<a href='/qna/list?currentPage=" + i + "'>" +"<input type = 'button' class = 'btn btn-outline-primary active' value = '"+ i + "'>  </a>");}
+			else { sb.append("<a href='/qna/list?currentPage=" + i + "'>" +"<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>  </a>"); }
 		}
 		if( needNext) {
 			sb.append("<a href='/qna/list?currentPage=" + (endNavi + 1) + "'> > </a>");
@@ -146,7 +147,7 @@ public class QnaDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		System.out.println("디테일dao qna : " + qna);
+		System.out.println("디에이오 selectOne : " + qna);
 		return qna;
 	}
 
@@ -167,7 +168,6 @@ public class QnaDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(conn);
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
@@ -190,13 +190,35 @@ public class QnaDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		return result;
 	}
 
 	public int updateQna(Connection conn, Qna qna) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("디에오 업데이트 ");
+		PreparedStatement pstmt = null;
+		String query = "UPDATE QNA SET TITLE = ?, QUESTION_PWD = ?, CATEGORY = ?, CONTENTS = ? WHERE QNA_NO = ?";
+		int result = 0;
+		System.out.println("디에오 업데이트 QNA :" + qna);
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, qna.getTitle());
+			pstmt.setString(2, qna.getQuestionPwd());
+			pstmt.setString(3, qna.getCategory());
+			pstmt.setString(4, qna.getContents());
+			pstmt.setInt(5, qna.getQnaNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("여기는 qnadao 업데이트 리절트 : " + result);
+		return result;
 	}
 
 	public ArrayList<Qna> selectSearchList(Connection conn, String search, String searchCategory, int currentPage) {
@@ -234,8 +256,10 @@ public class QnaDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		System.out.println("서치 디에이오 searchList : " + searchList);
 		return searchList;
 	}
 
@@ -315,8 +339,9 @@ public class QnaDAO {
 	}
 
 	public int updateHitsQna(Connection conn, int qnaNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		return qnaNo;
 	}
 	
 	//////////////////////////////////////

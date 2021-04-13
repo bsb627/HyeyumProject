@@ -1,7 +1,11 @@
+<%@page import="qna.model.vo.Qna"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@include file="/header.jsp"%>
+<%
+	Qna qna = (Qna)request.getAttribute("qna");
+%>
 <head>
 <head>
 	<script>
@@ -11,6 +15,7 @@
 			var password = $("#qna-pwd");
 			var contents = $("#contents");
 			var category = $("#category");
+			
 			if(title.val() =="") {
 				alert("제목을 입력해주세요. ");
 				return false;
@@ -24,7 +29,7 @@
 				alert("내용을 입력해주세요.");
 				return false;
 			}
-			alert("등록하시겠습니까?");
+			alert("수정하시겠습니까?");
 			return true;
 		});
 	 });
@@ -61,10 +66,10 @@
       	
 	
 	
-		<form action = "/question/write" method = "post" id="qna-form">
+		<form action = "/qna/modify" method = "post" id="qna-form">
 		  <div class="col-12">
-		    <label for="title" class="form-label">제목</label>
-		    <input type="text" class="form-control" id="title" name = "title">
+		    <label for="title" class="form-label" >제목</label>
+		    <input type="text" class="form-control" id="title" name = "title" value = "<%= qna.getTitle() %>">
 		  </div>
 		  <div class="col-12">
 		    <label for="password" class="form-label">비밀번호</label>
@@ -82,7 +87,7 @@
 		  </div>
 		  <div class="col-12">
 		    <label for="contents" class="form-label">내용</label>
-		    <textarea rows = "10" class="form-control" id="contents" name = "contents"></textarea>
+		    <textarea rows = "10" class="form-control" id="contents" name = "contents" ><%= qna.getContents() %></textarea>
 		  </div>
 		  <div class="col-12">
 		    <label for="file" class="form-label">첨부파일</label>
@@ -91,7 +96,8 @@
 		 
 		
 		  <div class="col-12" > <br>
-		    <input type="submit" style = "float : right" class="btn btn-primary" value = "등록" id="write">
+		  	<input type = "hidden" value="<%= qna.getQnaNo() %>" name = "qna-no">
+		    <input type="submit" style = "float : right" class="btn btn-primary" value = "수정" id="write">
 		  </div>
 		</form>
 		       

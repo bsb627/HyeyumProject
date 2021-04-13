@@ -14,6 +14,11 @@
 			alert("삭제 하시겠습니까? ");
 			return true;
 		});
+		
+		$("#modify-form").submit(function() {
+			alert("수정 하시겠습니까? ");
+			return true;
+		});
 
 	 });
 		
@@ -66,7 +71,9 @@
 		</table>
 		
 		<div align = "right">
-		<form action="#" method = "post" id = "modify-form">
+		<form action="/qna/modify" method = "get" id = "modify-form">
+			<input type = "hidden" name = "qna-no" value = "<%= qna.getQnaNo() %>">
+			<input type = "hidden" name = "qna-pwd" value ="<%= qna.getQuestionPwd() %>" >
 			<input type = "submit" value = "수정" class= "btn btn-primary" id = "modify">
 		</form>     
 		<form action = "/qna/delete" method = "post" id = "delete-form" >

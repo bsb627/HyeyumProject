@@ -127,11 +127,17 @@ public class QnaService {
 	
 	// 글수정
 	public int modifyQna(Qna qna) {
+		System.out.println("서비스 모디파이 들어옴");
 		Connection conn = null;
 		int result = 0;
 		try {
 			conn = factory.createConnection();
 			result = new QnaDAO().updateQna(conn, qna);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
