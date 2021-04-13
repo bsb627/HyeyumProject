@@ -26,6 +26,12 @@ public class AdminShowListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * String[] noArr = request.getParameterValues("showNo");
+		 * 
+		 * for(String no : noArr) { if(no.equals(noArr[noArr.length-1]) ) {
+		 * System.out.println(no); }else { System.out.print(no+","); } }
+		 */
 		request.getRequestDispatcher("/WEB-INF/views/admin/board/showList.jsp").forward(request, response);
 	}
 

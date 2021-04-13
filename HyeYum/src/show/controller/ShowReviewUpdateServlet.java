@@ -80,7 +80,6 @@ public class ShowReviewUpdateServlet extends HttpServlet {
 		 * 
 		 * }
 		 */
-		System.out.println("써블릿");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String fileUserId = (String)session.getAttribute("userId");
@@ -110,7 +109,6 @@ public class ShowReviewUpdateServlet extends HttpServlet {
 		review.setNick((String)session.getAttribute("userId"));
 		
 		int result = new ShowService().modifyShowReview(review);
-		System.out.println("result - "+result);
 		if(result > 0) {
 			
 			File uploadFile = multi.getFile("up-file");

@@ -82,4 +82,57 @@ public class AdminDAO {
 		return result;
 	}
 
+	public ShowInfo selectOneShowInfo(Connection conn, int infoNo) {
+			
+		PreparedStatement pstmt = null;
+		ResultSet rset =null;
+		String query ="SELECT * FROM SHOW_INFO WHERE INFO_NO = ?";
+		ShowInfo info = new ShowInfo();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, infoNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				info.setInfoNo(rset.getInt("INFO_NO"));
+				info.setType(rset.getString("TYPE"));
+				info.setGenre(rset.getString("GENRE"));
+				info.setRegion(rset.getString("REGION"));
+				info.setPlace(rset.getString("PLACE"));
+				info.setShowName(rset.getString("SHOW_NAME"));
+				info.setTermDate(rset.getString("TERM_DATE"));
+				info.setAgeGroup(rset.getString("AGE_GROUP"));
+				info.setRunTime(rset.getInt("RUN_TIME"));
+				info.setCast(rset.getString("CAST"));
+				info.setPrice(rset.getInt("PRICE"));
+				info.setEnrollDate(rset.getDate("ENROLL_DATE"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return info;
+	}
+
+	public int deleteShowInfo(Connection conn, String infoNo) {
+		Statement stmt = null;
+		int result = 0;
+		String query = "DELETE FROM SHOW_INFO WHERE INFO_NO IN ("+infoNo+")";
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		
+		return result;
+	}
+
 }

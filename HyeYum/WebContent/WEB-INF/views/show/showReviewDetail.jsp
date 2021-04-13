@@ -146,6 +146,12 @@
               </div>
 					<div class="btn-set">
 					<%if(review.getUserId().equals(userId)) {%>
+					<a href="/showReview/delete?no=<%=review.getNo()%>"><button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
+					  삭제
+					</button>
+					</a>
+					<%} %>
+					<%if(review.getUserId().equals(userId)) {%>
 					<a href="/showReview/update?no=<%=review.getNo()%>"><button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
 					  수정
 					</button>

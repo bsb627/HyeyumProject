@@ -70,19 +70,6 @@ public class AdminShowInfoWriteServlet extends HttpServlet {
 		
 		ShowInfo info = new ShowInfo();
 		
-		System.out.println(multi.getParameter("type"));
-		System.out.println(multi.getParameter("genre"));
-		System.out.println(multi.getParameter("region"));
-		System.out.println(multi.getParameter("place"));
-		System.out.println(multi.getParameter("age-group"));
-		System.out.println(multi.getParameter("run-time"));
-		System.out.println(multi.getParameter("price"));
-		System.out.println(multi.getParameter("cast"));
-		System.out.println(multi.getParameter("start-date"));
-		System.out.println(multi.getParameter("end-date"));
-		System.out.println(multi.getParameter("show-name"));
-		//System.out.println(multi.getParameter("up-file"));
-		
 		String startDate = multi.getParameter("start-date");
 		String endDate = multi.getParameter("end-date");
 		String termDate = startDate+"~"+endDate;

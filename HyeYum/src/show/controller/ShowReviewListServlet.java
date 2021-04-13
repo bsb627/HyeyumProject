@@ -57,6 +57,7 @@ public class ShowReviewListServlet extends HttpServlet {
 		FileData fd = new FileData();
 		fd.setFileType("show");
 		ArrayList<FileData> fList = new FileService().printFileList("show");
+		
 		if(!showList.isEmpty()) {
 			request.setAttribute("showList", showList);
 			request.setAttribute("pageNavi", pageNavi);

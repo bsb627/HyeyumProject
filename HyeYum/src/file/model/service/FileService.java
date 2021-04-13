@@ -63,7 +63,6 @@ public class FileService {
 		try {
 			conn = factory.createConnection();
 			result = new FileDAO().deleteFile(conn, filePath, fileUser);
-			System.out.println("service result : " + result);
 			if(result > 0 ) {
 				JDBCTemplate.commit(conn);
 			}else {

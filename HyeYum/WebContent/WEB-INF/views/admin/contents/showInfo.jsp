@@ -13,7 +13,7 @@
     </head>
       <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+ 				 <form action="/admin/showInfo/delete" method="get">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">공연 컨텐츠 관리</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -26,6 +26,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">공연 정보</h6>
                         </div>
                         <div class="card-body">
+                      
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -53,7 +54,7 @@
                                     <tbody>
                                        <% for(ShowInfo info : sList) {%>
                                         <tr>
-                                        <td  style="text-align: center"><input type="checkbox"/></td>
+                                        <td  style="text-align: center"><input type="checkbox" name="info-no" value="<%=info.getInfoNo()%>"/></td>
                                         <%for(FileData file : fList){ %>
                                         <%if(info.getInfoNo()==file.getNo()){ %>
                                         	<td style="text-align: center"><img src="/upload/info/show/<%=file.getFileName() %>" height="30px"/></td>
@@ -63,7 +64,7 @@
                                             <td><%=info.getShowName()%></td>
                                             <td><%=info.getTermDate()%></td>
                                             <td><%=info.getPrice() %></td>
-                                            <td  style="text-align: center"><button class="btn btn-sm btn-success">수정</button></td>
+                                            <td  style="text-align: center"><a href="/admin/showInfo/update?infoNo=<%=info.getInfoNo()%>"><button class="btn btn-sm btn-success">수정</button></a></td>
                                         </tr>
                                        <%} %>
                                         
@@ -73,8 +74,9 @@
                         </div>
                     </div>
 			<div class="btn-set" align="right">
-                <a href=""><button class="btn btn-danger">삭제</button></a> <a href="/admin/showInfo/write"><button class="btn btn-primary">등록</button></a>
+                <button class="btn btn-danger">삭제</button><a href="/admin/showInfo/write"><button class="btn btn-primary">등록</button></a>
 			</div>
+                </form>
                 </div>
                 <!-- /.container-fluid -->
 <%@include file="/admin/footer.jsp"%>

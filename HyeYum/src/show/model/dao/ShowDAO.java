@@ -89,7 +89,7 @@ public class ShowDAO {
 		int count = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM SHOW_LIKES WHERE REVIEW_NO = ?";
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM SHOW_LIKES WHERE REVIEW_NO = ? AND IS_CHECK = 1";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -211,8 +211,23 @@ public class ShowDAO {
 		return result;
 	}
 	
-	public int deleteReview(Connection conn, String reviewNo) { // 관람후기 삭제
-		return 0;
+	public int deleteReview(Connection conn, int reviewNo) { // 관람후기 삭제
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM SHOW_REVIEW WHERE REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 	
 	public String getReviewPageNavi(Connection conn, int currentPage) { // 관람후기 페이징

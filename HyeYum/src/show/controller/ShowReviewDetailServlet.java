@@ -37,7 +37,6 @@ public class ShowReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("써블릿");
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		int showNo = 0;
@@ -70,9 +69,7 @@ public class ShowReviewDetailServlet extends HttpServlet {
 		String pageNavi = pageData.getPageNavi();
 		int totalCount = new ReplyService().totalCount(showNo);
 		
-		System.out.println("나올까 ?: "+showNo );
 		FileData fileData = new FileService().printFile(showNo);
-		System.out.println("file : "+fileData);
 		if(review != null) {
 			request.setAttribute("review", review);
 			request.setAttribute("replyList", replyList);

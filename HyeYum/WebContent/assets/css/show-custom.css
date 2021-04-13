@@ -100,8 +100,9 @@ hr{
     height: 100%;
 }
 .portfolio-details .portfolio-details-slider img {
-    width: 100%;
-    object-fit: scale-down;
+    width: 50%;
+    margin-bottom:  20px;
+    /* object-fit: scale-down; */
 }
 .post-date-right {
     font-size: 16px;
@@ -112,6 +113,9 @@ hr{
     text-align: right;
 }
 .post-date{
-	//text-align: center;
+	/* text-align: center; */
 	
+}
+.swiper-slide {
+    text-align: center;
 }

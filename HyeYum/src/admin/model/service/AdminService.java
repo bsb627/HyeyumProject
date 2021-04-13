@@ -53,4 +53,41 @@ public class AdminService {
 		return result;
 	}
 
+	public ShowInfo printOneShowInfo(int infoNo) {
+		ShowInfo info = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			info = new AdminDAO().selectOneShowInfo(conn, infoNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return info;
+	}
+
+	public int deleteShowInfo(String infoNo) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new AdminDAO().deleteShowInfo(conn, infoNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+
 }

@@ -150,15 +150,22 @@ public class ShowService {
 		return result;
 	}
 	
-	public int deleteShowReview(String reviewNo) { // 관람후기 삭제
+	public int deleteShowReview(int reviewNo) { // 관람후기 삭제
 		int result = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
 			result = new ShowDAO().deleteReview(conn, reviewNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result ;
 	}

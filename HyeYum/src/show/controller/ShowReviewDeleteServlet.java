@@ -1,11 +1,15 @@
 package show.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import show.model.service.ShowService;
 
 /**
  * Servlet implementation class ShowBoardDeleteServlet
@@ -26,14 +30,23 @@ public class ShowReviewDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] noArr = request.getParameterValues("showNo");
 		
-		for(String no : noArr) {
-			if(no.equals(noArr[noArr.length-1]) ) {
-				System.out.println(no);
-			}else {
-				System.out.print(no+",");
-			}
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		int result = new ShowService().deleteShowReview(no);
+		
+		if(result > 0) {
+			
+			  PrintWriter out = response.getWriter(); 
+			  out.println("<script>alert('해당 게시글을 삭제하셨습니다.'); location.href='/showReview/list';</script>"); 
+			  
+			 
+			//request.getRequestDispatcher("/showReview/list").forward(request, response);
+		}else {
+			
 		}
 	}
 

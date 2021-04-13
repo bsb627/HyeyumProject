@@ -142,7 +142,6 @@ public class FileDAO {
 			pstmt.setString(1, filePath);
 			pstmt.setString(2, fileUser);
 			result = pstmt.executeUpdate();
-			System.out.println("DAOresult : " + result );
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -195,12 +194,10 @@ public class FileDAO {
 	}
 
 	public FileData selectFileOne(Connection conn, int showNo) {
-		System.out.println("디에이오");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "SELECT * FROM SHOW_FILE WHERE REVIEW_NO=?";
 		FileData fileData = null;
-		System.out.println(showNo);
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, showNo);
@@ -277,7 +274,6 @@ public class FileDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("showNo" +showNo);
 		return showNo;
 	}
 
