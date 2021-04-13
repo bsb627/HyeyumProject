@@ -8,6 +8,9 @@
     ArrayList<FileData> fList = (ArrayList<FileData>)request.getAttribute("fList");
     %>
     <%@include file="/admin/header.jsp"%>
+    <head>
+    <link href="/assets/admin/css/show-custom.css" rel="stylesheet">
+    </head>
       <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -50,17 +53,17 @@
                                     <tbody>
                                        <% for(ShowInfo info : sList) {%>
                                         <tr>
-                                        <td><input type="checkbox"/></td>
+                                        <td  style="text-align: center"><input type="checkbox"/></td>
                                         <%for(FileData file : fList){ %>
                                         <%if(info.getInfoNo()==file.getNo()){ %>
-                                        	<td><img src="/upload/info/show/<%=file.getFileName() %>" height="50px"/></td>
+                                        	<td style="text-align: center"><img src="/upload/info/show/<%=file.getFileName() %>" height="30px"/></td>
                                         	<%} } %>
                                             <td><%=info.getType() %></td>
                                             <td><%=info.getRegion()%></td>
                                             <td><%=info.getShowName()%></td>
                                             <td><%=info.getTermDate()%></td>
                                             <td><%=info.getPrice() %></td>
-                                            <td><button class="btn btn-sm btn-success">수정</button></td>
+                                            <td  style="text-align: center"><button class="btn btn-sm btn-success">수정</button></td>
                                         </tr>
                                        <%} %>
                                         
@@ -69,7 +72,7 @@
                             </div>
                         </div>
                     </div>
-			<div align="right">
+			<div class="btn-set" align="right">
                 <a href=""><button class="btn btn-danger">삭제</button></a> <a href="/admin/showInfo/write"><button class="btn btn-primary">등록</button></a>
 			</div>
                 </div>

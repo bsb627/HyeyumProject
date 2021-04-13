@@ -162,8 +162,8 @@
 								id="exampleFormControlFile1" required>
 						</div>
 					</div>
-					<div align="right">
-						<button type="reset" class="btn btn-warning">취소</button>
+					<div class="btn-set" align="right">
+						<a href="/admin/showInfo/list"><input type="button" class="btn btn-warning" value="취소"></a>
 						<button type="submit" class="btn btn-primary">등록</button>
 					</div>
 				</form>
