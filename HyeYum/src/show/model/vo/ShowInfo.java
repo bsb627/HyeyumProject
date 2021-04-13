@@ -11,9 +11,9 @@ public class ShowInfo { // 공연 정보
 	private String showName; // 공연제목
 	private String termDate; // 공연기간
 	private String ageGroup; // 관람등급
-	private String runTime; // 관람시간
+	private int runTime; // 관람시간
 	private String cast; // 출연진
-	private String price;// 가격
+	private int price;// 가격
 	private Date enrollDate; // 등록일
 	
 	public ShowInfo() {
@@ -84,11 +84,11 @@ public class ShowInfo { // 공연 정보
 		this.ageGroup = ageGroup;
 	}
 
-	public String getRunTime() {
+	public int getRunTime() {
 		return runTime;
 	}
 
-	public void setRunTime(String runTime) {
+	public void setRunTime(int runTime) {
 		this.runTime = runTime;
 	}
 
@@ -100,11 +100,11 @@ public class ShowInfo { // 공연 정보
 		this.cast = cast;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
