@@ -770,6 +770,15 @@ section {
   border-radius: 5px;
 }
 
+.services .service-box {
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  height: 70%;
+  padding: 80px 60px;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
 .services .service-box .icon {
   font-size: 36px;
   padding: 40px 20px;

@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
@@ -28,9 +30,18 @@ public class ModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		Member member = new Member();
+		HttpSession session = request.getSession();
+		session.getAttribute("userId");
+
+		String userId = (String) session.getAttribute("userId");
+		//System.out.println(userId);
+		Member member = new MemberService().selectOneById(userId);
+		//System.out.println("=>" + member);
+		if (member != null) {
+			request.setAttribute("member", member);
+			request.getRequestDispatcher("/WEB-INF/views/member/memberInfoDetail.jsp").forward(request, response);
+		}
+	
 		// 불러올 정보:USER_ID 수정할 정보 : MEMBER_PWD, USER_PHONE, EMAIL, ADDRESS
 	}
 
@@ -38,8 +49,8 @@ public class ModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		Member member = new Member();
 	}
 
 }

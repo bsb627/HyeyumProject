@@ -38,10 +38,15 @@ public class MyInfoServlet extends HttpServlet {
 		Member member = new MemberService().selectOneById(userId);
 		System.out.println("=>" + member);
 
-		if(member != null) {
+//		if (member != null) {
+//			request.setAttribute("member", member);
+//			request.getRequestDispatcher("/WEB-INF/views/member/memberInfoDetail.jsp").forward(request, response);
+//		} 
+		if (member != null) {
 			request.setAttribute("member", member);
-			request.getRequestDispatcher("/WEB-INF/views/member/memberInfoDetail.jsp").forward(request, response);
-		} else {
+			request.getRequestDispatcher("/WEB-INF/views/member/beforeCheck.jsp").forward(request, response);
+		}
+		else {
 			response.sendRedirect("/WEB-INF/views/member/memberError.html");
 		}
 	}
