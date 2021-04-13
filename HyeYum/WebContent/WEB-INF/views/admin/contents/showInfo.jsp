@@ -1,9 +1,11 @@
+<%@page import="file.model.vo.FileData"%>
 <%@page import="show.model.vo.ShowInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
      ArrayList<ShowInfo> sList = (ArrayList<ShowInfo>)request.getAttribute("sList");
+    ArrayList<FileData> fList = (ArrayList<FileData>)request.getAttribute("fList");
     %>
     <%@include file="/admin/header.jsp"%>
       <!-- Begin Page Content -->
@@ -25,12 +27,14 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                        	<th><input type="checkbox"/></th>
+                                        	<th>이미지</th>
                                             <th>타입</th>
-                                            <th>장르</th>
                                             <th>지역</th>
                                             <th>공연명</th>
                                             <th>기간</th>
                                             <th>가격</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                    <!--  <tfoot>
@@ -46,12 +50,17 @@
                                     <tbody>
                                        <% for(ShowInfo info : sList) {%>
                                         <tr>
+                                        <td><input type="checkbox"/></td>
+                                        <%for(FileData file : fList){ %>
+                                        <%if(info.getInfoNo()==file.getNo()){ %>
+                                        	<td><img src="/upload/info/show/<%=file.getFileName() %>" height="50px"/></td>
+                                        	<%} } %>
                                             <td><%=info.getType() %></td>
                                             <td><%=info.getRegion()%></td>
-                                            <td><%=info.getPlace()%></td>
                                             <td><%=info.getShowName()%></td>
                                             <td><%=info.getTermDate()%></td>
                                             <td><%=info.getPrice() %></td>
+                                            <td><button class="btn btn-sm btn-success">수정</button></td>
                                         </tr>
                                        <%} %>
                                         
@@ -60,7 +69,9 @@
                             </div>
                         </div>
                     </div>
-
+			<div align="right">
+                <a href=""><button class="btn btn-danger">삭제</button></a> <a href="/admin/showInfo/write"><button class="btn btn-primary">등록</button></a>
+			</div>
                 </div>
                 <!-- /.container-fluid -->
 <%@include file="/admin/footer.jsp"%>

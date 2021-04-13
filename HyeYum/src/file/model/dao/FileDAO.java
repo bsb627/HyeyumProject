@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import file.model.vo.FileData;
+import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
 public class FileDAO {
@@ -223,6 +224,92 @@ public class FileDAO {
 		}
 		
 		return fileData;
+	}
+
+	public int insertFileShowInfo(Connection conn, FileData fileData, ShowInfo info) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String fileType = fileData.getFileType();
+		String query="INSERT INTO SHOW_FILE VALUES(SEQ_SHOW_FILE_NO.NEXTVAL,?,?,?,?,NULL,?)";
+		 	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, fileData.getFileName());
+			pstmt.setString(2, fileData.getFilePath());
+			pstmt.setLong(3, fileData.getFileSize());
+			pstmt.setTimestamp(4, fileData.getUploadTime());
+			pstmt.setInt(5, getShowInfoNo(conn,info));
+			result = pstmt.executeUpdate();
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	private int getShowInfoNo(Connection conn, ShowInfo info) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT INFO_NO FROM SHOW_INFO WHERE TYPE = ? AND GENRE = ? AND REGION = ? AND PLACE = ? AND SHOW_NAME =? AND TERM_DATE =? AND AGE_GROUP =? AND RUN_TIME =? AND CAST =? AND PRICE =? ORDER BY ENROLL_DATE DESC";
+		int showNo =  0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, info.getType());
+			pstmt.setString(2, info.getGenre());
+			pstmt.setString(3, info.getRegion());
+			pstmt.setString(4, info.getPlace());
+			pstmt.setString(5, info.getShowName());
+			pstmt.setString(6, info.getTermDate());
+			pstmt.setString(7, info.getAgeGroup());
+			pstmt.setInt(8, info.getRunTime());
+			pstmt.setString(9, info.getCast());
+			pstmt.setInt(10, info.getPrice());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				showNo = rset.getInt("INFO_NO");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("showNo" +showNo);
+		return showNo;
+	}
+
+	public ArrayList<FileData> selectShowInfoFileList(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<FileData> list = null;
+		String query ="SELECT INFO_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,UPLOAD_TIME FROM SHOW_FILE JOIN SHOW_INFO USING (INFO_NO) WHERE INFO_NO IS NOT NULL";
+				
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			list = new ArrayList<FileData>();
+			while(rset.next()) {
+				FileData data = new FileData();
+				data.setNo(rset.getInt("INFO_NO"));
+				data.setFileNo(rset.getInt("FILE_NO"));
+				data.setFileName(rset.getString("FILE_NAME"));
+				data.setFilePath(rset.getString("FILE_PATH"));
+				data.setFileSize(rset.getLong("FILE_SIZE"));
+				data.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
+				list.add(data);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
 	}
 
 }

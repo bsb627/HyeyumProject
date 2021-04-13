@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
+import file.model.service.FileService;
+import file.model.vo.FileData;
 import show.model.vo.ShowInfo;
 
 /**
@@ -33,9 +35,13 @@ public class AdminShowInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<ShowInfo> sList = new AdminService().printAllShowInfoList();
+		FileData fd = new FileData();
+		fd.setFileType("show");
+		ArrayList<FileData> fList = new FileService().printShowInfoFileList();
 		
 		if(!sList.isEmpty()) {
 			request.setAttribute("sList", sList);
+			request.setAttribute("fList", fList);
 			request.getRequestDispatcher("/WEB-INF/views/admin/contents/showInfo.jsp").forward(request, response);
 			
 		}else {

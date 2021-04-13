@@ -1,6 +1,7 @@
 package admin.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,7 +16,7 @@ public class AdminDAO {
 
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM SHOW_INFO";
+		String query = "SELECT * FROM SHOW_INFO ORDER BY ENROLL_DATE DESC";
 		ArrayList<ShowInfo> sList = null;
 		
 		try {
@@ -50,6 +51,35 @@ public class AdminDAO {
 		
 		
 		return sList;
+	}
+
+	public int insertShowInfo(Connection conn, ShowInfo info) { // 관리자단 공연 정보 등록 
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO SHOW_INFO VALUES(SEQ_SHOW_INFO_NO.NEXTVAL,?,?,?,?,?,?,?,?,?,?,SYSDATE)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, info.getType());
+			pstmt.setString(2, info.getGenre());
+			pstmt.setString(3, info.getRegion());
+			pstmt.setString(4, info.getPlace());
+			pstmt.setString(5, info.getShowName());
+			pstmt.setString(6, info.getTermDate());
+			pstmt.setString(7, info.getAgeGroup());
+			pstmt.setInt(8, info.getRunTime());
+			pstmt.setString(9, info.getCast());
+			pstmt.setInt(10, info.getPrice());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result;
 	}
 
 }

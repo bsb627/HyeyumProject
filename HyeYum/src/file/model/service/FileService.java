@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import file.model.dao.FileDAO;
 import file.model.vo.FileData;
+import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
 public class FileService {
@@ -101,7 +102,6 @@ public class FileService {
 	public FileData printFile(int showNo) {
 		FileData fileData = null;
 		Connection conn = null;
-		System.out.println("써비스");
 		try {
 			conn = factory.createConnection();
 			fileData = new FileDAO().selectFileOne(conn,showNo);
@@ -111,5 +111,42 @@ public class FileService {
 			JDBCTemplate.close(conn);
 		}
 		return fileData;
+	}
+
+	public int registerFileShowInfo(FileData fileData, ShowInfo info) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = factory.createConnection();
+			result = new FileDAO().insertFileShowInfo(conn, fileData, info);
+			if(result> 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public ArrayList<FileData> printShowInfoFileList() {
+		Connection conn = null;
+		ArrayList<FileData> list = null;
+		
+		try {
+			conn = factory.createConnection();
+			list = new FileDAO().selectShowInfoFileList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return list;
 	}
 }

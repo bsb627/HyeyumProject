@@ -32,4 +32,25 @@ public class AdminService {
 		return sList;
 	}
 
+	public int registerShowInfo(ShowInfo info) { // 관리자 공연 정보 등록
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			result = new AdminDAO().insertShowInfo(conn,info);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
 }
