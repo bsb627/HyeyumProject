@@ -67,10 +67,10 @@
             <div class="portfolio-info">
               <h3>정보</h3>
               <ul>
-                <li><strong>조회수 </strong>: <%=review.getHits() %></li>
-                <li><strong>작성자 </strong>: <%=review.getNick() %></li>
-                <li><strong>작성일 </strong>: <%=review.getEnrollDate() %></li>
-                <li><strong>SNS 링크</strong>: <a href="#"><%=review.getSnsLink() %></a></li>
+                <li><strong>조회수 </strong> <%=review.getHits() %></li>
+                <li><strong>작성자 </strong> <%=review.getNick() %></li>
+                <li><strong>작성일 </strong> <%=review.getEnrollDate() %></li>
+                <li><strong>SNS 링크 </strong> <a href="#"><%=review.getSnsLink() %></a></li>
                 <%if(likes == 0){ %>
                 <li><a href="/showReview/plusLikes?no=<%=review.getNo()%>"><button class="btn btn-sm btn-outline-danger"><i class="bi bi-heart"></i> 좋아요</button></a></li>
                 <%} else { %>
