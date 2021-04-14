@@ -1,9 +1,9 @@
-<%@page import="book.model.vo.BookReview"%>
+<%@page import="book.model.vo.BookShare"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="book.model.vo.BookReview"%>
+<%@page import="book.model.vo.BookShare"%>
 <%
-	BookReview review = (BookReview)request.getAttribute("review");
+	BookShare share = (BookShare)request.getAttribute("share");
 %>
 <html lang="ko">
 <%@include file="/header.jsp"%>
@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문화나눔, 혜윰 - 독서혜윰 상세보기</title>
+    <title>문화나눔, 혜윰 - 나눔혜윰 상세보기</title>
 
         <!-- Bootstrap -->
         <link href="/assets/css/book/contents.css" rel="stylesheet" type="text/css"/>
@@ -40,7 +40,7 @@ if (userId == null) {
 				<li><a href="/index.jsp">Home</a></li>
 				<li>도서</li>
 			</ol>
-			<h2>독서혜윰</h2>
+			<h2>나눔혜윰</h2>
 
 		</div>
 	</section>
@@ -55,7 +55,7 @@ if (userId == null) {
                         <thead>
                             <tr align="center">
                                 <th width="10%">제목</th>
-                                <th width="60%">[<%=review.getDivision()%>] <%=review.getTitle()%></th>
+                                <th width="60%">[<%=share.getRegion()%>] <%=share.getTitle()%></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,29 +63,33 @@ if (userId == null) {
                                 <td>작성일
                                 </td>
                                 <td>
-                                <%=review.getEnrollDate()%>
+                                <%=share.getEnrollDate()%>
                                 </td>
                             </tr>
                             <tr>
                                 <td>작성자
                                 </td>
                                 <td>
-                                <%=review.getNick()%> <span style='float:right'>조회 : <%=review.getHits()%></span>
+                                <%=share.getNick()%> <span style='float:right'>조회 : <%=share.getHits()%></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <%=review.getContents()%>
+                                    <%=share.getContents()%>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                        <tr>
+                            <td>
                                 <span class="form-inline" role="form">
                                     <p>
                                         댓글
                                     </p>
                                         <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
                                 </span>
+                            </td>
+                        </tr>
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -103,23 +107,23 @@ if (userId == null) {
                             <tr>
                                 <td>
                                     <span style='float:right'>
-                    <input type="hidden" name="review-no" value="<%=review.getNo()%>">
+                    <input type="hidden" name="share-no" value="<%=share.getNo()%>">
 					<%-- <%if(review.getUserId().equals(userId)) {%> --%>
-					<%if(review.getUserId().equals(userId)) {%>
-					<a href="/bookReview/delete?no=<%=review.getNo()%>">
+					<%if(share.getUserId().equals(userId)) {%>
+					<a href="/bookShare/delete?no=<%=share.getNo()%>">
 					<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
 					  삭제
 					</button>
 					</a>
 					<%} %>
-					<%if(review.getUserId().equals(userId)) {%>
+					<%if(share.getUserId().equals(userId)) {%>
 					
-					<a href="/bookReview/modify?review-no=<%=review.getNo()%>">
+					<a href="/bookShare/modify?share-no=<%=share.getNo()%>">
 					<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
 					  수정
 					</button></a>
 					<%}%>
-                    <a href="/bookReview/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
+                    <a href="/bookShare/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
                             </span>
                                 </td>
                             </tr>

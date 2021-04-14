@@ -40,10 +40,10 @@ public class BookReviewDeleteServlet extends HttpServlet {
 		if(result > 0) {
 			
 			  PrintWriter out = response.getWriter(); 
-			  out.println("<script>alert('해당 게시글을 삭제하셨습니다.'); location.href='/showReview/list';</script>"); 
+			  out.println("<script>alert('해당 게시글을 삭제하셨습니다.'); location.href='/bookReview/list';</script>"); 
 			  
 			 
-			//request.getRequestDispatcher("/showReview/list").forward(request, response);
+//			request.getRequestDispatcher("/bookReview/list").forward(request, response);
 		}else {
 			
 		}

@@ -15,16 +15,15 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
 	rel="stylesheet" />
-<%@include file="/header.jsp"%>
-<!-- MDB -->
 <link href="/assets/css/show-custom.css" rel="stylesheet">
+<%@include file="/header.jsp"%>
+
+<link rel="stylesheet" href="/assets/note/summernote-lite.css">
+<script src="/assets/js/book/book-write.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 	<script src="/assets/note/summernote-lite.js"></script>
 <script src="/assets/note//lang/summernote-ko-KR.js"></script>
-
-<link rel="stylesheet" href="/assets/note/summernote-lite.css">
-<script src="/assets/js/book/book-write.js"></script>
 </head>
 <main id="main">
 	<section class="breadcrumbs">

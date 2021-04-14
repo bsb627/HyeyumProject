@@ -1,11 +1,18 @@
 package book.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import book.model.service.BookService;
+import book.model.vo.BookPageData;
+import book.model.vo.BookShare;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -26,7 +33,28 @@ public class BookShareListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/book/bookShareList.jsp").forward(request, response);
+		request.setCharacterEncoding("utf-8");
+		int currentPage = 0; 
+		if(request.getParameter("currentPage") == null) {
+			currentPage = 1; 
+		}else { 
+			currentPage = Integer.parseInt(request.getParameter("currentPage")); 
+		} 
+		BookPageData pageData = new BookService().printAllBookShare(currentPage);
+		ArrayList<BookShare> sList = pageData.getShareList(); 
+		String pageNavi = pageData.getPageNavi();
+		
+		System.out.println("sList:" + sList);
+		if(!sList.isEmpty()) { 
+			System.out.println("imf까지 들어왔나 share");
+			request.setAttribute("sList",sList);
+			request.setAttribute("pageNavi", pageNavi); 
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookShareList.jsp");
+			view.forward(request, response); 
+		}else { 
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookError.html");
+			view.forward(request, response); 
+		}
 	}
 
 	/**
