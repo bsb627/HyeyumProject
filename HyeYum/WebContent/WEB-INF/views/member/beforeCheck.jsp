@@ -46,7 +46,7 @@
 <!--  ==================사이드바 =================== -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
-
+<div class="col-md-12">
         <div class="row">
  <div class="col-md-3">
 
@@ -123,15 +123,7 @@
 
           </div><!-- End blog sidebar -->
 
-        </div>
-
-      </div>
-      </section>
-      
-<!--  ==================사이드바 =================== -->
-
-
-	<div class="col-md-9">
+	<div class="col-md-9 info-card">
 						<div class="row gy-4">
 							<div class="col-lg-6 col-md-6" data-aos="fade-up"
 								data-aos-delay="200">
@@ -196,7 +188,7 @@
 								</div>
 							</div> 
  -->
-							<div class="col-lg-4 col-md-6" data-aos="fade-up"
+							<div class="col-lg-6 col-md-6" data-aos="fade-up"
 								data-aos-delay="700">
 								<div class="service-box pink">
 									<i class="ri-discuss-line icon"></i>
@@ -207,6 +199,16 @@
 							</div>
 						</div>
 					</div>
+					
+        </div><!--  end row  -->
+</div>
+      </div>
+      </section>
+      
+<!--  ==================사이드바 =================== -->
+
+
+
 				</div>
 		</div>
 	

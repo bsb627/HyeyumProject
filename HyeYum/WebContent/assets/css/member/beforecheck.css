@@ -161,3 +161,7 @@
 .services .service-box:hover .icon {
   background: #fff;
 }
+
+.info-card{
+	margin-top: 30%;
+}
