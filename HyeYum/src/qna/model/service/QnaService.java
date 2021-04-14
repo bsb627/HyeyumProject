@@ -223,7 +223,7 @@ public class QnaService {
 	}
 	
 	
-	public int deleteQnaAdmin(int qnaNo) {
+	public int deleteQnaAdmin(String qnaNo) {
 		Connection conn = null;
 		int result = 0;
 		try {

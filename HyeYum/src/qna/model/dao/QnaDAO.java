@@ -452,26 +452,21 @@ public class QnaDAO {
 		return qna;
 	}
 	
-	public int deleteQnaAdmin(Connection conn, int qnaNo) {
-//		PreparedStatement pstmt = null;
-//		String query = "DELETE FROM QNA WHERE QNA_NO = ?";
-//		int result = 0;
-//		
-//		try {
-//			pstmt = conn.prepareStatement(query);
-//			
-//			for( int i = 0; i < checkBoxes.length(); i++ ) {
-//				pstmt.setInt(1, qnaNo[i]);
-//				
-//			}
-//			result = pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			JDBCTemplate.close(pstmt);
-//		}
-		return 0;
+	public int deleteQnaAdmin(Connection conn, String qnaNo) {
+		Statement stmt = null;
+		String query = "DELETE FROM QNA WHERE QNA_NO IN ("+qnaNo+")";
+		int result = 0;
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		return result;
 	}
 
 	public int updateQnaAdmin(Connection conn, Qna qna) {

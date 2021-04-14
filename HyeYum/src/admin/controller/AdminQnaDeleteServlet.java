@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import qna.model.service.QnaService;
+
 /**
  * Servlet implementation class AdminQnaDeleteServlet
  */
@@ -28,10 +30,22 @@ public class AdminQnaDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String [] checkBoxes = request.getParameterValues("checkbox");
-//		request.setAttribute("checkBoxes", checkBoxes);
-//		RequestDispatcher view = request.getRequestDispatcher("/qna/delete");
-//		view.forward(request, response);
+		String [] checkBoxes = request.getParameterValues("checkbox");
+		String qnaNo = "";
+		
+		for( String checkBox : checkBoxes) {
+			if( checkBox.equals(checkBoxes[checkBoxes.length -1 ])) {
+				qnaNo += checkBox;
+			} else {
+				qnaNo += checkBox + ",";
+			}
+		}
+		
+		int result = new QnaService().deleteQnaAdmin(qnaNo);
+		if(result > 0) {
+			RequestDispatcher view = request.getRequestDispatcher("/admin/qna/list");
+			view.forward(request, response);
+		}
 
 	}
 
