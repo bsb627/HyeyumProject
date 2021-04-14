@@ -50,11 +50,11 @@ public class BookReviewListServlet extends HttpServlet {
 		if(!bList.isEmpty()) { 
 			System.out.println("imf까지 들어옴");
 			request.setAttribute("bList",bList);
-			request.setAttribute("pageNavi", pageNavi); RequestDispatcher view =
-			request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
+			request.setAttribute("pageNavi", pageNavi); 
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewList.jsp");
 			view.forward(request, response); 
 		}else { 
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewError.html");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookError.html");
 			view.forward(request, response); 
 		}
 	}

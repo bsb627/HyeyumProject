@@ -194,20 +194,33 @@ public class BookService {
 	public BookPageData printAllBookShare(int currentPage) {// 책나눔 목록 + 페이징
 		Connection conn = null;
 		BookPageData pd = new BookPageData();
-		
 		try {
 			conn = factory.createConnection();
+			pd.setShareList(new BookDAO().selectAllBookShare(conn, currentPage));
+			pd.setPageNavi(new BookDAO().getSharePageNavi(conn, currentPage));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
 		}
+		System.out.println("Service pd : " + pd);
 		return pd;
 	}
 	
 	public BookShare printOneBookShare(int shareNo) { // 책나눔 상세보기
 		BookShare share = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			share = new BookDAO().selectOneBookShare(conn, shareNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return share;
 	}
 	public int registerBookShare(BookShare share) { // 책나눔 등록

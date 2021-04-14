@@ -294,12 +294,65 @@ public class BookDAO {
 	
 	// BookShare
 	public ArrayList<BookShare> selectAllBookShare(Connection conn, int currentPage){ // 책나눔 전체보기
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<BookShare> sList = null;
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY ENROLL_DATE DESC) AS NUM, SHARE_NO, REGION, TITLE, NICK, ENROLL_DATE, HITS FROM BOOK_SHARE JOIN MEMBER USING(USER_ID))WHERE NUM BETWEEN ? AND ?";
+		int recordCountPerPage = 10;
+		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
+		int end = currentPage*recordCountPerPage;
 		
-		return null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,  start);
+			pstmt.setInt(2, end);
+			rset = pstmt.executeQuery();
+			sList = new ArrayList<BookShare>();
+			while(rset.next()) {
+				BookShare share = new BookShare();
+				share.setNo(rset.getInt("SHARE_NO"));
+				share.setRegion(rset.getString("REGION"));
+				share.setTitle(rset.getString("TITLE"));
+				share.setNick(rset.getString("NICK"));
+				share.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				share.setHits(rset.getInt("HITS"));
+				sList.add(share);
+				System.out.println("DAO sList : " + sList);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return sList;
 	}
 	public BookShare selectOneBookShare(Connection conn, int shareNo) { // 책나눔 상세보기
-		
-		return null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		BookShare share = null;
+		String query = "SELECT REGION, SHARE_NO, TITLE, CONTENTS, ENROLL_DATE, HITS, NICK, USER_ID FROM BOOK_SHARE JOIN MEMBER USING(USER_ID)WHERE SHARE_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				share = new BookShare();
+				share.setNo(rset.getInt("SHARE_NO"));
+				share.setRegion(rset.getString("REGION"));
+				share.setTitle(rset.getString("TITLE"));
+				share.setNick(rset.getString("NICK"));
+				share.setContents(rset.getString("CONTENTS"));
+				share.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				share.setHits(rset.getInt("HITS"));
+				share.setUserId(rset.getString("USER_ID"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return share;
 	}
 	public int insertBookShare(Connection conn, BookShare share) { // 책나눔 등록
 		
@@ -314,11 +367,71 @@ public class BookDAO {
 		return 0;
 	}
 	public String getSharePageNavi(Connection conn, int currentPage) { // 책나눔 페이징
-		return null;
+		int recordTotalCount = totalShareCount(conn);
+		int recordCountPerPage = 10;
+		// 10개로 안떨어지는 상황 떄문에 추가로 변수 선언
+		int pageTotalCount = 0;
+		if ( recordTotalCount % recordCountPerPage > 0) {
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		}else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+		// 오류방지코드
+		if(currentPage < 1) {
+			currentPage = 1;
+		}else if(currentPage > pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
+		int naviCountPerPage = 10;
+		int startNavi = ((currentPage -1)/ naviCountPerPage) * naviCountPerPage + 1;
+		
+		int endNavi = startNavi + naviCountPerPage - 1;
+		if(endNavi > pageTotalCount) {
+			endNavi = pageTotalCount; 
+		}
+		
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) { // 맨 처음 페이지
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) { // 맨마지막 페이지
+			needNext = false;
+		}
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) { 
+			sb.append("<a href='/bookShare/list?currentPage="+ (startNavi-1)+"'> < </a>");
+		}
+		for(int i = startNavi; i <= endNavi; i++) {
+			sb.append("<a href='/bookShare/list?currentPage=" + i + "'>" + i + " </a>"); // 버튼을 눌렀을 때 다음페이지로 넘어가도록 주소를 줌
+		}
+		if(needNext) {
+			sb.append("<a href='/bookShare/list?currentPage=" + (endNavi+1)+ "'> > </a>");
+		}
+		return sb.toString();
 	}
 	public int totalShareCount(Connection conn) { // 책나눔 총 게시글 수
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM BOOK_SHARE";
+		// 전체 게시물의 개수
+		// AS 는 별칭을 준 것. 컬럼명이 있어야 필드값 가져올 수 있기 때문에
+		int recordTotalCount = 0;
 		
-		return 0;
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return recordTotalCount;
 	}
 	public ArrayList<BookShare>selectSearchBookShare(Connection conn, int currentPage, String search, String searchCategory){
 		

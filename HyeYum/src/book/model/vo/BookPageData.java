@@ -8,6 +8,7 @@ public class BookPageData {
 
 	private ArrayList<BookInfo> infoList;
 	private ArrayList<BookReview> reviewList;
+	private ArrayList<BookShare> shareList;
 	private String pageNavi;
 
 	public BookPageData() {
@@ -30,6 +31,14 @@ public class BookPageData {
 		this.reviewList = reviewList;
 	}
 
+	public ArrayList<BookShare> getShareList() {
+		return shareList;
+	}
+
+	public void setShareList(ArrayList<BookShare> shareList) {
+		this.shareList = shareList;
+	}
+
 	public String getPageNavi() {
 		return pageNavi;
 	}
@@ -40,15 +49,9 @@ public class BookPageData {
 
 	@Override
 	public String toString() {
-		return "BookPageData [infoList=" + infoList + ", reviewList=" + reviewList + ", pageNavi=" + pageNavi + "]";
+		return "BookPageData [infoList=" + infoList + ", reviewList=" + reviewList + ", shareList=" + shareList
+				+ ", pageNavi=" + pageNavi + "]";
 	}
-
-	public ArrayList<BookReview> getBookList() {
-		
-		return reviewList;
-	}
-	
-	
 
 
 }
