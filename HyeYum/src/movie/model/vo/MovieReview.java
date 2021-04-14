@@ -9,80 +9,55 @@ public class MovieReview extends Board{ // 영화 리뷰 게시판
 	private String spoiler;// 스포일러 유무
 	private String ticketNumber;// 예매 일련번호
 	private int infoNo; // 영화컨텐츠 번호
-	
-
-	public MovieReview() {
-		// TODO Auto-generated constructor stub
-	}
-
-
+	private String genre; // 장르
 	public int getReNo() {
 		return reNo;
 	}
-
-
 	public void setReNo(int reNo) {
 		this.reNo = reNo;
 	}
-
-
 	public String getMovieName() {
 		return movieName;
 	}
-
-
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
-
-
 	public int getStarRating() {
 		return starRating;
 	}
-
-
 	public void setStarRating(int starRating) {
 		this.starRating = starRating;
 	}
-
-
 	public String getSpoiler() {
 		return spoiler;
 	}
-
-
 	public void setSpoiler(String spoiler) {
 		this.spoiler = spoiler;
 	}
-
-
 	public String getTicketNumber() {
 		return ticketNumber;
 	}
-
-
 	public void setTicketNumber(String ticketNumber) {
 		this.ticketNumber = ticketNumber;
 	}
-
-
 	public int getInfoNo() {
 		return infoNo;
 	}
-
-
 	public void setInfoNo(int infoNo) {
 		this.infoNo = infoNo;
 	}
-
-
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 	@Override
 	public String toString() {
 		return "MovieReview [reNo=" + reNo + ", movieName=" + movieName + ", starRating=" + starRating + ", spoiler="
-				+ spoiler + ", ticketNumber=" + ticketNumber + ", infoNo=" + infoNo + "]";
+				+ spoiler + ", ticketNumber=" + ticketNumber + ", infoNo=" + infoNo + ", genre=" + genre + "]";
 	}
-
-
+	
 
 		
 }

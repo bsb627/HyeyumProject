@@ -208,6 +208,7 @@
 		<div class="container" data-aos="fade-up">
 
 			<!-- ==========검색========== -->
+			<div class="col-8" style="margin: auto;">
 			<div class="sidebar">
 				<h3 class="sidebar-title">Search</h3>
 				<div class="sidebar-item search-form">
@@ -219,34 +220,34 @@
 					</form>
 				</div>
 			</div>
+			</div>
 
 			<!-- ========== 리뷰글 ========== -->
 
 			<div class="row">
 				<% for(MovieReview mReview : review) { %>
 
-				<div style="float: center">
+				<div class="col-8" style="margin: auto;">
 					<!-- col-lg-8 entries -->
 					<article class="entry entry-single">
 
 
 
-						<h2 class="entry-title">
-							<label>[ <%= mReview.getInfoNo() %>]</label>
-							<%= mReview.getMovieName() %>
-						</h2>
-
-						<hr>
-
+						
+						
+						
 						<div class="entry-meta">
+						<h3 class="entry-title">
+						<label>[<%= mReview.getGenre() %>]</label> <%= mReview.getMovieName()%></h3>
 							<ul>
 								<!-- 닉네임, 시간, 조회수 -->
 								<li class="d-flex align-items-center"><i
-									class="bi bi-person"></i> nick</li>
+									class="bi bi-person"></i><%= mReview.getNick() %></li>
 								<li class="d-flex align-items-center"><i
-									class="bi bi-clock"></i> <time datetime="2020-01-01"></time>enroll_date</li>
+									class="bi bi-clock"></i> <time datetime="2020-01-01"></time><%= mReview.getEnrollDate() %></li>
 								<li class="d-flex align-items-center"><i
-									class="bi bi-card-text"></i>hits</li>
+									class="bi bi-card-text"></i><%= mReview.getStarRating()%> 여기에 별점넣고싶어ㅠㅠ</li>
+								
 							</ul>
 						</div>
 
