@@ -37,7 +37,7 @@
 
 
         <!-- Feature Icons -->
-        <div class="row feature-icons" data-aos="fade-up">
+        <div class="row feature-icons review-box" data-aos="fade-up">
           <h3><%=info.getShowName() %></h3>
 
           <div class="row">

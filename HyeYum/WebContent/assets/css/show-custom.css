@@ -5,13 +5,14 @@ hr{
 	margin-bottom:50px;
 }
 .blog {
-    padding: 118px 0 185px 0;
+    padding: 0px 0 185px 0;
 }
 .testimonials{
 	padding: 118px 0 0 0;
 }
 .section-header{
 	padding: 118px 0 40px 0;
+	margin-bottom: 40px;
 }
 .blog .entry {
   padding: 30px;
@@ -24,6 +25,23 @@ hr{
 	margin-top: 25px;
 }
 
+.portfolio-details .portfolio-info{
+	 box-shadow: 0 4px 16px rgb(0 0 0 / 0%);
+}
+
+.portfolio-details .portfolio-description {
+    padding-top: 30px;   
+    height: 250px;
+    word-wrap:break-word;
+    overflow-y: auto;
+}
+.review-box{
+	    
+    padding: 36px;
+    margin-bottom: 40px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+}
 
 /* .portfolio #portfolio-flters{
 	text-align: left;

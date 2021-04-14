@@ -36,7 +36,7 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 					<p>이달의 컨텐츠</p>
 				</header>
 
-				<div class="testimonials-slider swiper-container "
+				<div class="testimonials-slider swiper-container"
 					data-aos="fade-up" data-aos-delay="200">
 					<div class="swiper-wrapper">
 					

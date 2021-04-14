@@ -39,8 +39,11 @@
    <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details blog">
       <div class="container">
-
-        <div class="row gy-4">
+<header class="section-header">
+				<h2>Photo Review</h2>
+				<p>관람 포토 후기</p>
+			</header>
+        <div class="row gy-4  review-box">
 
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper-container">
