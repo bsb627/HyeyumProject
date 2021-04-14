@@ -70,22 +70,10 @@ public class AdminShowInfoUpdateServlet extends HttpServlet {
 		ShowInfo info = new ShowInfo();
 		
 		
-		System.out.println(multi.getParameter("type"));
-		System.out.println(multi.getParameter("genre"));
-		System.out.println(multi.getParameter("region"));
-		System.out.println(multi.getParameter("place"));
-		System.out.println(multi.getParameter("age-group"));
-		System.out.println(multi.getParameter("run-time"));
-		System.out.println(multi.getParameter("price"));
-		System.out.println(multi.getParameter("cast"));
-		System.out.println(multi.getParameter("start-date"));
-		System.out.println(multi.getParameter("end-date"));
-		System.out.println(multi.getParameter("show-name"));
 		
 		String startDate = multi.getParameter("start-date");
 		String endDate = multi.getParameter("end-date");
 		String termDate = startDate+"~"+endDate;
-		System.out.println(termDate);
 		
 		info.setInfoNo(Integer.parseInt(multi.getParameter("show-info")));
 		info.setType(multi.getParameter("type"));
@@ -100,7 +88,6 @@ public class AdminShowInfoUpdateServlet extends HttpServlet {
 		info.setShowName(multi.getParameter("show-name"));
 		
 		int result = new AdminService().updateShowInfo(info);
-		System.out.println("result"+result);
 		if(result > 0) {
 			File uploadFile = multi.getFile("up-file");
 			if( uploadFile != null) {
@@ -122,18 +109,12 @@ public class AdminShowInfoUpdateServlet extends HttpServlet {
 		
 			int fileResult = new FileService().registerFileShowInfo(fileData, info);
 		
-			
 			System.out.println(uploadFilePath);
 			}
 			request.getRequestDispatcher("/admin/showInfo/list").forward(request, response);
 		}else {
 			
 		}
-		
-		
-		
-		
-		
 	}
 
 }

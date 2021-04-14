@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import file.model.service.FileService;
 import file.model.vo.FileData;
 import show.model.service.ShowService;
+import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
 /**
@@ -44,9 +46,10 @@ public class ShowReviewUpdateServlet extends HttpServlet {
 		int showNo = Integer.parseInt(request.getParameter("no"));
 		
 		ShowReview review = new ShowService().printOneShowReview(showNo);
-		
+		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
 		if(review != null) {
 			request.setAttribute("review", review);
+			request.setAttribute("iList", iList);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewUpdate.jsp").forward(request, response);
 		}else {
 			

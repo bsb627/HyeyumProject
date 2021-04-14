@@ -14,6 +14,10 @@ public class ShowInfo { // 공연 정보
 	private int runTime; // 관람시간
 	private String cast; // 출연진
 	private int price;// 가격
+	private int fileNo; // 파일 번호
+	private String fileName; // 파일이름
+	private String filePath; // 파일경로
+	
 	private Date enrollDate; // 등록일
 	
 	public ShowInfo() {
@@ -114,6 +118,31 @@ public class ShowInfo { // 공연 정보
 
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
+	}
+	
+
+	public int getFileNo() {
+		return fileNo;
+	}
+
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	@Override

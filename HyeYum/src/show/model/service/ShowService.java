@@ -322,4 +322,20 @@ public class ShowService {
 		}
 		return lList;
 	}
+
+	public ArrayList<ShowInfo> getShowInfoList() { // 관람후기 작성시 공연정보 불러오기
+		ArrayList<ShowInfo> iList =null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			iList = new ShowDAO().getShowInfoList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return iList;
+	}
 }

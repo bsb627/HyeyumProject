@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.servlet.ServletContext;
@@ -20,6 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import file.model.service.FileService;
 import file.model.vo.FileData;
 import show.model.service.ShowService;
+import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
 /**
@@ -41,7 +43,14 @@ public class ShowReviewWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/show/showReviewWrite.jsp").forward(request, response);
+		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
+		if(! iList.isEmpty()) {
+			request.setAttribute("iList", iList);
+			request.getRequestDispatcher("/WEB-INF/views/show/showReviewWrite.jsp").forward(request, response);
+			
+		}else {
+			
+		}
 	}
 
 	/**

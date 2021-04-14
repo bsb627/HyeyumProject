@@ -579,6 +579,49 @@ public class ShowDAO {
 		}
 		return rList;
 	}
+
+	public ArrayList<ShowInfo> getShowInfoList(Connection conn) { // 공연 정보 가져오기
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM SHOW_INFO JOIN SHOW_FILE USING (INFO_NO) ORDER BY ENROLL_DATE DESC";
+		ArrayList<ShowInfo> iList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if( rset != null) {
+				iList = new ArrayList<ShowInfo>();
+				while(rset.next()) {
+					ShowInfo info = new ShowInfo();
+					
+					info.setInfoNo(rset.getInt("INFO_NO"));
+					info.setType(rset.getString("TYPE"));
+					info.setGenre(rset.getString("GENRE"));
+					info.setRegion(rset.getString("REGION"));
+					info.setPlace(rset.getString("PLACE"));
+					info.setShowName(rset.getString("SHOW_NAME"));
+					info.setTermDate(rset.getString("TERM_DATE"));
+					info.setAgeGroup(rset.getString("AGE_GROUP"));
+					info.setRunTime(rset.getInt("RUN_TIME"));
+					info.setCast(rset.getString("CAST"));
+					info.setPrice(rset.getInt("PRICE"));
+					info.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					info.setFileNo(rset.getInt("FILE_NO"));
+					info.setFileName(rset.getString("FILE_NAME"));
+					info.setFilePath(rset.getString("FILE_PATH"));
+					iList.add(info);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return iList;
+	}
 	
 	
 

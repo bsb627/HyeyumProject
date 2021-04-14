@@ -1,6 +1,10 @@
+<%@page import="show.model.vo.ShowInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
+%>
 <title>문화나눔, 혜윰 - Show</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/show-custom.css" rel="stylesheet">
@@ -30,22 +34,29 @@
 					<p>이달의 컨텐츠</p>
 				</header>
 
+			<%for(ShowInfo info : iList){ %>
+			<div>
+				<%=info.getShowName()%>
+				</div>
+			<%}%>
 				<div class="testimonials-slider swiper-container "
 					data-aos="fade-up" data-aos-delay="200">
 					<div class="swiper-wrapper">
-
+					
+					
+						<%for(ShowInfo info : iList){ %>
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
+									<img src="/upload/info/show/<%=info.getFileName()%>" alt=""
 										class="img-fluid">
 									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
+										<h4><%=info.getShowName()%></h4>
+										<p><%=info.getTermDate()%></p>
 										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
+											<a href="/upload/info/show/<%=info.getFileName()%>" 
 												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
+												title="<%=info.getShowName()%>"><i class="bi bi-plus"></i></a> <a
 												href="portfolio-details.html" title="More Details"><i
 												class="bi bi-link"></i></a>
 										</div>
@@ -53,91 +64,10 @@
 								</div>
 							</div>
 						</div>
+						<%}%>
 						<!-- End testimonial item -->
 
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
+						
 
 					</div>
 					<!--  <div class="swiper-pagination"></div> -->
@@ -185,6 +115,7 @@
 					<div class="row gy-4 portfolio-container" data-aos="fade-up"
 						data-aos-delay="200">
 						
+						<% for(ShowInfo info : iList) {%>
 						<article class="entry row">
 							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-app">
 								<div class="portfolio-wrap">
@@ -204,6 +135,7 @@
 								</div>
 							</div>
 						</article>
+						<%} %>
 
 						<article class="entry row">
 							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-card">

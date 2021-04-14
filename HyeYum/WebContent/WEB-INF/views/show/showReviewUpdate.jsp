@@ -1,8 +1,11 @@
+<%@page import="show.model.vo.ShowInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="show.model.vo.ShowReview"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	ShowReview review = (ShowReview) request.getAttribute("review");
+	ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 %>
 <head>
 <title>문화나눔, 혜윰 - 글쓰기</title>
@@ -97,9 +100,9 @@
 					<div class="col-md-12">
 						<select class="form-select" name="info-no" required>
 							<option value="" hidden="hidden">공연을 선택해주세요</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
+							<%for(ShowInfo info : iList){ %>
+							<option value="<%=info.getInfoNo()%>"><%=info.getShowName() %></option>
+							<%}%>
 						</select>
 						<hr>
 					</div>
