@@ -6,11 +6,12 @@
 	BookReview review = (BookReview)request.getAttribute("review");
 %>
 <html lang="ko">
+<%@include file="/header.jsp"%>
     <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문화나눔, 혜윰 - 관람혜윰</title>
+    <title>문화나눔, 혜윰 - 독서혜윰 상세보기</title>
 
         <!-- Bootstrap -->
         <link href="/assets/css/book/contents.css" rel="stylesheet" type="text/css"/>
@@ -18,7 +19,6 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
     </head>
     <body>
-<%@include file="/header.jsp"%>
     <%
 	if (userId == null) {
 	%>
@@ -32,6 +32,8 @@
 <%
 	}
 %>
+    <!-- ======= Breadcrumbs ======= -->
+    <section>
         <!-- 좌우측의 공간 확보 -->
         <div class="container">
             <hr/>
@@ -66,28 +68,16 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table id="commentTable" class="table table-condensed"></table>
-                    <table class="table table-condensed">
                         <tr>
                             <td>
                                 <span class="form-inline" role="form">
                                     <p>
-<!--                                         <div class="form-group">
-                                            <input type="text" id="commentParentName" name="commentParentName" class="form-control col-lg-2" data-rule-required="true" placeholder="이름" maxlength="10">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" id="commentParentPassword" name="commentParentPassword" class="form-control col-lg-2" data-rule-required="true" placeholder="패스워드" maxlength="10">
-                                        </div> -->
-<!--                                         <div class="form-group">
-                                            <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
-                                        </div> -->
                                         댓글
                                     </p>
                                         <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
                                 </span>
                             </td>
                         </tr>
-                    </table>
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -108,5 +98,4 @@
             <hr/>
         </div>
         <%@include file="/footer.jsp"%>    
-    </body>
-</html>
+</section>

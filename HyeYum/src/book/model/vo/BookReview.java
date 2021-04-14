@@ -15,7 +15,6 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 	
 	// getter/setter
 
-
 	public String getBookName() {
 		return bookName;
 	}

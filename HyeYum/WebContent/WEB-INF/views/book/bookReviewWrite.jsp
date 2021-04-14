@@ -24,65 +24,9 @@
 <script src="/assets/note//lang/summernote-ko-KR.js"></script>
 
 <link rel="stylesheet" href="/assets/note/summernote-lite.css">
+<script src="/assets/js/book/book-write.js"></script>
 </head>
 <main id="main">
-<script type="text/javascript">
-$(document).ready(function() {
-	//여기 아래 부분
-	$('#summernote').summernote({
-		  height: 300,                 // 에디터 높이
-		  minHeight: null,             // 최소 높이
-		  maxHeight: null,             // 최대 높이
-		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		  lang: "ko-KR",					// 한글 설정
-		  placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정		  
-		  toolbar: [
-		    // [groupName, [list of button]]
-		    ['style', ['bold', 'italic', 'underline', 'clear']],
-		    ['font', ['strikethrough', 'superscript', 'subscript']],
-		    ['fontsize', ['fontsize']],
-		    ['color', ['color']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']]
-		  ]
-	});
-	
-});
-function doChange(srcE, targetId){
-    var val = srcE.options[srcE.selectedIndex].value;
-    var targetE = document.getElementById(targetId);
-    /*alert(val);*/
-    removeAll(targetE);
-
-    if(val == 'languages'){
-        addOption('C++', targetE);
-        addOption('Java', targetE);
-        addOption('Scheme', targetE);
-    }
-    else if(val == 'tools'){
-        addOption('Visual Studio', targetE);
-        addOption('Netbeans', targetE);
-        addOption('Eclipse', targetE);
-    }
-};
-
-function addOption(value, e){
-    var o = new Option(value);
-    try{
-        e.add(o);
-    }catch(ee){
-        e.add(o, null);
-    }
-};
-
-function removeAll(e){
-    for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
-        e.remove(1);
-    }
-};
-
-</script>
-	<!-- ======= Breadcrumbs ======= -->
 	<section class="breadcrumbs">
 		<div class="container">
 
@@ -104,19 +48,19 @@ function removeAll(e){
 				<p>글쓰기</p>
 			</header>
 
-			<form action="/bookReview/enroll" method="post" name="form">
+			<form action="/bookReview/enroll" method="post" enctype="multipart/form-data">
 
 				<div class="row border col-md-12">
 
 					<div class="col-md-8">
-					    <select name="selOne" id="selOne" onchange="doChange(this, 'selTwo')">
-					        <option value="default">---Select Something---</option>
-					        <option value="languages">언어</option>
-					        <option value="tools">툴</option>
-					    </select>
-					    <select name="selTwo" id="selTwo">
-					        <option value="default">---Select Something---</option>
-					    </select>
+	                   <select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
+	                       <option value="0">-- 메뉴 선택 --</option>
+	                       <option value="info">이달의 도서</option>
+	                       <option value="genre">장르</option>
+	                   </select>
+	                   <select name="info-no" id="info-no">
+	                       <option>-- 선택 --</option>
+	                   </select>
 					</div>
 					<!-- 파일첨부 -->
 					<!-- <div>
@@ -174,11 +118,11 @@ function removeAll(e){
 
 					<!-- Submit button -->
 					<div class="btn-set">
-					<a href="/showReview/list"><button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark">
+					<a href="/bookReview/list"><button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark">
 					  취소
 					</button>
 					</a>
-					<button type="submit" class="btn btn-outline-primary " data-mdb-ripple-color="dark" onclick="javascript: form.action='bookReview/enroll'">
+					<button type="submit" class="btn btn-outline-primary " data-mdb-ripple-color="dark">
 					  등록
 					</button>
 					</div>

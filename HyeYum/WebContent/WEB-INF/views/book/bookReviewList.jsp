@@ -11,8 +11,6 @@
 <head>
 <title>문화나눔, 혜윰 - aboutUs</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet prefetch'	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch'	href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/rwd.table.min.css'>
 <link rel="stylesheet" href="/assets/css/book/bookTableStyle.css">
 <!-- <link rel="stylesheet" href="/assets/css/book/swipterStyle.css"> -->
 
@@ -20,14 +18,17 @@
 <main id="main">
 
 	<!-- ======= Breadcrumbs ======= -->
-	<section class="breadcrumbs">
-			<ol>
-				<li><a href="/index.jsp">Home</a></li>
-				<li>도서</li>
-				<li>독서혜윰</li>
-			</ol>
-			<!-- <h2>독서혜윰</h2> -->
-	</section>
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/index.jsp">Home</a></li>
+          <li>도서</li>
+        </ol>
+        <h2>독서혜윰</h2>
+
+      </div>
+    </section>
 	<!-- End Breadcrumbs -->
 
 	<section class="inner-page">
@@ -129,9 +130,6 @@
 				</div>
 			</div>
 		</div>
-		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-		<script	src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js'></script>
-		<script	src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/rwd-table-patterns.js'></script>
 	</section>
 
 </main>
