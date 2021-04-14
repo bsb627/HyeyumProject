@@ -33,7 +33,7 @@ public class MovieRecommendListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("리스트서블릿");
+		//System.out.println("리스트서블릿");
 		int currentPage = 0;
 		if(request.getParameter("currentPage") == null) {
 			currentPage = 1;

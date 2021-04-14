@@ -1,6 +1,11 @@
+<%@page import="movie.model.vo.MovieReview"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	ArrayList<MovieReview> review = (ArrayList<MovieReview>)request.getAttribute("review");
+	String PageNavi = (String)request.getAttribute("pageNavi");
+%>
 <title>문화나눔, 혜윰 - 영화</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/movie/movieinfo.css" rel="stylesheet">
@@ -216,14 +221,19 @@
 			</div>
 
 			<!-- ========== 리뷰글 ========== -->
+
 			<div class="row">
+				<% for(MovieReview mReview : review) { %>
+
 				<div style="float: center">
 					<!-- col-lg-8 entries -->
 					<article class="entry entry-single">
 
 
+
 						<h2 class="entry-title">
-							<label>[genre] </label> title
+							<label>[ <%= mReview.getInfoNo() %>]</label>
+							<%= mReview.getMovieName() %>
 						</h2>
 
 						<hr>
@@ -243,7 +253,7 @@
 						<hr>
 
 						<div class="entry-content">
-							<div class="blank-content">contents</div>
+							<div class="blank-content"><%= mReview.getContents() %></div>
 						</div>
 
 						<div class="entry-footer">
@@ -264,30 +274,30 @@
 					</article>
 					<!-- End blog entry -->
 				</div>
-
+				<%	} %>
 			</div>
-			
+
 			<div style="float: right">
 				<a href="/movieReview/write"><button
-					class="btn btn-primary btn-write">글쓰기</button></a>
+						class="btn btn-primary btn-write">글쓰기</button></a>
 			</div>
-			<br><br><br>
-			
+			<br>
+			<br>
+			<br>
+
 			<!-- 페이징 처리 할 곳 !! -->
 			<div class="blog-pagination">
 				<ul class="justify-content-center">
-					페이징페이징 <!--  < % = pageNavi% > --></ul>
+				</ul>
 			</div>
-		
-		
+
+
 		</div>
-		
-		<%
-			}
-		%>
+
+
 	</section>
 
-
+<%	} %>
 
 </main>
 <!-- End #main -->

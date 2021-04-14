@@ -144,7 +144,7 @@ public class MemberDAO {
 	public int updateMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "UPDATE MEMBER SET MEMBER_PWD=?, USER_PHONE=?, EMAIL=?, ADDRESS=? WHERE USER_ID = ?";
+		String query = "UPDATE MEMBER SET USER_PWD=?, USER_PHONE=?, EMAIL=?, ADDRESS=? WHERE USER_ID = ?";
 		// 불러올 정보:USER_ID 수정할 정보 : MEMBER_PWD, USER_PHONE, EMAIL, ADDRESS
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -166,8 +166,8 @@ public class MemberDAO {
 	public int deleteMember(Connection conn, String userId) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "DELETE FROM MEMBER WHERE MEMBER_ID = ?";
-		
+		String query = "DELETE FROM MEMBER WHERE USER_ID = ?";
+						
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);

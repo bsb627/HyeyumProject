@@ -5,7 +5,8 @@
 <%
 	Member member = (Member) request.getAttribute("member");
 %>
-<title><%=member.getUserName()%> 님 정보 관리</title>
+<script src="/assets/js/member/memberInfoDetail.js"></script>
+<title><%=member.getUserName()%> 님 상세 정보</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/member/memberInfoDetail.css" rel="stylesheet">
 <!-- ======= Breadcrumbs ======= -->
@@ -17,7 +18,7 @@
 				<li><a href="/index.jsp">Home</a></li>
 				<li>내 정보</li>
 			</ol>
-			<h2>회원 탈퇴</h2>
+			<h2>회원 정보 수정</h2>
 
 		</div>
 	</section>
@@ -27,9 +28,9 @@
 		<div class="container">
 			<header class="section-header">
 				<h2>MY INFORMATION</h2>
-				<p>회원 탈퇴</p>
+				<p>회원 정보 수정</p>
 			</header>
-			<form action="/member/delete" method="get">
+			<form action="/member/modify" method="post">
 				<p name="userId">
 					아이디 :
 					<%=member.getUserId()%></p>
