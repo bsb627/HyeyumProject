@@ -28,12 +28,13 @@
            	<%= qna.getContents() %><br>
             </div>
         </div>
+        	<% if (qna.getStep()==0) {%>
             <div class="card mb-4 py-3 border-left-info">
             <div class="card-body">
             <form action = "/admin/qna/write" method = "post">
             <input type = "hidden" value = "<%= qna.getQuestionPwd() %>" name = "qna-pwd">
-            <input type = "hidden" value = "<%= qna.getQnaNo() %>" name = "parent-no">
             <input type = "hidden" value = "<%= qna.getCategory() %>" name = "category">
+            <input type = "hidden" value = "<%= qna.getFamily() %>" name = "family">
            	<input type = "hidden" name = "title" class = "form-control">
            	
            	
@@ -43,6 +44,7 @@
 
 			 </div>
             </div>
+            <% } %>
 
             
             

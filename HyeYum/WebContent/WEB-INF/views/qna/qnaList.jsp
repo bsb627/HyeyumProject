@@ -8,7 +8,19 @@
 %>
 <%@include file="/header.jsp"%>
 <head>
-
+<%
+	if (userId == null) {
+%>
+<script type="text/javascript">
+	if (confirm("로그인 후 이용가능합니다.")) {
+		location.href="/member/login";
+	} else {
+		history.back();
+	}
+</script>
+<%
+	}
+%>
 	
   <title>문화나눔, 혜윰 - QnA</title>
 

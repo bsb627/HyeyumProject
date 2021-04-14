@@ -32,7 +32,8 @@ public class AdminQnaDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));
-		Qna qna = new QnaService().printOneAdmin(qnaNo);
+		int family = Integer.parseInt(request.getParameter("family"));
+		Qna qna = new QnaService().printOneAdmin(qnaNo, family);
 		
 		if( qna!=null) {
 			request.setAttribute("qna", qna);

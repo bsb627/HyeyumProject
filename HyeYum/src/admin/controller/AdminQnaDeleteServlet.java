@@ -43,8 +43,7 @@ public class AdminQnaDeleteServlet extends HttpServlet {
 		
 		int result = new QnaService().deleteQnaAdmin(qnaNo);
 		if(result > 0) {
-			RequestDispatcher view = request.getRequestDispatcher("/admin/qna/list");
-			view.forward(request, response);
+			response.sendRedirect("/admin/qna/list");
 		}
 
 	}

@@ -206,12 +206,12 @@ public class QnaService {
 		return qnaList;
 	}
 
-	public Qna printOneAdmin(int qnaNo) {
+	public Qna printOneAdmin(int qnaNo, int family) {
 		Connection conn = null;
 		Qna qna = null;
 		try {
 			conn = factory.createConnection();
-			qna = new QnaDAO().selectOneAdmin(conn, qnaNo);
+			qna = new QnaDAO().selectOneAdmin(conn, qnaNo, family);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

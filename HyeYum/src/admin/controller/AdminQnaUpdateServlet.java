@@ -33,7 +33,7 @@ public class AdminQnaUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));
 		int family = Integer.parseInt(request.getParameter("family"));
-		Qna qna = new QnaService().printOneAdmin(qnaNo);
+		Qna qna = new QnaService().printOneAdmin(qnaNo, family);
 		Qna parent = new QnaService().printParentAdmin(family);
 		request.setAttribute("qna", qna);
 		request.setAttribute("parentQna", parent);
@@ -56,8 +56,7 @@ public class AdminQnaUpdateServlet extends HttpServlet {
 		qna.setContents(contents);
 		int result = new QnaService().modifyQnaAdmin(qna);
 		if (result > 0 ) {
-			RequestDispatcher view = request.getRequestDispatcher("/admin/qna/list");
-			view.forward(request, response);
+			response.sendRedirect("/admin/qna/list");
 		}
 	}
 

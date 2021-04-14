@@ -41,7 +41,7 @@ public class AdminQnaWriteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		int parentNo = Integer.parseInt(request.getParameter("parent-no"));
+		int family = Integer.parseInt(request.getParameter("family"));
 		String contents = request.getParameter("contents");
 		String pass = request.getParameter("qna-pwd");
 		String category = request.getParameter("category");
@@ -50,14 +50,13 @@ public class AdminQnaWriteServlet extends HttpServlet {
 		Qna qna = new Qna();
 		qna.setCategory(category);
 		qna.setContents(contents);
-		qna.setFamily(parentNo);
+		qna.setFamily(family);
 		qna.setQuestionPwd(pass);
 		qna.setTitle(title);
 		
 		int result = new QnaService().registerAnswer(qna);
 		if( result > 0) {
-			RequestDispatcher view = request.getRequestDispatcher("/admin/qna/list");
-			view.forward(request, response);
+			response.sendRedirect("/admin/qna/list");
 		}
 	}
 

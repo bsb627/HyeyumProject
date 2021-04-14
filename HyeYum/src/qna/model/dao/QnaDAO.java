@@ -420,15 +420,16 @@ public class QnaDAO {
 		return result;
 	}
 
-	public Qna selectOneAdmin(Connection conn, int qnaNo) {
+	public Qna selectOneAdmin(Connection conn, int qnaNo, int family) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Qna qna = new Qna();
-		String query = "SELECT * FROM QNA WHERE QNA_NO = ?";
+		String query = "SELECT * FROM QNA WHERE QNA_NO = ? AND FAMILY = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, qnaNo);
+			pstmt.setInt(2, family);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {

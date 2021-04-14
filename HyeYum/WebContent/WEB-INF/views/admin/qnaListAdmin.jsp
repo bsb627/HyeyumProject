@@ -58,7 +58,7 @@
 						      				<td><%= qna.getCategory() %> </td>
 						      				<td>
 						      				
-						      				<a href="/admin/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
+						      				<a href="/admin/qna/detail?qnaNo=<%= qna.getQnaNo() %>&family=<%= qna.getFamily() %>" ><%= qna.getTitle()%></a>
 						      				
 						      				</td>
 						      				<td><%= qna.getUserId()%></td>
