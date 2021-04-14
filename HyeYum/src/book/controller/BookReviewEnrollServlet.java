@@ -52,7 +52,7 @@ public class BookReviewEnrollServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null && (session.getAttribute("userId")) != null) {
 			String fileUserId = (String)session.getAttribute("userId");
-			String uploadFilePath = request.getServletContext().getRealPath("/upload/show");
+			String uploadFilePath = request.getServletContext().getRealPath("/upload/book");
 			int uploadFileSizeLimit = 5* 1024 * 1024 * 1024;
 			String encType = "UTF-8";
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());

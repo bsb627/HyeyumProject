@@ -53,12 +53,12 @@
 
 					<div class="col-md-8">
 	                   <select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
-	                       <option value="0">-- 메뉴 선택 --</option>
+	                       <option disabled>-- 메뉴 선택 --</option>
 	                       <option value="info">이달의 도서</option>
 	                       <option value="genre">장르</option>
 	                   </select>
 	                   <select name="info-no" id="info-no">
-	                       <option>-- 선택 --</option>
+	                       <option disabled>-- 선택 --</option>
 	                   </select>
 					</div>
 					<!-- 파일첨부 -->

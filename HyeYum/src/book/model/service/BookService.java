@@ -111,7 +111,6 @@ public class BookService {
 	public int registerBookReview(BookReview review) { //책리뷰 등록
 		Connection conn = null;
 		int result = 0;
-		
 		try {
 			conn = factory.createConnection();
 			result = new BookDAO().insertBookReview(conn, review);
@@ -224,9 +223,27 @@ public class BookService {
 		return share;
 	}
 	public int registerBookShare(BookShare share) { // 책나눔 등록
+		Connection conn = null;
 		int result = 0;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().insertBookShare(conn, share);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		System.out.println("Service result:" + result );
+		
 		return result;
 	}
+	
 	public int modifyBookShare(BookShare share) { //책나눔 수정
 		int result = 0;
 		return result;

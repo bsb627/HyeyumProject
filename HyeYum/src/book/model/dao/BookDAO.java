@@ -355,8 +355,25 @@ public class BookDAO {
 		return share;
 	}
 	public int insertBookShare(Connection conn, BookShare share) { // 책나눔 등록
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO BOOK_SHARE VALUES(SEQ_BOOK_SHARE.NEXTVAL,?,?,?,SYSDATE,0,?)";
 		
-		return 0;
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, share.getRegion());
+				pstmt.setString(2, share.getTitle());
+				pstmt.setString(3, share.getContents());
+				pstmt.setString(4, share.getUserId());
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(conn);
+			}
+			System.out.println("DAOresult:" + result);
+		return result;
 	}
 	public int updateBookShare(Connection conn, BookShare share) { // 책나눔 수정
 		

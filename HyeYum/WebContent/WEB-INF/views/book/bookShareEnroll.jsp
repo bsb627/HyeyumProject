@@ -48,18 +48,28 @@
 				<p>글쓰기</p>
 			</header>
 
-			<form action="/bookReview/enroll" method="post" enctype="multipart/form-data">
+			<form action="/bookShare/enroll" method="post" enctype="multipart/form-data">
 
 				<div class="row border col-md-12">
 
+					<div class="form-outline col-md-12">
+						<input type="text" id="share-title" class="form-control" name="share-title" autocomplete="off" required/> <label
+							class="form-label" for="show-title">제목</label>
+					<hr>
+					</div>
 					<div class="col-md-8">
-	                   <select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
-	                       <option value="0">-- 메뉴 선택 --</option>
-	                       <option value="info">이달의 도서</option>
-	                       <option value="genre">장르</option>
-	                   </select>
-	                   <select name="info-no" id="info-no">
-	                       <option>-- 선택 --</option>
+	                   <select name="region" id="region">
+	                       <option disabled>-- 판매지역 선택 --</option>
+	                       <option value="서울/경기">서울/경기</option>
+	                       <option value="인천">인천</option>
+	                       <option value="강원">강원</option>
+	                       <option value="충북">충북</option>
+	                       <option value="충남">충남</option>
+	                       <option value="경북">경북</option>
+	                       <option value="경남">경남</option>
+	                       <option value="전북">전북</option>
+	                       <option value="전남">전남</option>
+	                       <option value="제주">제주</option>
 	                   </select>
 					</div>
 					<!-- 파일첨부 -->
@@ -81,20 +91,15 @@
 						</div>
 
 
-					<div class="form-outline col-md-12">
-						<input type="text" id="review-title" class="form-control" name="review-title" autocomplete="off" required/> <label
-							class="form-label" for="show-title">제목</label>
-					<hr>
-					</div>
 				
 
-					 <textarea id="summernote" name="review-content"></textarea>
+					 <textarea id="summernote" name="share-content"></textarea>
 					<br>
 				
 
 					<!-- Submit button -->
 					<div class="btn-set">
-					<a href="/bookReview/list"><button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark">
+					<a href="/bookShare/list"><button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark">
 					  취소
 					</button>
 					</a>
