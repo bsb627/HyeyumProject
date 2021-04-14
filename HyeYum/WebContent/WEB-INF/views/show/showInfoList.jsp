@@ -126,7 +126,7 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 										<div class="portfolio-links">
 											<a href="/upload/info/show/<%=info.getFileName()%>"
 												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="<%=info.getTermDate() %>"><i class="bi bi-plus"></i></a> <a
+												title="<%=info.getShowName() %>"><i class="bi bi-plus"></i></a> <a
 												href="/showInfo/detail?no=<%=info.getInfoNo()%>" title="More Details"><i
 												class="bi bi-link"></i></a>
 										</div>

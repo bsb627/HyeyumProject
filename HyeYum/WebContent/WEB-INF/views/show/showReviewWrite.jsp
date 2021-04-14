@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 	<section class="inner-page">
 		<div class="container">
-			<header class="section-header">
+			<header class="section-header" style="margin-bottom: 20px;">
 				<h2>Photo Review</h2>
 				<p>글쓰기</p>
 			</header>
@@ -85,7 +85,7 @@ $(document).ready(function() {
 						<select class="form-select" name="info-no" required>
 							<option value="" hidden="hidden">공연을 선택해주세요</option>
 							<%for(ShowInfo info : iList){ %>
-							<option value="<%=info.getInfoNo()%>"><%=info.getShowName() %></option>
+							<option value="<%=info.getInfoNo()%>" style="background-image:url(/upload/info/show/<%=info.getFileName() %>)"><%=info.getShowName() %></option>
 							<%}%>
 						</select>
 						<hr>

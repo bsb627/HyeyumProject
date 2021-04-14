@@ -19,6 +19,7 @@ import qna.model.vo.Qna;
 import qna.model.vo.QnaPageData;
 import show.model.service.ShowService;
 import show.model.vo.ShowData;
+import show.model.vo.ShowInfo;
 import show.model.vo.ShowPageData;
 import show.model.vo.ShowReview;
 
@@ -57,7 +58,7 @@ public class ShowReviewListServlet extends HttpServlet {
 		FileData fd = new FileData();
 		fd.setFileType("show");
 		ArrayList<FileData> fList = new FileService().printFileList("show");
-		
+		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
 		if(!showList.isEmpty()) {
 			request.setAttribute("showList", showList);
 			request.setAttribute("pageNavi", pageNavi);
@@ -66,6 +67,7 @@ public class ShowReviewListServlet extends HttpServlet {
 			 * request.setAttribute("likesCount", likesCount);
 			 */
 			request.setAttribute("fList", fList);
+			request.setAttribute("iList", iList);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewList.jsp").forward(request, response);
 		}else {
 			
