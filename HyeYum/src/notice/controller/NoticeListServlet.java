@@ -33,25 +33,30 @@ public class NoticeListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*
-	 * int currentPage = 0; if(request.getParameter("currentPage") == null) {
-	 * currentPage = 1; }else { currentPage =
-	 * Integer.parseInt(request.getParameter("currentPage")); } NoticePageData
-	 * noticepageData = new NoticeService().printAllList(currentPage);
-	 * ArrayList<Notice> nList = noticepageData.getNoticeList(); String pageNavi =
-	 * noticepageData.getPageNavi(); if(!nList.isEmpty()) {
-	 * request.setAttribute("nList", nList); request.setAttribute("pageNavi",
-	 * pageNavi); RequestDispatcher view =
-	 * request.getRequestDispatcher("/WEB-INF/views/notice/noticeList.jsp");
-	 * view.forward(request, response);
-	 * 
-	 * } else { RequestDispatcher view =
-	 * request.getRequestDispatcher("/WEB-INF/views/notice/noticeError.html");
-	 * view.forward(request, response); } }
-	 */
-		request.getRequestDispatcher("/WEB-INF/views/notice/hyeyumNotice.jsp").forward(request, response);
-	
+	System.out.println("뭐라고해요?");
+	  int currentPage = 0; 
+	  if(request.getParameter("currentPage") == null) {
+	  currentPage = 1; 
+	  
+	  }else { currentPage =
+	  Integer.parseInt(request.getParameter("currentPage")); 
+	  } 
+	  NoticePageData noticepageData = new NoticeService().printAllList(currentPage);
+	  ArrayList<Notice> nList = noticepageData.getNoticeList(); 
+	  String pageNavi = noticepageData.getPageNavi();
+	  
+	  if(!nList.isEmpty()) {
+	  request.setAttribute("nList", nList); 
+	  request.setAttribute("pageNavi",pageNavi); 
+	  RequestDispatcher view =
+	  request.getRequestDispatcher("/WEB-INF/views/notice/hyeyumNotice.jsp");
+	  view.forward(request, response);
+	  
+	  } else { RequestDispatcher view =
+	  request.getRequestDispatcher("/WEB-INF/views/notice/noticeError.html");
+	  view.forward(request, response); } 
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

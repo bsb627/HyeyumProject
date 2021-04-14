@@ -27,8 +27,10 @@ public class NoticeService {
 		try {
 			conn = factory.createConnection();
 			pd.setNoticeList(new NoticeDAO().selectAllList(conn, currentPage));
+			// 전체 리스트를 다 받아와서 pd에 있는 노티스리스트에 저장
 			pd.setPageNavi(new NoticeDAO().getPageNavi(conn, currentPage));
-			
+			// DAO 에서 getpageNavi 메소드에서 그 리스트 전체를 몇개씩 잘라서 보여줄지
+			// 세팅해서 화면단 밑에 보여질 pageNavi를 service로 리턴해준다.
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-<%@page import="notice.model.vo.Notice"%>
+<%--  <%@page import="notice.model.vo.Notice"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,6 +6,7 @@
 	ArrayList<Notice> nList = (ArrayList<Notice>)request.getAttribute("nList");
 	String pageNavi = (String)request.getAttribute("pageNavi");
 %>
+<%@include file="/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,10 +45,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" align="center">
 				<%= pageNavi %>
+		<div align = "center">
+		</div>
 			</td>
 		</tr>
 	</table>
 </body>
-</html>
+</html>  --%>

@@ -16,7 +16,7 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null; 
 		ResultSet rset = null;
 		ArrayList<Notice> nList = null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY NOTICENO DESC) AS NUM, NOTICENO, TITLE, CONTENTS, USERID, ENROLLDATE FROM NOTICE) WHERE NUM BETWEEN ? AND ?"; 
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_NO, TITLE, CONTENTS, USER_ID, ENROLL_DATE , HITS FROM NOTICE) WHERE NUM BETWEEN ? AND ?"; 
 		
 		int recordCountPerPage = 10;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
@@ -29,11 +29,12 @@ public class NoticeDAO {
 			nList = new ArrayList<Notice>(); 
 			while(rset.next()) { // 
 				Notice notice = new Notice(); 
-				notice.setNoticeNo(rset.getInt("NOTICENO"));
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
 				notice.setTitle(rset.getString("TITLE"));
 				notice.setContents(rset.getString("CONTENTS"));
-				notice.setUserId(rset.getString("USERID"));
-				notice.setEnrollDate(rset.getDate("ENROLLDATE"));
+				notice.setUserId(rset.getString("USER_ID"));
+				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				notice.setHits(rset.getInt("HITS"));
 				nList.add(notice); 
 			}
 		} catch (SQLException e) {
@@ -44,7 +45,7 @@ public class NoticeDAO {
 		JDBCTemplate.close(rset);
 		JDBCTemplate.close(pstmt);
 	}
-
+		System.out.println("DAO.." + nList);
 	return nList;
 
 }
@@ -124,11 +125,12 @@ public class NoticeDAO {
 			rset = pstmt.executeQuery();
 			if(rset.next()) { 
 				notice = new Notice();
-				notice.setNoticeNo(rset.getInt("NOTICENO"));
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
 				notice.setTitle(rset.getString("TITLE"));
 				notice.setContents(rset.getString("CONTENTS"));
-				notice.setUserId(rset.getString("USERID"));
-				notice.setEnrollDate(rset.getDate("ENROLLDATE"));
+				notice.setUserId(rset.getString("USER_ID"));
+				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				notice.setHits(rset.getInt("HITS"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -197,11 +199,11 @@ public class NoticeDAO {
 			nList = new ArrayList<Notice>();
 			while(rset.next()) {
 				Notice notice = new Notice();
-				notice.setNoticeNo(rset.getInt("NOTICENO"));
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
 				notice.setTitle(rset.getString("TITLE"));
 				notice.setContents(rset.getString("CONTENTS"));
-				notice.setUserId(rset.getString("USERID"));
-				notice.setEnrollDate(rset.getDate("ENROLLDATE"));
+				notice.setUserId(rset.getString("USER_ID"));
+				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				nList.add(notice); 
 			}
 		} catch (SQLException e) {
