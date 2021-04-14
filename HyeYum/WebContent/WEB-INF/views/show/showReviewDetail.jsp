@@ -16,10 +16,11 @@
 	
 %>
 <%@include file="/header.jsp"%>
+
 <head>
   <title>문화나눔, 혜윰 - 디테일</title>
   <link href="/assets/css/show-custom.css" rel="stylesheet">
-  <script src="/assets/js/show-custom.js"></script>
+  
 </head>
  <main id="main">
 
@@ -71,7 +72,7 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3><a href="/showInfo/detail?no=<%=info.getInfoNo()%>"><img src="/upload/info/show/<%=info.getFileName() %>"  height="50px"/> [<%=info.getType() %>] <%=info.getShowName() %></a></h3>
+              <h3><a href="/showInfo/detail?no=<%=info.getInfoNo()%>"><img src="/upload/info/show/<%=info.getFileName() %>"  height="50px"/> <small>[<%=info.getType() %>]</small> <%=info.getShowName() %></a></h3>
               
               <ul>
                 <li><strong>조회수 </strong> <%=review.getHits() %></li>
@@ -107,7 +108,7 @@
                   <div>
                     <h5><a href="#"><%=reply.getNick() %></a> 
                     <%if(reply.getUserId().equals(userId)){ %>
-                    <button class="btn btn-sm btn-outline-success">수정</button> <a href="/reply/delete?replyNo=<%=reply.getReplyNo() %>&reviewNo=<%=reply.getNo() %>&type=show"><button class="btn btn-sm btn-outline-danger">삭제</button></a>
+                    <button class="btn btn-sm btn-outline-success reply-modify-btn" data-toggle="modal" data-target="#myModal">수정</button> <a href="/reply/delete?replyNo=<%=reply.getReplyNo() %>&reviewNo=<%=reply.getNo() %>&type=show"><button class="btn btn-sm btn-outline-danger">삭제</button></a>
                     <%} %>
                     </h5> 
                     <time datetime="2020-01-01"><%=reply.getEnrollDate() %></time>
@@ -171,11 +172,38 @@
 					</a>
 					
 					</div>
+	
+					<!--  modal -->
+					<!-- Trigger the modal with a button -->
 
-            </div><!-- End blog comments -->
 
+<!-- Modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </section><!-- End Portfolio Details Section -->
-  </main><!-- End #main -->
-
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+				<!-- End #main -->
+  
 <%@include file="/footer.jsp"%>
+<script src="/assets/js/show-detail.js"></script>
