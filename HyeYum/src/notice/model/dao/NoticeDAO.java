@@ -80,13 +80,13 @@ public class NoticeDAO {
 		}
 		StringBuilder sb = new StringBuilder();
 		if(needPrev) {
-			sb.append("<a href='/notice/list?currentPage=" + (startNavi-1)+ "'> < </a>");
+			sb.append("<li class='page-item'><a class='page-link' href='/notice/list?currentPage=" + (startNavi-1)+ "'> < </a></li>");
 		}
 		for(int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='/notice/list?currentPage=" + i + "'>"+ i + " </a>");
+			sb.append("<li class='page-item'><a class='page-link' href='/notice/list?currentPage=" + i + "'>"+ i + " </a><li>");
 		}
 		if(needNext) {
-			sb.append("<a href='/notice/list?currentPage=" + (endNavi +1) + "'> > </a>");
+			sb.append("<li class='page-item'><a class='page-link' href='/notice/list?currentPage=" + (endNavi +1) + "'> > </a><li>");
 		}
 		return sb.toString();
 	}
