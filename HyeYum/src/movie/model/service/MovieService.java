@@ -113,12 +113,12 @@ public class MovieService {
 		return mpd;
 	}
 	
-	public MovieReview printOneMovieReview(int reviewNo) { // 영화리뷰 상세보기
+	public MovieReview printOneMovieReview(int reNo) { // 영화리뷰 상세보기
 		Connection conn = null;
 		MovieReview review = null;
 		try {
 			conn = factory.createConnection();
-			review = new MovieDAO().selectOneMovieReview(conn, reviewNo);
+			review = new MovieDAO().selectOneMovieReview(conn, reNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -257,6 +257,11 @@ public class MovieService {
 		try {
 			conn = factory.createConnection();
 			result = new MovieDAO().insertMovieRecommend(conn, movieRecommend);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -272,6 +277,11 @@ public class MovieService {
 		try {
 			conn = factory.createConnection();
 			result = new MovieDAO().updateMovieRecommend(conn, movieRecommend);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

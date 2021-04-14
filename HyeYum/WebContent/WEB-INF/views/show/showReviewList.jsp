@@ -1,3 +1,4 @@
+<%@page import="show.model.vo.ShowInfo"%>
 <%@page import="file.controller.FileListServlet"%>
 <%@page import="file.model.vo.FileData"%>
 <%@page import="show.model.vo.ShowData"%>
@@ -11,7 +12,7 @@ ArrayList<ShowReview> showList = (ArrayList<ShowReview>)request.getAttribute("sh
 ArrayList<ShowData> likesCount = (ArrayList<ShowData>)request.getAttribute("likesCount"); */
 ArrayList<FileData> fileList = (ArrayList<FileData>)request.getAttribute("fList");
 String pageNavi = (String)request.getAttribute("pageNavi");
-
+ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 %>
 <title>문화나눔, 혜윰 - 관람혜윰</title>
 <%@include file="/header.jsp"%>
@@ -103,6 +104,10 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 							<img src="/upload/show/<%=fd.getFileName() %>" class="img-fluid" alt="">
 						</div>
 						<%} }%>
+						<%for (ShowInfo info : iList){ %>
+						<%if(review.getInfoNo() == info.getInfoNo()){ %>
+						<span class="post-type">[<%=info.getType()%>]<%=info.getShowName()%></span>
+						<%} }%>
 
 						<span class="post-date">
 							<i class="bi bi-eye"> <%=review.getHits()%></i>							
@@ -110,13 +115,17 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 							<i class="bi bi-heart"> <%=review.getLikes() %></i>
 						</span>
 							
+							<!-- <a class="readmore stretched-link mt-auto"><span class="">[타입]제목</span></a> -->
+							
 						<h3 class="post-title"> <%=review.getTitle() %></h3>
-						<a href="/showReview/hitsCount?review-no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
+						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
 						
 						<span class="post-date-right">
+						
 							<i class="bi bi-pen"> <%=review.getNick() %></i><br>
 							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i>
 						</span>
+						
 					</div>
 				</div>
 				

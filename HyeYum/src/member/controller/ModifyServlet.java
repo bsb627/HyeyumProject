@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +42,8 @@ public class ModifyServlet extends HttpServlet {
 		if (member != null) {
 			request.setAttribute("member", member);
 			request.getRequestDispatcher("/WEB-INF/views/member/memberInfoDetail.jsp").forward(request, response);
+		}  else {
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	
 		// 불러올 정보:USER_ID 수정할 정보 : MEMBER_PWD, USER_PHONE, EMAIL, ADDRESS
@@ -50,7 +54,36 @@ public class ModifyServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		HttpSession session = request.getSession();
+		session.getAttribute("userId");
+		
 		Member member = new Member();
-	}
+		member.setUserId((String)session.getAttribute("userId"));
+		member.setUserPwd(request.getParameter("userPwd"));
+		member.setUserName(request.getParameter("userName"));
+		member.setUserNick(request.getParameter("userNick"));
+		member.setUserPhone(request.getParameter("userPhone"));
+		member.setUserEmail(request.getParameter("userEmail"));
+		member.setUserAddress(request.getParameter("userAddress"));
+		System.out.println("servlet:"+member);
+		int result = new MemberService().modifyMember(member);
+			System.out.println("member :" + result);
+		if(result > 0) {
+		//	response.sendRedirect("/index.jsp"); // 성공 시 메인페이지
+			PrintWriter out = response.getWriter();
 
+			out.println("<script> alert('정보수정이 완료되었습니다.');");
+			out.println("location.href='/index.jsp';");
+			out.println("</script>");
+		} else {
+			request.getRequestDispatcher("/member/memberError.html").forward(request, response);; // 실패 
+		}
+	}
+	
+	
+	
+	
 }

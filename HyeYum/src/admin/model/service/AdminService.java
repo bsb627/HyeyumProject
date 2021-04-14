@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import admin.model.dao.AdminDAO;
 import common.JDBCTemplate;
+import member.model.vo.Member;
 import show.model.vo.ShowInfo;
 
 public class AdminService {
@@ -111,5 +112,7 @@ public class AdminService {
 		
 		return result;
 	}
+
+
 
 }

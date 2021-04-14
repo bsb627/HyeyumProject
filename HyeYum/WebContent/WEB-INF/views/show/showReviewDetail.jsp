@@ -1,3 +1,4 @@
+<%@page import="show.model.vo.ShowInfo"%>
 <%@page import="file.model.vo.FileData"%>
 <%@page import="reply.model.vo.Reply"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,6 +12,8 @@
 	ArrayList<Reply> replyList = (ArrayList<Reply>)request.getAttribute("replyList");
 	int likes = (int)request.getAttribute("likes");
 	FileData fileData = (FileData)request.getAttribute("fileData");
+	ShowInfo info = (ShowInfo)request.getAttribute("info");
+	
 %>
 <%@include file="/header.jsp"%>
 <head>
@@ -65,7 +68,8 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3>정보</h3>
+              <h3><a href="/showInfo/detail?no=<%=info.getInfoNo()%>"><img src="/upload/info/show/<%=info.getFileName() %>"  height="50px"/> [<%=info.getType() %>] <%=info.getShowName() %></a></h3>
+              
               <ul>
                 <li><strong>조회수 </strong> <%=review.getHits() %></li>
                 <li><strong>작성자 </strong> <%=review.getNick() %></li>
@@ -77,6 +81,7 @@
                 <li><a href="/showReview/minusLikes?no=<%=review.getNo()%>"><button class="btn btn-sm btn-outline-danger"><i class="bi bi-heart-fill" style="color:#dc3545"></i> 좋아요 취소</button></a></li>
                 <%} %>
               </ul>
+              
             </div>
             <div class="portfolio-description">
               <h2><%=review.getTitle() %></h2>

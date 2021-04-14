@@ -85,7 +85,7 @@
                   <i class="ri-command-line"></i>
                   <div>
                     <h4>기간</h4>
-                    <p><%=info.getRunTime()%></p>
+                    <p><%=info.getTermDate()%></p>
                   </div>
                 </div>
 

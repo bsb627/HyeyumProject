@@ -50,7 +50,10 @@
 										<option selected>지역</option>
 										<option value="서울">서울</option>
 										<option value="인천">인천</option>
-										<option value="경기도">경기도</option>
+										<option value="경기">경기</option>
+										<option value="대전">대전</option>
+										<option value="부산">부산</option>
+										<option value="제주">제주</option>
 									</select>
 								</div>
 							</div>
@@ -60,10 +63,10 @@
 									<label for="exam1">관람등급</label> <select
 										class="browser-default custom-select" name="age-group" required>
 										<option selected>등급</option>
-										<option value="1">전체관람가</option>
-										<option value="2">12세</option>
-										<option value="3">15세</option>
-										<option value="4">청소년관람불가</option>
+										<option value="전체관람가">전체관람가</option>
+										<option value="12세 이상">12세 이상</option>
+										<option value="15세 이상">15세 이상</option>
+										<option value="청소년관람불가">청소년관람불가</option>
 									</select>
 								</div>
 							</div>

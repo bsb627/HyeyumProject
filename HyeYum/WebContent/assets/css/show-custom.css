@@ -11,7 +11,7 @@ hr{
 	padding: 118px 0 0 0;
 }
 .section-header{
-	padding: 118px 0 0 0;
+	padding: 118px 0 40px 0;
 }
 .blog .entry {
   padding: 30px;
@@ -48,6 +48,13 @@ hr{
 	margin-right:5%
 }
 
+.post-type{
+	font-size: 16px;
+    font-weight: 600;
+    color: rgba(1, 41, 112, 0.6);
+    display: block;
+    margin-bottom: 10px;
+}
 .btn-write{
 	float:right;
 	background: #4154f1;
@@ -143,3 +150,4 @@ hr{
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
 /* custom overlay*/
+

@@ -110,7 +110,7 @@
 								<div class="service-box pink">
 									<i class="ri-discuss-line icon"></i>
 									<h3>회원 탈퇴</h3>
-									<a href="#" class="read-more"><span>자세히 보기</span> <i
+									<a href="/member/delete" class="read-more"><span>자세히 보기</span> <i
 										class="bi bi-arrow-right"></i></a>
 								</div>
 							</div>

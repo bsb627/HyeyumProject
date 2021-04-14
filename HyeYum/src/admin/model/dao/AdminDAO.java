@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import member.model.vo.Member;
 import show.model.vo.ShowInfo;
 
 public class AdminDAO {
@@ -163,5 +164,7 @@ public class AdminDAO {
 		
 		return result ;
 	}
+
+
 
 }

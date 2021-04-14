@@ -155,10 +155,10 @@ public class MovieDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<MovieReview> review = null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC) AS NUM, REVIEW_NO, INFO_NO, STAR_RATING, CONTENTS, ENROLL_DATE, SPOILER, TICKET_NUMBER, USER_ID, ENROLL_DATE FROM MOVIE_REVIEW JOIN MEMBER USING (USER_ID) WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.ENROLL_DATE DESC) AS NUM, REVIEW_NO, A.USER_ID, TICKET_NUMBER, MOVIE_NAME,CONTENTS,NICK,(A.ENROLL_DATE), STAR_RATING,SPOILER, B.INFO_NO FROM MOVIE_REVIEW A JOIN MOVIE_INFO B ON A.INFO_NO=B.INFO_NO JOIN MEMBER C ON A.USER_ID=C.USER_ID) WHERE NUM BETWEEN ? AND ?";
 		// REVIEW_NO, INFO_NO, STAR_RATING, CONTENTS, ENROLL_DATE, SPOILER, TICKET_NUMBER, USER_ID
-		
-		int recordCountPerPage = 5;
+		// SELECT MOVIE_NAME,CONTENTS,NICK,A.ENROLL_DATE,STAR_RATING,SPOILER,REVIEW_NO,B.INFO_NO FROM MOVIE_REVIEW A JOIN MOVIE_INFO B ON (A.INFO_NO=B.INFO_NO) JOIN MEMBER C ON (A.USER_ID=C.USER_ID)
+		int recordCountPerPage = 10;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
 		int end = currentPage*recordCountPerPage;
 		try {
@@ -169,13 +169,17 @@ public class MovieDAO {
 			review = new ArrayList<MovieReview>();
 			while(rset.next()) {
 				MovieReview mReview = new MovieReview();
-				mReview.setNo(rset.getInt("REVIEW_NO"));
+				mReview.setNo(rset.getInt("NUM"));
+				mReview.setReNo(rset.getInt("REVIEW_NO"));
+				mReview.setInfoNo(rset.getInt("INFO_NO"));
+				mReview.setMovieName(rset.getString("MOVIE_NAME"));
 				mReview.setStarRating(rset.getInt("STAR_RATING"));
 				mReview.setContents(rset.getString("CONTENTS"));
 				mReview.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mReview.setSpoiler(rset.getString("SPOILER"));
 				mReview.setTicketNumber(rset.getString("TICKET_NUMBER"));
 				mReview.setNick("NICK");
+				mReview.setUserId("USER_ID");
 				review.add(mReview);
 				}
 		} catch (SQLException e) {
@@ -190,7 +194,7 @@ public class MovieDAO {
 	
 	public String getMovieReviewPageNavi(Connection conn, int currentPage) { // 영화리뷰 페이징
 		int recordTotalCount = totalReviewCount(conn); // 전체 게시물
-		int recordCountPerPage = 5; // 5개씩
+		int recordCountPerPage = 10; // 5개씩
 		int pageTotalCount = 0;
 		if (recordTotalCount % recordCountPerPage > 0) {
 			pageTotalCount = recordTotalCount / recordCountPerPage + 1; // 1 : 나머지 게시물 담는 곳
@@ -221,13 +225,13 @@ public class MovieDAO {
 
 		StringBuilder sb = new StringBuilder();
 		if (needPrev) { // 이전 페이지 ( < )
-			sb.append("<a href='/movieRecommend/list?currentPage=" + (startNavi - 1) + "'> 이전 </a>");
+			sb.append("<a href='/movieReview/list?currentPage=" + (startNavi - 1) + "'> 이전 </a>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='/movieRecommend/list?currentPage=" + i + "'>" + i + " </a>");
+			sb.append("<a href='/movieReview/list?currentPage=" + i + "'>" + i + " </a>");
 		}
 		if (needNext) { // 다음 페이지 ( > )
-			sb.append("<a href='/movieRecommend/list?currentPage=" + (endNavi + 1) + "'> 다음 </a>");
+			sb.append("<a href='/movieReview/list?currentPage=" + (endNavi + 1) + "'> 다음 </a>");
 		}
 		return sb.toString();
 	}
@@ -254,25 +258,27 @@ public class MovieDAO {
 		return recordTotalCount;
 	}
 	
-	public MovieReview selectOneMovieReview(Connection conn, int reviewNo) { // 영화리뷰 상세보기
+	public MovieReview selectOneMovieReview(Connection conn, int reNo) { // 영화리뷰 상세보기
 		PreparedStatement pstmt = null; 
 		ResultSet rset = null;
 		MovieReview review = null;
-		String query = "SELECT * FROM MOVIE_REVIEW WHERE REVIEW_NO='" + reviewNo + "'";
+		String query = "SELECT * FROM MOVIE_REVIEW WHERE REVIEW_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, reviewNo);
+			pstmt.setInt(1, reNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				MovieReview mReview = new MovieReview();
-				mReview.setNo(rset.getInt("NUM"));
+				mReview.setReNo(rset.getInt("REVIEW_NO"));
+				mReview.setInfoNo(rset.getInt("INFO_NO"));
 				mReview.setStarRating(rset.getInt("STAR_RATING"));
 				mReview.setContents(rset.getString("CONTENTS"));
 				mReview.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mReview.setSpoiler(rset.getString("SPOILER"));
 				mReview.setTicketNumber(rset.getString("TICKET_NUMBER"));
 				mReview.setNick("NICK");
+				mReview.setUserId("USER_ID");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -287,8 +293,23 @@ public class MovieDAO {
 	public int insertMovieReview(Connection conn, MovieReview movieReview) { // 영화리뷰 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
+		String query = "INSERT INTO MOVIE_REVIEW VALUES(SEQ_MOVIE_REVIEW.NEXTVAL, ?,?,?,SYSDATE, ?,?,?";
 
-		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieReview.getInfoNo());
+			pstmt.setInt(2, movieReview.getStarRating());
+			pstmt.setString(3, movieReview.getContents());
+			pstmt.setString(4, movieReview.getSpoiler());
+			pstmt.setString(5, movieReview.getTicketNumber());
+			pstmt.setString(6, movieReview.getNick());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		return result;
 	}
 	

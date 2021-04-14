@@ -16,6 +16,7 @@ import reply.model.service.ReplyService;
 import reply.model.vo.Reply;
 import reply.model.vo.ReplyPageData;
 import show.model.service.ShowService;
+import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
 
 /**
@@ -71,6 +72,7 @@ public class AddHitsCountServlet extends HttpServlet {
 		int addHits = new ShowService().addHitsCount(showNo);
 		FileData fileData = new FileService().printFile(showNo);
 		System.out.println("file : "+fileData);
+		ShowInfo info = new ShowService().getShowInfo(review.getInfoNo());
 		if(review != null) {
 			request.setAttribute("review", review);
 			request.setAttribute("replyList", replyList);
@@ -78,6 +80,7 @@ public class AddHitsCountServlet extends HttpServlet {
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("likes", likes);
 			request.setAttribute("fileData", fileData);
+			request.setAttribute("info", info);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewDetail.jsp").forward(request, response);
 			
 		}else {
