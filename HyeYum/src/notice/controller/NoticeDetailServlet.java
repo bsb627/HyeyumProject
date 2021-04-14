@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
@@ -31,6 +32,10 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("안자고 뭐하니?");
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice notice = new NoticeService().printOne(noticeNo);
 		if(notice != null) {

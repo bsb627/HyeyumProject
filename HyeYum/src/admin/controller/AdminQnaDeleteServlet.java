@@ -1,28 +1,25 @@
 package admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import qna.model.service.QnaService;
-import qna.model.vo.Qna;
-
 /**
- * Servlet implementation class AdminLoginServlet
+ * Servlet implementation class AdminQnaDeleteServlet
  */
-@WebServlet("/admin/qna/list")
-public class AdminQnaListServlet extends HttpServlet {
+@WebServlet("/admin/qna/delete")
+public class AdminQnaDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminQnaListServlet() {
+    public AdminQnaDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +28,11 @@ public class AdminQnaListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Qna> qnaList = new QnaService().printAllQnaAdmin();
-		
-		if(!qnaList.isEmpty()) {
-			request.setAttribute("qnaList", qnaList);
-			request.getRequestDispatcher("/WEB-INF/views/admin/qnaListAdmin.jsp").forward(request, response);			
-		}
+//		String [] checkBoxes = request.getParameterValues("checkbox");
+//		request.setAttribute("checkBoxes", checkBoxes);
+//		RequestDispatcher view = request.getRequestDispatcher("/qna/delete");
+//		view.forward(request, response);
+
 	}
 
 	/**

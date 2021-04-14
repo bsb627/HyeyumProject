@@ -86,10 +86,15 @@
 			<input type = "hidden" name = "qna-pwd" value ="<%= qna.getQuestionPwd() %>" >
 			<input type = "submit" value = "수정" class= "btn btn-primary" id = "modify">
 		</form>     
+		
+
 		<form action = "/qna/delete" method = "post" id = "delete-form" style ="float:right">
-			<input type = "hidden" name = "qna-no" value = "<%= qna.getQnaNo() %>">
+			<input type = "hidden" name = "family" value = "<%= qna.getFamily() %>">
+			<input type = "hidden" name = "step" value = "<%= qna.getStep() %>">
 			<input type = "submit" value = "삭제" class = "btn btn-outline-primary" id="delete">
 		</form>
+		
+
 		</div>
 		<br>
 

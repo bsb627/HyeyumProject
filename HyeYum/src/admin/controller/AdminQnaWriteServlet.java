@@ -1,7 +1,6 @@
-package qna.controller;
+package admin.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +13,16 @@ import qna.model.service.QnaService;
 import qna.model.vo.Qna;
 
 /**
- * Servlet implementation class QnADeleteServlet
+ * Servlet implementation class AdminQnaWriteServlet
  */
-@WebServlet("/qna/delete")
-public class QnaDeleteServlet extends HttpServlet {
+@WebServlet("/admin/qna/write")
+public class AdminQnaWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaDeleteServlet() {
+    public AdminQnaWriteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,20 +39,24 @@ public class QnaDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		request.setCharacterEncoding("UTF-8");
 		
-		int family = Integer.parseInt(request.getParameter("family"));
+		int parentNo = Integer.parseInt(request.getParameter("parent-no"));
+		String contents = request.getParameter("contents");
+		String pass = request.getParameter("qna-pwd");
+		String category = request.getParameter("category");
+		String title = request.getParameter("title");
 		
+		Qna qna = new Qna();
+		qna.setCategory(category);
+		qna.setContents(contents);
+		qna.setFamily(parentNo);
+		qna.setQuestionPwd(pass);
+		qna.setTitle(title);
 		
-		
-		int result = new QnaService().deleteQna(family);
-		
-		if (result > 0) {
-			RequestDispatcher view  = request.getRequestDispatcher("/qna/list");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view  = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");
+		int result = new QnaService().registerAnswer(qna);
+		if( result > 0) {
+			RequestDispatcher view = request.getRequestDispatcher("/admin/qna/list");
 			view.forward(request, response);
 		}
 	}

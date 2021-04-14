@@ -101,13 +101,13 @@ public class QnaService {
 		
 	}
 	
-	// 글삭제
-	public int deleteQna(int qnaNo) {
+	// 글삭제 : 답글 있을 경우 다 삭제
+	public int deleteQna(int family) {
 		Connection conn = null;
 		int result = 0;
 		try {
 			conn = factory.createConnection();
-			result = new QnaDAO().deleteQna(conn, qnaNo);
+			result = new QnaDAO().deleteQna(conn, family);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
 			} else {
@@ -127,7 +127,7 @@ public class QnaService {
 	
 	// 글수정
 	public int modifyQna(Qna qna) {
-		System.out.println("서비스 모디파이 들어옴");
+		
 		Connection conn = null;
 		int result = 0;
 		try {
@@ -186,6 +186,97 @@ public class QnaService {
 			JDBCTemplate.close(conn);
 		}
 		return result;
+	}
+
+	///////////////////////////관리자///////////////////////////////////
+	public ArrayList<Qna> printAllQnaAdmin() {
+		Connection conn = null;
+		ArrayList<Qna> qnaList = null;
+		
+		try {
+			conn = factory.createConnection();
+			qnaList = new QnaDAO().selectAllQna(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return qnaList;
+	}
+
+	public Qna printOneAdmin(int qnaNo) {
+		Connection conn = null;
+		Qna qna = null;
+		try {
+			conn = factory.createConnection();
+			qna = new QnaDAO().selectOneAdmin(conn, qnaNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return qna;
+
+	}
+	
+	
+	public int deleteQnaAdmin(int qnaNo) {
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = factory.createConnection();
+			result = new QnaDAO().deleteQnaAdmin(conn, qnaNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+		
+	}
+
+	public int modifyQnaAdmin(Qna qna) {
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = factory.createConnection();
+			result = new QnaDAO().updateQnaAdmin(conn, qna);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public Qna printParentAdmin(int family) {
+		Connection conn = null;
+		Qna qna = null;
+		try {
+			conn = factory.createConnection();
+			qna = new QnaDAO().printParentAdmin(conn, family);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return qna;
 	}
 	
 }
