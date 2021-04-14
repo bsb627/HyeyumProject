@@ -38,7 +38,6 @@ public class ReplyWriteServlet extends HttpServlet {
 		reply.setReplyType(request.getParameter("type"));
 		reply.setContents(request.getParameter("comment"));
 		reply.setUserId((String)session.getAttribute("userId"));
-		
 		int result = new ReplyService().registerReply(reply);
 		if(result > 0) {
 			switch (reply.getReplyType()) {

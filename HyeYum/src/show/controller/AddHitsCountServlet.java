@@ -65,9 +65,12 @@ public class AddHitsCountServlet extends HttpServlet {
 			likes = new ShowService().getLikes(userId,showNo);
 		}
 		ShowReview review = new ShowService().printOneShowReview(showNo);
-		ReplyPageData pageData = new ReplyService().printAllReply(currentPage, replyType,showNo);
-		ArrayList<Reply> replyList = pageData.getReplyList();
-		String pageNavi = pageData.getPageNavi();
+		/*
+		 * ReplyPageData pageData = new ReplyService().printAllReply(currentPage,
+		 * replyType,showNo); ArrayList<Reply> replyList = pageData.getReplyList();
+		 * String pageNavi = pageData.getPageNavi();
+		 */
+		ArrayList<Reply> rList = new ReplyService().printReplyList(showNo); 
 		int totalCount = new ReplyService().totalCount(showNo);
 		int addHits = new ShowService().addHitsCount(showNo);
 		FileData fileData = new FileService().printFile(showNo);
@@ -75,8 +78,11 @@ public class AddHitsCountServlet extends HttpServlet {
 		ShowInfo info = new ShowService().getShowInfo(review.getInfoNo());
 		if(review != null) {
 			request.setAttribute("review", review);
-			request.setAttribute("replyList", replyList);
-			request.setAttribute("pageNavi", pageNavi);
+			/*
+			 * request.setAttribute("replyList", replyList);
+			 * request.setAttribute("pageNavi", pageNavi);
+			 */
+			request.setAttribute("rList", rList);
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("likes", likes);
 			request.setAttribute("fileData", fileData);
