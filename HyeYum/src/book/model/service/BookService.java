@@ -10,6 +10,7 @@ import book.model.vo.BookPageData;
 import book.model.vo.BookReview;
 import book.model.vo.BookShare;
 import common.JDBCTemplate;
+import show.model.dao.ShowDAO;
 
 
 public class BookService {
@@ -92,13 +93,13 @@ public class BookService {
 		System.out.println("Service들어옴");
 		return pd;
 	}
-	public BookReview printOneBookReview(int reviewNo) {//책리뷰 상세보기
+	public BookReview printOneBookReview(int no) {//책리뷰 상세보기
 		BookReview review = null;
 		Connection conn = null;
 		
 		try {
 			conn = factory.createConnection();
-			review = new BookDAO().selectOneBookReview(conn, reviewNo);
+			review = new BookDAO().selectOneBookReview(conn, no);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,10 +130,35 @@ public class BookService {
 	}
 	public int modifyBookReview(BookReview review) { //책리뷰 수정
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().updateBookReview(conn, review);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
-	public int deleteBookReview(int reviewNo) { //책리뷰 삭제
+	public int deleteBookReview(int no) { //책리뷰 삭제
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().deleteBookReview(conn, no);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result ;
 	}
 	

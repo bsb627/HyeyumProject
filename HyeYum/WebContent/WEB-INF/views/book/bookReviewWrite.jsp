@@ -79,21 +79,7 @@
 								
 							</span>
 						</div>
-					<!-- <div class="form-outline col-md-6">
-					<div class="col-md-10">
-						<input type="text" id="ticket-number" class="form-control" name="ticket-number" autocomplete="off" required/> <label
-							class="form-label" for="ticket-number">예매 일련번호</label>
-					<hr>
-					</div>
-					</div> -->
 
-					<!-- <div class="form-outline col-md-6">
-					<div class="col-md-12">
-						<input type="text" id="sns-link" class="form-control" name="sns-link" autocomplete="off" required/> <label
-							class="form-label" for="sns-link">SNS</label>
-						<hr>
-					</div>
-					</div> -->
 
 					<div class="form-outline col-md-12">
 						<input type="text" id="review-title" class="form-control" name="review-title" autocomplete="off" required/> <label
@@ -102,16 +88,6 @@
 					</div>
 				
 
-				<!-- SmartEditor2 -->
-				<!-- 	<div class="jsx-2303464893 editor">
-						<div class="fr-box fr-basic fr-top" role="application">
-							<div class="fr-wrapper show-placeholder" dir="auto"
-								style="overflow: hidden;">
-								<textarea name="show-content" id="smartEditor"
-									style="width: 100%; height: 412px;"></textarea>
-							</div>
-						</div>
-					</div> -->
 					 <textarea id="summernote" name="review-content"></textarea>
 					<br>
 				

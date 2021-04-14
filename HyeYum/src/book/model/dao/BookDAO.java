@@ -78,7 +78,7 @@ public class BookDAO {
 		}
 		return result;
 	}
-	public int deleteBookInfo(Connection conn, int BookNo) { // 책정보 삭제
+	public int deleteBookInfo(Connection conn, int no) { // 책정보 삭제
 		PreparedStatement pstmt = null;
 		int result = 0;
 		return result;
@@ -124,7 +124,7 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		BookReview review = null;
-		String query = "SELECT DIVISION, REVIEW_NO, TITLE, CONTENTS, ENROLL_DATE, HITS, NICK FROM BOOK_REVIEW JOIN MEMBER USING(USER_ID)WHERE REVIEW_NO = ?";
+		String query = "SELECT DIVISION, REVIEW_NO, TITLE, CONTENTS, ENROLL_DATE, HITS, NICK, USER_ID FROM BOOK_REVIEW JOIN MEMBER USING(USER_ID)WHERE REVIEW_NO = ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, reviewNo);
@@ -138,6 +138,7 @@ public class BookDAO {
 				review.setContents(rset.getString("CONTENTS"));
 				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				review.setHits(rset.getInt("HITS"));
+				review.setUserId(rset.getString("USER_ID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -167,10 +168,43 @@ public class BookDAO {
 		return result;
 	}
 	public int updateBookReview(Connection conn, BookReview review) { // 책리뷰 수정
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE BOOK_REVIEW SET DIVISION = ?, TITLE = ?, CONTENTS = ?, INFO_NO=? WHERE REVIEW_NO = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, review.getDivision());
+			pstmt.setString(2, review.getTitle());
+			pstmt.setString(3, review.getContents());
+			pstmt.setInt(4, review.getInfoNo());
+			pstmt.setInt(5, review.getNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
-	public int deleteBookReview(Connection conn, int reviewNo) { // 책리뷰 삭제
-		return 0;
+	public int deleteBookReview(Connection conn, int no) { // 책리뷰 삭제
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM BOOK_REVIEW WHERE REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	public String getReviewPageNavi(Connection conn, int currentPage) { // 책리뷰 페이징
 		int recordTotalCount = totalReviewCount(conn);

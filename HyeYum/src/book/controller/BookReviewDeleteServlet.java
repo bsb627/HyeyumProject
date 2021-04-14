@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import show.model.service.ShowService;
+import book.model.service.BookService;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -35,7 +35,7 @@ public class BookReviewDeleteServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		int result = new ShowService().deleteShowReview(no);
+		int result = new BookService().deleteBookReview(no);
 		
 		if(result > 0) {
 			
