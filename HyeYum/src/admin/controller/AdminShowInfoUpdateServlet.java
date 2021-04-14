@@ -107,7 +107,7 @@ public class AdminShowInfoUpdateServlet extends HttpServlet {
 			fileData.setUploadTime(uploadTime);
 			fileData.setFileType("show");
 		
-			int fileResult = new FileService().registerFileShowInfo(fileData, info);
+			int fileResult = new FileService().updateFileShowInfo(fileData, info);
 		
 			System.out.println(uploadFilePath);
 			}

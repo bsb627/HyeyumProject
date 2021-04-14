@@ -34,9 +34,10 @@ public class ShowInfoListServlet extends HttpServlet {
 		
 		
 		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
-		System.out.println("iList" + iList);
+		ArrayList<String> rList = new ShowService().getRegion();
 		if(! iList.isEmpty()) {
 			request.setAttribute("iList", iList);
+			request.setAttribute("rList", rList);
 		request.getRequestDispatcher("/WEB-INF/views/show/showInfoList.jsp").forward(request, response);
 		}else {
 					

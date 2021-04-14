@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
  ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
+ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 %>
 <title>문화나눔, 혜윰 - Show</title>
 <%@include file="/header.jsp"%>
@@ -34,11 +35,6 @@
 					<p>이달의 컨텐츠</p>
 				</header>
 
-			<%for(ShowInfo info : iList){ %>
-			<div>
-				<%=info.getShowName()%>
-				</div>
-			<%}%>
 				<div class="testimonials-slider swiper-container "
 					data-aos="fade-up" data-aos-delay="200">
 					<div class="swiper-wrapper">
@@ -96,10 +92,12 @@
 						<div class="col-lg-12 d-flex justify-content-center">
 							<ul id="portfolio-flters">
 								<li data-filter="*" class="filter-active">전체</li>
-								<li data-filter=".filter-app">서울</li>
+								<!-- <li data-filter=".filter-app">서울</li
 								<li data-filter=".filter-card">인천</li>
-								<li data-filter=".filter-web">경기도</li>
-
+								<li data-filter=".filter-web">경기도</li> -->
+								<%for (String region : rList){ %>
+								<li data-filter=".filter-<%=region%>"><%=region%></li>
+								<%} %>
 							</ul>
 						</div>
 					</div>
@@ -117,17 +115,17 @@
 						
 						<% for(ShowInfo info : iList) {%>
 						<article class="entry row">
-							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-app">
+							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-<%=info.getRegion()%>">
 								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
+									<img src="/upload/info/show/<%=info.getFileName()%>" alt=""
 										class="img-fluid">
 									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
+										<h4><%=info.getShowName() %></h4>
+										<p><%=info.getTermDate() %></p>
 										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
+											<a href="/upload/info/show/<%=info.getFileName()%>"
 												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
+												title="<%=info.getTermDate() %>"><i class="bi bi-plus"></i></a> <a
 												href="portfolio-details.html" title="More Details"><i
 												class="bi bi-link"></i></a>
 										</div>
@@ -137,132 +135,6 @@
 						</article>
 						<%} %>
 
-						<article class="entry row">
-							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-card">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-card">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-card">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-card">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
-						
-						<article class="entry row">
-							<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-web">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-														<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-web">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-														<div class="col-md-3 col-sm-4 col-4 portfolio-item filter-web">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/show-info/show1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/show-info/show1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
 						
 					</div>
 					<!-- End blog entry -->
@@ -270,13 +142,13 @@
 
 				</div>
 				<!-- End blog entries list -->
-				<div class="blog-pagination">
+				<!--  <div class="blog-pagination">
 					<ul class="justify-content-center">
 						<li><a href="#">1</a></li>
 						<li class="active"><a href="#">2</a></li>
 						<li><a href="#">3</a></li>
 					</ul>
-				</div>
+				</div>-->
 
 
 			</div>

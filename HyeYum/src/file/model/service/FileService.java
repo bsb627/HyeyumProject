@@ -148,4 +148,25 @@ public class FileService {
 		}
 		return list;
 	}
+
+	public int updateFileShowInfo(FileData fileData, ShowInfo info) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = factory.createConnection();
+			result = new FileDAO().updateFileShowInfo(conn, fileData, info);
+			if(result> 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
 }

@@ -44,6 +44,7 @@ public class ShowReviewWriteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
+		
 		if(! iList.isEmpty()) {
 			request.setAttribute("iList", iList);
 			request.getRequestDispatcher("/WEB-INF/views/show/showReviewWrite.jsp").forward(request, response);

@@ -338,4 +338,22 @@ public class ShowService {
 		}
 		return iList;
 	}
+
+	public ArrayList<String> getRegion() { // 지역 가져오기
+		ArrayList<String> rList = null;
+		
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			rList = new ShowDAO().getRegion(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return rList;
+	}
 }

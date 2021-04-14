@@ -308,4 +308,29 @@ public class FileDAO {
 		return list;
 	}
 
+	public int updateFileShowInfo(Connection conn, FileData fileData, ShowInfo info) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String fileType = fileData.getFileType();
+		String  query = "UPDATE SHOW_FILE SET FILE_NAME =?, FILE_PATH=?,FILE_SIZE=?,UPLOAD_TIME=? WHERE INFO_NO =?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, fileData.getFileName());
+			pstmt.setString(2, fileData.getFilePath());
+			pstmt.setLong(3, fileData.getFileSize());
+			pstmt.setTimestamp(4, fileData.getUploadTime());
+			pstmt.setInt(5, info.getInfoNo());
+			result = pstmt.executeUpdate();
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 }

@@ -622,6 +622,34 @@ public class ShowDAO {
 		
 		return iList;
 	}
+
+	public ArrayList<String> getRegion(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<String> rList = null;
+		String query = "SELECT REGION FROM SHOW_INFO GROUP BY REGION";
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				rList = new ArrayList<String>();
+				while(rset.next()) {
+					String region  = rset.getString("REGION");
+					rList.add(region);
+				}
+			}
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return rList;
+	}
 	
 	
 
