@@ -380,8 +380,22 @@ public class BookDAO {
 		return 0;
 	}
 	public int deleteBookShare(Connection conn, int shareNo) { // 책나눔 삭제
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM BOOK_SHARE WHERE SHARE_NO = ?";
 		
-		return 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			result = pstmt.executeUpdate();
+			System.out.println("sharenoDAO:" + shareNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	public String getSharePageNavi(Connection conn, int currentPage) { // 책나눔 페이징
 		int recordTotalCount = totalShareCount(conn);

@@ -250,8 +250,24 @@ public class BookService {
 	}
 	public int deleteBookShare(int shareNo) { // 책나눔 삭제
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().deleteBookShare(conn, shareNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result ;
 	}
+	
 	public BookPageData searchPrintAllBookReview(int currentPage, String search, String searchCategory) { //책리뷰 검색결과 전체보기  
 		Connection conn = null;
 		BookPageData pd = new BookPageData();

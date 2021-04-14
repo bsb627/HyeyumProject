@@ -110,7 +110,7 @@ if (userId == null) {
                     <input type="hidden" name="share-no" value="<%=share.getNo()%>">
 					<%-- <%if(review.getUserId().equals(userId)) {%> --%>
 					<%if(share.getUserId().equals(userId)) {%>
-					<a href="/bookShare/delete?no=<%=share.getNo()%>">
+					<a href="/bookShare/delete?share-no=<%=share.getNo()%>">
 					<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
 					  삭제
 					</button>

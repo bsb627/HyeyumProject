@@ -59,7 +59,7 @@
 					</div>
 					<div class="col-md-8">
 	                   <select name="region" id="region">
-	                       <option disabled>-- 판매지역 선택 --</option>
+	                       <option hidden="hidden">-- 판매지역 선택 --</option>
 	                       <option value="서울/경기">서울/경기</option>
 	                       <option value="인천">인천</option>
 	                       <option value="강원">강원</option>

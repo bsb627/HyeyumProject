@@ -68,7 +68,7 @@ if (userId == null) {
             <div class="row">
 	            <div class="col-md-8">
 					<select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
-	                       <option value="0">-- 메뉴 선택 --</option>
+	                       <option value="" hidden="hidden">-- 메뉴 선택 --</option>
 	                       <option value="info">이달의 도서</option>
 	                       <option value="genre">장르</option>
 		            </select>
