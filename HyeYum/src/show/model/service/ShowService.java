@@ -356,4 +356,21 @@ public class ShowService {
 		
 		return rList;
 	}
+
+	public ShowInfo getShowInfo(int no) {
+		ShowInfo info = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			info = new ShowDAO().getShowInfo(conn, no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		// TODO Auto-generated method stub
+		return info;
+	}
 }

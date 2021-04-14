@@ -82,8 +82,8 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 
 			<div class="row">
 				<header class="section-header">
-					<h2>Where to do it</h2>
-					<p>어디서 혜윰?</p>
+					<h2>region contents</h2>
+					<p>지역별 컨텐츠</p>
 				</header>
 
 				<div class="col-lg-12">
