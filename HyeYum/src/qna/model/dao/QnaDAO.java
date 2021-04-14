@@ -143,11 +143,15 @@ public class QnaDAO {
 				qna.setFamily(rset.getInt("FAMILY"));
 				qna.setStep(rset.getInt("STEP"));
 			}
-		} catch (SQLException e) {
+		} catch (NullPointerException e){
+		
+
+		
+		}catch (SQLException e) {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		System.out.println("디에이오 selectOne : " + qna);
+		
 		return qna;
 	}
 
@@ -173,19 +177,16 @@ public class QnaDAO {
 		return result;
 	}
 	
-	public int insertAnswer(Connection conn, Qna qna) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	public int deleteQna(Connection conn, int qnaNo) {
+
+	public int deleteQna(Connection conn, int family) {
 		PreparedStatement pstmt = null;
-		String query = "DELETE FROM QNA WHERE QNA_NO = ?";
+		String query = "DELETE FROM QNA WHERE FAMILY = ?";
 		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, qnaNo);
+			pstmt.setInt(1, family);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -197,11 +198,11 @@ public class QnaDAO {
 	}
 
 	public int updateQna(Connection conn, Qna qna) {
-		System.out.println("디에오 업데이트 ");
+		
 		PreparedStatement pstmt = null;
 		String query = "UPDATE QNA SET TITLE = ?, QUESTION_PWD = ?, CATEGORY = ?, CONTENTS = ? WHERE QNA_NO = ?";
 		int result = 0;
-		System.out.println("디에오 업데이트 QNA :" + qna);
+	
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -217,7 +218,7 @@ public class QnaDAO {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
-		System.out.println("여기는 qnadao 업데이트 리절트 : " + result);
+		
 		return result;
 	}
 
@@ -357,19 +358,162 @@ public class QnaDAO {
 		return result;
 	}
 	
-	//////////////////////////////////////
-	public String getPass(Connection conn, int qnaNo) {
+
+	
+	
+////////////////////////////////관리자///////////////////////////////////////
+	public ArrayList<Qna> selectAllQna(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Qna> qnaList = null;
+		String query = "SELECT * FROM QNA ORDER BY FAMILY DESC, STEP ASC";
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset!=null) {
+				qnaList = new ArrayList<Qna>();
+				while(rset.next()) {
+					Qna qna = new Qna();
+					qna.setQnaNo(rset.getInt("QNA_NO"));
+					qna.setCategory(rset.getString("CATEGORY"));
+					qna.setTitle(rset.getString("TITLE"));
+					qna.setUserId(rset.getString("USER_ID"));
+					qna.setQuestionPwd(rset.getString("QUESTION_PWD"));
+					qna.setContents(rset.getString("CONTENTS"));
+					qna.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					qna.setHits(rset.getInt("HITS"));
+					qna.setFamily(rset.getInt("FAMILY"));
+					qna.setStep(rset.getInt("STEP"));
+					qnaList.add(qna);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return qnaList;
+	}
+	
+	
+	public int insertAnswer(Connection conn, Qna qna) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO QNA VALUES(QNA_NO.NEXTVAL, ?,?,?,?,?,SYSDATE,0,?,1)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1," ");
+			pstmt.setString(2, "  ┗> 답변입니다.");
+			pstmt.setString(3, "admin");
+			pstmt.setString(4, qna.getQuestionPwd());
+			pstmt.setString(5, qna.getContents());
+			pstmt.setInt(6, qna.getFamily());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public Qna selectOneAdmin(Connection conn, int qnaNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String qnaPwd = null;
-		String query = "SELECT QUESTION_PWD FROM QNA WHERE QNA_NO = ?";
+		Qna qna = new Qna();
+		String query = "SELECT * FROM QNA WHERE QNA_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, qnaNo);
 			rset = pstmt.executeQuery();
+			
 			if(rset.next()) {
-				qnaPwd = rset.getString("QUESTION_PWD");
+				
+				qna.setQnaNo(rset.getInt("QNA_NO"));
+				qna.setCategory(rset.getString("CATEGORY"));
+				qna.setTitle(rset.getString("TITLE"));
+				qna.setUserId(rset.getString("USER_ID"));
+				qna.setQuestionPwd(rset.getString("QUESTION_PWD"));
+				qna.setContents(rset.getString("CONTENTS"));
+				qna.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				qna.setHits(rset.getInt("HITS"));
+				qna.setFamily(rset.getInt("FAMILY"));
+				qna.setStep(rset.getInt("STEP"));
+			}
+		} catch (SQLException e) {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		
+		return qna;
+	}
+	
+	public int deleteQnaAdmin(Connection conn, int qnaNo) {
+//		PreparedStatement pstmt = null;
+//		String query = "DELETE FROM QNA WHERE QNA_NO = ?";
+//		int result = 0;
+//		
+//		try {
+//			pstmt = conn.prepareStatement(query);
+//			
+//			for( int i = 0; i < checkBoxes.length(); i++ ) {
+//				pstmt.setInt(1, qnaNo[i]);
+//				
+//			}
+//			result = pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(pstmt);
+//		}
+		return 0;
+	}
+
+	public int updateQnaAdmin(Connection conn, Qna qna) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE QNA SET CONTENTS = ? WHERE QNA_NO = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, qna.getContents());
+			pstmt.setInt(2, qna.getQnaNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public Qna printParentAdmin(Connection conn, int family) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM QNA WHERE FAMILY = ? AND STEP = 0";
+		Qna qna = new Qna();
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, family);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				qna.setQnaNo(rset.getInt("QNA_NO"));
+				qna.setCategory(rset.getString("CATEGORY"));
+				qna.setTitle(rset.getString("TITLE"));
+				qna.setUserId(rset.getString("USER_ID"));
+				qna.setQuestionPwd(rset.getString("QUESTION_PWD"));
+				qna.setContents(rset.getString("CONTENTS"));
+				qna.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				qna.setHits(rset.getInt("HITS"));
+				qna.setFamily(rset.getInt("FAMILY"));
+				qna.setStep(rset.getInt("STEP"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -378,8 +522,10 @@ public class QnaDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return qnaPwd;
+		return qna;
 		
 	}
+
+	
 	
 }

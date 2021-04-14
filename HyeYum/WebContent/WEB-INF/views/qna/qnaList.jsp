@@ -54,7 +54,7 @@
 			  </div>
 			</form>
       	</div>
-        	
+
       		<table class ="table table-hover" style = "text-align : center">
       			<tr>
       				<th>글번호</th>
@@ -65,10 +65,27 @@
       				<th>조회수</th>
       			</tr>
       		<% for (Qna qna : qnaList) { %>
-      			<tr>
+      		<tr>
       				<td><%= qna.getQnaNo()%></td>
       				<td><%= qna.getCategory() %> </td>
-      				<td><a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
+      				
+      				
+      				
+      				<td style = "text-align : left">
+      				
+      				
+<%-- 					<%= if (qna.getStep() != 0 ){ %>
+      				<img src = "/assets/img/qna/re.gif"/>
+      				<% } %> --%>
+      				
+      				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
+      				
+      				
+      				</td>
+      				
+      				
+      				
+      				
       				<td><%= qna.getUserId()%></td>
       				<td><%= qna.getEnrollDate()%></td>
       				<td><%= qna.getHits() %></td>

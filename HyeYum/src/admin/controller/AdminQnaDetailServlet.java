@@ -1,8 +1,8 @@
 package admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +13,16 @@ import qna.model.service.QnaService;
 import qna.model.vo.Qna;
 
 /**
- * Servlet implementation class AdminLoginServlet
+ * Servlet implementation class AdminQnaDetailServlet
  */
-@WebServlet("/admin/qna/list")
-public class AdminQnaListServlet extends HttpServlet {
+@WebServlet("/admin/qna/detail")
+public class AdminQnaDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminQnaListServlet() {
+    public AdminQnaDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +31,13 @@ public class AdminQnaListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Qna> qnaList = new QnaService().printAllQnaAdmin();
+		int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));
+		Qna qna = new QnaService().printOneAdmin(qnaNo);
 		
-		if(!qnaList.isEmpty()) {
-			request.setAttribute("qnaList", qnaList);
-			request.getRequestDispatcher("/WEB-INF/views/admin/qnaListAdmin.jsp").forward(request, response);			
+		if( qna!=null) {
+			request.setAttribute("qna", qna);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/admin/qna/qnaDetailAdmin.jsp");
+			view.forward(request, response);
 		}
 	}
 

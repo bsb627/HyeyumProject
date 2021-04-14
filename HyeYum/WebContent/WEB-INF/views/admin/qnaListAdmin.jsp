@@ -5,10 +5,25 @@
     
 <%
 
-	ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("qnaList");
+	ArrayList<Qna> qnaList = (ArrayList<Qna>)request.getAttribute("qnaList");
 
 %>
     <%@include file="/admin/header.jsp"%>
+    
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var inputTags = $("td").find("input[type=checkbox]");
+		$(".check-all").on("change", function() {
+		    if($(this).is(":checked")) {
+		        inputTags.prop("checked", true);
+		    }else{
+		        inputTags.prop("checked", false);
+	    	}
+		});
+	});
+
+</script>
       <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -21,31 +36,50 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            
+                                <a href="/admin/qna/delete" class="btn btn-danger btn-icon-split">
+                                  <span class="icon text-white-50">
+                                     <i class="fas fa-trash"></i>
+                                  </span>
+                                   <span class="text">삭제</span>
+                                </a>
+                                
+                           
+                                <table class ="table" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                        	<th><input type = "checkbox" class = "check-all" name = "checkbox"></th>
                                             <th>글 번호 </th>
                                             <th>문의분류</th>
                                             <th>제목</th>
                                             <th>작성자</th>
                                             <th>작성일</th>
                                             <th>조회수</th>
+                                            
+                                            <th>수정</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                     	<% for (Qna qna : list) { %>
+                                    
+                                    
+                                     	<% for (Qna qna : qnaList) { %>
 						  				<tr>
+						  					<td><input type = "checkbox" value = "<%= qna.getQnaNo() %>" name = "checkbox"></td>
 						      				<td><%= qna.getQnaNo()%></td>
 						      				<td><%= qna.getCategory() %> </td>
-						      				<td><a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
+						      				<td><a href="/admin/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
 						      				<td><%= qna.getUserId()%></td>
 						      				<td><%= qna.getEnrollDate()%></td>
 						      				<td><%= qna.getHits() %></td>
+						      				
+						      				
+						      				
+						      				<td><a href = "/admin/qna/modify?qnaNo=<%= qna.getQnaNo() %>&family=<%= qna.getFamily() %>"><input type = "button" value = "수정" class = "btn btn-success"></a></td>
 										</tr>
 								      <% } %>
                                     
