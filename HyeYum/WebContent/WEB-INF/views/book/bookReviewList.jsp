@@ -62,6 +62,7 @@
 									<td><%= review.getNick() %></td>
 									<td><%= review.getEnrollDate() %></td>
 									<td><%= review.getHits() %></td>
+									<td><%= review.getHits() %></td>
 								</tr>
 								<% } %>
 							<div>

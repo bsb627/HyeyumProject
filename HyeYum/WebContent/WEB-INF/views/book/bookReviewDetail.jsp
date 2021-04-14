@@ -80,16 +80,12 @@ if (userId == null) {
                             </tr>
                         </tbody>
                     </table>
-                        <tr>
-                            <td>
                                 <span class="form-inline" role="form">
                                     <p>
                                         댓글
                                     </p>
                                         <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
                                 </span>
-                            </td>
-                        </tr>
                     <table class="table table-condensed">
                         <thead>
                             <tr>

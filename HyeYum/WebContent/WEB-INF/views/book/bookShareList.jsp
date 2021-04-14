@@ -63,6 +63,7 @@
 									<td><%=share.getNick() %></td>
 									<td><%=share.getEnrollDate() %></td>
 									<td><%=share.getHits() %></td>
+									<td><%=share.getHits() %></td>
 								</tr>
 								<% } %>
 							<div>
