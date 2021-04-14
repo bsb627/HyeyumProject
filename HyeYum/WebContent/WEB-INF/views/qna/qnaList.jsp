@@ -74,13 +74,13 @@
       				<td style = "text-align : left">
       				
       				
-<%-- 					<%= if (qna.getStep() != 0 ){ %>
-      				<img src = "/assets/img/qna/re.gif"/>
-      				<% } %> --%>
-      				
+ 					<% if( qna.getStep() !=0) {%>
+      				<img src = "/assets/img/qna/re2.gif"/>
       				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
       				
-      				
+      				<% } else { %>
+      				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
+      				<% } %>
       				</td>
       				
       				
