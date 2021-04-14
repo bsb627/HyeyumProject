@@ -11,13 +11,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문화나눔, 혜윰 - 독서혜윰 상세보기</title>
+    <title>문화나눔, 혜윰 - 독서혜윰 수정하기</title>
 
         <!-- Bootstrap -->
         <link href="/assets/css/book/contents.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <script src="/assets/js/book/book-write.js"></script>
     </head>
+    
     <body>
 <%
 if (userId == null) {
@@ -49,13 +51,27 @@ if (userId == null) {
         <!-- 좌우측의 공간 확보 -->
         <div class="container">
             <hr/>
+            <form action="/bookReview/modify" method="post" enctype="multipart/form-data">
             <div class="row">
+	            <div class="col-md-8">
+					<select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
+	                       <option value="0">-- 메뉴 선택 --</option>
+	                       <option value="info">이달의 도서</option>
+	                       <option value="genre">장르</option>
+		            </select>
+		            <select name="info-no" id="info-no">
+		                <option>-- 선택 --</option>
+		                
+		            </select>
+				</div>
                 <div class="col-md-10">
                     <table class="table table-condensed">
                         <thead>
                             <tr align="center">
-                                <th width="10%">제목</th>
-                                <th width="60%">[<%=review.getDivision()%>] <%=review.getTitle()%></th>
+                                <th width="10%">						
+								<label class="form-label" for="review-title">제목</label></th>
+                                <th width="60%">
+                                <input type="text" id="review-title" class="form-control active" name="review-title" value="<%=review.getTitle()%>"	autocomplete="off" required maxlength="50" /> 
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +79,7 @@ if (userId == null) {
                                 <td>작성일
                                 </td>
                                 <td>
-                                <%=review.getEnrollDate()%>
+		                        <%=review.getEnrollDate()%>
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +91,7 @@ if (userId == null) {
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <%=review.getContents()%>
+                                    <textarea id="summernote" name="review-content"><%=review.getContents()%></textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -102,36 +118,28 @@ if (userId == null) {
                             </tr>
                         </thead>
                     </table>
-                                       <table class="table table-condensed">
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <td>
-                                    <span style='float:right'>
-                    <input type="hidden" name="review-no" value="<%=review.getNo()%>">
-					<%-- <%if(review.getUserId().equals(userId)) {%> --%>
-					<%if(review.getUserId().equals(userId)) {%>
-					<a href="/bookReview/delete?no=<%=review.getNo()%>">
-					<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
-					  삭제
-					</button>
-					</a>
-					<%} %>
-					<%if(review.getUserId().equals(userId)) {%>
 					
-					<a href="/bookReview/modify?review-no=<%=review.getNo()%>">
-					<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
-					  수정
-					</button></a>
-					<%}%>
-                    <a href="/bookReview/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
-                            </span>
+                    <span style='float:right'>
+					<%-- <%if(review.getUserId().equals(userId)) {%> --%>
+						<a href="/bookReview/list"><button type="button"
+								class="btn btn-outline-warning" data-mdb-ripple-color="dark">
+								취소</button> </a>
+						<button type="submit" class="btn btn-outline-primary "
+							data-mdb-ripple-color="dark">수정완료</button>
+                    </span>
                                 </td>
                             </tr>
                         </thead>
                     </table>
+                    <input type="hidden" name="review-no" value="<%=review.getNo()%>"/>
                 </div>
-            </div>
+              </div>
             <hr/>
+           </form>
         </div>
         <%@include file="/footer.jsp"%>    
 </section>

@@ -5,6 +5,7 @@ import board.model.vo.Board;
 public class BookReview extends Board{ // 도서 리뷰 게시판
 	private String bookName; // 책이름
 	private String division; // 분류
+	private String userId; // 사용자 ID
 	private String genre;// 장르
 	private int infoNo;// 도서번호
 	
@@ -30,6 +31,14 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 	public void setDivision(String division) {
 		this.division = division;
 	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getGenre() {
 		return genre;
@@ -49,8 +58,8 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 
 	@Override
 	public String toString() {
-		return "BookReview [bookName=" + bookName + ", division=" + division + ", genre=" + genre + ", infoNo=" + infoNo
-				+ "]";
+		return "BookReview [bookName=" + bookName + ", division=" + division + ", userId=" + userId + ", genre=" + genre
+				+ ", infoNo=" + infoNo + "]";
 	}
-
+	
 }

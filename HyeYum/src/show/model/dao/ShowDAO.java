@@ -650,6 +650,41 @@ public class ShowDAO {
 		
 		return rList;
 	}
+
+	public ShowInfo getShowInfo(Connection conn, int no) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM SHOW_INFO JOIN SHOW_FILE USING (INFO_NO) WHERE INFO_NO = "+no+" ORDER BY ENROLL_DATE DESC";
+		ShowInfo info = new ShowInfo();
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+					info.setInfoNo(rset.getInt("INFO_NO"));
+					info.setType(rset.getString("TYPE"));
+					info.setGenre(rset.getString("GENRE"));
+					info.setRegion(rset.getString("REGION"));
+					info.setPlace(rset.getString("PLACE"));
+					info.setShowName(rset.getString("SHOW_NAME"));
+					info.setTermDate(rset.getString("TERM_DATE"));
+					info.setAgeGroup(rset.getString("AGE_GROUP"));
+					info.setRunTime(rset.getInt("RUN_TIME"));
+					info.setCast(rset.getString("CAST"));
+					info.setPrice(rset.getInt("PRICE"));
+					info.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					info.setFileNo(rset.getInt("FILE_NO"));
+					info.setFileName(rset.getString("FILE_NAME"));
+					info.setFilePath(rset.getString("FILE_PATH"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return info;
+	}
 	
 	
 

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import show.model.service.ShowService;
+import show.model.vo.ShowInfo;
+
 /**
  * Servlet implementation class ShowBoardDeleteServlet
  */
@@ -26,8 +29,15 @@ public class ShowInfoDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		ShowInfo info = new ShowService().getShowInfo(no);
+		if( info != null) {
+			request.setAttribute("info", info);
+			request.getRequestDispatcher("/WEB-INF/views/show/showInfoDetail.jsp").forward(request, response);
+		}else {
+			
+		}
 	}
 
 	/**

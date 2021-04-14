@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import book.model.service.BookService;
 import book.model.vo.BookReview;
@@ -31,9 +32,22 @@ public class BookReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		request.setCharacterEncoding("utf-8");
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
+		int reviewNo = 0;
+		try {
+			reviewNo = Integer.parseInt(request.getParameter("review-no"));
+			
+		} catch (Exception e) {
+			if(reviewNo == 0) {
+				reviewNo = (int) request.getAttribute("review-no");
+			}
+		}
+		BookReview bookReview = new BookReview();
+		System.out.println("userId : " + userId);
+		System.out.println("userId from review : " + bookReview.getUserId());
 		BookReview review = new BookService().printOneBookReview(reviewNo);
 		if(review != null) {
 			request.setAttribute("review", review);

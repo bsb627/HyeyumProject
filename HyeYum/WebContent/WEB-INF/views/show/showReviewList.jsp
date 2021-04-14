@@ -111,7 +111,7 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 						</span>
 							
 						<h3 class="post-title"> <%=review.getTitle() %></h3>
-						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
+						<a href="/showReview/hitsCount?review-no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
 						
 						<span class="post-date-right">
 							<i class="bi bi-pen"> <%=review.getNick() %></i><br>

@@ -9,6 +9,7 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 <title>문화나눔, 혜윰 - Show</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/show-custom.css" rel="stylesheet">
+
 <main id="main">
 
 	<!-- ======= Breadcrumbs ======= -->
@@ -53,7 +54,7 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 											<a href="/upload/info/show/<%=info.getFileName()%>" 
 												data-gallery="portfolioGallery" class="portfokio-lightbox"
 												title="<%=info.getShowName()%>"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
+												href="/showInfo/detail?no=<%=info.getInfoNo()%>" title="More Details"><i
 												class="bi bi-link"></i></a>
 										</div>
 									</div>
@@ -81,8 +82,8 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 
 			<div class="row">
 				<header class="section-header">
-					<h2>Where to do it</h2>
-					<p>어디서 혜윰?</p>
+					<h2>region contents</h2>
+					<p>지역별 컨텐츠</p>
 				</header>
 
 				<div class="col-lg-12">
@@ -126,7 +127,7 @@ ArrayList<String> rList = (ArrayList<String>)request.getAttribute("rList");
 											<a href="/upload/info/show/<%=info.getFileName()%>"
 												data-gallery="portfolioGallery" class="portfokio-lightbox"
 												title="<%=info.getTermDate() %>"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
+												href="/showInfo/detail?no=<%=info.getInfoNo()%>" title="More Details"><i
 												class="bi bi-link"></i></a>
 										</div>
 									</div>
