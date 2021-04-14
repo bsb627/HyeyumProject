@@ -16,9 +16,9 @@
  				 <form action="/admin/showInfo/delete" method="get">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">공연 컨텐츠 관리</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -31,7 +31,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        	<th><input type="checkbox"/></th>
+                                        	<th style="text-align: center"><input type="checkbox"/></th>
                                         	<th>이미지</th>
                                             <th>타입</th>
                                             <th>지역</th>
@@ -64,7 +64,7 @@
                                             <td><%=info.getShowName()%></td>
                                             <td><%=info.getTermDate()%></td>
                                             <td><%=info.getPrice() %></td>
-                                            <td  style="text-align: center"><a href="/admin/showInfo/update?infoNo=<%=info.getInfoNo()%>"><button class="btn btn-sm btn-success">수정</button></a></td>
+                                            <td  style="text-align: center"><a href="/admin/showInfo/update?infoNo=<%=info.getInfoNo()%>"><input type="button" class="btn btn-sm btn-success" value="수정"></a></td>
                                         </tr>
                                        <%} %>
                                         
@@ -74,7 +74,7 @@
                         </div>
                     </div>
 			<div class="btn-set" align="right">
-                <button class="btn btn-danger">삭제</button><a href="/admin/showInfo/write"><button class="btn btn-primary">등록</button></a>
+                <button type="submit" class="btn btn-danger">삭제</button><a href="/admin/showInfo/write"><input type="button" class="btn btn-primary" value="등록"></a>
 			</div>
                 </form>
                 </div>

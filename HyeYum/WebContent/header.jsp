@@ -57,7 +57,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-                  <li class="dropdown"><a href="#"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
+                  <li class="dropdown"><a href="#counts"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/intro/aboutUs.jsp">혜윰이란?</a></li>
               <li><a href="/intro/partners.jsp">혜윰 벗</a></li>

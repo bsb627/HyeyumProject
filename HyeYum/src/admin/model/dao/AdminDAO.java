@@ -135,4 +135,33 @@ public class AdminDAO {
 		return result;
 	}
 
+	public int updateShowInfo(Connection conn, ShowInfo info) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE SHOW_INFO SET TYPE = ?, GENRE = ?, REGION = ?, PLACE = ?, SHOW_NAME = ?, TERM_DATE = ?, AGE_GROUP = ?, RUN_TIME = ?, CAST = ?, PRICE = ? WHERE INFO_NO = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, info.getType());
+			pstmt.setString(2, info.getGenre());
+			pstmt.setString(3, info.getRegion());
+			pstmt.setString(4, info.getPlace());
+			pstmt.setString(5, info.getShowName());
+			pstmt.setString(6, info.getTermDate());
+			pstmt.setString(7, info.getAgeGroup());
+			pstmt.setInt(8, info.getRunTime());
+			pstmt.setString(9, info.getCast());
+			pstmt.setInt(10, info.getPrice());
+			pstmt.setInt(11, info.getInfoNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result ;
+	}
+
 }

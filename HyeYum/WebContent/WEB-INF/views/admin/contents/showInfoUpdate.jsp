@@ -163,9 +163,11 @@
 						<div class="form-group">
 							<label for="exampleFormControlFile1">이미지 업로드</label> <input
 								type="file" class="form-control-file" name="up-file"
-								id="exampleFormControlFile1" required>
+								id="exampleFormControlFile1">
 						</div>
 					</div>
+					
+					<input type="hidden" name="show-info" value="<%=info.getInfoNo()%>">
 					<div class="btn-set" align="right">
 						<a href="/admin/showInfo/list"><input type="button" class="btn btn-warning" value="취소"></a>
 						<button type="submit" class="btn btn-primary">등록</button>
