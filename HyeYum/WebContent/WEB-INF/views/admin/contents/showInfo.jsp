@@ -53,17 +53,17 @@
                                     </tfoot> -->
                                     <tbody>
                                        <% for(ShowInfo info : sList) {%>
-                                        <tr class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>">
+                                        <tr >
                                         <td  style="text-align: center"><input type="checkbox" class="checkbox_group" name="info-no" value="<%=info.getInfoNo()%>"/></td>
                                         <%for(FileData file : fList){ %>
                                         <%if(info.getInfoNo()==file.getNo()){ %>
-                                        	<td style="text-align: center"><img src="/upload/info/show/<%=file.getFileName() %>" height="30px" class="thumbnail"/></td>
+                                        	<td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>" style="text-align: center"><img src="/upload/info/show/<%=file.getFileName() %>" height="30px" class="thumbnail"/></td>
                                         	<%} } %>
-                                            <td><%=info.getType() %></td>
-                                            <td><%=info.getRegion()%></td>
-                                            <td><%=info.getShowName()%></td>
-                                            <td><%=info.getTermDate()%></td>
-                                            <td><%=info.getPrice() %></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getType() %></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getRegion()%></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getShowName()%></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getTermDate()%></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getPrice() %></td>
                                             <td  style="text-align: center"><a href="/admin/showInfo/update?infoNo=<%=info.getInfoNo()%>"><input type="button" class="btn btn-sm btn-success" value="수정"></a></td>
                                             
                                         </tr>

@@ -1,8 +1,6 @@
 package admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,22 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
-import file.model.service.FileService;
-import file.model.vo.FileData;
-import show.model.vo.ShowInfo;
-import show.model.vo.ShowReview;
 
 /**
  * Servlet implementation class AdminLoginServlet
  */
-@WebServlet("/admin/show/list")
-public class AdminShowListServlet extends HttpServlet {
+@WebServlet("/admin/show/delete")
+public class AdminShowDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminShowListServlet() {
+    public AdminShowDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,20 +28,28 @@ public class AdminShowListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ShowReview> rList = new AdminService().printAllShowReviewList();
-		FileData fd = new FileData();
-		fd.setFileType("show");
-		ArrayList<FileData> fList = new FileService().printShowReviewFileList();
-		System.out.println(rList);
-		System.out.println(fList);
-		if(!rList.isEmpty()) {
-			request.setAttribute("rList", rList);
-			request.setAttribute("fList", fList);
-			request.getRequestDispatcher("/WEB-INF/views/admin/board/showList.jsp").forward(request, response);
-			
-		}else {
-			
+
+		String[] noArr = request.getParameterValues("review-no");
+		String reviewNo = "";
+		for (String no : noArr) {
+			if (no.equals(noArr[noArr.length - 1])) {
+				reviewNo += no;
+				System.out.println(no);
+			} else {
+				reviewNo += no+",";
+				System.out.print(no + ",");
+			}
 		}
+		System.out.println("보내는 번호"+reviewNo);
+		  int result = new AdminService().deleteShowReview(reviewNo);
+		  System.out.println("성공"+result);
+		  if(result > 0) {
+			  request.getRequestDispatcher("/admin/show/list").forward(request, response);
+		  }else {
+			  
+		  }
+		 
+		//request.getRequestDispatcher("/WEB-INF/views/admin/board/showList.jsp").forward(request, response);
 	}
 
 	/**

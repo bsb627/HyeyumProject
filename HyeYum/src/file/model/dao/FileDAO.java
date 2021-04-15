@@ -333,4 +333,35 @@ public class FileDAO {
 		return result;
 	}
 
+	public ArrayList<FileData> selectShowReviewFileList(Connection conn) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<FileData> list = null;
+		String query ="SELECT REVIEW_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,UPLOAD_TIME FROM SHOW_FILE JOIN SHOW_REVIEW USING (REVIEW_NO) WHERE REVIEW_NO IS NOT NULL";
+				
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			list = new ArrayList<FileData>();
+			while(rset.next()) {
+				FileData data = new FileData();
+				data.setNo(rset.getInt("REVIEW_NO"));
+				data.setFileNo(rset.getInt("FILE_NO"));
+				data.setFileName(rset.getString("FILE_NAME"));
+				data.setFilePath(rset.getString("FILE_PATH"));
+				data.setFileSize(rset.getLong("FILE_SIZE"));
+				data.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
+				list.add(data);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
 }

@@ -169,4 +169,20 @@ public class FileService {
 		}
 		return result;
 	}
+
+	public ArrayList<FileData> printShowReviewFileList() {
+		Connection conn = null;
+		ArrayList<FileData> list = null;
+		
+		try {
+			conn = factory.createConnection();
+			list = new FileDAO().selectShowReviewFileList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return list;
+	}
 }

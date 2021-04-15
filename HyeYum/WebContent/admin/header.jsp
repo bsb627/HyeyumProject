@@ -15,7 +15,8 @@
     <meta name="author" content="">
 
     <title>문화나눔, 혜윰 관리자</title>
-
+ <!-- Favicons -->
+  <link href="/assets/admin/img/admin_favicon.png" rel="icon">
     <!-- Custom fonts for this template-->
     <link href="/assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -26,11 +27,11 @@
     <link href="/assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
     
     <!-- Custom styles for this page -->
+   <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
     <link href="/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
   
   

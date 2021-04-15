@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import member.model.vo.Member;
 import show.model.vo.ShowInfo;
+import show.model.vo.ShowReview;
 
 public class AdminDAO {
 
@@ -163,6 +164,62 @@ public class AdminDAO {
 		}
 		
 		return result ;
+	}
+
+	public ArrayList<ShowReview> selectAllShowReviewList(Connection conn) {  // 관리자 공연 리뷰 리스트 출력
+
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT REVIEW_NO, TITLE, CONTENTS, NICK, USER_ID, HITS, SNS_LINK, TICKET_NUMBER, INFO_NO, ENROLL_DATE FROM SHOW_REVIEW JOIN MEMBER USING (USER_ID) ORDER BY ENROLL_DATE";
+		ArrayList<ShowReview> rList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				rList = new ArrayList<ShowReview>();
+				while (rset.next()) {
+					ShowReview review = new ShowReview();
+					review.setNo(rset.getInt("REVIEW_NO"));
+					review.setTitle(rset.getString("TITLE"));
+					review.setContents(rset.getString("CONTENTS"));
+					review.setNick(rset.getString("NICK"));
+					review.setUserId(rset.getString("USER_ID"));
+					review.setHits(rset.getInt("HITS"));
+					review.setSnsLink(rset.getString("SNS_LINK"));
+					review.setTicketNumber(rset.getString("TICKET_NUMBER"));
+					review.setInfoNo(rset.getInt("INFO_NO"));
+					review.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					rList.add(review);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return rList;
+	}
+
+	public int deleteShowReview(Connection conn, String reviewNo) {
+		Statement stmt = null;
+		int result = 0;
+		String query = "DELETE FROM SHOW_REVIEW WHERE REVIEW_NO IN ("+reviewNo+")";
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		
+		return result;
 	}
 
 

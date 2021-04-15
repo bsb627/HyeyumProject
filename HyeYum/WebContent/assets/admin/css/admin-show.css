@@ -21,3 +21,11 @@ table#dataTable.dataTable tbody tr:hover > .sorting_1 {
 table.dataTable tbody tr.selected {
     background-color: #ffa;
 }
+.review-contents{
+    
+     height: 250px; 
+    word-wrap:break-word;
+    overflow-y: auto;
+    border-bottom: 1px solid #eee;
+	
+}
