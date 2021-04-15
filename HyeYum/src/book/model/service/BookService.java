@@ -210,7 +210,6 @@ public class BookService {
 	public BookShare printOneBookShare(int shareNo) { // 책나눔 상세보기
 		BookShare share = null;
 		Connection conn = null;
-		
 		try {
 			conn = factory.createConnection();
 			share = new BookDAO().selectOneBookShare(conn, shareNo);
@@ -246,6 +245,16 @@ public class BookService {
 	
 	public int modifyBookShare(BookShare share) { //책나눔 수정
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().updateBookShare(conn, share);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
 	public int deleteBookShare(int shareNo) { // 책나눔 삭제

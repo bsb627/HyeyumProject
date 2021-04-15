@@ -64,9 +64,7 @@ public class BookReviewModifyServlet extends HttpServlet {
 		String encType = "UTF-8";
 		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 		
-		
 		BookReview review = new BookReview();
-		
 		
 		/*
 		 * review.setInfoNo(Integer.parseInt(request.getParameter("info-no")));

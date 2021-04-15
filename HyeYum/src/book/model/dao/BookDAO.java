@@ -376,8 +376,26 @@ public class BookDAO {
 		return result;
 	}
 	public int updateBookShare(Connection conn, BookShare share) { // 책나눔 수정
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE BOOK_SHARE SET SHARE_NO = ?, REGION= ?, TITLE = ?, CONTENTS = ?  WHERE SHARE_NO=? ";
 		
-		return 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, share.getNo());
+			pstmt.setString(2, share.getRegion());
+			pstmt.setString(3, share.getTitle());
+			pstmt.setString(4, share.getContents());
+			pstmt.setInt(5, share.getNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	public int deleteBookShare(Connection conn, int shareNo) { // 책나눔 삭제
 		PreparedStatement pstmt = null;
