@@ -2,6 +2,8 @@ package reply.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import common.JDBCTemplate;
 import reply.model.dao.ReplyDAO;
 import reply.model.vo.Reply;
@@ -99,6 +101,22 @@ public class ReplyService {
 			e.printStackTrace();
 		}
 		return count;
+	}
+
+	public ArrayList<Reply> printReplyList(int showNo) {
+		ArrayList<Reply> rList = null;
+		Connection conn =null;
+		try {
+			conn = factory.createConnection();
+			rList = new ReplyDAO().selectReplyList(conn,showNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		// TODO Auto-generated method stub
+		return rList;
 	}
 
 }

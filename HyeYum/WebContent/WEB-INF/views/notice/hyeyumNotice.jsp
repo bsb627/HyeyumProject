@@ -123,16 +123,16 @@ String pageNavi = (String) request.getAttribute("pageNavi");
 			</table>
 		</div>
 
-		<div class="container">
+		
+
+		<!--페이징  -->
+			<div class="container">
 			<div style="float: right">
 				<a href="/hyeyumNotice/write"><button
 						class="btn btn-primary btn-right">글쓰기</button></a>
 			</div>
-
-		<!--페이징  -->
-			<div class="container">
 				<ul class="pagination  justify-content-center">
-					<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+					<!-- <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
 					</li>
 					<li class="page-item active"><a class="page-link" href="#">1</a>
 					</li>
@@ -143,8 +143,8 @@ String pageNavi = (String) request.getAttribute("pageNavi");
 
 
 					<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-					</li>
-			
+					</li> -->
+				<%=pageNavi %>
 
 
 

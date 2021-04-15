@@ -209,5 +209,40 @@ public class ReplyDAO {
 		return recordTotalCount;
 	}
 
+	public ArrayList<Reply> selectReplyList(Connection conn, int showNo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Reply> replyList = null;
+		String query  = "SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO,NICK FROM SHOW_REVIEW_REPLY JOIN MEMBER USING(USER_ID) WHERE REVIEW_NO = ?";
+			
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, showNo);
+			rset = pstmt.executeQuery();
+			if (rset != null) {
+				replyList = new ArrayList<Reply>();
+				while(rset.next()) {
+					Reply reply = new Reply();
+					reply.setNo(rset.getInt("REVIEW_NO"));
+					reply.setReplyNo(rset.getInt("REPLY_NO"));
+					reply.setContents(rset.getString("REPLY_CONTENTS"));
+					reply.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					reply.setUserId(rset.getString("USER_ID"));
+					reply.setNick(rset.getString("NICK"));
+					replyList.add(reply);
+				}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return replyList;
+	}
+
 	
 }
