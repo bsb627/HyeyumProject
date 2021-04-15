@@ -23,7 +23,7 @@
 					<div class="col-lg-6">
 						<div class="form-group">
 							<label for="exam1">구분</label><br>
-
+							<input type="hidden" id="typeVal" value="<%=info.getType()%>"/>
 							<div class="btn-group btn-group-toggle" data-toggle="buttons">
 								<label class="btn btn-primary"> <input type="radio"
 									name="type" id="jb-radio-1" value="연극" required> 연극
@@ -49,8 +49,9 @@
 
 							<div class="col-lg-3">
 								<div class="form-group">
+								<input type="hidden" id="regionVal" value="<%=info.getRegion()%>"/>
 									<label for="exam1">지역</label> <select
-										class="browser-default custom-select" name="region" required>
+										class="browser-default custom-select" id="selectRegion" name="region" required>
 										<option selected>지역</option>
 										<option value="서울">서울</option>
 										<option value="인천">인천</option>
@@ -64,8 +65,9 @@
 
 							<div class="col-lg-3">
 								<div class="form-group">
+								<input type="hidden" id="ageVal" value="<%=info.getAgeGroup()%>"/>
 									<label for="exam1">관람등급</label> <select
-										class="browser-default custom-select" name="age-group" required>
+										class="browser-default custom-select" id="selectAge" name="age-group" required>
 										<option selected>등급</option>
 										<option value="전체관람가">전체관람가</option>
 										<option value="12세 이상">12세 이상</option>
@@ -182,3 +184,4 @@
 </div>
 <!-- /.container-fluid -->
 <%@include file="/admin/footer.jsp"%>
+ <script src="/assets/admin/js/show/contents-update.js"></script>

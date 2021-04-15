@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.btn-set{
+	margin-bottom: 20px
+}
+.btn-set > a > input {
+	margin-left: 5px;
+}
+
+.show-cursor{
+	cursor: pointer;
+}
+table#dataTable.dataTable tbody tr:hover {
+  background-color: #ffa;
+}
+ 
+table#dataTable.dataTable tbody tr:hover > .sorting_1 {
+  background-color: #ffa;
+}
+
+table.dataTable tbody tr.selected {
+    background-color: #ffa;
+}
