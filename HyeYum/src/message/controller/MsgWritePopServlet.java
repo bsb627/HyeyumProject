@@ -8,21 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import message.model.service.MessageService;
-import message.model.vo.Message;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MessageDetailServlet
+ * Servlet implementation class MessageWriteServlet
  */
-@WebServlet("/message/detail")
-public class MsgDetailServlet extends HttpServlet {
+@WebServlet("/message/write/pop")
+public class MsgWritePopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgDetailServlet() {
+    public MsgWritePopServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +29,15 @@ public class MsgDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
+		HttpSession session = request.getSession();
 		
-		Message message = new MessageService().printOne(messageNo);
-		System.out.println("메시지 디테일 서블릿 : "+ message);
-		if( message!=null) {
-			System.out.println("메시지 디테일 서블릿 if 안에 : "+ message);
-			request.setAttribute("message", message);
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/msgDetailForm.jsp");
-			view.forward(request, response);
-		}
+		String receiveId = request.getParameter("receiveId");
+		String sendId =(String) session.getAttribute("userId");
+		
+		request.setAttribute("receiveId", receiveId);
+		request.setAttribute("sendId", sendId);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/msgWritePop.jsp");
+		view.forward(request, response);
 	}
 
 	/**

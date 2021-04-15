@@ -56,12 +56,12 @@ public class MsgSendServlet extends HttpServlet {
 		message.setReceiver(receiveId);
 		message.setContents(contents);
 		message.setReadState("읽지않음");
-		System.out.println("msgSend 서블릿에 message : " + message);
+		
 		int result = new MessageService().sendMessage(message);
 		
 		if( result > 0 ) {
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('전송되었습니다.'); window.close();</script>");
+			out.println("<script>alert('전송되었습니다.')</script>");
 		}
 	}
 

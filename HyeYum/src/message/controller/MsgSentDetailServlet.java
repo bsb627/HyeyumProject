@@ -8,19 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import message.model.service.MessageService;
+import message.model.vo.Message;
 
 /**
- * Servlet implementation class MessageWriteServlet
+ * Servlet implementation class MessageDetailServlet
  */
-@WebServlet("/message/write")
-public class MsgWriteServlet extends HttpServlet {
+@WebServlet("/message/detail")
+public class MsgSentDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgWriteServlet() {
+    public MsgSentDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,15 +31,16 @@ public class MsgWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
 		
-		String receiveId = request.getParameter("receiveId");
-		String sendId =(String) session.getAttribute("userId");
-		
-		request.setAttribute("receiveId", receiveId);
-		request.setAttribute("sendId", sendId);
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/msgWriteForm.jsp");
-		view.forward(request, response);
+		Message message = new MessageService().printOne(messageNo);
+		new MessageService().updateReadState(messageNo);
+		if( message!=null) {
+			
+			request.setAttribute("message", message);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/sentDetailForm.jsp");
+			view.forward(request, response);
+		}
 	}
 
 	/**

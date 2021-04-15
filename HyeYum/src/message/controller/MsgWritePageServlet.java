@@ -1,27 +1,26 @@
 package message.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import message.model.service.MessageService;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MessageDeleteServlet
+ * Servlet implementation class MsgWritePageServlet
  */
-@WebServlet("/message/delete")
-public class MsgDeleteServlet extends HttpServlet {
+@WebServlet("/message/write/page")
+public class MsgWritePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgDeleteServlet() {
+    public MsgWritePageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +29,15 @@ public class MsgDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset = UTF-8");
-		int messageNo = Integer.parseInt(request.getParameter("message-no"));
+HttpSession session = request.getSession();
 		
-		int result = new MessageService().deleteMessage(messageNo);
- 		if( result > 0 ) {
-			System.out.println("이프문 안에 리절트" + result);
+		String receiveId = request.getParameter("receiveId");
+		String sendId =(String) session.getAttribute("userId");
 		
-			
-		}
-				
+		request.setAttribute("receiveId", receiveId);
+		request.setAttribute("sendId", sendId);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/msgWritePage.jsp");
+		view.forward(request, response);
 	}
 
 	/**

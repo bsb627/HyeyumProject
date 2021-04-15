@@ -59,7 +59,7 @@
                 <ul>
                   <li><a href="/message/sentList">보낸 쪽지함</a></li>
                   <li><a href="/message/receivedList">받은 쪽지함</a></li>
-                  <li><a href="#">쪽지 쓰기</a></li>
+                  <li><a href="/message/write/page">쪽지 쓰기</a></li>
                   <hr>
                   <li>으어ㅓㅓㅓ여기 내비두기</li>
                   <li><a href="#">Design <span>(22)</span></a></li>

@@ -23,7 +23,7 @@ public class MessageService {
 		try {
 			conn = factory.createConnection();
 			pd.setMsgList(new MessageDAO().selectAllSentList(conn, currentPage, userId));
-			pd.setPageNavi(new MessageDAO().getPageNavi(conn, currentPage));
+			pd.setPageNavi(new MessageDAO().getPageNavi(conn, currentPage, userId));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,14 +34,14 @@ public class MessageService {
 	}
 	
 	//받은 메시지 전체 출력
-	public MsgPageData printAllRecievedList(int currentPage) {
+	public MsgPageData printAllRecievedList(int currentPage, String userId) {
 		Connection conn = null;
 		MsgPageData pd = new MsgPageData();
 		
 		try {
 			conn = factory.createConnection();
-			pd.setMsgList(new MessageDAO().selectAllRecievedList(conn, currentPage));
-			pd.setPageNavi(new MessageDAO().getPageNavi(conn, currentPage));
+			pd.setMsgList(new MessageDAO().selectAllRecievedList(conn, currentPage, userId));
+			pd.setPageNavi(new MessageDAO().getPageNaviRe(conn, currentPage, userId));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,17 +90,24 @@ public class MessageService {
 	}
 
 	// 메시지 삭제
-	public int deleteMessage(ArrayList<Message> Message) {
+	public int deleteMessage(int messageNo) {
 
 		Connection conn = null;
 		int result = 0;
 		
 		try {
 			conn = factory.createConnection();
-			result = new MessageDAO().deleteMessage(conn, Message);
+			result = new MessageDAO().deleteMessage(conn, messageNo);
+			if( result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
@@ -117,10 +124,16 @@ public class MessageService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
 		}
 		
 		
 		return null;
+		
+	}
+	public void updateReadState(int messageNo) {
+		
 		
 	}
 	

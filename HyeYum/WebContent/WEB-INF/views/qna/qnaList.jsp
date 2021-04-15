@@ -37,7 +37,7 @@ function msg(e)  {
 
 function msgPop(receiveId) {
 	console.log(receiveId);
-	window.open("/message/write?receiveId=" + receiveId , "메시지 보내기", "width=500, height=400"); 
+	window.open("/message/write/pop?receiveId=" + receiveId , "메시지 보내기", "width=500, height=400"); 
 }
 </script>
 	

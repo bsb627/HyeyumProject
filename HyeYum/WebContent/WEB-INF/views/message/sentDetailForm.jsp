@@ -10,6 +10,11 @@
 %>
 <head>
   <title>문화나눔, 혜윰 </title>
+  <script>
+
+  	
+  </script>
+  
 </head>
 
  <main id="main">
@@ -22,7 +27,7 @@
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
         </ol>
-        <h2>보낸쪽지함</h2>
+        <h2>보낸쪽지</h2>
 		
       </div>
     </section><!-- End Breadcrumbs -->
@@ -31,13 +36,13 @@
     <section class="inner-page">
     <div class="container" align = "center">
 
-	<form action = "#">
+	<form action ="/message/delete" method = "get">
 
 	보낸 사람 : <%= message.getSender() %> <br>
 	받는 사람 : <%= message.getReceiver() %> <br>
 	내용 : <%= message.getContents() %> <br>
-	
-	<input type = "submit" value = "답장">
+	<input type ="hidden" name = "message-no" value = "<%= message.getMessageNo() %>">
+	<input type = "submit" value = "삭제" >
 	</form>
 	
 	</div>
