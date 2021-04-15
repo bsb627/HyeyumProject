@@ -98,14 +98,15 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 			<%for(ShowReview review : showList){ %>
 				<div class="post-card col-lg-4">
 					<div class="post-box">
-						<%for (FileData fd : fileList){ %>
-						<%if(review.getNo() == fd.getNo()){ %>
-						<div class="post-img">
-							<img src="/upload/show/<%=fd.getFileName() %>" class="img-fluid" alt="">
-						</div>
-						<%} }%>
-						<%for (ShowInfo info : iList){ %>
+					    <%for (ShowInfo info : iList){ %>
 						<%if(review.getInfoNo() == info.getInfoNo()){ %>
+							<%for (FileData fd : fileList){ %>
+							<%if(review.getNo() == fd.getNo()){ %>
+							<div class="post-img">
+								<img src="/upload/show/<%=fd.getFileName() %>" onerror="this.src='/upload/info/show/<%=info.getFileName() %>'" class="img-fluid"  alt="">
+							</div>
+							<%} }%>
+						
 						<span class="post-type">[<%=info.getType()%>]<%=info.getShowName()%></span>
 						<%} }%>
 

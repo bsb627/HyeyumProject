@@ -53,7 +53,8 @@
 					<div class="portfolio-details-slider swiper-container">
 						<div class="swiper-wrapper align-items-center">
 							<div class="swiper-slide">
-								<img src="/upload/show/<%=fileData.getFileName()%>" alt="">
+								
+								<img src="/upload/show/<%=fileData.getFileName()%>"  onerror="this.src='/upload/info/show/<%=info.getFileName() %>'" alt="">
 							</div>
 						</div>
 						<!-- <div class="swiper-pagination"></div> -->
@@ -80,20 +81,22 @@
 					</div>
 
 					<div class="reply-box">
-						<h5 class="comments-count">
+						<h6 class="comments-count">
 							<strong>댓글 <%=totalCount %>개
 							</strong>
-						</h5>
+						</h6>
 
 						<% for(Reply reply : rList){ %>
 						<div id="" class="show-reply">
-							<div class="d-flex">
-								<div>
+							<div class="">
+								<div class="show-contents">
 									<h6>
-										<strong> <a href="#"><%=reply.getNick() %></a> <%=reply.getContents() %>
+										<strong> <a href="#" style="color:#333"><%=reply.getNick() %></a> 
 										</strong>
+										<%=reply.getContents() %>
 									</h6>
 								</div>
+								
 							</div>
 						</div>
 						<!-- End comment #1 -->
@@ -115,41 +118,54 @@
 				</div>
 
 				<div class="col-lg-4">
-					<div class="btn-set">
-						<%if(review.getUserId().equals(userId)) {%>
-						<a href="/showReview/delete?no=<%=review.getNo()%>"><button
-								type="button" class="btn btn-sm btn-outline-danger"
-								data-mdb-ripple-color="dark">삭제</button> </a>
-						<%} %>
-						<%if(review.getUserId().equals(userId)) {%>
-						<a href="/showReview/update?no=<%=review.getNo()%>"><button
-								type="button" class="btn btn-sm btn-outline-primary"
-								data-mdb-ripple-color="dark">수정</button> </a>
-						<%} %>
-						<a href="/showReview/list"><button type="button"
-								class="btn btn-sm btn-outline-dark" data-mdb-ripple-color="dark">
-								목록</button> </a>
+					<div class="user-box ">
+					<div class="container">
+						<div class="blog-comments">
+							<div id="comment-1" class="comment">
+								<div class="btn-set">
+									<%
+										if (review.getUserId().equals(userId)) {
+									%>
+									<a href="/showReview/delete?no=<%=review.getNo()%>"><button
+											type="button" class="btn btn-sm btn-outline-danger"
+											data-mdb-ripple-color="dark">삭제</button> </a>
+									<%
+										}
+									%>
+									<%
+										if (review.getUserId().equals(userId)) {
+									%>
+									<a href="/showReview/update?no=<%=review.getNo()%>"><button
+											type="button" class="btn btn-sm btn-outline-primary"
+											data-mdb-ripple-color="dark">수정</button> </a>
+									<%
+										}
+									%>
+									<a href="/showReview/list"><button type="button"
+											class="btn btn-sm btn-outline-dark"
+											data-mdb-ripple-color="dark">목록</button> </a>
 
-					</div>
-					<div class="blog-comments">
-						<div id="comment-1" class="comment">
-							<div class="d-flex">
-								<div class="comment-img">
-									<img src="/assets/img/blog/comments-2.jpg" alt="">
 								</div>
-								<div class="comment-form">
-									<h5>
-										<a href=""><%=review.getNick() %></a>
-									</h5>
-										
-									<time datetime="2020-01-01"><%=review.getEnrollDate() %></time>
 
+
+								<div class="d-flex">
+									<div class="comment-img">
+										<img src="/assets/img/blog/comments-2.jpg" alt="">
+									</div>
+									<div class="comment-form">
+										<h5>
+											<a href=""><%=review.getNick()%></a>
+										</h5>
+
+										<time datetime="2020-01-01"><%=review.getEnrollDate()%></time>
+
+									</div>
 								</div>
 							</div>
+							<!-- End comment #1 -->
+							</div>
 						</div>
-						<!-- End comment #1 -->
 					</div>
-
 
 
 					<div class="portfolio-info">
