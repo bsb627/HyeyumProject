@@ -102,11 +102,12 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 						<%if(review.getInfoNo() == info.getInfoNo()){ %>
 							<%for (FileData fd : fileList){ %>
 							<%if(review.getNo() == fd.getNo()){ %>
-							<div class="post-img">
-								<img src="/upload/show/<%=fd.getFileName() %>" onerror="this.src='/upload/info/show/<%=info.getFileName() %>'" class="img-fluid"  alt="">
+							<div class="review-img">
+								<img src="/upload/show/<%=fd.getFileName() %>" onerror="this.src='/upload/info/show/<%=info.getFileName() %>'" class="img-fluid"  alt=""></figure>
 							</div>
 							<%} }%>
 						
+						<div class="post-info">
 						<span class="post-type">[<%=info.getType()%>]<%=info.getShowName()%></span>
 						<%} }%>
 
@@ -126,7 +127,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 							<i class="bi bi-pen"> <%=review.getNick() %></i><br>
 							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i>
 						</span>
-						
+						</div>
 					</div>
 				</div>
 				

@@ -110,7 +110,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 						<input type="hidden" name="no" value="<%=review.getNo()%>" />
 					<!-- Submit button -->
 					<div class="btn-set">
-						<a href="/showReview/list"><button type="button"
+						<a href="/showReview/detail?no=<%=review.getNo()%>"><button type="button"
 								class="btn btn-warning" data-mdb-ripple-color="dark">
 								취소</button> </a>
 						<button type="submit" class="btn btn-primary "

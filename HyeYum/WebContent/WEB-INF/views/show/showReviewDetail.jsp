@@ -64,13 +64,18 @@
 						<div class="icon-box">
 							<%if(likes == 0){ %>
 							<a href="/showReview/plusLikes?no=<%=review.getNo()%>"><i
-								class="bi bi-heart show-icon" style="color: #333"></i></a>
+								class="bi bi-heart show-icon heart-like" ></i></a>
 							<%} else { %>
 							<a href="/showReview/minusLikes?no=<%=review.getNo()%>"><i
-								class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a>
+								class="bi bi-heart-fill show-icon heart-hate"></i></a>
 							<%} %>
-							<i class="bi bi-chat show-icon"></i> <a
-								href="<%=review.getSnsLink() %>" target="_blank"><i
+							
+							
+							<span data-toggle="modal"
+	data-target="#exampleModal"><i class="bi bi-envelope-open direct show-icon"></i></span>
+							
+							 
+							<a href="<%=review.getSnsLink() %>" target="_blank"><i
 								class="bi bi-instagram instargram show-icon"
 								style="font-size: 2rem;"></i></a>
 						</div>
@@ -106,7 +111,7 @@
 								<input type="hidden" name="type" value="show"> <input
 									type="hidden" name="review-no" value="<%=review.getNo()%>">
 								<input type="text" class="form-control " name="comment"
-									placeholder="댓글달기">
+									placeholder="댓글달기" required>
 								<button type="submit" class="btn btn-reply">
 									<small><strong>등록</strong></small>
 								</button>
@@ -211,25 +216,24 @@
 
 <!-- Modal -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal"
-	data-target="#exampleModal">Launch demo modal</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">...</div>
+			<div class="modal-body"><input type="text" class="form-control" placeholder="메세지 입력" required/></div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-primary">전송</button>
 			</div>
 		</div>
 	</div>
