@@ -44,17 +44,14 @@ public class QnaDeleteServlet extends HttpServlet {
 
 		
 		int family = Integer.parseInt(request.getParameter("family"));
-		
-		
-		
 		int result = new QnaService().deleteQna(family);
 		
 		if (result > 0) {
-			RequestDispatcher view  = request.getRequestDispatcher("/qna/list");
-			view.forward(request, response);
+			response.sendRedirect("/qna/list");
+			
 		} else {
-			RequestDispatcher view  = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");
-			view.forward(request, response);
+			response.sendRedirect("/WEB-INF/views/qna/qnaError.html");
+			
 		}
 	}
 

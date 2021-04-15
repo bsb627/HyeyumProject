@@ -407,7 +407,7 @@ public class QnaDAO {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1," ");
-			pstmt.setString(2, "  ┗> 답변입니다.");
+			pstmt.setString(2, "  답변입니다.");
 			pstmt.setString(3, "admin");
 			pstmt.setString(4, qna.getQuestionPwd());
 			pstmt.setString(5, qna.getContents());
