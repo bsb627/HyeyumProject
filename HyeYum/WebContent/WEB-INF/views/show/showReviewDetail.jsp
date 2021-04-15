@@ -161,6 +161,11 @@
 
 									</div>
 								</div>
+								<span class="post-date">
+							<i class="bi bi-eye"> <%=review.getHits()%></i>							
+							<i class="bi bi-chat-square-dots"> <%=review.getReplys() %></i>
+							<i class="bi bi-heart"> <%=review.getLikes() %></i>
+						</span>
 							</div>
 							<!-- End comment #1 -->
 							</div>

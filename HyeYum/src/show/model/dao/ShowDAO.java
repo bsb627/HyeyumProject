@@ -134,11 +134,13 @@ public class ShowDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ShowReview review = null;
-		String query = "SELECT REVIEW_NO,TITLE,CONTENTS,SNS_LINK,HITS,TICKET_NUMBER,ENROLL_DATE,USER_ID,NICK,INFO_NO,USER_ID FROM SHOW_REVIEW JOIN MEMBER USING (USER_ID) WHERE REVIEW_NO = ?";
+		String query = "SELECT REVIEW_NO,TITLE,CONTENTS,SNS_LINK,HITS,TICKET_NUMBER,ENROLL_DATE,A.USER_ID,NICK,INFO_NO,(SELECT COUNT(*) FROM SHOW_LIKES WHERE REVIEW_NO = ? AND IS_CHECK = 1) AS LIKES, (SELECT COUNT(*) FROM SHOW_REVIEW_REPLY WHERE REVIEW_NO=?) AS REPLYS FROM SHOW_REVIEW A JOIN MEMBER B ON A.USER_ID=B.USER_ID  WHERE REVIEW_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, showNo);
+			pstmt.setInt(2, showNo);
+			pstmt.setInt(3, showNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				review = new ShowReview();
@@ -147,6 +149,8 @@ public class ShowDAO {
 				review.setContents(rset.getString("CONTENTS"));
 				review.setSnsLink(rset.getString("SNS_LINK"));
 				review.setHits(rset.getInt("HITS"));
+				review.setLikes(rset.getInt("LIKES"));
+				review.setReplys(rset.getInt("REPLYS"));
 				review.setTicketNumber(rset.getString("TICKET_NUMBER"));
 				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				review.setNick(rset.getString("NICK"));
