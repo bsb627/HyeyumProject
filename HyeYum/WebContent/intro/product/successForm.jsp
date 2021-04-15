@@ -49,26 +49,7 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3>혜윰 팔찌</h3>
-              <ul>
-                <li><strong>가격</strong>: 15,000</li>
-                <li><strong>재질</strong>: 소가죽 </li>
-
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>제품 소개</h2>
-              <p>
-                혜윰 팔찌는 ~ 그냥 사주세요 <br>
-                수익금 전액은 불우이웃을 돕는데 
-                사용됩니다잉..<br>
-              </p>
-            </div>
-            
-            <div>
-            <button class="btn btn-primary col-12"  id="kakao-order" >참여하기</button>
-            </div>
-            
+             <h1> 결제가 완료 되었습니다.</h1>
             
           </div>
 
@@ -81,6 +62,4 @@
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script type="text/javascript" src="/assets/js/pay/import-pay.js"></script>
+
