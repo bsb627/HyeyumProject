@@ -8,6 +8,8 @@
 %>
 <%@include file="/header.jsp"%>
 <head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
 	if (userId == null) {
 %>
@@ -21,9 +23,34 @@
 <%
 	}
 %>
+
+<script>
+
+function msg(e)  {
+	 var sendMsgElement = $(e.currentTarget).parent().next();
+	 if ( sendMsgElement.css("display") === 'none' ){
+		 sendMsgElement.css("display", "block"); 
+	} else { 
+		 sendMsgElement.css("display", "none"); 
+	}
+}
+
+function msgPop(recieveId) {
+	console.log(recieveId);
+	window.open("/message/send?recieveId=" + recieveId , "메시지 보내기", "width=400, height=300, left=100, top=50"); 
+}
+</script>
 	
   <title>문화나눔, 혜윰 - QnA</title>
+<style>
 
+ul{
+   list-style:none;
+   padding:0;
+   margin:0;
+   }
+
+</style>
 </head>
  <main id="main">
 
@@ -79,26 +106,26 @@
       		<% for (Qna qna : qnaList) { %>
       		<tr>
       				<td><%= qna.getQnaNo()%></td>
-      				<td><%= qna.getCategory() %> </td>
-      				
-      				
-      				
+      				<td><%= qna.getCategory() %> </td>		
       				<td style = "text-align : left">
       				
-      				
  					<% if( qna.getStep() !=0) {%>
-      				<img src = "/assets/img/qna/re2.gif"/>
+      				<img src = "/assets/img/qna/qqq.gif"/>
       				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
-      				
       				<% } else { %>
       				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
       				<% } %>
       				</td>
+   
+      				<td>
+      					<ul>
+							<li><a onclick ="msg(event)"><%= qna.getUserId()%></a></li>
+							<li id="sendMsg" style="display:none;" onclick ="msgPop('<%= qna.getUserId() %>')">쪽지보내기</a></li>
+							
+      					</ul>
+						
+      				</td>
       				
-      				
-      				
-      				
-      				<td><%= qna.getUserId()%></td>
       				<td><%= qna.getEnrollDate()%></td>
       				<td><%= qna.getHits() %></td>
 
@@ -113,8 +140,6 @@
 				</form>
 			</div>
       	</div>
-
-      
     </section>
 
   </main><!-- End #main -->

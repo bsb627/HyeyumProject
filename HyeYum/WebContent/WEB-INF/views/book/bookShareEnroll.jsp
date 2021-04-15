@@ -3,6 +3,7 @@
 
 <head>
 <title>문화나눔, 혜윰 - 글쓰기</title>
+<%@include file="/header.jsp"%>
 <!-- Font Awesome -->
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -15,16 +16,10 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
 	rel="stylesheet" />
-<%@include file="/header.jsp"%>
-<!-- MDB -->
 <link href="/assets/css/show-custom.css" rel="stylesheet">
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
-	<script src="/assets/note/summernote-lite.js"></script>
-<script src="/assets/note//lang/summernote-ko-KR.js"></script>
 
 <link rel="stylesheet" href="/assets/note/summernote-lite.css">
-<script src="/assets/js/book/book-write.js"></script>
+
 </head>
 <main id="main">
 	<section class="breadcrumbs">
@@ -51,13 +46,8 @@
 			<form action="/bookShare/enroll" method="post" enctype="multipart/form-data">
 
 				<div class="row border col-md-12">
-
-					<div class="form-outline col-md-12">
-						<input type="text" id="share-title" class="form-control" name="share-title" autocomplete="off" required/> <label
-							class="form-label" for="show-title">제목</label>
-					<hr>
-					</div>
 					<div class="col-md-8">
+					<label for="InputSubject1">판매지역	</label><br>
 	                   <select name="region" id="region">
 	                       <option hidden="hidden">-- 판매지역 선택 --</option>
 	                       <option value="서울/경기">서울/경기</option>
@@ -72,26 +62,19 @@
 	                       <option value="제주">제주</option>
 	                   </select>
 					</div>
-					<!-- 파일첨부 -->
-					<!-- <div>
-					 <label class="form-label" for="customFile"></label> 
-					 	<input type="file" class="form-control" id="customFile" />
-					 	<input type="submit" class="form-control" value="업로드" onclick="javascript: form.action='/file/upload'"><br>
-						<input type="reset" class="form-control" value="취소">
-					</div> -->
+
 						<div class="col-md-4">
 						<label for="InputSubject1">파일첨부</label>
-							
-							<input type="text" id="userfile" name="userfile" disabled="">
-							<span class="group-span-filestyle input-group-btn" tabindex="0">
-								<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
-									
+							<input type="file" class="form-control" id="customFile" name="up-file" required/>		
 								
-							</span>
 						</div>
+					<div class="form-outline col-md-12">
+						<input type="text" id="share-title" class="form-control" name="share-title" autocomplete="off" required/> <label
+							class="form-label" for="show-title">제목</label>
+					<hr>
+					</div>
 
 
-				
 
 					 <textarea id="summernote" name="share-content"></textarea>
 					<br>
@@ -119,3 +102,7 @@
 <!-- End #main -->
 
 <%@include file="/footer.jsp"%>
+<script src="/assets/js/book/book-write.js"></script>
+<script type="text/javascript"	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+<script src="/assets/note/summernote-lite.js"></script>
+<script src="/assets/note//lang/summernote-ko-KR.js"></script>

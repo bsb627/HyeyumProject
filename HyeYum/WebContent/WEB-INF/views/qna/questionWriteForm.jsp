@@ -2,40 +2,11 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/header.jsp"%>
-<head>
-<head>
-	<script>
-	 $(document).ready(function() {
-		$("#qna-form").submit(function() {
-			var title = $("#title");
-			var password = $("#qna-pwd");
-			var contents = $("#contents");
-			var category = $("#category");
-			if(title.val() =="") {
-				alert("제목을 입력해주세요. ");
-				return false;
-			}else if (category.val()=="--분류선택--") {
-				alert("문의 분류를 선택해 주세요");
-				return false;
-			}else if(password.val() == "") {
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}else if (contents.val() == "") {
-				alert("내용을 입력해주세요.");
-				return false;
-			}
-			alert("등록하시겠습니까?");
-			return true;
-		});
-	 });
-		
-	</script>
 
-
+<head>
   <title>문화나눔, 혜윰 - QnA</title>
+</head>
 
-</head>
-</head>
  <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -94,12 +65,11 @@
 		    <input type="submit" style = "float : right" class="btn btn-primary" value = "등록" id="write">
 		  </div>
 		</form>
-		       
-       
-       
+		     
       </div>
     </section>
 
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
+<script src="/assets/js/qna/qnaList.js"></script>
