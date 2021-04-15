@@ -35,9 +35,9 @@ function msg(e)  {
 	}
 }
 
-function msgPop(recieveId) {
-	console.log(recieveId);
-	window.open("/message/send?recieveId=" + recieveId , "메시지 보내기", "width=400, height=300, left=100, top=50"); 
+function msgPop(receiveId) {
+	console.log(receiveId);
+	window.open("/message/write?receiveId=" + receiveId , "메시지 보내기", "width=500, height=400"); 
 }
 </script>
 	
@@ -96,6 +96,7 @@ ul{
 
       		<table class ="table table-hover" style = "text-align : center">
       			<tr>
+      				<th>
       				<th>글번호</th>
       				<th>문의분류</th>
       				<th>제목</th>
@@ -105,6 +106,7 @@ ul{
       			</tr>
       		<% for (Qna qna : qnaList) { %>
       		<tr>
+      				
       				<td><%= qna.getQnaNo()%></td>
       				<td><%= qna.getCategory() %> </td>		
       				<td style = "text-align : left">

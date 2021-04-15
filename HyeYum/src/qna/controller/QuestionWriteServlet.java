@@ -42,7 +42,9 @@ public class QuestionWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); // 보내는 내용이 한글이 있을 수 있기 때문에 인코딩
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset = UTF-8");
 	
 		String title = request.getParameter("title"); 
 		String pass = request.getParameter("qna-pwd");

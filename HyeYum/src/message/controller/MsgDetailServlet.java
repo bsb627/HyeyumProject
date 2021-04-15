@@ -1,11 +1,16 @@
 package message.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import message.model.service.MessageService;
+import message.model.vo.Message;
 
 /**
  * Servlet implementation class MessageDetailServlet
@@ -26,8 +31,16 @@ public class MsgDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
+		
+		Message message = new MessageService().printOne(messageNo);
+		System.out.println("메시지 디테일 서블릿 : "+ message);
+		if( message!=null) {
+			System.out.println("메시지 디테일 서블릿 if 안에 : "+ message);
+			request.setAttribute("message", message);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/msgDetailForm.jsp");
+			view.forward(request, response);
+		}
 	}
 
 	/**

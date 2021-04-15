@@ -22,16 +22,11 @@ public class QnaService {
 	// 전체출력 
 	public QnaPageData printAllQna(int currentPage) {
 		Connection conn = null;
-		QnaPageData pd = new QnaPageData();
-		System.out.println("서비스 들어옴");
-		
-		try {
-			
+		QnaPageData pd = new QnaPageData();		
+		try {		
 			conn = factory.createConnection();
 			pd.setQnaList(new QnaDAO().selectAllList(conn, currentPage));
-			pd.setPageNavi(new QnaDAO().getPageNavi(conn, currentPage));
-			
-			System.out.println("서비스 pd" + pd);
+			pd.setPageNavi(new QnaDAO().getPageNavi(conn, currentPage));		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

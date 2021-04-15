@@ -57,7 +57,7 @@
               <h3 class="sidebar-title">쪽지</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href=/message/sentList">보낸 쪽지함</a></li>
+                  <li><a href="/message/sentList">보낸 쪽지함</a></li>
                   <li><a href="/message/receivedList">받은 쪽지함</a></li>
                   <li><a href="#">쪽지 쓰기</a></li>
                   <hr>

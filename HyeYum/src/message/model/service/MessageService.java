@@ -14,16 +14,15 @@ public class MessageService {
 	private JDBCTemplate factory;
 	
 	public MessageService() {
-		factory = new JDBCTemplate().getConnection();
+		factory = JDBCTemplate.getConnection();
 	}
 	// 보낸 메시지 전제출력
-	public MsgPageData printAllSentList(int currentPage) {
+	public MsgPageData printAllSentList(int currentPage, String userId) {
 		Connection conn = null;
 		MsgPageData pd = new MsgPageData();
-		
 		try {
 			conn = factory.createConnection();
-			pd.setMsgList(new MessageDAO().selectAllSentList(conn, currentPage));
+			pd.setMsgList(new MessageDAO().selectAllSentList(conn, currentPage, userId));
 			pd.setPageNavi(new MessageDAO().getPageNavi(conn, currentPage));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,18 +52,17 @@ public class MessageService {
 	}
 	// 메시지 하나 출력
 	public Message printOne(int messageNo) {
-
 		Connection conn = null;
 		Message message = null;
 		try {
 			conn = factory.createConnection();
 			message = new MessageDAO().selectOne(conn, messageNo);
-	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
-		
 		return message;
 	}
 	
@@ -76,9 +74,16 @@ public class MessageService {
 		try {
 			conn = factory.createConnection();
 			result = new MessageDAO().insertMessage(conn, message);
+			if( result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 		
