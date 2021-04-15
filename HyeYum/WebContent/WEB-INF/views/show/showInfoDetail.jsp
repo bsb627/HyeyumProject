@@ -7,7 +7,7 @@
 %>
 <title>문화나눔, 혜윰 - Show</title>
 <%@include file="/header.jsp"%>
-<link href="/assets/css/show-custom.css" rel="stylesheet">
+<link href="/assets/css/show-info.css" rel="stylesheet">
 
 <main id="main">
 	
