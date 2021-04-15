@@ -46,6 +46,8 @@ public class MovieReviewListServlet extends HttpServlet {
 		ArrayList<MovieReview> review = mPageData.getReviewList();
 		String pageNavi = mPageData.getPageNavi();
 		
+	
+		
 		if(!review.isEmpty()) {
 			request.setAttribute("review", review);
 			request.setAttribute("pageNavi", pageNavi);

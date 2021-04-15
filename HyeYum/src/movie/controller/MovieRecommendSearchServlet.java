@@ -39,7 +39,7 @@ public class MovieRecommendSearchServlet extends HttpServlet {
 		if(request.getParameter("currentPage") == null) {
 			currentPage = 1;
 		} else {
-			currentPage = Integer.parseInt(request.getParameter("currnetPage"));
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
 		String search = request.getParameter("search-keyword");
@@ -51,7 +51,9 @@ public class MovieRecommendSearchServlet extends HttpServlet {
 		if(!recommend.isEmpty()) {
 			request.setAttribute("recommend", recommend);
 			request.setAttribute("pageNavi", pageNavi);
-			request.getRequestDispatcher("/WEB-INF/views/movie/moiveRecommendSearch.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendSearch.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendNonSearch.jsp").forward(request, response);
 		}
 	}
 

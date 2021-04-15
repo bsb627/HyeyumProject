@@ -132,10 +132,11 @@
 
 								<div class="form-group">
 									<!-- 주소 -->
-									<label class="col-form-label" for="inputDefault"><p>주소</p></label>
-									<input type="text" class="form-control" placeholder=""
-										value="<%=member.getUserAddress()%>" id="inputDefault"
-										name="userAddress">
+									<button type="button" class="btn btn-primary btn-sm">주소검색</button>
+									<label class="col-form-label" for="inputDefault"><p></p></label>
+									<input type="text" class="form-control" 
+										value="" id="inputDefault"
+										name="userAddress" required readonly>
 								</div>
 
 								<hr>

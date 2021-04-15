@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MovieInfoListServlet
@@ -27,6 +28,13 @@ public class MovieInfoListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("인포리스트서블릿 ㅇㅇ");
+		
+		/*
+		 * HttpSession session = request.getSession(); String userId =
+		 * (String)session.getAttribute("userId");
+		 */
+		System.out.println("이건아닌데");
 		request.getRequestDispatcher("/WEB-INF/views/movie/movieInfoList.jsp").forward(request, response);
 	}
 

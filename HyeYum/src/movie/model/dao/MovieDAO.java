@@ -179,8 +179,8 @@ public class MovieDAO {
 				mReview.setSpoiler(rset.getString("SPOILER"));
 				mReview.setGenre(rset.getString("GENRE"));
 				mReview.setTicketNumber(rset.getString("TICKET_NUMBER"));
-				mReview.setNick("NICK");
-				mReview.setUserId("USER_ID");
+				mReview.setNick(rset.getString("NICK"));
+				mReview.setUserId(rset.getString("USER_ID"));
 				review.add(mReview);
 				}
 		} catch (SQLException e) {
@@ -226,13 +226,17 @@ public class MovieDAO {
 
 		StringBuilder sb = new StringBuilder();
 		if (needPrev) { // 이전 페이지 ( < )
-			sb.append("<a href='/movieReview/list?currentPage=" + (startNavi - 1) + "'> 이전 </a>");
+			sb.append("<li><a href='/movieReview/list?currentPage=" + (startNavi - 1) + "'> 이전 </a></li>");
 		}
 		for (int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='/movieReview/list?currentPage=" + i + "'>" + i + " </a>");
+			if ( currentPage == i) {
+				sb.append("<li class='active'><a href='/movieReview/list?currentPage=" + i + "'>" + i + " </a></li>");
+			} else {
+				sb.append("<li><a href='/movieReview/list?currentPage=" + i + "'>" + i + " </a></li>");
+			}
 		}
 		if (needNext) { // 다음 페이지 ( > )
-			sb.append("<a href='/movieReview/list?currentPage=" + (endNavi + 1) + "'> 다음 </a>");
+			sb.append("<li><a href='/movieReview/list?currentPage=" + (endNavi + 1) + "'> 다음 </a></li>");
 		}
 		return sb.toString();
 	}
@@ -256,6 +260,7 @@ public class MovieDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(stmt);
 		}
+		System.out.println("total :" + recordTotalCount);
 		return recordTotalCount;
 	}
 	
@@ -278,8 +283,8 @@ public class MovieDAO {
 				mReview.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mReview.setSpoiler(rset.getString("SPOILER"));
 				mReview.setTicketNumber(rset.getString("TICKET_NUMBER"));
-				mReview.setNick("NICK");
-				mReview.setUserId("USER_ID");
+				mReview.setNick(rset.getString("NICK"));
+				mReview.setUserId(rset.getString("USER_ID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -294,7 +299,7 @@ public class MovieDAO {
 	public int insertMovieReview(Connection conn, MovieReview movieReview) { // 영화리뷰 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO MOVIE_REVIEW VALUES(SEQ_MOVIE_REVIEW.NEXTVAL, ?,?,?,SYSDATE, ?,?,?";
+		String query = "INSERT INTO MOVIE_REVIEW VALUES(SEQ_MOVIE_REVIEW.NEXTVAL, ?,?,?,SYSDATE,?,?,?)";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -316,13 +321,42 @@ public class MovieDAO {
 	
 	public int updateMovieReview(Connection conn, MovieReview movieReview) { // 영화리뷰 수정
 		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE MOVIE_REVIEW SET STAR_RATING = ?, CONTENTS =?, ENROLL_DATE=SYSDATE, SPOILER = ? WHERE REVIEW_NO = ?";
+		//UPDATE MOVIE_REVIEW SET STAR_RATING = '5', CONTENTS ='내용변경', ENROLL_DATE=SYSDATE, SPOILER = 'N' WHERE REVIEW_NO = '2';
 		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieReview.getStarRating());
+			pstmt.setString(2, movieReview.getContents());
+			pstmt.setString(3, movieReview.getSpoiler());
+			pstmt.setInt(4, movieReview.getReNo());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		return result;
 	}
 	
-	public int deleteMovieReview(Connection conn, ArrayList<Integer> reviewNo) { // 영화리뷰 삭제
+	public int deleteMovieReview(Connection conn, int reNo) { // 영화리뷰 삭제
+		System.out.println("dao 들어옴");
 		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "DELETE FROM MOVIE_REVIEW WHERE REVIEW_NO = ? ";
 		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+			System.out.println("result : " + result);
 		return result;
 	}
 	
@@ -351,7 +385,6 @@ public class MovieDAO {
 	
 	// 추천혜윰
 	public ArrayList<MovieRecommend> selectAllMovieRecommend(Connection conn, int currentPage) { // 추천글 전체보기
-		System.out.println("리스트dao 들어옴");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<MovieRecommend> recommend = null;
@@ -387,7 +420,6 @@ public class MovieDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-			System.out.println("dao 받아옴" + recommend);
 			return recommend;
 		}
 	
@@ -423,14 +455,18 @@ public class MovieDAO {
 				}
 				
 			StringBuilder sb = new StringBuilder();
-			if(needPrev) { // 이전 페이지 ( < )
-				sb.append("<li><a href='/movieRecommend/list?currentPage=" + (startNavi-1) + "'> 이전 </a></li>");
+			if (needPrev) { // 이전 페이지 ( < )
+				sb.append("<li><a href='/movieRecommend/list?currentPage=" + (startNavi - 1) + "'> 이전 </a></li>");
 			}
-			for(int i = startNavi; i<=endNavi; i++) {
-				sb.append("<li><a href='/movieRecommend/list?currentPage=" + i + "'>" + i + " </a></li>");
+			for (int i = startNavi; i <= endNavi; i++) {
+				if ( currentPage == i) {
+					sb.append("<li class='active'><a href='/movieRecommend/list?currentPage=" + i + "'>" + i + " </a></li>");
+				} else {
+					sb.append("<li><a href='/movieRecommend/list?currentPage=" + i + "'>" + i + " </a></li>");
+				}
 			}
-			if(needNext) { // 다음 페이지 ( > )
-				sb.append("<li><a href='/movieRecommend/list?currentPage=" + (endNavi+1) + "'> 다음 </a></li>");
+			if (needNext) { // 다음 페이지 ( > )
+				sb.append("<li><a href='/movieRecommend/list?currentPage=" + (endNavi + 1) + "'> 다음 </a></li>");
 			}
 		return sb.toString();
 	}
@@ -532,7 +568,6 @@ public class MovieDAO {
 	public int deleteMovieRecommend(Connection conn, int recommendNo) { // 추천글 삭제
 		PreparedStatement pstmt = null;
 		int result = 0;
-			System.out.println("no:"  + recommendNo);
 		String query = "DELETE FROM MOVIE_RECOMMEND WHERE RECOMMEND_NO = ?";
 		
 		try {
@@ -553,9 +588,12 @@ public class MovieDAO {
 	public ArrayList<MovieRecommend> selectSearchRecommendList(Connection conn, int currentPage, String search, String searchCategory) { //추천글 검색결과 전체보기
 		PreparedStatement pstmt = null;
 		ResultSet rset= null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE " + searchCategory + " LIKE ? ) WHERE NUM BETWEEN ? AND ?";
+		System.out.println(searchCategory);
+		System.out.println(search);
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE " + searchCategory +" LIKE ? ORDER BY RECOMMEND_NO DESC ) WHERE NUM BETWEEN ? AND ?";
+					// SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC ) AS NUM, RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, ENROLL_DATE, NICK FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE GENRE LIKE '%드라마%' ORDER BY RECOMMEND_NO DESC ) WHERE NUM BETWEEN 1 AND 5;
 		ArrayList<MovieRecommend> mRecommend = null;
-		int recordCountPerPage = 5;
+		int recordCountPerPage = 10;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage -1);
 		int end = currentPage*recordCountPerPage;
 		
@@ -577,6 +615,7 @@ public class MovieDAO {
 				recommend.setHits(rset.getInt("HITS"));
 				recommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				recommend.setNick(rset.getString("NICK"));
+				
 				mRecommend.add(recommend);
 			}
 		} catch (SQLException e) {
@@ -622,13 +661,17 @@ public class MovieDAO {
 		// a 태그를 만드는 코드
 		StringBuilder sb = new StringBuilder();
 		if(needPrev) { ///notice/search?currentPage=1&searchKeyword=search
-			sb.append("<a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + (startNavi-1) + "'> 이전 </a>");
+			sb.append("<li><a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + (startNavi-1) + "'> 이전 </a></li>");
 		}
 		for(int i = startNavi; i<=endNavi; i++) {
-			sb.append("<a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + i + "'>" + i + " </a>");
+			if ( currentPage == i) {
+				sb.append("<li class='active'><a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + i + "'>" + i + " </a></li>");
+			} else {
+				sb.append("<li><a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + i + "'>" + i + " </a></li>");
+			}
 		}
 		if(needNext) {
-			sb.append("<a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + (endNavi+1) + "'> 다음 </a>");
+			sb.append("<li><a href='/movieRecommend/search?search-keyword=" + search + "&currentPage=" + (endNavi+1) + "'> 다음 </a></li>");
 		}
 		return sb.toString();
 	}
@@ -636,7 +679,7 @@ public class MovieDAO {
 	public int searchTotalRecommendCount(Connection conn, String search, String searchCategory) { // 추천글 검색 총 게시글 수
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String qeury = "SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_RECOMMEND WHERE TITLE LIKE ?";
+		String qeury = "SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE " + searchCategory + " LIKE ?";
 		int recordTotalCount = 0;
 		
 		try {
@@ -653,6 +696,7 @@ public class MovieDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
+		System.out.println("rtt" + recordTotalCount);
 		return recordTotalCount;
 	}
 	

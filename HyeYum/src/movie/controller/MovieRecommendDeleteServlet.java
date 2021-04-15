@@ -36,10 +36,10 @@ public class MovieRecommendDeleteServlet extends HttpServlet {
 		
 		int recommendNo = Integer.parseInt(request.getParameter("no"));
 		int result = new MovieService().deleteMovieRecommend(recommendNo);
-		//System.out.println("삭제진행중");
+		
 		if (result > 0) {
 			PrintWriter out = response.getWriter();
-
+			
 			out.println("<script> alert('게시글이 삭제되었습니다.');");
 			out.println("location.href='/movieRecommend/list';");
 			out.println("</script>");

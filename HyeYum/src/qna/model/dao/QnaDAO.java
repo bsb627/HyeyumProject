@@ -268,7 +268,7 @@ public class QnaDAO {
 		PreparedStatement pstmt= null;
 		
 		int recordCountPerPage = 10;
-		int naviCountPerPage = 10; 
+		int naviCountPerPage = 5; 
 		int recordTotalCount = searchTotalCount(conn, search, searchCategory); 
 		
 		int pageTotalCount = 0; 

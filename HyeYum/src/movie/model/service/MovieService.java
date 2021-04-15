@@ -134,6 +134,11 @@ public class MovieService {
 		try {
 			conn = factory.createConnection();
 			result = new MovieDAO().insertMovieReview(conn, movieReview);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -149,6 +154,11 @@ public class MovieService {
 		try {
 			conn = factory.createConnection();
 			result = new MovieDAO().updateMovieReview(conn, movieReview);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,12 +168,17 @@ public class MovieService {
 		return result;
 	}
 	
-	public int deleteMovieReview(ArrayList<Integer> reviewNo) { // 영화리뷰 삭제
+	public int deleteMovieReview(int reNo) { // 영화리뷰 삭제
 		Connection conn = null;
 		int result = 0;
 		try {
 			conn = factory.createConnection();
-			result = new MovieDAO().deleteMovieReview(conn, reviewNo);
+			result = new MovieDAO().deleteMovieReview(conn, reNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -312,8 +327,11 @@ public class MovieService {
 	}
 	
 	public MoviePageData printSearchAllMovieRecommendList(int currentPage, String search, String searchCategory) { // 추천글 검색결과 전체보기
+		
 		Connection conn = null;
 		MoviePageData mpd = new MoviePageData();
+		System.out.println("추천글 서비스 들어옴");
+		
 		try {
 			conn = factory.createConnection();
 			mpd.setRecommendList(new MovieDAO().selectSearchRecommendList(conn, currentPage, search, searchCategory));
@@ -324,6 +342,7 @@ public class MovieService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
+		System.out.println("서비스 " + mpd);
 		return mpd;
 	}
 

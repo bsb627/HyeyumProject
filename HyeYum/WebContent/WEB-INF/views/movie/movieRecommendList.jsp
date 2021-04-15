@@ -60,17 +60,17 @@
 			<div style="float: right">
 				<div class="row">
 					<div class="col-auto">
-						<form action="" method="get">
+						<form action="/movieRecommend/search" method="get">
 
 							<div class="input-group">
 								<select name="search-category" class="form-select">
-									<option value="작성자">작성자</option>
-									<option value="제목">제목</option>
-									<option value="내용">내용</option>
+									<option value="NICK">작성자</option>
+									<option value="TITLE">제목</option>
+									<option value="CONTENTS">내용</option>
 								</select>
 								<!-- aria-label="Search" -->
 								<div class="col-auto">
-									<input type="search" name="search-keyword"
+									<input type="text" name="search-keyword"
 										class="form-control rounded" placeholder="Search"
 										aria-describedby="search-addon" />
 								</div>

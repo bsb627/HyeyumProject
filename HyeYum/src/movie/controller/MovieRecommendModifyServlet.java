@@ -31,6 +31,7 @@ public class MovieRecommendModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("인포모디파이서블릿 ㅇㅇ");
 		int recommendNo = Integer.parseInt(request.getParameter("no"));
 		MovieRecommend recommend = new MovieService().printOneMovieRecommend(recommendNo);
 		if(recommend != null) {
