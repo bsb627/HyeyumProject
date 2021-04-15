@@ -1,6 +1,10 @@
 package book.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +18,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import book.model.service.BookService;
 import book.model.vo.BookShare;
+import file.model.service.BookFileService;
+import file.model.vo.FileData;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -41,7 +47,7 @@ public class BookShareEnrollServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null && (session.getAttribute("userId")) != null) {
 			String fileUserId = (String)session.getAttribute("userId");
-			String uploadFilePath = request.getServletContext().getRealPath("/upload/book");
+			String uploadFilePath = request.getServletContext().getRealPath("upload/book");
 			int uploadFileSizeLimit = 5* 1024 * 1024 * 1024;
 			String encType = "UTF-8";
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
@@ -58,31 +64,30 @@ public class BookShareEnrollServlet extends HttpServlet {
 			System.out.println("서블릿 title : " + share.getTitle());
 			System.out.println(share.getContents());
 			System.out.println(share.getUserId());
-			int result = new BookService().registerBookShare(share);
+			int result = new BookService().registerBookShare(share); 
+			System.out.println("result : " + result);
 			if(result > 0) {
-//				File uploadFile = multi.getFile("up-file");
-//				
-//				String fileName = multi.getFilesystemName("up-file");
-//				String filePath = uploadFile.getPath();
-//				long fileSize = uploadFile.length();
-//				
-//				
-//				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-//				Timestamp uploadTime = Timestamp.valueOf(formatter.format(Calendar.getInstance().getTimeInMillis()));
-//				
-//				FileData fileData = new FileData();
-//				fileData.setFileName(fileName);
-//				fileData.setFilePath(filePath);
-//				fileData.setFileSize(fileSize);
-//				fileData.setFileUser(fileUserId);
-//				fileData.setUploadTime(uploadTime);
-//				fileData.setFileType("show");
+				File uploadFile = multi.getFile("up-file");
+				
+				String fileName = multi.getFilesystemName("up-file");
+				String filePath = uploadFile.getPath();
+				long fileSize = uploadFile.length();
+				
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+				Timestamp uploadTime = Timestamp.valueOf(formatter.format(Calendar.getInstance().getTimeInMillis()));
+				
+				FileData fileData = new FileData();
+				fileData.setFileName(fileName);
+				fileData.setFilePath(filePath);
+				fileData.setFileSize(fileSize);
+				fileData.setFileUser(fileUserId);
+				fileData.setUploadTime(uploadTime);
 			
-//				int fileResult = new FileService().registerFileInfo(fileData, share);
+				int fileResult = new BookFileService().registerFileShare(fileData, share);
 			
 				
 				request.getRequestDispatcher("/bookShare/list").forward(request, response);
-				System.out.println(uploadFilePath);
 			}else {
 				
 			}
