@@ -58,13 +58,13 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 					enctype="multipart/form-data">
 
 					<div class="form-margin">
-						<select class="form-select" name="info-no" required>
+							<input type="hidden" id="infoNo" value="<%=review.getInfoNo() %>"/>
+						<select class="form-select" id="show-select" name="info-no" required>
 							<option value="" hidden="hidden">공연을 선택해주세요</option>
 							<%
 								for (ShowInfo info : iList) {
 							%>
-							<option value="<%=info.getInfoNo()%>"
-								style="background-image:url(/upload/info/show/<%=info.getFileName()%>)"><%=info.getShowName()%></option>
+							<option value="<%=info.getInfoNo()%>"><%=info.getShowName()%></option>
 							<%
 								}
 							%>
@@ -133,3 +133,4 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 <script type="text/javascript" src="/assets/js/note-ready.js"></script>
+<script type="text/javascript" src="/assets/js/show-detail.js"></script>
