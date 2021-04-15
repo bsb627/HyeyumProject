@@ -1,9 +1,13 @@
 <%@page import="book.model.vo.BookShare"%>
+<%@page import="file.model.vo.FileData"%>
+<%@page import="reply.model.vo.Reply"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="book.model.vo.BookShare"%>
 <%
 	BookShare share = (BookShare)request.getAttribute("share");
+	/* int likes = (int)request.getAttribute("likes"); */
+	FileData fileData = (FileData)request.getAttribute("fileData");
 %>
 <html lang="ko">
 <%@include file="/header.jsp"%>
@@ -73,36 +77,73 @@ if (userId == null) {
                                 <%=share.getNick()%> <span style='float:right'>조회 : <%=share.getHits()%></span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <%=share.getContents()%>
-                                </td>
-                            </tr>
                         </tbody>
-                    </table>
-                        <tr>
-                            <td>
-                                <span class="form-inline" role="form">
-                                    <p>
-                                        댓글
-                                    </p>
-                                        <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
-                                </span>
-                            </td>
-                        </tr>
+                       </table>
+<div class="col-lg-12  show-box">
+					<div class="portfolio-details-slider swiper-container">
+						<div class="swiper-wrapper align-items-center">
+							<div class="swiper-slide">
+								
+								<img src="/upload/book/<%=fileData.getFileName()%>"  onerror="this.src='/upload/info/book/<%-- <%=file.getFileName()%> --%>'" alt="">
+							</div>
+						</div>
+						<!-- <div class="swiper-pagination"></div> -->
+					</div>
+
+					<div class="portfolio-description">
+						<div class="icon-box">
+							<%-- <%if(likes == 0){ %> --%>
+							<%-- <a href="/showReview/plusLikes?no=<%=share.getNo()%>"><i
+								class="bi bi-heart show-icon" style="color: #333"></i></a> --%>
+							<%-- <%} else { %> --%>
+							<%-- <a href="/showReview/minusLikes?no=<%=share.getNo()%>"><i
+								class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> --%>
+							<%-- <%} %> --%>
+						</div>
+						<p>
+							<%=share.getContents()%>
+						</p>
+					</div>
+
+					<div class="reply-box">
+						<h6 class="comments-count">
+							<strong>댓글 
+							<%-- <%=totalCount %>개 --%>
+							</strong>
+						</h6>
+
+						<%-- <% for(Reply reply : rList){ %> --%>
+						<div id="" class="show-reply">
+							<div class="">
+								<div class="show-contents">
+									<h6>
+										<strong> <a href="#" style="color:#333"><%-- <%=reply.getNick() %> --%></a> 
+										</strong>
+										<%-- <%=reply.getContents() %> --%>
+									</h6>
+								</div>
+								
+							</div>
+						</div>
+						<!-- End comment #1 -->
+						<%-- <%} %> --%>
+						<form action="/reply/write" method="get">
+							<div class="reply-form">
+								<input type="hidden" name="type" value="show"> <input
+									type="hidden" name="review-no" value="<%=share.getNo()%>">
+								<input type="text" class="form-control " name="comment"
+									placeholder="댓글달기">
+								<button type="submit" class="btn btn-reply">
+									<small><strong>등록</strong></small>
+								</button>
+							</div>
+						</form>
+					</div>
+
+
+				</div>
+
                     <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <td>
-                                    <span style='float:right'>
-                                        <button type="button" id="modify" class="btn btn-default">취소</button>
-                                        <button type="button" id="delete" class="btn btn-default">댓글등록</button>
-                                    </span>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                                       <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <td>

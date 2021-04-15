@@ -52,11 +52,11 @@
 								</tr>
 							</thead>
 							<tbody>
-
+	
 								<% for(BookShare share : sList) { %>
 								<tr>
 									<td><%=share.getNo() %></td>
-									<td><a href="/bookShare/detail?share-no=<%= share.getNo()%>">
+									<td><a href="/bookShare/detail?share-no=<%=share.getNo()%>">
 										 [<%=share.getRegion() %>]
 										<%=share.getTitle()%></a>
 									</td>
@@ -67,7 +67,7 @@
 								</tr>
 								<% } %>
 							<div>
-								<a href="/bookShare/enroll"><button	class="btn btn-primary btn-write">글쓰기</button></a>
+								<a href="/bookShare/enroll?share-no"><button	class="btn btn-primary btn-write">글쓰기</button></a>
 							</div>
 							</tbody>
 							<tfoot>

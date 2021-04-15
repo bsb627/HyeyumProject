@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import book.model.service.BookService;
 import book.model.vo.BookShare;
+import file.model.service.BookFileService;
+import file.model.vo.FileData;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -37,7 +39,7 @@ public class BookShareDetailServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int shareNo = 0;
-		try { // 디테일 화면에서 주는값/ 수정완료 후 전달값이 형식이 달라서 
+		try { // 디테일 화면에서 주는값과/ 수정완료 후 전달값이 형식이 달라서 
 			shareNo = Integer.parseInt(request.getParameter("share-no"));
 			
 		} catch (Exception e) {
@@ -45,12 +47,17 @@ public class BookShareDetailServlet extends HttpServlet {
 				shareNo = (int) request.getAttribute("share-no");
 			}
 		}
+		System.out.println("share-no from List페이지 : " + shareNo);
 		BookShare bookShare = new BookShare();
+		bookShare.setUserId(userId);
+		FileData fileData = new BookFileService().printFileShare(shareNo);
+		System.out.println("fileData : " + fileData);
 		System.out.println("userId : " + userId);
 		System.out.println("userId from share : " + bookShare.getUserId());
 		BookShare share = new BookService().printOneBookShare(shareNo);
 		if(share != null) {
 			request.setAttribute("share", share);
+			request.setAttribute("fileData", fileData);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookShareDetail.jsp");
 			view.forward(request, response);
 		}else {

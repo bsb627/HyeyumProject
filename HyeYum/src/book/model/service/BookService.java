@@ -202,7 +202,7 @@ public class BookService {
 		}finally {
 			JDBCTemplate.close(conn);
 		}
-		System.out.println("Service pd : " + pd);
+//		System.out.println("Service pd : " + pd);
 		return pd;
 	}
 	

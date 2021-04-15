@@ -21,7 +21,6 @@ public class BookFileService {
 	public BookFileService() {
 		factory = JDBCTemplate.getConnection();
 	}
-	
 	// BookInfo
 	public int registerFileInfo(FileData fileData, BookInfo info) {
 		Connection conn = null;
@@ -50,7 +49,7 @@ public class BookFileService {
 		
 		try {
 			conn = factory.createConnection();
-			list = new FileDAO().selectFileList(conn, type);
+			list = new BookFileDAO().selectFileListShare(conn, type);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -199,12 +198,12 @@ public class BookFileService {
 		return result;
 	}
 
-	public FileData printFileReview(int showNo) {
+	public FileData printFileShare(int shareNo) { // FileDate를 받아 넘겨줌
 		FileData fileData = null;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			fileData = new FileDAO().selectFileOne(conn,showNo);
+			fileData = new BookFileDAO().selectFileOneShare(conn,shareNo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

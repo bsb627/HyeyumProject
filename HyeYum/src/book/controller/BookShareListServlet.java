@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import book.model.service.BookService;
 import book.model.vo.BookPageData;
 import book.model.vo.BookShare;
+import file.model.service.BookFileService;
+import file.model.vo.FileData;
+import show.model.service.ShowService;
+import show.model.vo.ShowInfo;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -44,9 +48,13 @@ public class BookShareListServlet extends HttpServlet {
 		ArrayList<BookShare> sList = pageData.getShareList(); 
 		String pageNavi = pageData.getPageNavi();
 		
-		System.out.println("sList:" + sList);
+		FileData fd = new FileData();
+		fd.setFileType("share");
+		ArrayList<FileData> fList = new BookFileService().printFileList("share"); // Detail에서 화면에 가져온 이미지를 뿌려주기 위해 보내줌 
+//		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
+		
+		
 		if(!sList.isEmpty()) { 
-			System.out.println("imf까지 들어왔나 share");
 			request.setAttribute("sList",sList);
 			request.setAttribute("pageNavi", pageNavi); 
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookShareList.jsp");

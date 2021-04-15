@@ -47,9 +47,10 @@ public class BookShareEnrollServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null && (session.getAttribute("userId")) != null) {
 			String fileUserId = (String)session.getAttribute("userId");
-			String uploadFilePath = request.getServletContext().getRealPath("upload/book");
+			String uploadFilePath = request.getServletContext().getRealPath("/upload/book");
 			int uploadFileSizeLimit = 5* 1024 * 1024 * 1024;
 			String encType = "UTF-8";
+			
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 			
 			BookShare share = new BookShare();
@@ -59,7 +60,9 @@ public class BookShareEnrollServlet extends HttpServlet {
 			share.setTitle(multi.getParameter("share-title"));
 			share.setContents(multi.getParameter("share-content"));
 			share.setUserId((String)session.getAttribute("userId"));
-			
+			// Enroll.jsp에서 보내준(do post로 보내야) share-no를 받아서 share VO에 저장함
+			// 이걸 나중에 파일을 업로드할 때 share를 통째로 넘긴 값에서 share-no만 빼서 
+			// DB에 저장하도록 함
 			System.out.println("서블릿 region : " + share.getRegion());
 			System.out.println("서블릿 title : " + share.getTitle());
 			System.out.println(share.getContents());
@@ -83,9 +86,12 @@ public class BookShareEnrollServlet extends HttpServlet {
 				fileData.setFileSize(fileSize);
 				fileData.setFileUser(fileUserId);
 				fileData.setUploadTime(uploadTime);
-			
+				fileData.setFileType("share");
+				
+				System.out.println("Enroll서블릿에서 shareNo :" + fileData.getNo());
+				
 				int fileResult = new BookFileService().registerFileShare(fileData, share);
-			
+				// share를 넘기는 건 share의 shareNo을 받아서 DB에 shareNo을 넘겨주기 위한 것
 				
 				request.getRequestDispatcher("/bookShare/list").forward(request, response);
 			}else {

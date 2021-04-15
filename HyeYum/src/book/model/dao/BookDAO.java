@@ -317,7 +317,7 @@ public class BookDAO {
 				share.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				share.setHits(rset.getInt("HITS"));
 				sList.add(share);
-				System.out.println("DAO sList : " + sList);
+//				System.out.println("DAO sList : " + sList);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -339,19 +339,20 @@ public class BookDAO {
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				share = new BookShare();
-				share.setNo(rset.getInt("SHARE_NO"));
 				share.setRegion(rset.getString("REGION"));
+				share.setNo(rset.getInt("SHARE_NO"));
 				share.setTitle(rset.getString("TITLE"));
-				share.setNick(rset.getString("NICK"));
 				share.setContents(rset.getString("CONTENTS"));
 				share.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				share.setHits(rset.getInt("HITS"));
+				share.setNick(rset.getString("NICK"));
 				share.setUserId(rset.getString("USER_ID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("share :" + share);
 		return share;
 	}
 	public int insertBookShare(Connection conn, BookShare share) { // 책나눔 등록

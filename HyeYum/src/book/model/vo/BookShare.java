@@ -9,7 +9,6 @@ public class BookShare extends Board{ // 나눔 게시판
 	public BookShare() {
 		// TODO Auto-generated constructor stub
 	}
-	
 
 	public String getRegion() {
 		return region;

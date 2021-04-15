@@ -1,6 +1,9 @@
+<%@page import="book.model.vo.BookShare"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	BookShare share = new BookShare();
+%>
 <head>
 <title>문화나눔, 혜윰 - 글쓰기</title>
 <%@include file="/header.jsp"%>
@@ -62,7 +65,7 @@
 	                       <option value="제주">제주</option>
 	                   </select>
 					</div>
-
+				<input type="hidden" name="review-no" value="<%=share.getNo()%>"/>
 						<div class="col-md-4">
 						<label for="InputSubject1">파일첨부</label>
 							<input type="file" class="form-control" id="customFile" name="up-file" required/>		
