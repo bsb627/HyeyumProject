@@ -59,7 +59,7 @@ public class BookReviewModifyServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String fileUserId = (String)session.getAttribute("userId");
-		String uploadFilePath = request.getServletContext().getRealPath("/upload/show");
+		String uploadFilePath = request.getServletContext().getRealPath("/upload/book");
 		int uploadFileSizeLimit = 5* 1024 * 1024 * 1024;
 		String encType = "UTF-8";
 		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
@@ -76,6 +76,7 @@ public class BookReviewModifyServlet extends HttpServlet {
 		 */
 		review.setNo(Integer.parseInt(multi.getParameter("review-no")));
 		review.setInfoNo(Integer.parseInt(multi.getParameter("info-no")));
+		review.setDivision(multi.getParameter("info-type"));
 		review.setTitle(multi.getParameter("review-title"));
 		review.setContents(multi.getParameter("review-content"));
 		review.setNick((String)session.getAttribute("userId"));
@@ -112,8 +113,6 @@ public class BookReviewModifyServlet extends HttpServlet {
 		}else {
 			
 		}
-		
-			
 			}
 
 }

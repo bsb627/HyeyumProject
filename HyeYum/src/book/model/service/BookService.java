@@ -90,7 +90,6 @@ public class BookService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		System.out.println("Service들어옴");
 		return pd;
 	}
 	public BookReview printOneBookReview(int no) {//책리뷰 상세보기

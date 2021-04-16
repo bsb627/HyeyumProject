@@ -117,7 +117,6 @@ public class BookDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		System.out.println("DAO list" + bList);
 		return bList;
 	}
 	public BookReview selectOneBookReview(Connection conn, int reviewNo) { //책리뷰 상세보기
