@@ -180,13 +180,91 @@ public class BookService {
 		int result=0;
 		return result;
 	}
-	public int BookReviewPlusLikes(String userId, int reviewNo) {
-		int result = 0;
+	// Review 좋아요
+	public int checkLikesReview(int reviewNo, String userId) {
+		int result =0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().checkLikesReview(conn, reviewNo, userId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
-	public int BookReviewMinusLikes(String userId, int reviewNo) {
+	public int plusLikesReview(String userId, int reviewNo) {
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().insertLikesReview(conn, reviewNo, userId);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
+	}
+	public int updateLikesCountReview(int reviewNo, String userId, String state) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new BookDAO().updateLikesReview(conn, reviewNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+	public int minusLikesReview(String userId, int reviewNo, String state) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new BookDAO().updateLikesReview(conn, reviewNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+	public int getLikesReview(String userId, int reviewNo) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new BookDAO().selectLikesReview(conn,userId,reviewNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
 	}
 	
 	// BookShare
@@ -298,17 +376,13 @@ public class BookService {
 		return result;
 	}
 	
-	public int plusLikesCountShare(int shareNo, String userId) { // 좋아요수 증가
-		int result = 0;
+	// Share 좋아요
+	public int checkLikesShare(int shareNo, String userId) {
+		int result =0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			result = new BookDAO().insertLikesReview(conn, shareNo, userId);
-			if(result > 0) {
-				JDBCTemplate.commit(conn);
-			}else {
-				JDBCTemplate.rollback(conn);
-			}
+			result = new BookDAO().checkLikesShare(conn, shareNo, userId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -317,12 +391,17 @@ public class BookService {
 		}
 		return result;
 	}
-	public int checkLikesShare(int shareNo, String userId) {
-		int result =0;
+	public int plusLikesCountShare(int shareNo, String userId) { // 좋아요수 증가
+		int result = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			result = new BookDAO().checkLikesShare(conn, shareNo, userId);
+			result = new BookDAO().insertLikesShare(conn, shareNo, userId);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -350,8 +429,6 @@ public class BookService {
 		}
 		return likes;
 	}
-	
-	
 	public int minusLikesCountShare(int shareNo, String userId, String state) { // 좋아요수 빼기
 		int likes = 0;
 		Connection conn = null;
@@ -371,13 +448,12 @@ public class BookService {
 		}
 		return likes;
 	}
-
-	public int getShareLikes(String userId, int shareNo) {
+	public int getLikesShare(String userId, int shareNo) {
 		int likes = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			likes = new BookDAO().selectShareLikes(conn,userId,shareNo);
+			likes = new BookDAO().selectLikesShare(conn,userId,shareNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -285,14 +285,91 @@ public class BookDAO {
 	public int updateHitsReview(Connection conn, int reviewNo) { //  게시글 조회수 증가
 		return 0;
 	}
+	// Review 좋아요
 	public int insertLikesReview(Connection conn, int reviewNo, String userId) { // 게시글 좋아요 등록
-		return 0;
-	}
-	public int updateLikesReview(Connection conn, int reviewNo, String userId) { // 좋아요 취소
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_REVIEW_LIKES.NEXTVAL,1,?,0,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	
-	// BookShare
+	public int updateLikesReview(Connection conn, int reviewNo, String userId, String state) { // 좋아요 취소
+		PreparedStatement pstmt = null;
+		int likes = 0;
+		String query = "UPDATE BOOK_LIKES SET IS_CHECK = ? WHERE USER_ID = ? AND REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, state);
+			pstmt.setString(2, userId);
+			pstmt.setInt(3, reviewNo);
+			likes = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return likes;
+	}
+	public int selectLikesReview(Connection conn, String userId, int reviewNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int likes = 0;
+		String query = "SELECT * FROM BOOK_LIKES WHERE USER_ID = ? AND REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				likes = Integer.parseInt(rset.getString("IS_CHECK"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return likes;
+	}
+	public int checkLikesReview(Connection conn, int reviewNo, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int check = 0;
+		String query = "SELECT COUNT(*)AS ISCHECK FROM BOOK_LIKES WHERE USER_ID = ? AND REVIEW_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				check = rset.getInt("ISCHECK");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("DAO check review : "+check);
+		return check;
+	}
+	
+	
+	// BookShare start
 	public ArrayList<BookShare> selectAllBookShare(Connection conn, int currentPage){ // 책나눔 전체보기
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -416,7 +493,8 @@ public class BookDAO {
 		}
 		return result;
 	}
-	public String getSharePageNavi(Connection conn, int currentPage) { // 책나눔 페이징
+	// 책나눔 페이징
+	public String getSharePageNavi(Connection conn, int currentPage) { 
 		int recordTotalCount = totalShareCount(conn);
 		int recordCountPerPage = 10;
 		// 10개로 안떨어지는 상황 떄문에 추가로 변수 선언
@@ -498,11 +576,11 @@ public class BookDAO {
 		return 0;
 	}
 	
+	// Share 좋아요
 	public int insertLikesShare(Connection conn, int shareNo, String userId) { // 좋아요 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_SHARE_LIKES.NEXTVAL,1,0,?,?)";
-		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, shareNo);
@@ -534,12 +612,11 @@ public class BookDAO {
 		}
 		return likes;
 	}
-	public int selectShareLikes(Connection conn, String userId, int shareNo) {
+	public int selectLikesShare(Connection conn, String userId, int shareNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int likes = 0;
 		String query = "SELECT * FROM BOOK_LIKES WHERE USER_ID = ? AND SHARE_NO = ?";
-		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
@@ -575,7 +652,6 @@ public class BookDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		System.out.println("DAO check : "+check);
 		return check;
 	}
 }

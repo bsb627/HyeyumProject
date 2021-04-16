@@ -53,7 +53,7 @@ public class BookShareDetailServlet extends HttpServlet {
 		if (request.getParameter("likes") !=  null) {
 			likes = Integer.parseInt(request.getParameter("likes"));
 		}else {
-			likes = new BookService().getShareLikes(userId,shareNo);
+			likes = new BookService().getLikesShare(userId,shareNo);
 		}
 		
 		BookShare bookShare = new BookShare();

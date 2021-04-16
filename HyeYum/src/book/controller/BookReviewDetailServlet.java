@@ -45,12 +45,18 @@ public class BookReviewDetailServlet extends HttpServlet {
 				reviewNo = (int) request.getAttribute("review-no");
 			}
 		}
-		BookReview bookReview = new BookReview();
-		System.out.println("userId : " + userId);
-		System.out.println("userId from review : " + bookReview.getUserId());
+		
+		// 좋아요
+		int likes = 0;
+		if (request.getParameter("likes") !=  null) {
+			likes = Integer.parseInt(request.getParameter("likes"));
+		}else {
+			likes = new BookService().getLikesReview(userId,reviewNo);
+		}
 		BookReview review = new BookService().printOneBookReview(reviewNo);
 		if(review != null) {
 			request.setAttribute("review", review);
+			request.setAttribute("likes", likes);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewDetail.jsp");
 			view.forward(request, response);
 		}else {

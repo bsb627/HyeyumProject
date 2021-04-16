@@ -37,8 +37,6 @@ public class SharePlusLikesCountServlet extends HttpServlet {
 		int shareNo = Integer.parseInt(request.getParameter("share-no"));
 		int likes = 0;
 		int check = new BookService().checkLikesShare(shareNo,userId);
-		System.out.println("share-no:" + shareNo);
-		System.out.println("userId :" + userId);
 		System.out.println("check : " + check);
 		if(check > 0) {
 			 likes = new BookService().updateLikesCountShare(shareNo,userId,"1");

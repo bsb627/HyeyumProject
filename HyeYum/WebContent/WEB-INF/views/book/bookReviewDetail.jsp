@@ -4,6 +4,7 @@
 <%@page import="book.model.vo.BookReview"%>
 <%
 	BookReview review = (BookReview)request.getAttribute("review");
+	int likes = (int)request.getAttribute("likes"); 
 %>
 <html lang="ko">
 <%@include file="/header.jsp"%>
@@ -60,13 +61,27 @@ if (userId == null) {
                                 </td>
                                 <td>
                                 <%=review.getEnrollDate()%>
+                                <span style='float:right'>
+                                조회 : <%=review.getHits()%>
+                                </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>작성자
                                 </td>
                                 <td>
-                                <%=review.getNick()%> <span style='float:right'>조회 : <%=review.getHits()%></span>
+                                <%=review.getNick()%> 
+                                <span style='float:right'>
+								<%-- <i class="bi bi-eye"> <%=share.getHits()%></i> --%>							
+								<%-- <i class="bi bi-chat-square-dots"> <%=share.getReplys() %></i> --%>
+								<%if(likes == 0){ %>
+								<a href="/bookReview/plusLikes?review-no=<%=review.getNo()%>">
+								<i class="bi bi-heart show-icon" style="color: #333"></i></a>
+								<%} else { %>
+								<a href="/bookReview/minusLikes?review-no=<%=review.getNo()%>">
+								<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
+								<%}%> <%=review.getLikes() %>
+                                </span>
                                 </td>
                             </tr>
                         </tbody>

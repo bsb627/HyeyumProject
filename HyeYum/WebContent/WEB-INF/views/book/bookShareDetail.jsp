@@ -78,18 +78,17 @@ if (userId == null) {
                                 </td>
                                 <td>
 									
-                                	<%=share.getNick()%> 
-                                	<span style='float:right'>
+                               	<%=share.getNick()%> 
+                               	<span style='float:right'>
 								<%-- <i class="bi bi-eye"> <%=share.getHits()%></i> --%>							
 								<%-- <i class="bi bi-chat-square-dots"> <%=share.getReplys() %></i> --%>
-															<%if(likes == 0){ %>
-						<a href="/bookShare/plusLikes?share-no=<%=share.getNo()%>">
-						<i class="bi bi-heart show-icon" style="color: #333"></i></a>
-						<%} else { %>
-						<a href="/bookShare/minusLikes?share-no=<%=share.getNo()%>">
-						<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
-						<%}%> <%=share.getLikes() %>
-									</i>
+									<%if(likes == 0){ %>
+									<a href="/bookShare/plusLikes?share-no=<%=share.getNo()%>">
+									<i class="bi bi-heart show-icon" style="color: #333"></i></a>
+									<%} else { %>
+									<a href="/bookShare/minusLikes?share-no=<%=share.getNo()%>">
+									<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
+									<%}%> <%=share.getLikes() %>
                                 </span>
                                 </td>
                             </tr>

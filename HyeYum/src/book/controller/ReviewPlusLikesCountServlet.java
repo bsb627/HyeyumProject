@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import book.model.service.BookService;
 
 /**
  * Servlet implementation class AddHitsCountServlet
@@ -26,10 +29,38 @@ public class ReviewPlusLikesCountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		int reviewNo = Integer.parseInt(request.getParameter("review-no"));
+		int likes = 0;
+		int check = new BookService().checkLikesReview(reviewNo,userId);
+		System.out.println("review-no review 서블릿:" + reviewNo);
+		System.out.println("userId Review plus 서블릿:" + userId);
+		System.out.println("check review plus 서블릿 : " + check);
+		if(check > 0) {
+			 likes = new BookService().updateLikesCountReview(reviewNo,userId,"1");
+			 if(likes > 0) {
+					request.setAttribute("likes", likes);
+					request.setAttribute("review-no", reviewNo);
+					request.getRequestDispatcher("/bookReview/detail").forward(request, response);
+				}else {
+					
+				}
+			
+		}else {
+			 likes = new BookService().plusLikesReview(userId, reviewNo);
+			if(likes > 0) {
+				request.setAttribute("likes", likes);
+				System.out.println("likes in reviewplus 서블릿 : " + likes);
+				request.setAttribute("review-no", reviewNo);
+				request.getRequestDispatcher("/bookReview/detail").forward(request, response);
+			}else {
+				
+			}
+			
+		}
+		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
