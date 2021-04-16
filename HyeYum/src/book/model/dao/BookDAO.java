@@ -497,10 +497,85 @@ public class BookDAO {
 	public int  updateHitsShare(Connection conn, int shareNo) { // 조회수
 		return 0;
 	}
-	public int insertLikesShare(Connection conn, int shareNo) { // 좋아요 등록
-		return 0;
+	
+	public int insertLikesShare(Connection conn, int shareNo, String userId) { // 좋아요 등록
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_SHARE_LIKES.NEXTVAL,1,0,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
-	public int updateLikesShare(Connection conn, int shareNo, String userId) { //좋아요 취소
-		return 0;
+	public int updateLikesShare(Connection conn, int shareNo, String userId, String state) { //좋아요 취소
+		PreparedStatement pstmt = null;
+		int likes = 0;
+		String query = "UPDATE BOOK_LIKES SET IS_CHECK = ? WHERE USER_ID = ? AND SHARE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, state);
+			pstmt.setString(2, userId);
+			pstmt.setInt(3, shareNo);
+			likes = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return likes;
+	}
+	public int selectShareLikes(Connection conn, String userId, int shareNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int likes = 0;
+		String query = "SELECT * FROM BOOK_LIKES WHERE USER_ID = ? AND SHARE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, shareNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				likes = Integer.parseInt(rset.getString("IS_CHECK"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return likes;
+	}
+	public int checkLikesShare(Connection conn, int shareNo, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int check = 0;
+		String query = "SELECT COUNT(*)AS ISCHECK FROM BOOK_LIKES WHERE USER_ID = ? AND SHARE_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, shareNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				check = rset.getInt("ISCHECK");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("DAO check : "+check);
+		return check;
 	}
 }

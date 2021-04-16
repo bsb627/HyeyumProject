@@ -14,6 +14,7 @@ import book.model.service.BookService;
 import book.model.vo.BookShare;
 import file.model.service.BookFileService;
 import file.model.vo.FileData;
+import show.model.service.ShowService;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -47,17 +48,23 @@ public class BookShareDetailServlet extends HttpServlet {
 				shareNo = (int) request.getAttribute("share-no");
 			}
 		}
-		System.out.println("share-no from List페이지 : " + shareNo);
+		// 좋아요
+		int likes = 0;
+		if (request.getParameter("likes") !=  null) {
+			likes = Integer.parseInt(request.getParameter("likes"));
+		}else {
+			likes = new BookService().getShareLikes(userId,shareNo);
+		}
+		
 		BookShare bookShare = new BookShare();
 		bookShare.setUserId(userId);
 		FileData fileData = new BookFileService().printFileShare(shareNo);
-		System.out.println("fileData : " + fileData);
-		System.out.println("userId : " + userId);
-		System.out.println("userId from share : " + bookShare.getUserId());
+
 		BookShare share = new BookService().printOneBookShare(shareNo);
 		if(share != null) {
 			request.setAttribute("share", share);
 			request.setAttribute("fileData", fileData);
+			request.setAttribute("likes", likes);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookShareDetail.jsp");
 			view.forward(request, response);
 		}else {

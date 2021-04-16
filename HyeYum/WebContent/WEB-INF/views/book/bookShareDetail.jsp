@@ -6,7 +6,7 @@
 <%@page import="book.model.vo.BookShare"%>
 <%
 	BookShare share = (BookShare)request.getAttribute("share");
-	/* int likes = (int)request.getAttribute("likes"); */
+	int likes = (int)request.getAttribute("likes"); 
 	FileData fileData = (FileData)request.getAttribute("fileData");
 %>
 <html lang="ko">
@@ -19,8 +19,6 @@
 
         <!-- Bootstrap -->
         <link href="/assets/css/book/contents.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
     </head>
     <body>
 <%
@@ -36,25 +34,26 @@ if (userId == null) {
 <%
 	}
 %>
-	<!-- ======= Breadcrumbs ======= -->
-	<section class="breadcrumbs">
-		<div class="container">
-
-			<ol>
-				<li><a href="/index.jsp">Home</a></li>
-				<li>도서</li>
-			</ol>
-			<h2>나눔혜윰</h2>
-
-		</div>
-	</section>
-	<!-- End Breadcrumbs -->
-    <section>
-        <!-- 좌우측의 공간 확보 -->
-        <div class="container">
-            <hr/>
-            <div class="row">
-                <div class="col-md-10">
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+	<div class="container">
+	   <header class="section-header">
+		<ol>
+			<li><a href="/index.jsp">Home</a></li>
+			<li>도서</li>
+		</ol>
+		<h2>나눔혜윰</h2>
+	  </header>
+	</div>
+</section>
+<!-- End Breadcrumbs -->
+	
+<!--Start Main -->
+<section id="portfolio-details" class="portfolio-details blog">
+	<div class="container">
+    	<hr/>
+			<div class="row">
+				<div class="col-md-10">
                     <table class="table table-condensed">
                         <thead>
                             <tr align="center">
@@ -68,111 +67,107 @@ if (userId == null) {
                                 </td>
                                 <td>
                                 <%=share.getEnrollDate()%>
+                                	<span style='float:right'>
+	                                     조회 <%=share.getHits()%> 
+	                                </span>
                                 </td>
                             </tr>
                             <tr>
-                                <td>작성자
+                               <td>작성자
+
                                 </td>
                                 <td>
-                                <%=share.getNick()%> <span style='float:right'>조회 : <%=share.getHits()%></span>
+									
+                                	<%=share.getNick()%> 
+                                	<span style='float:right'>
+								<%-- <i class="bi bi-eye"> <%=share.getHits()%></i> --%>							
+								<%-- <i class="bi bi-chat-square-dots"> <%=share.getReplys() %></i> --%>
+															<%if(likes == 0){ %>
+						<a href="/bookShare/plusLikes?share-no=<%=share.getNo()%>">
+						<i class="bi bi-heart show-icon" style="color: #333"></i></a>
+						<%} else { %>
+						<a href="/bookShare/minusLikes?share-no=<%=share.getNo()%>">
+						<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
+						<%}%> <%=share.getLikes() %>
+									</i>
+                                </span>
                                 </td>
                             </tr>
                         </tbody>
-                       </table>
-<div class="col-lg-12  show-box">
-					<div class="portfolio-details-slider swiper-container">
-						<div class="swiper-wrapper align-items-center">
-							<div class="swiper-slide">
-								
-								<img src="/upload/book/<%=fileData.getFileName()%>"  onerror="this.src='/upload/info/book/<%-- <%=file.getFileName()%> --%>'" alt="">
-							</div>
+	                </table>
+
+			<div class="col-lg-12  show-box">
+				<div class="portfolio-details-slider swiper-container">
+					<div class="swiper-wrapper align-items-center">
+						<div class="swiper-slide">
+							<img src="/upload/book/<%=fileData.getFileName()%>"  onerror="this.src='/upload/info/book/<%-- <%=file.getFileName()%> --%>'" alt="">
+							<p>
+								<%=share.getContents()%>
+							</p>
 						</div>
-						<!-- <div class="swiper-pagination"></div> -->
 					</div>
-
-					<div class="portfolio-description">
-						<div class="icon-box">
-							<%-- <%if(likes == 0){ %> --%>
-							<%-- <a href="/showReview/plusLikes?no=<%=share.getNo()%>"><i
-								class="bi bi-heart show-icon" style="color: #333"></i></a> --%>
-							<%-- <%} else { %> --%>
-							<%-- <a href="/showReview/minusLikes?no=<%=share.getNo()%>"><i
-								class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> --%>
-							<%-- <%} %> --%>
-						</div>
-						<p>
-							<%=share.getContents()%>
-						</p>
-					</div>
-
-					<div class="reply-box">
-						<h6 class="comments-count">
-							<strong>댓글 
-							<%-- <%=totalCount %>개 --%>
-							</strong>
-						</h6>
-
-						<%-- <% for(Reply reply : rList){ %> --%>
-						<div id="" class="show-reply">
-							<div class="">
-								<div class="show-contents">
-									<h6>
-										<strong> <a href="#" style="color:#333"><%-- <%=reply.getNick() %> --%></a> 
-										</strong>
-										<%-- <%=reply.getContents() %> --%>
-									</h6>
-								</div>
-								
-							</div>
-						</div>
-						<!-- End comment #1 -->
-						<%-- <%} %> --%>
-						<form action="/reply/write" method="get">
-							<div class="reply-form">
-								<input type="hidden" name="type" value="show"> <input
-									type="hidden" name="review-no" value="<%=share.getNo()%>">
-								<input type="text" class="form-control " name="comment"
-									placeholder="댓글달기">
-								<button type="submit" class="btn btn-reply">
-									<small><strong>등록</strong></small>
-								</button>
-							</div>
-						</form>
-					</div>
-
-
+					<!-- <div class="swiper-pagination"></div> -->
 				</div>
+			</div>
+			</div>
+			<hr>
+			<!-- Start comment #1 -->
+			<!-- 좋아요 시작  -->
+			       <div class="icon-box" style='float:right'>
 
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <td>
-                                    <span style='float:right'>
-                    <input type="hidden" name="share-no" value="<%=share.getNo()%>">
-					<%-- <%if(review.getUserId().equals(userId)) {%> --%>
-					<%if(share.getUserId().equals(userId)) {%>
-					<a href="/bookShare/delete?share-no=<%=share.getNo()%>">
-					<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
-					  삭제
-					</button>
-					</a>
-					<%} %>
-					<%if(share.getUserId().equals(userId)) {%>
-					
-					<a href="/bookShare/modify?share-no=<%=share.getNo()%>">
-					<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
-					  수정
-					</button></a>
-					<%}%>
-                    <a href="/bookShare/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
-                            </span>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <hr/>
-        </div>
-        <%@include file="/footer.jsp"%>    
+					</div>
+			<!-- 좋아요 끝  -->	
+                <span class="form-inline" role="form">
+                    <strong>
+                        댓글
+                    </strong>
+                </span>
+				
+				<form action="/reply/write" method="get">
+					<div class="reply-form">
+						<input type="hidden" name="type" value="show"> 
+						<input type="hidden" name="review-no" value="<%=share.getNo()%>">
+						<input type="text" class="form-control " name="comment"	placeholder="댓글달기">
+						<button type="submit" class="btn btn-reply">
+							<span style='float:right'>
+								<small><strong>등록</strong></small>
+							</span>
+						</button>
+					</div>
+				</form>
+			<!-- End comment #1 -->
+
+
+			<!-- 하단 버튼 시작-->
+                   <table class="table table-condensed">
+                       <thead>
+                           <tr>
+                               <td>
+                              <span style='float:right'>
+			                    <input type="hidden" name="share-no" value="<%=share.getNo()%>">
+								<%-- <%if(review.getUserId().equals(userId)) {%> --%>
+								<%if(share.getUserId().equals(userId)) {%>
+								<a href="/bookShare/delete?share-no=<%=share.getNo()%>">
+								<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
+								  삭제
+								</button>
+								</a>
+								<%} %>
+								<%if(share.getUserId().equals(userId)) {%>
+								<a href="/bookShare/modify?share-no=<%=share.getNo()%>">
+								<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
+								  수정
+								</button></a>
+			                    <a href="/bookShare/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
+			                    <%} %>
+                           		</span>
+                               </td>
+                           </tr>
+                       </thead>
+                   </table>
+                   <!-- 하단 버튼 끝 -->
+				</div>
+			</div>
+	<!-- End Main -->
 </section>
+<%@include file="/footer.jsp"%>    

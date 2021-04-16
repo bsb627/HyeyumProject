@@ -12,11 +12,6 @@
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문화나눔, 혜윰 - 독서혜윰 상세보기</title>
-
-        <!-- Bootstrap -->
-        <link href="/assets/css/book/contents.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
     </head>
     <body>
 <%
@@ -45,8 +40,9 @@ if (userId == null) {
 		</div>
 	</section>
 	<!-- End Breadcrumbs -->
+	
     <section>
-        <!-- 좌우측의 공간 확보 -->
+        <!-- Start Main -->
         <div class="container">
             <hr/>
             <div class="row">
@@ -73,19 +69,30 @@ if (userId == null) {
                                 <%=review.getNick()%> <span style='float:right'>조회 : <%=review.getHits()%></span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <%=review.getContents()%>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-                                <span class="form-inline" role="form">
-                                    <p>
-                                        댓글
-                                    </p>
-                                        <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
-                                </span>
+
+			 <div class="portfolio-description">
+				<div class="icon-box">
+						<%-- <%if(likes == 0){ %> --%>
+						<%-- <a href="/showReview/plusLikes?no=<%=share.getNo()%>"><i
+							class="bi bi-heart show-icon" style="color: #333"></i></a> --%>
+						<%-- <%} else { %> --%>
+						<%-- <a href="/showReview/minusLikes?no=<%=share.getNo()%>"><i
+							class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> --%>
+						<%-- <%} %> --%>
+				</div>
+					<p>
+						<%=review.getContents()%>
+					</p>
+			</div>
+				<hr>
+                <span class="form-inline" role="form">
+                    <strong>
+                        댓글
+                    </strong>
+                            <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
+                    </span>
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -98,33 +105,35 @@ if (userId == null) {
                             </tr>
                         </thead>
                     </table>
-                                       <table class="table table-condensed">
+                    <!-- 하단 버튼 시작 -->
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <td>
                                     <span style='float:right'>
-                    <input type="hidden" name="review-no" value="<%=review.getNo()%>">
-					<%-- <%if(review.getUserId().equals(userId)) {%> --%>
-					<%if(review.getUserId().equals(userId)) {%>
-					<a href="/bookReview/delete?no=<%=review.getNo()%>">
-					<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
-					  삭제
-					</button>
-					</a>
-					<%} %>
-					<%if(review.getUserId().equals(userId)) {%>
-					
-					<a href="/bookReview/modify?review-no=<%=review.getNo()%>">
-					<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
-					  수정
-					</button></a>
-					<%}%>
-                    <a href="/bookReview/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
-                            </span>
+				                    <input type="hidden" name="review-no" value="<%=review.getNo()%>">
+									<%-- <%if(review.getUserId().equals(userId)) {%> --%>
+									<%if(review.getUserId().equals(userId)) {%>
+									<a href="/bookReview/delete?no=<%=review.getNo()%>">
+									<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
+									  삭제
+									</button>
+									</a>
+									<%} %>
+									<%if(review.getUserId().equals(userId)) {%>
+									
+									<a href="/bookReview/modify?review-no=<%=review.getNo()%>">
+									<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
+									  수정
+									</button></a>
+									<%}%>
+				                    <a href="/bookReview/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
+                           			 </span>
                                 </td>
                             </tr>
                         </thead>
                     </table>
+                    <!-- 하단 버튼 끝 -->
                 </div>
             </div>
             <hr/>

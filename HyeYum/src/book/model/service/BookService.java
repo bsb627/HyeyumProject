@@ -10,6 +10,7 @@ import book.model.vo.BookPageData;
 import book.model.vo.BookReview;
 import book.model.vo.BookShare;
 import common.JDBCTemplate;
+import show.model.dao.ShowDAO;
 
 
 public class BookService {
@@ -292,19 +293,99 @@ public class BookService {
 		}
 		return pd;
 	}
-	public int addHitsCount(int shareNo) { // 조회수 증가
+	public int addHitsCountShare(int shareNo) { // 조회수 증가
 		int result = 0;
 		return result;
 	}
 	
-	public int plusLikesCount(int shareNo, String userId) { // 좋아요수 증가
+	public int plusLikesCountShare(int shareNo, String userId) { // 좋아요수 증가
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().insertLikesReview(conn, shareNo, userId);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
-	
-	public int minusLikesCount(int shareNo, String userId) { // 좋아요수 빼기
-		int result = 0;
+	public int checkLikesShare(int shareNo, String userId) {
+		int result =0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().checkLikesShare(conn, shareNo, userId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
+	public int updateLikesCountShare(int shareNo, String userId, String state) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new BookDAO().updateLikesShare(conn, shareNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
 	
+	
+	public int minusLikesCountShare(int shareNo, String userId, String state) { // 좋아요수 빼기
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new BookDAO().updateLikesShare(conn, shareNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+
+	public int getShareLikes(String userId, int shareNo) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new BookDAO().selectShareLikes(conn,userId,shareNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+
+
 }

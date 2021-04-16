@@ -26,14 +26,8 @@
 <!-- MDB -->
 <link href="/assets/css/show-custom.css" rel="stylesheet">
 <link rel="stylesheet" href="/assets/note/summernote-lite.css">
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
-	<script src="/assets/note/summernote-lite.js"></script>
-<script src="/assets/note//lang/summernote-ko-KR.js"></script>
 
-<script src="/assets/js/book/book-write.js"></script>
-
-    </head>
+</head>
     
     <body>
     <!-- 로그인 체크는 어차피 디테일 들어오면서 체크하므로 필요없음 -->
@@ -133,5 +127,9 @@ if (userId == null) {
             <hr/>
            </form>
         </div>
-        <%@include file="/footer.jsp"%>    
 </section>
+<%@include file="/footer.jsp"%>    
+<script src="/assets/js/book/book-write.js"></script>
+<script type="text/javascript"	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+<script src="/assets/note/summernote-lite.js"></script>
+<script src="/assets/note//lang/summernote-ko-KR.js"></script>

@@ -60,6 +60,8 @@ public class BookShareEnrollServlet extends HttpServlet {
 			share.setTitle(multi.getParameter("share-title"));
 			share.setContents(multi.getParameter("share-content"));
 			share.setUserId((String)session.getAttribute("userId"));
+//			share.setNo(Integer.parseInt(multi.getParameter("share-no")));
+			//ㄴ이게 있으면 NULL 에러뜸
 			// Enroll.jsp에서 보내준(do post로 보내야) share-no를 받아서 share VO에 저장함
 			// 이걸 나중에 파일을 업로드할 때 share를 통째로 넘긴 값에서 share-no만 빼서 
 			// DB에 저장하도록 함
