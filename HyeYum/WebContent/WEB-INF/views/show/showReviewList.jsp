@@ -96,42 +96,30 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 			
 			
 			<%for(ShowReview review : showList){ %>
-				<div class="post-card col-lg-4">
-					<div class="post-box">
-					    <%for (ShowInfo info : iList){ %>
+		  <%for (ShowInfo info : iList){ %>
 						<%if(review.getInfoNo() == info.getInfoNo()){ %>
 							<%for (FileData fd : fileList){ %>
 							<%if(review.getNo() == fd.getNo()){ %>
-							<div class="review-img">
-								<img src="/upload/show/<%=fd.getFileName() %>" onerror="this.src='/upload/info/show/<%=info.getFileName() %>'" class="img-fluid"  alt=""></figure>
-							</div>
-							<%} }%>
-						
-						<div class="post-info">
-						<span class="post-type">[<%=info.getType()%>]<%=info.getShowName()%></span>
-						<%} }%>
+<figure class="snip1200">
+  <img src="/upload/show/<%=fd.getFileName() %>" onerror="this.src='/upload/info/show/<%=info.getFileName() %>'" class="img-fluid"  alt="">
+  <figcaption>
+  
+    <p><i class="bi bi-eye"> <%=review.getHits()%></i>&nbsp;				
+							<i class="bi bi-chat-square-dots"> <%=review.getReplys() %></i>&nbsp;
+							<i class="bi bi-heart"> <%=review.getLikes() %></i><br><br>
+							<%=review.getTitle() %> <br><br>
+							<i class="bi bi-vector-pen"> <%=review.getNick() %></i> &nbsp;  
+							 <%=review.getEnrollDate() %></p>
+    <div class="heading">
+      <h5>[<%=info.getType()%>]<span> <%=info.getShowName()%></span></h5>
+    </div>
+  </figcaption>
+  <a href="/showReview/hitsCount?no=<%=review.getNo() %>"></a>
+</figure>
+	<%} }%>
+  		<%} }%>
+<%} %>
 
-						<span class="post-date">
-							<i class="bi bi-eye"> <%=review.getHits()%></i>							
-							<i class="bi bi-chat-square-dots"> <%=review.getReplys() %></i>
-							<i class="bi bi-heart"> <%=review.getLikes() %></i>
-						</span>
-							
-							<!-- <a class="readmore stretched-link mt-auto"><span class="">[타입]제목</span></a> -->
-							
-						<h3 class="post-title"> <%=review.getTitle() %></h3>
-						<a href="/showReview/hitsCount?no=<%=review.getNo() %>" class="readmore stretched-link mt-auto"></a>
-						
-						<span class="post-date-right">
-						
-							<i class="bi bi-pen"> <%=review.getNick() %></i><br>
-							<i class="bi bi-clock"> <%=review.getEnrollDate() %></i>
-						</span>
-						</div>
-					</div>
-				</div>
-				
-			<%} %>
 
 			<%-- 	<%for(ShowReview review : showList){ %>
 				<div class="post-card col-lg-4">

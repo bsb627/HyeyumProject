@@ -49,7 +49,7 @@ public class ShowDAO {
 		ArrayList<ShowReview> showList = null;
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM,REVIEW_NO,TITLE,CONTENTS,SNS_LINK,HITS,TICKET_NUMBER,ENROLL_DATE,USER_ID,NICK,INFO_NO FROM SHOW_REVIEW JOIN MEMBER USING(USER_ID)) WHERE NUM BETWEEN ? AND ?";
 		
-		int recordCountPerPage = 6;
+		int recordCountPerPage = 8;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
 		int end = currentPage*recordCountPerPage;
 		try {
@@ -237,7 +237,7 @@ public class ShowDAO {
 	public String getReviewPageNavi(Connection conn, int currentPage) { // 관람후기 페이징
 		int recordTotalCount = totalReviewCount(conn);
 		int pageTotalCount = 0;
-		int recordCountPerPage = 6;
+		int recordCountPerPage = 8;
 		if ( recordTotalCount % recordCountPerPage > 0 ) {
 			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
 		} else {
@@ -309,7 +309,7 @@ public class ShowDAO {
 		ArrayList<ShowReview> showList = null;
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM,REVIEW_NO,TITLE,CONTENTS,SNS_LINK,HITS,TICKET_NUMBER,ENROLL_DATE,USER_ID,NICK,INFO_NO FROM SHOW_REVIEW JOIN MEMBER USING(USER_ID) WHERE TITLE LIKE ?  OR CONTENTS LIKE ? OR NICK LIKE ?) WHERE NUM BETWEEN ? AND ?";
 		
-		int recordCountPerPage = 6;
+		int recordCountPerPage = 8;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
 		int end = currentPage*recordCountPerPage;
 		try {
@@ -349,7 +349,7 @@ public class ShowDAO {
 	public String getSearchReviewPageNavi(Connection conn, int currentPage, String search) { // 관람후기 검색 페이징
 		int recordTotalCount = searchTotalReviewCount(conn, search);
 		int pageTotalCount = 0;
-		int recordCountPerPage = 6;
+		int recordCountPerPage = 8;
 		if ( recordTotalCount % recordCountPerPage > 0 ) {
 			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
 		} else {

@@ -54,7 +54,7 @@
 	
 			<form action="/showReview/write" method="post" enctype="multipart/form-data">
 
-					<div class="form-margin">
+					<div class="form-margin show-form">
 						<select class="form-select" name="info-no" required>
 							<option value="" hidden="hidden">공연을 선택해주세요</option>
 							<%
@@ -71,7 +71,7 @@
 
 					<div class="row mb-4">
 						<div class="col">
-							<div class="form-outline">
+							<div class="form-outline show-form">
 								<input type="text" id="sns-link" class="form-control"
 									name="sns-link" autocomplete="off" required /> <label
 									class="form-label" for="sns-link">SNS</label>
@@ -79,7 +79,7 @@
 						</div>
 
 						<div class="col">
-							<div class="form-outline">
+							<div class="form-outline show-form">
 								<input type="text" id="ticket-number" class="form-control"
 									name="ticket-number" autocomplete="off" required /> <label
 									class="form-label" for="ticket-number">예매 일련번호</label>
@@ -88,18 +88,18 @@
 					</div>
 
 					<div class="form-margin">
-						<div class="form-outline">
+						<div class="form-outline show-form">
 							<input type="text" id="show-title" class="form-control"
 								name="show-title" autocomplete="off" required maxlength="50" />
 							<label class="form-label" for="show-title">제목</label>
 						</div>
 					</div>
 				
-					<div class="form-outline">
+					<div class="form-outline show-form">
 					 <textarea id="summernote" name="show-content"></textarea>
 					</div>
 					
-					 <label class="form-label" for="customFile"></label> <input
+					 <label class="form-label show-form" for="customFile"></label> <input
 						type="file" class="form-control" id="customFile" name="up-file" required/>
 					
 					<!-- Submit button -->

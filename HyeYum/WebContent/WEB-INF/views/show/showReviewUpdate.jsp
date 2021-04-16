@@ -57,7 +57,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 				<form action="/showReview/update" method="post"
 					enctype="multipart/form-data">
 
-					<div class="form-margin">
+					<div class="form-margin show-form">
 							<input type="hidden" id="infoNo" value="<%=review.getInfoNo() %>"/>
 						<select class="form-select" id="show-select" name="info-no" required>
 							<option value="" hidden="hidden">공연을 선택해주세요</option>
@@ -74,7 +74,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 
 					<div class="row mb-4">
 						<div class="col">
-							<div class="form-outline">
+							<div class="form-outline show-form">
 								<input type="text" id="sns-link" class="form-control"
 									name="sns-link" value="<%=review.getSnsLink()%>"
 									autocomplete="off" required /> <label class="form-label"
@@ -83,7 +83,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 						</div>
 
 						<div class="col">
-							<div class="form-outline">
+							<div class="form-outline show-form">
 								<input type="text" id="ticket-number" class="form-control"
 									name="ticket-number" value="<%=review.getTicketNumber()%>"
 									autocomplete="off" required /> <label class="form-label"
@@ -93,7 +93,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 					</div>
 
 					<div class="form-margin">
-						<div class="form-outline">
+						<div class="form-outline show-form">
 							<input type="text" id="show-title" class="form-control"
 								name="show-title" value="<%=review.getTitle()%>"
 								autocomplete="off" required maxlength="50" /> <label
@@ -101,11 +101,11 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 						</div>
 					</div>
 
-					<div class="form-outline">
+					<div class="form-outline show-form">
 						<textarea id="summernote" name="show-content"><%=review.getContents()%></textarea>
 					</div>
 
-					<label class="form-label" for="customFile"></label> <input
+					<label class="form-label show-form" for="customFile"></label> <input
 						type="file" class="form-control" id="customFile" name="up-file" /> 
 						<input type="hidden" name="no" value="<%=review.getNo()%>" />
 					<!-- Submit button -->
