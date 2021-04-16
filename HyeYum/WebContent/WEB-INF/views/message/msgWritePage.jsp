@@ -10,14 +10,26 @@
 %>
 <head>
   <title>문화나눔, 혜윰 </title>
-  <script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+ $(document).ready(function() {
+		$("#msg-write-page").submit(function() {
 
-  function close()
-  {
-    window.open('','_self').close();     
- }
-  </script>
-  
+			var contents = $("#contents");
+			var receiveId = $("#receiveId");
+			if(contents.val() =="") {
+				alert("내용을 입력해주세요. ");
+				return false;
+			}else if (receiveId.val() == "") {
+				alert("받는사람을 입력해주세요");
+				return false;
+			}
+			alert("전송하시겠습니까?");
+			return true;
+		});
+	 });
+ 
+ </script>
 </head>
 
  <main id="main">
@@ -29,28 +41,96 @@
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
+          <li>쪽지</li>
         </ol>
-        <h2>보낸쪽지</h2>
+        <h2>쪽지 쓰기</h2>
 		
       </div>
     </section><!-- End Breadcrumbs -->
- 
-<!-- ----------------------------시작 --------------------------- -->
-    <section class="inner-page">
-    <div class="container" align = "center">
+ <section id="blog" class="blog" >
+							<div class="container" data-aos="fade-up">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-3">
 
-	<form action ="/message/send" method = "post">
+											<div class="sidebar">
 
-	받는 사람 : <input type = "text" name = "receiveId" class = "form-control"><br>
+
+												<h3 class="sidebar-title">쪽지</h3>
+												<div class="sidebar-item categories">
+													<ul>
+														<li><a href="/message/write/page">쪽지 쓰기</a></li>
+														<li><a href="/message/receivedList">받은 쪽지함</a></li>
+														<li><a href="/message/sentList">보낸 쪽지함</a></li>
+
+													</ul>
+													<hr>
+
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+														<hr>
+													</div>
+													<!-- End sidebar tags-->
+
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+														<hr>
+													</div>
+													<!-- End sidebar tags-->
+
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+														<hr>
+													</div>
+													<!-- End sidebar tags-->
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+
+													</div>
+													<!-- End sidebar tags-->
+
+
+												</div>
+												<!-- End sidebar -->
+
+											</div>
+											<!-- End blog sidebar -->
+										</div>
+										
+			<!--============== 여기에 작성하기================================ -->
+<div class="col-md-9 info-card">
+										
+	<form action ="/message/send/page" method = "post" id ="msg-write-page">
+	받는 사람 : <input type = "text" name = "receiveId" class = "form-control" id="receiveId"><br>
 	내용 : <br>
-	<textarea name = "contents" class = "form-control" rows ="30"></textarea>
-	<input type = "submit" value = "전송" onclick = "close()">
+	<textarea name = "contents" class = "form-control" rows ="20" id="contents"> </textarea><br>
+	<input type = "submit" value = "전송" style = "float: right" class = "btn btn-primary">
 	</form>
-	
-	</div>
-    </section>
+										
+
+</div>
+			<!--============== 여기에 작성하기 끝================================ -->
+									</div>
+									<!--  end row  -->
+								</div>
+							</div>
+						</section>
+<!-- ----------------------------시작 --------------------------- -->
+
 
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/qna/qnaList.js"></script>

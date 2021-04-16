@@ -3,6 +3,7 @@ package message.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,9 +38,8 @@ public class MsgDeleteServlet extends HttpServlet {
 		
 		int result = new MessageService().deleteMessage(messageNo);
  		if( result > 0 ) {
-			System.out.println("이프문 안에 리절트" + result);
-		
-			
+ 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/deleteSuccess.jsp");
+			view.forward(request, response);
 		}
 				
 	}

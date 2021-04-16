@@ -8,6 +8,7 @@ import common.JDBCTemplate;
 import message.model.dao.MessageDAO;
 import message.model.vo.Message;
 import message.model.vo.MsgPageData;
+import qna.model.dao.QnaDAO;
 
 public class MessageService {
 	//  보낸메시지 전체출력.받은메시지 전체출력, 전송, 답장, 삭제, 검색
@@ -132,8 +133,24 @@ public class MessageService {
 		return null;
 		
 	}
-	public void updateReadState(int messageNo) {
-		
+	public int updateReadState(int messageNo) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new MessageDAO().updateReadState(conn, messageNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
 		
 	}
 	

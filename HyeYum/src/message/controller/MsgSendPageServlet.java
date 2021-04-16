@@ -3,6 +3,7 @@ package message.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,14 +18,14 @@ import message.model.vo.Message;
 /**
  * Servlet implementation class MsgSendServlet
  */
-@WebServlet("/message/send/pop")
-public class MsgSendServlet extends HttpServlet {
+@WebServlet("/message/send/page")
+public class MsgSendPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgSendServlet() {
+    public MsgSendPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -60,8 +61,12 @@ public class MsgSendServlet extends HttpServlet {
 		int result = new MessageService().sendMessage(message);
 		
 		if( result > 0 ) {
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('전송되었습니다.');window.open('','_self').close();</script>");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>alert('전송되었습니다.')</script>");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/sendSuccess.jsp");
+			view.forward(request, response);
+			
+			
 		}
 	}
 

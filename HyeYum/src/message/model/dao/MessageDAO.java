@@ -328,4 +328,24 @@ public class MessageDAO {
 		return recordTotalCount;
 	}
 
+	public int updateReadState(Connection conn, int messageNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MESSAGE SET READ_STATE = ? WHERE MESSAGE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "읽음");
+			pstmt.setInt(2, messageNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

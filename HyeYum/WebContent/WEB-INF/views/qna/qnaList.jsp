@@ -96,7 +96,7 @@ ul{
 
       		<table class ="table table-hover" style = "text-align : center">
       			<tr>
-      				<th>
+      				
       				<th>글번호</th>
       				<th>문의분류</th>
       				<th>제목</th>

@@ -36,7 +36,7 @@ public class MsgReceivedDetailServlet extends HttpServlet {
 		Message message = new MessageService().printOne(messageNo);
 		
 		if( message!=null) {
-			
+			new MessageService().updateReadState(messageNo);
 			request.setAttribute("message", message);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/receivedDetailForm.jsp");
 			view.forward(request, response);

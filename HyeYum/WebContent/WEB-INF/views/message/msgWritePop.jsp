@@ -22,10 +22,7 @@ padding : 5% 10% 10% 5%;
 			alert("메시지를 입력해주세요");
 		}
 		
-		function close()
-		 {
-		  window.open('','_self').close(); 
-		}
+
 	});
 </script>
 <meta charset="UTF-8">
@@ -33,12 +30,12 @@ padding : 5% 10% 10% 5%;
 </head>
 <body>
 <div class = "msg-form">
-	<form action = "/message/send" method ="post">
+	<form action = "/message/send/pop" method ="post">
 		<span>받는사람 : <%= receiveId %></span><br>
 		
 		<textarea class="form-control" rows ="10" id="contents" name = "contents"></textarea><br>
 		
-		<input type = "hidden" name = "receiveId" value ="<%= receiveId %>" id>
+		<input type = "hidden" name = "receiveId" value ="<%= receiveId %>" >
 		<input type = "submit" value = "전송" class = "btn btn-primary" style = "float:right" onclick="close()">
 	</form>
 </div>

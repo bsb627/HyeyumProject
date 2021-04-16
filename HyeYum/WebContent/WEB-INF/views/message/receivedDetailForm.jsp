@@ -21,29 +21,102 @@
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
+          <li>쪽지</li>
         </ol>
         <h2>받은 쪽지</h2>
 		
       </div>
     </section><!-- End Breadcrumbs -->
- 
-<!-- ----------------------------시작 --------------------------- -->
-    <section class="inner-page">
-    <div class="container" align = "center">
+ <section id="blog" class="blog" >
+							<div class="container" data-aos="fade-up">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-3">
 
-	<form action = "#">
+											<div class="sidebar">
+
+
+												<h3 class="sidebar-title">쪽지</h3>
+												<div class="sidebar-item categories">
+													<ul>
+														<li><a href="/message/write/page">쪽지 쓰기</a></li>
+														<li><a href="/message/receivedList">받은 쪽지함</a></li>
+														<li><a href="/message/sentList">보낸 쪽지함</a></li>
+
+													</ul>
+													<hr>
+
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+														<hr>
+													</div>
+													<!-- End sidebar tags-->
+
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+														<hr>
+													</div>
+													<!-- End sidebar tags-->
+
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+														<hr>
+													</div>
+													<!-- End sidebar tags-->
+													<h3 class="sidebar-title">주문</h3>
+													<div class="sidebar-item categories">
+														<ul>
+															<li><a href="/message/sentList">주문내역</a></li>
+															<li><a href="/message/sentList">주문내역</a></li>
+														</ul>
+
+													</div>
+													<!-- End sidebar tags-->
+
+
+												</div>
+												<!-- End sidebar -->
+
+											</div>
+											<!-- End blog sidebar -->
+										</div>
+										
+			<!--============== 여기에 작성하기================================ -->
+<div class="col-md-9 info-card">
+										
+	    <div class="container" align = "center">
+
+	<form action = "/message/write/page">
 
 	보낸 사람 : <%= message.getSender() %> <br>
 	받는 사람 : <%= message.getReceiver() %> <br>
 	내용 : <%= message.getContents() %> <br>
 	
+	
+	<input type = "hidden" value = "<%= message.getReceiver() %>" name = "receiveId" >
 	<input type = "submit" value = "답장">
 	</form>
 	
-	</div>
-    </section>
+	</div>					
 
+</div>
+			<!--============== 여기에 작성하기 끝================================ -->
+									</div>
+									<!--  end row  -->
+								</div>
+							</div>
+						</section>
+ 
+<!-- ----------------------------시작 --------------------------- -->
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/qna/qnaList.js"></script>
