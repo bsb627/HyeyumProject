@@ -113,24 +113,40 @@ public class MessageService {
 		return result;
 	}
 	
-	// 글검색 
-	public MsgPageData printSearchLsit(String search, String searchCategory, int currentPage) {
+	// 받은  메시지   검색 
+	public MsgPageData printSearchList( String searchCategory, String search,int currentPage, String userId) {
 		Connection conn = null;
 		MsgPageData pd = new MsgPageData();
 		
 		try {
 			conn = factory.createConnection();
-			pd.setMsgList(new MessageDAO().selectSearchList(conn, searchCategory, search, currentPage));
-			pd.setPageNavi(new MessageDAO().selectSearchPageNavi(conn, searchCategory, search, currentPage));
+			pd.setMsgList(new MessageDAO().selectSearchList(conn,   searchCategory, search, currentPage, userId));
+			pd.setPageNavi(new MessageDAO().getSearchPageNavi(conn,  searchCategory, search, currentPage, userId));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
 		}
+		return pd;
 		
+	}
+	// 보낸 메시지   검색 
+	public MsgPageData printSearchListSent( String searchCategory, String search,int currentPage, String userId) {
+		Connection conn = null;
+		MsgPageData pd = new MsgPageData();
 		
-		return null;
+		try {
+			conn = factory.createConnection();
+			pd.setMsgList(new MessageDAO().selectSearchListSent(conn,   searchCategory, search, currentPage, userId));
+			pd.setPageNavi(new MessageDAO().getSearchPageNaviSent(conn,  searchCategory, search, currentPage, userId));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return pd;
 		
 	}
 	public int updateReadState(int messageNo) {
@@ -153,6 +169,7 @@ public class MessageService {
 		return result;
 		
 	}
+
 	
 
 }

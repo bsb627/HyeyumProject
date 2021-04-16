@@ -6,10 +6,9 @@
 
 <%@include file="/header.jsp"%>
 <%
-ArrayList<Message> receivedList = (ArrayList<Message>)request.getAttribute("receivedList");
+ArrayList<Message> searchList = (ArrayList<Message>)request.getAttribute("searchList");
 String pageNavi = (String)request.getAttribute("pageNavi");
 %>
-
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -27,17 +26,6 @@ $("#check-all").on("click", function () {
 </script>
 
 
-<style>
-
-a:link.contents {
-	color : navy;
-}
-a:visited.contents {
-	color : gray;
-}
-
-	</style>
-	
   <title>문화나눔, 혜윰 </title>
 </head>
 
@@ -50,15 +38,12 @@ a:visited.contents {
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
+          <li>쪽지</li>
         </ol>
-        <h2>받은 쪽지함</h2>
+        <h2>보낸쪽지함</h2>
 		
       </div>
-    </section>
-    
-    <!-- End Breadcrumbs -->
-    
-    <!-- ======= 사이드바 ======= -->
+    </section><!-- End Breadcrumbs -->
   <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
 								<div class="col-md-12">
@@ -124,12 +109,12 @@ a:visited.contents {
 										
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
-
-		<div style = "float : right">
+									
+			<div style = "float : right">
 			<form class="row g-3" action = "/message/search/received" method = "get">
 			  <div class="col-auto">
 			    <select name = "search-category" class="form-select">
-			      	<option value = "SENDER" >아이디</option>
+			      	<option value = "RECEIVER" >아이디</option>
 			      	<option value= "CONTENTS" >내용</option>
 			    </select>
 			  </div>
@@ -141,38 +126,38 @@ a:visited.contents {
 			    <input type="submit" class="btn btn-primary mb-3" value = "검색" >
 			  </div>
 			</form>
-      	</div>
+      	</div>								
+									
+									
+									
 										
     <div class="container" align = "center">
     <table class = "table" style = "text-align:center">
     	<tr>
-    		<th><input type = "checkbox" id = "check-all"></th>
-    		<th> </th>
+    		<th><input type = "checkbox" id="check-all"></th>
     		<th>내용</th>
-    		<th>보낸 사람</th>
-    		<th>보낸 시간</th>
-    		
+    		<th>받는 사람</th>
+    		<th>보낸 날짜</th>
+    		<th>읽음 여부</th>
     	</tr>
     	
-    	<% for( Message message : receivedList) {%>
+    	<% for( Message message : searchList) {%>
     		<tr>
-    			<td><input type = "checkbox" class="checkbox">
+    			<td><input type = "checkbox" class ="checkbox">
     			<td>
-    				
- 					<% if( message.getReadState().equals("읽음") ) {%>
-      					<i style = "color : gray"class="bi bi-envelope-open"></i>
-      				<% } else { %>
-      					<i style = "color : navy" class="bi bi-envelope"></i>
-      				<% } %>
-    				
-    			</td>
-    			<td>
-    			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
+    			<a href = "/message/detail?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
     			</td>
     			<td><%= message.getReceiver() %></td>
     			<td><%= message.getSendTime() %></td>
+    			<td>
+    			<% if( message.getReadState().equals("읽음") ) {%>
+      					<i class="bi bi-envelope-open"></i>
+      				<% } else { %>
+      					<i style = "color : navy" class="bi bi-envelope"></i>
+      				<% } %>
     			
+    			</td>
     		</tr>
     	<% } %>
     
@@ -190,8 +175,6 @@ a:visited.contents {
 							</div>
 						</section>
 <!-- ----------------------------시작 --------------------------- -->
-
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/qna/qnaList.js"></script>

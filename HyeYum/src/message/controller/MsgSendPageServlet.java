@@ -63,8 +63,10 @@ public class MsgSendPageServlet extends HttpServlet {
 		if( result > 0 ) {
 //			PrintWriter out = response.getWriter();
 //			out.println("<script>alert('전송되었습니다.')</script>");
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/sendSuccess.jsp");
+
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/successSend.jsp");
 			view.forward(request, response);
+			
 			
 			
 		}

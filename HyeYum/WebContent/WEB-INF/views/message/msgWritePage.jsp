@@ -5,8 +5,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/header.jsp"%>
-<%
-	Message message = (Message)request.getAttribute("message");
+<% 
+	String sendId = (String)request.getAttribute("sendId");
 %>
 <head>
   <title>문화나눔, 혜윰 </title>
@@ -114,8 +114,10 @@
 <div class="col-md-9 info-card">
 										
 	<form action ="/message/send/page" method = "post" id ="msg-write-page">
-	받는 사람 : <input type = "text" name = "receiveId" class = "form-control" id="receiveId"><br>
-	내용 : <br>
+	<%-- <i class="bi bi-person"></i>  보내는 사람 : <%= sendId %> <br><br> --%>
+	
+	<i class="bi bi-person-fill"></i>  받는 사람 : <input type = "text" name = "receiveId" class = "form-control inline" id="receiveId"><br>
+	<i class="bi bi-chat-left-text"></i>  내용 : <br>
 	<textarea name = "contents" class = "form-control" rows ="20" id="contents"> </textarea><br>
 	<input type = "submit" value = "전송" style = "float: right" class = "btn btn-primary">
 	</form>

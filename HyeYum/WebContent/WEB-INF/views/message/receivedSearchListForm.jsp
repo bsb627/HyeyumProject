@@ -6,7 +6,7 @@
 
 <%@include file="/header.jsp"%>
 <%
-ArrayList<Message> receivedList = (ArrayList<Message>)request.getAttribute("receivedList");
+ArrayList<Message> searchList = (ArrayList<Message>)request.getAttribute("searchList");
 String pageNavi = (String)request.getAttribute("pageNavi");
 %>
 
@@ -154,7 +154,7 @@ a:visited.contents {
     		
     	</tr>
     	
-    	<% for( Message message : receivedList) {%>
+    	<% for( Message message : searchList) {%>
     		<tr>
     			<td><input type = "checkbox" class="checkbox">
     			<td>

@@ -37,6 +37,10 @@ public class MsgSentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset = UTF-8");
+		
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		request.setAttribute("userId", userId);

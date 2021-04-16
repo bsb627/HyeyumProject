@@ -99,13 +99,24 @@
 										
     <div class="container" align = "center">
 
-	<form action ="/message/delete" method = "get">
-
-	보낸 사람 : <%= message.getSender() %> <br>
-	받는 사람 : <%= message.getReceiver() %> <br>
-	내용 : <%= message.getContents() %> <br>
+<form action ="/message/delete" method = "get">
+ <article class="entry entry-single">
+ 
+		<ul style = "list-style:none; text-align : left; padding : 0; margin:0; color : navy">
+              <li  class="info"><i class="bi bi-person"></i>[받는 사람] : <%= message.getReceiver() %></li>     
+              <li class="info"><i class="bi bi-clock"></i>[날짜] : <%= message.getSendTime() %></li>
+		</ul>
+		<hr>
+        <div style = "padding : 2%" align = "left">
+           	<%= message.getContents() %>
+        </div>
+</article>
 	<input type ="hidden" name = "message-no" value = "<%= message.getMessageNo() %>">
-	<input type = "submit" value = "삭제" >
+	<input type = "submit" value = "삭제" style = "float: right" class="btn btn-outline-danger">
+</form>
+<br><br><br><br><br>
+		<form action = "/message/receivedList">
+		<input type = "submit" value = "목록" class="btn btn-primary" style = "float: center">
 	</form>
 	
 	</div>

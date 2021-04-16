@@ -5,40 +5,31 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/header.jsp"%>
-<%
-ArrayList<Message> receivedList = (ArrayList<Message>)request.getAttribute("receivedList");
-String pageNavi = (String)request.getAttribute("pageNavi");
+<% 
+	String receiveId = (String)request.getAttribute("receiveId");
 %>
-
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("#check-all").on("click", function () {
-	  var checked = $(this).is(":checked");
-	
-	  if(checked){
-	  	$(".checkbox").prop("checked", true);
-	  } else {
-	  	$(".checkbox").prop("checked", false);
-	  }
-	});
-});
-</script>
-
-
-<style>
-
-a:link.contents {
-	color : navy;
-}
-a:visited.contents {
-	color : gray;
-}
-
-	</style>
-	
   <title>문화나눔, 혜윰 </title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+ $(document).ready(function() {
+		$("#msg-write-page").submit(function() {
+
+			var contents = $("#contents");
+			var receiveId = $("#receiveId");
+			if(contents.val() =="") {
+				alert("내용을 입력해주세요. ");
+				return false;
+			}else if (receiveId.val() == "") {
+				alert("받는사람을 입력해주세요");
+				return false;
+			}
+			alert("전송하시겠습니까?");
+			return true;
+		});
+	 });
+ 
+ </script>
 </head>
 
  <main id="main">
@@ -50,16 +41,13 @@ a:visited.contents {
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
+          <li>쪽지</li>
         </ol>
-        <h2>받은 쪽지함</h2>
+        <h2>쪽지 쓰기</h2>
 		
       </div>
-    </section>
-    
-    <!-- End Breadcrumbs -->
-    
-    <!-- ======= 사이드바 ======= -->
-  <section id="blog" class="blog" >
+    </section><!-- End Breadcrumbs -->
+ <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
 								<div class="col-md-12">
 									<div class="row">
@@ -124,63 +112,21 @@ a:visited.contents {
 										
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
-
-		<div style = "float : right">
-			<form class="row g-3" action = "/message/search/received" method = "get">
-			  <div class="col-auto">
-			    <select name = "search-category" class="form-select">
-			      	<option value = "SENDER" >아이디</option>
-			      	<option value= "CONTENTS" >내용</option>
-			    </select>
-			  </div>
-			  <div class="col-auto">
-			    <label class="visually-hidden"></label>
-			    <input type="text" class="form-control" name="search-keyword">
-			  </div>
-			  <div class="col-auto">
-			    <input type="submit" class="btn btn-primary mb-3" value = "검색" >
-			  </div>
-			</form>
-      	</div>
 										
-    <div class="container" align = "center">
-    <table class = "table" style = "text-align:center">
-    	<tr>
-    		<th><input type = "checkbox" id = "check-all"></th>
-    		<th> </th>
-    		<th>내용</th>
-    		<th>보낸 사람</th>
-    		<th>보낸 시간</th>
-    		
-    	</tr>
-    	
-    	<% for( Message message : receivedList) {%>
-    		<tr>
-    			<td><input type = "checkbox" class="checkbox">
-    			<td>
-    				
- 					<% if( message.getReadState().equals("읽음") ) {%>
-      					<i style = "color : gray"class="bi bi-envelope-open"></i>
-      				<% } else { %>
-      					<i style = "color : navy" class="bi bi-envelope"></i>
-      				<% } %>
-    				
-    			</td>
-    			<td>
-    			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
-    			<%= message.getContents() %></a>
-    			</td>
-    			<td><%= message.getReceiver() %></td>
-    			<td><%= message.getSendTime() %></td>
-    			
-    		</tr>
-    	<% } %>
-    
-    </table>
-    <div align = "center"><%= pageNavi %></div>
-    
-	</div>
-										
+	<form action ="/message/send/page" method = "post" id ="msg-write-page">
+	
+	<i class="bi bi-person-fill"></i>  받는 사람 : <%= receiveId %><br>
+	<i class="bi bi-chat-left-text"></i>  내용 : <br>
+	<textarea name = "contents" class = "form-control" rows ="20" id="contents"> </textarea><br>
+	
+	<input type = "hidden" name = "receiveId" class = "form-control inline" id="receiveId" value ="<%= receiveId %>">
+	<input type = "submit" value = "전송" style = "float: right" class = "btn btn-primary">
+	</form>
+					
+					
+					
+	         
+		
 
 </div>
 			<!--============== 여기에 작성하기 끝================================ -->
@@ -191,7 +137,7 @@ a:visited.contents {
 						</section>
 <!-- ----------------------------시작 --------------------------- -->
 
+
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/qna/qnaList.js"></script>
