@@ -1,3 +1,5 @@
+<%@page import="reply.model.vo.Reply"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="book.model.vo.BookReview"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +7,8 @@
 <%
 	BookReview review = (BookReview)request.getAttribute("review");
 	int likes = (int)request.getAttribute("likes"); 
+	ArrayList<Reply> rList=(ArrayList<Reply>)request.getAttribute("rList");
+	int totalCount = (int)request.getAttribute("totalCount");
 %>
 <html lang="ko">
 <%@include file="/header.jsp"%>
@@ -80,7 +84,7 @@ if (userId == null) {
 								<%} else { %>
 								<a href="/bookReview/minusLikes?review-no=<%=review.getNo()%>">
 								<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
-								<%}%> <%=review.getLikes() %>
+								<%}%> <%=totalCount%>
                                 </span>
                                 </td>
                             </tr>
@@ -102,24 +106,45 @@ if (userId == null) {
 					</p>
 			</div>
 				<hr>
-                <span class="form-inline" role="form">
-                    <strong>
-                        댓글
-                    </strong>
-                            <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
-                    </span>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <td>
-                                    <span style='float:right'>
-                                        <button type="button" id="modify" class="btn btn-default">취소</button>
-                                        <button type="button" id="delete" class="btn btn-default">댓글등록</button>
-                                    </span>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
+					<div class="reply-box">
+						<h6 class="comments-count">
+							<strong>댓글 <%=totalCount%>개
+							</strong>
+						</h6>
+
+						<!-- End comment #1 -->
+						<form action="/bookReviewReply/write" method="get">
+							<div class="reply-form">
+								<input type="hidden" name="type" value="review"> 
+								<input type="hidden" name="review-no" value="<%=review.getNo()%>">
+								<input type="text" class="form-control " name="comment"
+									placeholder="댓글달기" required>
+								<div class="col-md-12">
+								<button type="submit" class="btn btn-light" style='float:right'>
+									<small><strong>등록</strong></small>
+								</button>
+							</div>
+						</form>
+						<br>
+						<span class="post-date">
+							<%-- <i class="bi bi-eye"> <%=review.getHits()%></i> --%>							
+						</span>
+					</div>
+					 <% for(Reply reply : rList){ %>
+						<div id="" class="show-reply">
+							<div class="">
+								<div class="show-contents">
+									<h6>
+										<a href="#" style="color:#333"><%=reply.getNick() %></a> 
+										<small><strong> 
+										<%=reply.getContents() %> <time datetime="2020-01-01" style='float:right'><%=review.getEnrollDate()%></time>
+										</strong></small>
+									</h6>
+								</div>
+								
+							</div>
+						</div>
+						<%} %>
                     <!-- 하단 버튼 시작 -->
                     <table class="table table-condensed">
                         <thead>

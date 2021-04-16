@@ -1,6 +1,7 @@
 package book.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import book.model.service.BookService;
 import book.model.vo.BookReview;
+import reply.model.service.ReplyService;
+import reply.model.vo.Reply;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -53,10 +56,17 @@ public class BookReviewDetailServlet extends HttpServlet {
 		}else {
 			likes = new BookService().getLikesReview(userId,reviewNo);
 		}
+		
+		// 댓글
+		int totalCount = new ReplyService().totalCountBookReview(reviewNo);
+		ArrayList<Reply> rList = new ReplyService().printReplyListBookReview(reviewNo);
+		
 		BookReview review = new BookService().printOneBookReview(reviewNo);
 		if(review != null) {
 			request.setAttribute("review", review);
 			request.setAttribute("likes", likes);
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("rList", rList);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookReviewDetail.jsp");
 			view.forward(request, response);
 		}else {

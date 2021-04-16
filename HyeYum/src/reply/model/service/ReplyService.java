@@ -118,5 +118,78 @@ public class ReplyService {
 		// TODO Auto-generated method stub
 		return rList;
 	}
+	
+	// BookReview 시작 
+	public int registerReplyBookReview(Reply reply) { //댓글 등록
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new ReplyDAO().insertReplyBookReview(conn, reply);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public int BookReviewDeleteReply(int replyNo, String type) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			result = new ReplyDAO().deleteReplyBookReview(conn, replyNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result ;
+	}
+
+	public int totalCountBookReview(int reviewNo) {
+		int count = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			count = new ReplyDAO().totalCountBookReview(conn, reviewNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return count;
+	}
+
+	public ArrayList<Reply> printReplyListBookReview(int reviewNo) {
+		ArrayList<Reply> rList = null;
+		Connection conn =null;
+		try {
+			conn = factory.createConnection();
+			rList = new ReplyDAO().selectReplyListBookReview(conn,reviewNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		// TODO Auto-generated method stub
+		return rList;
+	}
 
 }
