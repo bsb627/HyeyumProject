@@ -77,7 +77,7 @@
 							 
 							<a href="<%=review.getSnsLink() %>" target="_blank"><i
 								class="bi bi-instagram instargram show-icon"
-								style="font-size: 2rem;"></i></a>
+								></i></a>
 						</div>
 						<h2><%=review.getTitle()%></h2>
 						<p>

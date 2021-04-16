@@ -333,6 +333,8 @@ public class ShowDAO {
 					review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 					review.setNick(rset.getString("NICK"));
 					review.setInfoNo(rset.getInt("INFO_NO"));
+					review.setReplys(getReplyCount(conn,rset.getInt("REVIEW_NO")));
+					review.setLikes(getLikeCount(conn,rset.getInt("REVIEW_NO")));
 					showList.add(review);
 				}
 			}
