@@ -96,15 +96,21 @@ function printLikes(reviewNo){
                     // 응답코드 > 0000
 					
 					console.log(data);
-					if(data == 0){
+					if(data[0].isCheck == 0){
 						$("#heart-btn").html("<a herf=''><i class='bi bi-heart show-icon heart-like'></i></a>");
-						$("#likesTotalCount").html("<h6><strong><i class='bi bi-heart'></i> "+data+"명이 좋아합니다.</strong></h6>");
 						
 					}else{
 						$("#heart-btn").html("<a herf=''><i class='bi bi-heart-fill show-icon heart-hate'></i></a>");
-						$("#likesTotalCount").html("<h6><strong><i class='bi bi-heart-fill'></i> "+data+"명이 좋아합니다.</strong></h6>");
 					}
-					$("#likesCount").html(" <i class='bi bi-heart'> "+data+"</i>");
+					
+					if(data[0].likesCount ==0) {
+						$("#likesTotalCount").html("<h6><strong><i class='bi bi-heart'></i> "+data[0].likesCount+"명이 좋아합니다.</strong></h6>");
+						
+					}else{
+						$("#likesTotalCount").html("<h6><strong><i class='bi bi-heart-fill'></i> "+data[0].likesCount+"명이 좋아합니다.</strong></h6>");
+						
+					}
+					$("#likesCount").html(" <i class='bi bi-heart'> "+data[0].likesCount+"</i>");
 	                },
                 error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
                     alert("like 통신 실패.")

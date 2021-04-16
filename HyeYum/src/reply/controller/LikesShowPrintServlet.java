@@ -40,14 +40,29 @@ public class LikesShowPrintServlet extends HttpServlet {
 		 request.setCharacterEncoding("utf-8");
 		 response.setCharacterEncoding("UTF-8");
 	     response.setContentType("text/html; charset=utf-8");
+	     PrintWriter out = response.getWriter();
+	     String result = "";
 	     HttpSession session = request.getSession();
 		 String userId = (String)session.getAttribute("userId");
 	     int showNo = Integer.parseInt(request.getParameter("no"));
 	    
+	     int check = new ShowService().checkLikes(showNo, userId);
+	     if(check > 0) {
+	    	 int isCheck = new ShowService().getLikes(userId, showNo);
+	    	 result += "{\"check\":\"" +check+"";
+	    	 result += "\",\"isCheck\":\"" + isCheck;
+	     }else {
+	    	 result += "{\"check\":\"" +check+"";
+	    	 result += "\",\"isCheck\":\"0" ;
+	     }
+	     
 	     int likes = new ShowService().getLikesCount(showNo);
-			
-				PrintWriter out = response.getWriter();
-	            out.print(likes);
+	     result += "\",\"likesCount\":\"" + likes + "\"},";
+		 result = result.substring(0,result.length()-1);
+		    result = "[" + result + "]";
+		    System.out.println(result);
+		    	out.print(result);
+				
 		
 	}
 
