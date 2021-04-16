@@ -3,7 +3,6 @@ package message.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,16 +15,16 @@ import message.model.vo.Message;
 import message.model.vo.MsgPageData;
 
 /**
- * Servlet implementation class MessagePrintServlet
+ * Servlet implementation class MsgSearchSentServelt
  */
-@WebServlet("/message/receivedList")
-public class MsgRecieveListServlet extends HttpServlet {
+@WebServlet("/message/search/sent")
+public class MsgSearchSentServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgRecieveListServlet() {
+    public MsgSearchSentServelt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,28 +33,28 @@ public class MsgRecieveListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
-		request.setAttribute("userId", userId);
-		
+		request.setCharacterEncoding("UTF-8");
 		int currentPage = 0;
-		if (request.getParameter("currentPage") == null) {
+		if(request.getParameter("currentPage") == null) {
 			currentPage = 1;
-		}else {
+		} else {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			
 		}
-		MsgPageData pageData = new MessageService().printAllRecievedList(currentPage,userId);
-		ArrayList<Message> receivedList = pageData.getMsgList();
+		HttpSession session  = request.getSession();
+		String userId = (String) session.getAttribute("userId");
+		String search = request.getParameter("search-keyword"); //noticelist.jsp 에 name
+		String searchCategory = request.getParameter("search-category");
+		MsgPageData pageData = new MessageService().printSearchListSent(searchCategory,search, currentPage, userId);
+		ArrayList<Message> searchList = pageData.getMsgList();
+		
 		String pageNavi = pageData.getPageNavi();
-		if(!receivedList.isEmpty()) {
+		
+		if(!searchList.isEmpty()) {
 			
-			request.setAttribute("receivedList", receivedList);
+			request.setAttribute("searchList", searchList);
 			request.setAttribute("pageNavi", pageNavi);
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/receivedMsgListForm.jsp");
-			view.forward(request, response);
-		}else {
-			
+			request.getRequestDispatcher("/WEB-INF/views/message/sentSearchListForm.jsp").forward(request, response);
 		}
 	}
 

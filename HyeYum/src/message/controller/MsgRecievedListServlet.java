@@ -1,6 +1,7 @@
 package message.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,17 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import message.model.service.MessageService;
+import message.model.vo.Message;
+import message.model.vo.MsgPageData;
+
 /**
- * Servlet implementation class MsgWritePageServlet
+ * Servlet implementation class MessagePrintServlet
  */
-@WebServlet("/message/write/page")
-public class MsgWritePageServlet extends HttpServlet {
+@WebServlet("/message/receivedList")
+public class MsgRecievedListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgWritePageServlet() {
+    public MsgRecievedListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +38,29 @@ public class MsgWritePageServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset = UTF-8");
 		
+		
 		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		request.setAttribute("userId", userId);
 		
-		//String receiveId = request.getParameter("receiveId");
-		String sendId =(String) session.getAttribute("userId");
-		
-		//request.setAttribute("receiveId", receiveId);
-		request.setAttribute("sendId", sendId);
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/msgWritePage.jsp");
-		view.forward(request, response);
+		int currentPage = 0;
+		if (request.getParameter("currentPage") == null) {
+			currentPage = 1;
+		}else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		MsgPageData pageData = new MessageService().printAllRecievedList(currentPage,userId);
+		ArrayList<Message> receivedList = pageData.getMsgList();
+		String pageNavi = pageData.getPageNavi();
+		if(!receivedList.isEmpty()) {
+			
+			request.setAttribute("receivedList", receivedList);
+			request.setAttribute("pageNavi", pageNavi);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/receivedMsgListForm.jsp");
+			view.forward(request, response);
+		}else {
+			
+		}
 	}
 
 	/**

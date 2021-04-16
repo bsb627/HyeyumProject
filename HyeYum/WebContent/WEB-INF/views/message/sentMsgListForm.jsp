@@ -10,6 +10,22 @@ ArrayList<Message> sentMsgList = (ArrayList<Message>)request.getAttribute("sentM
 String pageNavi = (String)request.getAttribute("pageNavi");
 %>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#check-all").on("click", function () {
+	  var checked = $(this).is(":checked");
+	
+	  if(checked){
+	  	$(".checkbox").prop("checked", true);
+	  } else {
+	  	$(".checkbox").prop("checked", false);
+	  }
+	});
+});
+</script>
+
+
   <title>문화나눔, 혜윰 </title>
 </head>
 
@@ -93,11 +109,31 @@ String pageNavi = (String)request.getAttribute("pageNavi");
 										
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
+
+
+		<div style = "float : right">
+			<form class="row g-3" action = "/message/search/sent" method = "get">
+			  <div class="col-auto">
+			    <select name = "search-category" class="form-select">
+			      	<option value = "RECEIVER" >아이디</option>
+			      	<option value= "CONTENTS" >내용</option>
+			    </select>
+			  </div>
+			  <div class="col-auto">
+			    <label class="visually-hidden"></label>
+			    <input type="text" class="form-control" name="search-keyword">
+			  </div>
+			  <div class="col-auto">
+			    <input type="submit" class="btn btn-primary mb-3" value = "검색" >
+			  </div>
+			</form>
+      	</div>
+				
 										
     <div class="container" align = "center">
     <table class = "table" style = "text-align:center">
     	<tr>
-    		<th><input type = "checkbox" name = "msg-check"></th>
+    		<th><input type = "checkbox" id="check-all"></th>
     		<th>내용</th>
     		<th>받는 사람</th>
     		<th>보낸 날짜</th>
@@ -106,14 +142,21 @@ String pageNavi = (String)request.getAttribute("pageNavi");
     	
     	<% for( Message message : sentMsgList) {%>
     		<tr>
-    			<td><input type = "checkbox" name = "msg-check">
+    			<td><input type = "checkbox" class ="checkbox">
     			<td>
     			<a href = "/message/detail?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
     			</td>
     			<td><%= message.getReceiver() %></td>
     			<td><%= message.getSendTime() %></td>
-    			<td><%= message.getReadState() %></td>
+    			<td>
+    			<% if( message.getReadState().equals("읽음") ) {%>
+      					<i class="bi bi-envelope-open"></i>
+      				<% } else { %>
+      					<i style = "color : navy" class="bi bi-envelope"></i>
+      				<% } %>
+    			
+    			</td>
     		</tr>
     	<% } %>
     

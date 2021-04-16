@@ -10,6 +10,8 @@
 %>
 <head>
   <title>문화나눔, 혜윰 </title>
+  
+
 </head>
 
  <main id="main">
@@ -95,17 +97,23 @@
 										
 	    <div class="container" align = "center">
 
-	<form action = "/message/write/page">
-
-	보낸 사람 : <%= message.getSender() %> <br>
-	받는 사람 : <%= message.getReceiver() %> <br>
-	내용 : <%= message.getContents() %> <br>
-	
-	
-	<input type = "hidden" value = "<%= message.getReceiver() %>" name = "receiveId" >
-	<input type = "submit" value = "답장">
+<form action = "/message/write/page/re">
+       <article class="entry entry-single">   	
+			<ul style = "list-style:none; text-align : left; padding : 0; margin:0; color : navy">
+                <li  class="info"><i class="bi bi-person"></i>[작성자] <%= message.getSender() %> </li>     
+                <li class="info"><i class="bi bi-clock"></i>[날짜]  <%= message.getSendTime() %></li>
+			</ul><hr>
+             <div style = "padding : 2%" align = "left">
+             	<%= message.getContents() %>
+              </div>
+         </article>
+       <input type = "hidden" value  ="<%= message.getSender() %>" name = "receiveId">
+      <input type = "submit" value = "답장" class="btn btn-outline-primary" style = "float: right">
+</form>
+	<br><br><br><br><br>
+		<form action = "/message/receivedList">
+		<input type = "submit" value = "목록" class="btn btn-primary" style = "float: center">
 	</form>
-	
 	</div>					
 
 </div>

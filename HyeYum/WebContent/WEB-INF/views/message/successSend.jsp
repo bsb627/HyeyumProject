@@ -89,12 +89,14 @@
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
 										
-	    <div class="container" align = "center">
+	<div class="container" align = "center">
 
 	<form action = "/message/sentList">
-	<img src = "/assets/message/successMsg.png">
-	전송되었습니다. 
-	<input type = "submit" value = "확인" class="btn btn-primary">
+
+	<i style = "font-size:100px" class="bi bi-envelope"></i><i style = "font-size:100px" class="bi bi-forward-fill"></i><i style = "font-size:100px" class="bi bi-mailbox"></i><br>
+	<p style = "font-size:25px">전송되었습니다. </p>
+	
+	<input  type = "submit" value = "확인" class="btn btn-primary">
 	</form>
 	
 	</div>					
