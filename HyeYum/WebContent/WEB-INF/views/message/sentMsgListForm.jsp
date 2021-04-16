@@ -25,6 +25,18 @@ $("#check-all").on("click", function () {
 });
 </script>
 
+<style>
+a:link.msg {
+	color : navy;
+}
+a:visited.msg {
+	color : gray;
+}
+a:hover.msg {
+	font-weight: bold;
+}
+</style>
+
 
   <title>문화나눔, 혜윰 </title>
 </head>
@@ -44,6 +56,17 @@ $("#check-all").on("click", function () {
 		
       </div>
     </section><!-- End Breadcrumbs -->
+ <!-- ======= Services Section ======= -->
+			<section id="services" class="services">
+
+				<div class="container" data-aos="fade-up">
+					<div class="inner-page">
+						<header class="section-header">
+							<h2>Message</h2>
+							<p>보낸 쪽지함</p>
+						</header>    
+    
+    
   <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
 								<div class="col-md-12">
@@ -131,6 +154,7 @@ $("#check-all").on("click", function () {
 				
 										
     <div class="container" align = "center">
+
     <table class = "table" style = "text-align:center">
     	<tr>
     		<th><input type = "checkbox" id="check-all"></th>
@@ -138,13 +162,14 @@ $("#check-all").on("click", function () {
     		<th>받는 사람</th>
     		<th>보낸 날짜</th>
     		<th>읽음 여부</th>
+    		<th>전송 취소</th>
     	</tr>
     	
     	<% for( Message message : sentMsgList) {%>
     		<tr>
-    			<td><input type = "checkbox" class ="checkbox">
+    			<td><input type = "checkbox" id ="checkbox" name = "checkbox">
     			<td>
-    			<a href = "/message/detail?msgNo=<%= message.getMessageNo() %>">
+    			<a class="msg" href = "/message/detail?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
     			</td>
     			<td><%= message.getReceiver() %></td>
@@ -154,13 +179,19 @@ $("#check-all").on("click", function () {
       					<i class="bi bi-envelope-open"></i>
       				<% } else { %>
       					<i style = "color : navy" class="bi bi-envelope"></i>
-      				<% } %>
-    			
+      			<% } %>
+    			</td>
+    			<td>
+    			<% if( message.getReadState().equals("읽음") ) {%>
+      				
+      			<% } else { %>
+      				<a href = "/message/delete?msgNo=<%= message.getMessageNo() %>"><input type = "button" value = "전송취소" class="btn btn-outline-primary btn-sm"></a>
+      			<% } %>
     			</td>
     		</tr>
     	<% } %>
-    
     </table>
+    <button id="btn-remove" class="btn btn-danger" style = "float:right">삭제</button><br><br><br>
     <div align = "center"><%= pageNavi %></div>
     
 	</div>
@@ -174,6 +205,8 @@ $("#check-all").on("click", function () {
 							</div>
 						</section>
 <!-- ----------------------------시작 --------------------------- -->
+  </div></div>
+</section>
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>

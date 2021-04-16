@@ -44,12 +44,22 @@ function msgPop(receiveId) {
   <title>문화나눔, 혜윰 - QnA</title>
 <style>
 
-ul{
+.box{
    list-style:none;
    padding:0;
    margin:0;
    }
-
+.msgbox {
+	
+	position : absolute;
+	background : white;
+	border:1px solid #ddd;
+	
+	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.msgbox:hover {
+	color: gray !important;
+}
 </style>
 </head>
  <main id="main">
@@ -120,12 +130,12 @@ ul{
       				</td>
    
       				<td>
-      					<ul>
-							<li><a onclick ="msg(event)"><%= qna.getUserId()%></a></li>
-							<li id="sendMsg" style="display:none;" onclick ="msgPop('<%= qna.getUserId() %>')">쪽지보내기</a></li>
+      					
+      					<ul class = "box">
+							<li style = "text-align : left"><a onclick ="msg(event)"><%= qna.getUserId()%></a></li>
+							<li class = "msgbox" id="sendMsg" style="display:none;" onclick ="msgPop('<%= qna.getUserId() %>')">쪽지 보내기</li>
 							
       					</ul>
-						
       				</td>
       				
       				<td><%= qna.getEnrollDate()%></td>

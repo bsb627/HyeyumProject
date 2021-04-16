@@ -169,6 +169,25 @@ public class MessageService {
 		return result;
 		
 	}
+//	public int deleteMessages(String msgNo) {
+//		Connection conn = null;
+//		int result = 0;
+//		try {
+//			conn = factory.createConnection();
+//			result = new MessageDAO().deleteMessages(conn, msgNo);
+//			if(result > 0) {
+//				JDBCTemplate.commit(conn);
+//			} else {
+//				JDBCTemplate.rollback(conn);
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			JDBCTemplate.close(conn);
+//		}
+//		return result;
+//	}
 
 	
 

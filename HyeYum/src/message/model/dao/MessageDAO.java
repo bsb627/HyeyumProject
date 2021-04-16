@@ -552,4 +552,21 @@ public class MessageDAO {
 	return recordTotalCount;
 	
 }
+//선택된 메세지들 삭제
+//	public int deleteMessages(Connection conn, String msgNo) {
+//		Statement stmt = null;
+//		String query = "DELETE FROM QNA WHERE QNA_NO IN ("+msgNo+")";
+//		int result = 0;
+//		
+//		try {
+//			stmt = conn.createStatement();
+//			result = stmt.executeUpdate(query);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(stmt);
+//		}
+//		return result;
+//	}
 }

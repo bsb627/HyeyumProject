@@ -21,15 +21,15 @@
              <h6 class="m-0 font-weight-bold text-primary">No.<%= qna.getQnaNo() %>  [<%= qna.getCategory() %>]  <%= qna.getTitle() %></h6>
            </div>
              <div class="card-body">
-            [작성자]<%= qna.getUserId() %> <br>
-            [작성일자]<%= qna.getEnrollDate() %> <br>
-            [조회수] <%= qna.getHits() %><br>
+            작성자 :    <%= qna.getUserId() %> <br>
+            작성일자   :   <%= qna.getEnrollDate() %> <br>
+            조회수  :    <%= qna.getHits() %><br>
             <hr>
            	<%= qna.getContents() %><br>
             </div>
         </div>
         	<% if (qna.getStep()==0) {%>
-            <div class="card mb-4 py-3 border-left-info">
+            <div class="card mb-4 py-3 border-bottom-primary">
             <div class="card-body">
             <form action = "/admin/qna/write" method = "post">
             <input type = "hidden" value = "<%= qna.getQuestionPwd() %>" name = "qna-pwd">
@@ -39,7 +39,7 @@
            	
            	
             답변 : <textarea name = "contents" class = "form-control"></textarea><br><br>
-            <input type = "submit" value ="등록" class="btn btn-info" style = "float : right">
+            <input type = "submit" value ="등록" class="btn btn-primary" style = "float : right">
             </form>
 
 			 </div>

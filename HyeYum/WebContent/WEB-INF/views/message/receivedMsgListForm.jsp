@@ -57,7 +57,15 @@ a:visited.contents {
     </section>
     
     <!-- End Breadcrumbs -->
-    
+    <!-- ======= Services Section ======= -->
+			<section id="services" class="services">
+
+				<div class="container" data-aos="fade-up">
+					<div class="inner-page">
+						<header class="section-header">
+							<h2>Message</h2>
+							<p>받은 쪽지함</p>
+						</header>
     <!-- ======= 사이드바 ======= -->
   <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
@@ -190,7 +198,8 @@ a:visited.contents {
 							</div>
 						</section>
 <!-- ----------------------------시작 --------------------------- -->
-
+</div></div>
+</section>
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import message.model.service.MessageService;
+import qna.model.service.QnaService;
 
 /**
  * Servlet implementation class MessageDeleteServlet
@@ -34,13 +35,31 @@ public class MsgDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset = UTF-8");
-		int messageNo = Integer.parseInt(request.getParameter("message-no"));
+		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
 		
 		int result = new MessageService().deleteMessage(messageNo);
  		if( result > 0 ) {
- 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/deleteSuccess.jsp");
+ 			PrintWriter out = response.getWriter();
+ 			out.println("<script>alert('전송 취소 되었습니다.')</script>");
+ 			RequestDispatcher view = request.getRequestDispatcher("/message/sentList");
 			view.forward(request, response);
 		}
+		
+//		String [] checkBoxes = request.getParameterValues("checkbox");
+//		String msgNo = "";
+//		
+//		for( String checkBox : checkBoxes) {
+//			if( checkBox.equals(checkBoxes[checkBoxes.length -1 ])) {
+//				msgNo += checkBox;
+//			} else {
+//				msgNo += checkBox + ",";
+//			}
+//		}
+		
+//		int result = new MessageService().deleteMessages(msgNo);
+//		if(result > 0) {
+//			response.sendRedirect("/message/sentList");
+//		}
 				
 	}
 

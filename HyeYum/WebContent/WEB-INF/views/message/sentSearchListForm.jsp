@@ -143,7 +143,7 @@ $("#check-all").on("click", function () {
     	
     	<% for( Message message : searchList) {%>
     		<tr>
-    			<td><input type = "checkbox" class ="checkbox">
+    			<td><input type = "checkbox" class ="checkbox" name = "checkbox">
     			<td>
     			<a href = "/message/detail?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
@@ -162,6 +162,10 @@ $("#check-all").on("click", function () {
     	<% } %>
     
     </table>
+    <form action = "/message/delete" method = "get" style = "float: right">
+    
+    	<input type = "submit" value = "삭제" class = "bnt bnt-outline-danger">
+    </form>
     <div align = "center"><%= pageNavi %></div>
     
 	</div>
