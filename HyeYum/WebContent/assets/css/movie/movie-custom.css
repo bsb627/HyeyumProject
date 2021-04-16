@@ -19,3 +19,8 @@
     color: #fff;
 }
 
+.blog .entry .entry-footer {
+	padding-top :15px;
+	border-top : 2px solid #e6e6e6;
+	 
+}

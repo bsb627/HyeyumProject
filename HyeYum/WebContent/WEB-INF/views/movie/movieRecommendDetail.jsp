@@ -2,13 +2,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	MovieRecommend recommend = (MovieRecommend) request.getAttribute("recommend");
+	MovieRecommend recommend = (MovieRecommend)request.getAttribute("recommend");
+	int likes = (int)request.getAttribute("likes");
+	
 %>
 
 <head>
 <title>문화나눔, 혜윰 - 추천 글보기</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/movie/movie-custom.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <main id="main">
 
@@ -55,16 +58,7 @@
 						<hr>
 
 						<div class="entry-meta">
-							<ul>
-								<!-- 닉네임, 시간, 조회수 -->
-								<li class="d-flex align-items-center"><i
-									class="bi bi-person"></i> <%=recommend.getNick()%></li>
-								<li class="d-flex align-items-center"><i
-									class="bi bi-clock"></i> <%=recommend.getEnrollDate()%><time
-										datetime="2020-01-01"></time></li>
-								<li class="d-flex align-items-center"><i
-									class="bi bi-card-text"></i><%=recommend.getHits()%></li>
-							</ul>
+							일단 여기 보류 
 						</div>
 
 						<hr>
@@ -76,18 +70,28 @@
 						</div>
 
 						<div class="entry-footer">
-							<i class="bi bi-folder"></i>
-							<ul class="cats">
-								<li><a href="#">Business</a></li>
-							</ul>
-
-							<i class="bi bi-tags"></i>
-							<ul class="tags">
-								<li><a href="#">Creative</a></li>
-								<li><a href="#">Tips</a></li>
-								<li><a href="#">Marketing</a></li>
-							</ul>
-
+						
+								<!-- 닉네임, 시간, 조회수 -->
+								<div class="d-flex align-items-center">
+								<i class="bi bi-person">&nbsp;</i><%=recommend.getNick()%>&nbsp;&nbsp;
+								<i class="bi bi-clock"></i>&nbsp;<%=recommend.getEnrollDate()%><time datetime="2020-01-01"></time>&nbsp;&nbsp;
+								<i class="bi bi-card-text">&nbsp;</i><%=recommend.getHits()%>&nbsp;&nbsp;&nbsp;&nbsp;
+								<!--  좋아요 -->
+								<!--  좋아요를 할 때 -->
+								 <% if (likes == 0) { %>
+								<a href="/movieRecommend/plusLikes?no=<%=recommend.getNo() %>">
+								<i class="fa fa-thumbs-o-up fa-2x"></i></a> 
+								<!-- 좋아요를 취소할 때  -->
+								<% } else { %> 
+								<a href="/movieRecommend/minusLikes?no=<%=recommend.getNo() %>">
+								<i class="fa fa-thumbs-up fa-2x"></i></a>
+								 <% } %> 
+								
+								<!-- 
+								<a href=""><button class="btn btn-sm btn-outline-danger">
+										<i class="bi bi-heart-fill" style="color: #dc3545"></i> 좋아요 취소
+									</button></a> -->
+							</div>
 						</div>
 
 					</article>
@@ -159,18 +163,7 @@
 									<li><strong>작성자</strong> <%=recommend.getNick()%></li>
 									<li><strong>작성일</strong> <%=recommend.getEnrollDate()%></li>
 									<br>
-									<%--if(likes == 0){ --%>
-									<li><a href=""><button
-												class="btn btn-sm btn-outline-danger">
-												<i class="bi bi-heart"></i> 좋아요
-											</button></a></li>
-									<%-- } else { --%>
-									<li><a href=""><button
-												class="btn btn-sm btn-outline-danger">
-												<i class="bi bi-heart-fill" style="color: #dc3545"></i> 좋아요
-												취소
-											</button></a></li>
-									<%-- } --%>
+									
 								</ul>
 							</div>
 							<hr>

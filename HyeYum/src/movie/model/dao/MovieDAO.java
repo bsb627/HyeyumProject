@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import movie.model.vo.MovieData;
 import movie.model.vo.MovieInfo;
 import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
@@ -719,32 +720,109 @@ public class MovieDAO {
 		return result;
 	}
 	
-	public int insertLikesRecommend(Connection conn, int recommendNo, String userId) { // 해당 게시글 좋아요 등록
-		int count = 0;
+	public int insertLikesRecommend(Connection conn, int recommendNo, String userId) { // 추천글 좋아요 등록
+		System.out.println("dao 들옴");
+		int result = 0;
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_LIKES WHERE RECOMMEND_NO = ?";
+		String query = "INSERT INTO MOVIE_LIKES VALUES(SEQ_MOVIE_LIKES.NEXTVAL, 1, NULL, ?, ?)";
+		//RECOMMEND_NO, USER_ID
+		//String query = "";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, recommendNo);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	public int updateLikesRecommend(Connection conn, int recommendNo, String userId, String state) { // 추천글 좋아요 취소
+		PreparedStatement pstmt = null;
+		int likes = 0;
+		String query ="UPDATE MOVIE_LIKES SET IS_CHECK = ? WHERE USER_ID = ? AND RECOMMEND_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, state);
+			pstmt.setString(2, userId);
+			pstmt.setInt(3, recommendNo);
+			likes = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return likes;
+	}
+
+	public ArrayList<MovieData> selectMovieReplyCount(Connection conn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	public int selectRecommendLikes(Connection conn, String userId, int recommendNo) { // 추천글 좋아요 체크 조회
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int likes = 0;
+		String query = "SELECT * FROM MOVIE_LIKES WHERE RECOMMEND_NO = ? AND USER_ID = ?";
+		//SELECT * FROM MOVIE_LIKES WHERE RECOMMEND_NO = '3' AND USER_ID = 'hehe';
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, recommendNo);
+			pstmt.setString(2, userId);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				count = rset.getInt("TOTALCOUNT");
+				likes = Integer.parseInt(rset.getString("IS_CHECK"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(pstmt);
+		} return likes;
+	}
+
+	public int checkRecommendLikes(Connection conn, int recommendNo, String userId) { //추천글 좋아요 여부(check)
+		// SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_LIKES GROUP BY RECOMMEND_NO;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int check = 0;
+		String query = "SELECT COUNT(*)AS ISCHECK FROM MOVIE_LIKES WHERE USER_ID = ? AND RECOMMEND_NO = ?";
+		
+		try {
+			pstmt =conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, recommendNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				check = rset.getInt("ISCHECK");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
-		return count;
+		return check;
 	}
+
+	public ArrayList<MovieData> selectMovieLikesCount(Connection conn) { // 추천글 좋아요 게시글 별 갯수
+		ArrayList<MovieData> mList = null;
+		//SELECT COUNT(*) AS TOTALCOUNT, REVIEW_NO, RECOMMEND_NO FROM MOVIE_LIKES GROUP BY CUBE(REVIEW_NO, RECOMMEND_NO);
+		return mList;
+	}
+
 	
-	public int updateLikesRecommend(Connection conn, int recommendNo, String userId) { // 해당 게시글 좋아요 취소
-		return 0;
-	}
 	
 }

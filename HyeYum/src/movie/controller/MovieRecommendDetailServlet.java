@@ -34,13 +34,30 @@ public class MovieRecommendDetailServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		
-		int recommendNo = Integer.parseInt(request.getParameter("recommendNo")); 
-
+		int recommendNo = 0;
+		try {
+			recommendNo = Integer.parseInt(request.getParameter("recommendNo")); 
+		} catch (Exception e) {
+			if(recommendNo == 0) {
+				recommendNo = (int) request.getAttribute("no");
+			}
+		}
+		System.out.println("recoNo" + recommendNo);
+		
+		int likes = 0;
+		if (request.getParameter("likes") != null ) {
+			likes = Integer.parseInt(request.getParameter("likes"));
+		} else {
+			likes = new MovieService().getMovieRecommendLikes(userId, recommendNo);
+		}
+		
 		MovieRecommend recommend = new MovieService().printOneMovieRecommend(recommendNo);
 		if(recommend != null) {
 			
 		new MovieService().RecommendHitsCount(recommendNo); // 게시글 조회수
 			request.setAttribute("recommend", recommend);
+			request.setAttribute("likes", likes);
+			
 			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendDetail.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);

@@ -6,10 +6,13 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import movie.model.dao.MovieDAO;
+import movie.model.vo.MovieData;
 import movie.model.vo.MovieInfo;
 import movie.model.vo.MoviePageData;
 import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
+import show.model.dao.ShowDAO;
+import show.model.vo.ShowData;
 
 public class MovieService {
 	
@@ -330,7 +333,6 @@ public class MovieService {
 		
 		Connection conn = null;
 		MoviePageData mpd = new MoviePageData();
-		System.out.println("추천글 서비스 들어옴");
 		
 		try {
 			conn = factory.createConnection();
@@ -342,7 +344,6 @@ public class MovieService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		System.out.println("서비스 " + mpd);
 		return mpd;
 	}
 
@@ -366,13 +367,13 @@ public class MovieService {
 		return result;
 	}
 	
-	public int RecommendMinusLikesCount(int recommendNo, String userId) { // 추천글 좋아요 수 감소
+	public int RecommendMinusLikesCount(int recommendNo, String userId, String state) { // 추천글 좋아요 수 감소
 		Connection conn = null;
-		int result = 0;
+		int likes = 0;
 		try {
 			conn = factory.createConnection();
-			result = new MovieDAO().updateLikesRecommend(conn, recommendNo, userId);
-			if(result > 0) {
+			likes = new MovieDAO().updateLikesRecommend(conn, recommendNo, userId, state);
+			if(likes > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
@@ -383,7 +384,7 @@ public class MovieService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		return result;
+		return likes;
 	}
 	
 	public int RecommendHitsCount(int recommendNo) { // 추천글 조회 수 증가
@@ -406,4 +407,102 @@ public class MovieService {
 		return result;
 	}
 	
+	public ArrayList<MovieData> printMovieReplyCount() {
+		ArrayList<MovieData> mList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			mList = new MovieDAO().selectMovieReplyCount(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mList;
+	}
+	
+	public int getMovieRecommendLikes(String userId, int recommendNo) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new MovieDAO().selectRecommendLikes(conn,userId,recommendNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+	
+	public int checkRecommendLikes(String userId, int recommendNo) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			result = new MovieDAO().checkRecommendLikes(conn, recommendNo, userId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+	
+	
+	
+	public ArrayList<MovieData> printMovieLikesCount() {
+		ArrayList<MovieData> mList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			mList = new MovieDAO().selectMovieLikesCount(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mList;
+	}
+
+	public int updateRecommendLikesCount(int recommendNo, String userId, String state) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new MovieDAO().updateLikesRecommend(conn, recommendNo, userId, state);
+			if(likes > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return likes;
+	}
+	
+	public ArrayList<MovieData> printLikesCount() {
+		ArrayList<MovieData> mList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			mList = new MovieDAO().selectMovieLikesCount(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mList;
+	}
+	
+	
+		
 }
