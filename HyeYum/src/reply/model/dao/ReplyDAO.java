@@ -209,12 +209,12 @@ public class ReplyDAO {
 		return recordTotalCount;
 	}
 
-	public ArrayList<Reply> selectReplyList(Connection conn, int showNo) {
+	public ArrayList<Reply> selectReplyList(Connection conn, int showNo) { // 댓글 ajax 용 출력
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Reply> replyList = null;
-		String query  = "SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO,NICK FROM SHOW_REVIEW_REPLY JOIN MEMBER USING(USER_ID) WHERE REVIEW_NO = ?";
+		String query  = "SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE ASC)AS NUM,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO,NICK FROM SHOW_REVIEW_REPLY JOIN MEMBER USING(USER_ID) WHERE REVIEW_NO = ?";
 			
 		try {
 			pstmt = conn.prepareStatement(query);

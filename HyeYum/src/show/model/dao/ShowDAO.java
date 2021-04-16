@@ -85,7 +85,7 @@ public class ShowDAO {
 		return showList;
 	}
 	
-	private int getLikeCount(Connection conn, int reviewNo) { // 좋아요 수 가져오기
+	public int getLikeCount(Connection conn, int reviewNo) { // 좋아요 수 가져오기
 		int count = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

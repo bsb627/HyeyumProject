@@ -62,13 +62,14 @@
 
 					<div class="portfolio-description">
 						<div class="icon-box">
-							<%if(likes == 0){ %>
+						<span id="heart-btn">heart</span>
+							<%-- <%if(likes == 0){ %>
 							<a href="/showReview/plusLikes?no=<%=review.getNo()%>"><i
 								class="bi bi-heart show-icon heart-like" ></i></a>
 							<%} else { %>
 							<a href="/showReview/minusLikes?no=<%=review.getNo()%>"><i
 								class="bi bi-heart-fill show-icon heart-hate"></i></a>
-							<%} %>
+							<%} %> --%>
 							
 							
 							<span data-toggle="modal"
@@ -79,6 +80,7 @@
 								class="bi bi-instagram instargram show-icon"
 								></i></a>
 						</div>
+						
 						<h2><%=review.getTitle()%></h2>
 						<p>
 							<%=review.getContents()%>
@@ -86,37 +88,42 @@
 					</div>
 
 					<div class="reply-box">
+					<span id="likesTotalCount"></span>
 						<h6 class="comments-count">
-							<strong>댓글 <%=totalCount %>개
-							</strong>
+							<%-- <strong>댓글 <%=totalCount %>개
+							</strong> --%>
+							<span id="totalCount"></span>
+							
 						</h6>
 
+								<span id="show-contents"></span>
 						<% for(Reply reply : rList){ %>
 						<div id="" class="show-reply">
 							<div class="">
 								<div class="show-contents">
-									<h6>
+									<%-- <h6>
 										<strong> <a href="#" style="color:#333"><%=reply.getNick() %></a> 
 										</strong>
 										<%=reply.getContents() %>
-									</h6>
+									</h6> --%>
 								</div>
 								
 							</div>
 						</div>
 						<!-- End comment #1 -->
 						<%} %>
-						<form action="/reply/write" method="get">
+						<!-- <form action="/reply/write" method="get"> -->
 							<div class="reply-form">
-								<input type="hidden" name="type" value="show"> <input
-									type="hidden" name="review-no" value="<%=review.getNo()%>">
-								<input type="text" class="form-control " name="comment"
+							<input type="hidden" id="user-id" name="user-id" value="<%=userId%>">
+								<input type="hidden" id="type" name="type" value="show"> <input
+									type="hidden" id="review-no" name="review-no" value="<%=review.getNo()%>">
+								<input type="text" class="form-control " id="comment" name="comment"
 									placeholder="댓글달기" required>
-								<button type="submit" class="btn btn-reply">
+								<button type="submit" id="comment-btn" class="btn btn-reply">
 									<small><strong>등록</strong></small>
 								</button>
 							</div>
-						</form>
+						<!-- </form> -->
 					</div>
 
 
@@ -168,8 +175,10 @@
 								</div>
 								<span class="post-date">
 							<i class="bi bi-eye"> <%=review.getHits()%></i>							
-							<i class="bi bi-chat-square-dots"> <%=review.getReplys() %></i>
-							<i class="bi bi-heart"> <%=review.getLikes() %></i>
+							<%-- <i class="bi bi-chat-square-dots"> <%=review.getReplys() %></i> --%>
+							<span id="replyCount"></span>&nbsp;
+							<%-- <i class="bi bi-heart"> <%=review.getLikes() %></i> --%>
+							<span id="likesCount"></span>
 						</span>
 							</div>
 							<!-- End comment #1 -->

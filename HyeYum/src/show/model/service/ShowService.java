@@ -373,4 +373,18 @@ public class ShowService {
 		// TODO Auto-generated method stub
 		return info;
 	}
+
+	public int getLikesCount(int showNo) {
+		int likes = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			likes = new ShowDAO().getLikeCount(conn,showNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return likes;
+	}
 }

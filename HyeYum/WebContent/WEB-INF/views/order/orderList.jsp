@@ -98,10 +98,21 @@
 							</div>
 							<!-- End blog sidebar -->
 						</div>
+						
+						
 										<div class="col-md-9 info-card">
 					
 					
-									CONTENTS
+									<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <div class="w-25 h-25 p-3" style="background-color: #eee">
+    <img src="/assets/img/product/palzzi3.png"/ style="width: 100%; height: 100%;">
+</div>
+    <h1 class="text-hide" style="background-image: url('/assets/img/product/palzzi3.png'); width: 50px; height: 50px;">Bootstrap</h1>
+  </div>
+</div>
 					</div>
 					
         </div><!--  end row  -->

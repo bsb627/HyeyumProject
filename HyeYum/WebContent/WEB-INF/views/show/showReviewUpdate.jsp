@@ -133,4 +133,4 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 <script type="text/javascript" src="/assets/js/note-ready.js"></script>
-<script type="text/javascript" src="/assets/js/show-detail.js"></script>
+<script type="text/javascript" src="/assets/js/show-update.js"></script>
