@@ -55,14 +55,14 @@
 								<% for(BookReview review : bList) { %>
 								<tr>
 									<td><%= review.getNo() %></td>
-									<td><a href="/bookReview/detail?review-no=<%= review.getNo()%>">
+									<td><a href="/bookReview/hitsCount?review-no=<%= review.getNo()%>">
 										 [<%= review.getDivision() %>]
 										<%= review.getTitle() %></a>
 									</td>
 									<td><%= review.getNick() %></td>
 									<td><%= review.getEnrollDate() %></td>
-									<td><%= review.getHits() %></td>
-									<td><%= review.getHits() %></td>
+									<td><%= review.getHits()%></td>
+									<td><%= review.getLikes() %></td>
 								</tr>
 								<% } %>
 							<div>

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import book.model.service.BookService;
 import book.model.vo.BookPageData;
@@ -34,19 +35,20 @@ public class BookReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		int currentPage = 0; 
 		if(request.getParameter("currentPage") == null) {
 			currentPage = 1; 
 		}else { 
-			currentPage = Integer.parseInt(request.getParameter("currentPage")); 
+				currentPage = Integer.parseInt(request.getParameter("currentPage")); 
 		} 
+		
+		
 		BookPageData pageData = new BookService().printAllBookReview(currentPage);
 		ArrayList<BookReview> bList = pageData.getReviewList(); 
 		String pageNavi = pageData.getPageNavi();
-		
-		System.out.println("blist : " + bList);
-		
+		System.out.println("List 서블릿, bList : " + bList);
 		if(!bList.isEmpty()) { 
 			request.setAttribute("bList",bList);
 			request.setAttribute("pageNavi", pageNavi); 

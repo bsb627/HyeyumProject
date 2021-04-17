@@ -39,6 +39,13 @@ public class BookShareDetailServlet extends HttpServlet {
 		String userId = (String)session.getAttribute("userId");
 		request.setCharacterEncoding("utf-8");
 		
+		int currentPage = 0;
+		if (request.getParameter("currentPage") == null) {
+			currentPage = 1;
+		}else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
 		int shareNo = 0;
 		try { // 디테일 화면에서 주는값과/ 수정완료 후 전달값이 형식이 달라서 
 			shareNo = Integer.parseInt(request.getParameter("share-no"));

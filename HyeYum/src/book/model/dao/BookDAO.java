@@ -109,6 +109,7 @@ public class BookDAO {
 				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				review.setHits(rset.getInt("HITS"));
 				bList.add(review);
+				System.out.println("DAO review selectall, review : "+review );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -117,6 +118,7 @@ public class BookDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("allselect DAO, bList : " + bList);
 		return bList;
 	}
 	public BookReview selectOneBookReview(Connection conn, int reviewNo) { //책리뷰 상세보기
@@ -138,11 +140,13 @@ public class BookDAO {
 				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				review.setHits(rset.getInt("HITS"));
 				review.setUserId(rset.getString("USER_ID"));
+				System.out.println("selectOne에서 getHits()" + review.getHits());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("DAO selectOne, review : HIT값확인 " + review.getHits());
 		return review;
 	}
 	public int insertBookReview(Connection conn, BookReview review) { // 책리뷰 등록
@@ -281,8 +285,24 @@ public class BookDAO {
 	public int searchTotalReviewCount(Connection conn, String search, String searchCategory) { // 책리뷰 검색
 		return 0;
 	}
-	public int updateHitsReview(Connection conn, int reviewNo) { //  게시글 조회수 증가
-		return 0;
+	public int updateHitsReview(Connection conn, int reviewNo) { //  게시글 조회수 증가 
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE BOOK_REVIEW SET HITS = (SELECT HITS FROM BOOK_REVIEW WHERE REVIEW_NO = ?)+1 WHERE REVIEW_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			pstmt.setInt(2, reviewNo);
+			System.out.println(String.format("%s %d", query, reviewNo));
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("DAO hits, result : " + result);
+		return result;
 	}
 	// Review 좋아요
 	public int insertLikesReview(Connection conn, int reviewNo, String userId) { // 게시글 좋아요 등록

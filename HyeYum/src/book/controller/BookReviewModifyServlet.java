@@ -42,6 +42,8 @@ public class BookReviewModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("BookReviewModifyServlet ================================================================");
+
 		int no = Integer.parseInt(request.getParameter("review-no"));
 		
 		BookReview review = new BookService().printOneBookReview(no);

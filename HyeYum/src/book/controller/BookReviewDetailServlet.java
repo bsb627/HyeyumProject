@@ -35,9 +35,17 @@ public class BookReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("BookReviewDetailServlet ================================================================");
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		request.setCharacterEncoding("utf-8");
+		
+		int currentPage = 0;
+		if (request.getParameter("currentPage") == null) {
+			currentPage = 1;
+		}else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
 		
 		int reviewNo = 0;
 		try {
