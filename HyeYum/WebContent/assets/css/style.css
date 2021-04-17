@@ -459,7 +459,8 @@ section {
 }
 
 .hero .btn-get-started span {
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -554,7 +555,8 @@ section {
 }
 
 .about .btn-read-more span {
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -635,7 +637,8 @@ section {
 .counts .count-box p {
   padding: 0;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
   font-size: 14px;
 }
 
@@ -946,7 +949,8 @@ section {
   font-size: 36px;
   color: #444444;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: 'Jua', sans-serif;
 }
 
 .pricing .price sup {
@@ -992,7 +996,8 @@ section {
   transition: none;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
   font-weight: 600;
   transition: 0.3s;
   border: 1px solid #4154f1;
