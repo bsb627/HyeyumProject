@@ -57,8 +57,8 @@
     <position height="508" width="576" x="1158" y="49"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="9" language="java" name="message.controller.MsgDeleteServlet" project="HyeYum" 
-    file="/HyeYum/src/message/controller/MsgDeleteServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="message.controller.MsgCancelServlet" project="HyeYum" 
+    file="/HyeYum/src/message/controller/MsgCancelServlet.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1306" y="169"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -112,12 +112,12 @@
     </display>  
   </class>  
   <dependency id="15">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="16">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
   </dependency>  
   <association id="17">    
     <end type="SOURCE" refId="3" navigable="false">      

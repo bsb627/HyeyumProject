@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.awt.TrayIcon.MessageType"%>
 <%@page import="message.model.vo.Message"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,6 +8,7 @@
 <%@include file="/header.jsp"%>
 <%
 	Message message = (Message)request.getAttribute("message");
+	SimpleDateFormat format2 = new SimpleDateFormat("YYYY-MM-dd a hh:mm:ss ");
 %>
 <head>
   <title>문화나눔, 혜윰 </title>
@@ -29,6 +31,19 @@
 		
       </div>
     </section><!-- End Breadcrumbs -->
+    <!-- ======= Services Section ======= -->
+			<section id="services" class="services">
+
+				<div class="container" data-aos="fade-up">
+					<div class="inner-page">
+						<header class="section-header">
+							<h2>Message</h2>
+							<p>받은 쪽지함</p>
+						</header>
+    <!-- ======= 사이드바 ======= -->    
+    
+    
+    
  <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
 								<div class="col-md-12">
@@ -100,8 +115,8 @@
 <form action = "/message/write/page/re">
        <article class="entry entry-single">   	
 			<ul style = "list-style:none; text-align : left; padding : 0; margin:0; color : navy">
-                <li  class="info"><i class="bi bi-person"></i>[작성자] <%= message.getSender() %> </li>     
-                <li class="info"><i class="bi bi-clock"></i>[날짜]  <%= message.getSendTime() %></li>
+                <li  class="info"><i class="bi bi-person"></i>[보낸 사람] <%= message.getSender() %> </li>     
+                <li class="info"><i class="bi bi-clock"></i>[보낸 시각]  <%= format2.format(message.getSendTime()) %> </li>
 			</ul><hr>
              <div style = "padding : 2%" align = "left">
              	<%= message.getContents() %>
@@ -125,6 +140,8 @@
 						</section>
  
 <!-- ----------------------------시작 --------------------------- -->
+  </div></div>
+</section>
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>

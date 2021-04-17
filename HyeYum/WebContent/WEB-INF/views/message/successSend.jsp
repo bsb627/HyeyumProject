@@ -91,9 +91,9 @@
 										
 	<div class="container" align = "center">
 
-	<form action = "/message/sentList">
-
-	<i style = "font-size:100px" class="bi bi-envelope"></i><i style = "font-size:100px" class="bi bi-forward-fill"></i><i style = "font-size:100px" class="bi bi-mailbox"></i><br>
+	<form action = "/message/sentList" style = "text-align:center">
+	<img src = "/assets/img/qna/sendMsg.png">
+	<!-- <i style = "font-size:100px" class="bi bi-envelope"></i><i style = "font-size:100px" class="bi bi-forward-fill"></i><i style = "font-size:100px" class="bi bi-mailbox"></i> --><br>
 	<p style = "font-size:25px">전송되었습니다. </p>
 	
 	<input  type = "submit" value = "확인" class="btn btn-primary">

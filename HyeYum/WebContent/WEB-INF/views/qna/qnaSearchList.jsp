@@ -1,4 +1,4 @@
-<%@page import="qna.model.vo.Qna"%>
+ <%@page import="qna.model.vo.Qna"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,20 +8,19 @@
 %>
 <%@include file="/header.jsp"%>
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-	<!-- <script>
-	$('#exampleModal').on('show.bs.modal', function (event) {
-		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var recipient = button.data('') // Extract info from data-* attributes
-		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-		  var modal = $(this)
-		  modal.find('.modal-title').text('New message to ' + recipient)
-		  modal.find('.modal-body input').val(recipient)
-		})
-	</script> -->
+<style>
+
+a:visited.contents {
+	color : gray;
+}
+a:hover.contents {
+	font-weight : bold;
+}
+
+</style>
 
   <title>문화나눔, 혜윰 - QnA</title>
 
@@ -42,6 +41,14 @@
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
+    <div class="container" data-aos="fade-up">
+			<header class="section-header">
+				<h2>QnA</h2>
+				<p class="pcomment">문의 게시글 검색 결과</p>
+			</header>
+			</div>
+    
+    
       <div class="container">
       	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">
@@ -50,9 +57,7 @@
 		<!--  시작  -->
 		
 		<div class = "col-7" style = "float : left">
-		<form action = "/question/write" method = "get" class = "form-inline">
-			<input type = "submit" value = "문의 등록" class ="btn btn-primary mb-3" >
-		</form>
+
 		</div>
 		<div  style = "float : left" class = "col-auto" align = "right">
 			<form class="row g-3" class = "form-inline"" action ="/qna/search" method = "get">
@@ -85,7 +90,7 @@
       			<tr>
       				<td><%= qna.getQnaNo()%></td>
       				<td><%= qna.getCategory() %> </td>
-      				<td><a href="/qna/pass?qnaNum=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
+      				<td><a class = "contents" href="/qna/pass?qnaNum=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a></td>
       				<td><%= qna.getUserId()%></td>
       				<td><%= qna.getEnrollDate()%></td>
       				<td><%= qna.getHits() %></td>
@@ -93,6 +98,10 @@
 			</tr>
       		<% } %>
       		</table>
+      		
+      	<form action = "/question/write" method = "get" class = "form-inline" style = "float:right">
+		<input type = "submit" value = "문의 등록" class ="btn btn-primary mb-3" >
+		</form> <br><br>
       		<div align = "center"><%= pageNavi %></div>
       	</div>
       <!--===============================비밀번호 모달 창==========================================  -->

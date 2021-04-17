@@ -24,7 +24,12 @@
  
 <!-- ----------------------------시작 --------------------------- -->
     <section class="inner-page">
-    			
+		<div class="container" data-aos="fade-up">
+			<header class="section-header">
+				<h2>QnA</h2>
+				<p class="pcomment">문의 게시글 작성</p>
+			</header>
+			</div>    			
       <div class="container">
       	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">

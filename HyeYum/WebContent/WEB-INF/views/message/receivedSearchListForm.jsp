@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.awt.TrayIcon.MessageType"%>
 <%@page import="message.model.vo.Message"%>
 <%@page import="java.util.ArrayList"%>
@@ -8,6 +9,7 @@
 <%
 ArrayList<Message> searchList = (ArrayList<Message>)request.getAttribute("searchList");
 String pageNavi = (String)request.getAttribute("pageNavi");
+SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 <head>
@@ -23,17 +25,25 @@ $("#check-all").on("click", function () {
 	  	$(".checkbox").prop("checked", false);
 	  }
 	});
+$("#delete").submit(function() {
+	alert("삭제하시겠습니까?");
+	return true;
+});
 });
 </script>
 
 
 <style>
 
+
 a:link.contents {
 	color : navy;
 }
 a:visited.contents {
 	color : gray;
+}
+a:hover.contents {
+	font-weight : bold;
 }
 
 	</style>
@@ -57,6 +67,16 @@ a:visited.contents {
     </section>
     
     <!-- End Breadcrumbs -->
+    <!-- ======= Services Section ======= -->
+			<section id="services" class="services">
+
+				<div class="container" data-aos="fade-up">
+					<div class="inner-page">
+						<header class="section-header">
+							<h2>Message</h2>
+							<p>받은 쪽지 검색 결과</p>
+						</header>
+    <!-- ======= 사이드바 ======= -->  
     
     <!-- ======= 사이드바 ======= -->
   <section id="blog" class="blog" >
@@ -144,19 +164,21 @@ a:visited.contents {
       	</div>
 										
     <div class="container" align = "center">
+    
+    <form action="/message/delete/received" method = "get" id = "delete">
     <table class = "table" style = "text-align:center">
     	<tr>
     		<th><input type = "checkbox" id = "check-all"></th>
     		<th> </th>
     		<th>내용</th>
     		<th>보낸 사람</th>
-    		<th>보낸 시간</th>
+    		<th>보낸 날짜</th>
     		
     	</tr>
     	
     	<% for( Message message : searchList) {%>
     		<tr>
-    			<td><input type = "checkbox" class="checkbox">
+    			<td><input type = "checkbox" class="checkbox" name = "checkbox" value = "<%= message.getMessageNo() %>">
     			<td>
     				
  					<% if( message.getReadState().equals("읽음") ) {%>
@@ -167,16 +189,26 @@ a:visited.contents {
     				
     			</td>
     			<td>
+    			<% if (message.getContents().length() > 30) { %>
+    			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
+    			<%= message.getContents().substring(0,30) %>  ...</a>
+    			<% } else {%>
     			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
+    			<% } %>
     			</td>
     			<td><%= message.getReceiver() %></td>
-    			<td><%= message.getSendTime() %></td>
+    			<td><%= format1.format(message.getSendTime())%></td>
     			
     		</tr>
     	<% } %>
     
     </table>
+  
+    <input type = "hidden" value = "MESSAGERE" name = "table">
+    <input type = "submit" value ="삭제" style = "float:right" class = "btn btn-danger">
+    </form>
+    <br><br>
     <div align = "center"><%= pageNavi %></div>
     
 	</div>
@@ -190,7 +222,8 @@ a:visited.contents {
 							</div>
 						</section>
 <!-- ----------------------------시작 --------------------------- -->
-
+  </div></div>
+</section>
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>

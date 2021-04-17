@@ -16,14 +16,14 @@ import qna.model.service.QnaService;
 /**
  * Servlet implementation class MessageDeleteServlet
  */
-@WebServlet("/message/delete")
-public class MsgDeleteServlet extends HttpServlet {
+@WebServlet("/message/cancel")
+public class MsgCancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgDeleteServlet() {
+    public MsgCancelServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,9 @@ public class MsgDeleteServlet extends HttpServlet {
 		response.setContentType("text/html; charset = UTF-8");
 		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
 		
-		int result = new MessageService().deleteMessage(messageNo);
- 		if( result > 0 ) {
+		int result = new MessageService().cancelMessage(messageNo);
+		int result2 = new MessageService().cancelMessage2(messageNo);
+ 		if( result > 0 && result2 > 0) {
  			PrintWriter out = response.getWriter();
  			out.println("<script>alert('전송 취소 되었습니다.')</script>");
  			RequestDispatcher view = request.getRequestDispatcher("/message/sentList");

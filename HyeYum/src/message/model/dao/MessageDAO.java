@@ -122,7 +122,7 @@ public class MessageDAO {
 	private int totalCountRe(Connection conn, String userId) {
 			Statement stmt = null;
 			ResultSet rset = null;
-			String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MESSAGE WHERE RECEIVER = '" + userId +"'";
+			String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MESSAGERE WHERE RECEIVER = '" + userId +"'";
 			int recordTotalCount = 0;
 			try {
 				stmt = conn.createStatement();
@@ -145,7 +145,7 @@ public class MessageDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Message> sentMsgList = null;
-		String query = "SELECT *FROM (SELECT ROW_NUMBER() OVER (ORDER BY MESSAGE_NO DESC) AS NUM, MESSAGE_NO, CONTENTS, SEND_DATE, READ_STATE, RECEIVER, SENDER FROM MESSAGE WHERE RECEIVER = ? ) WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT *FROM (SELECT ROW_NUMBER() OVER (ORDER BY MESSAGE_NO DESC) AS NUM, MESSAGE_NO, CONTENTS, SEND_DATE, READ_STATE, RECEIVER, SENDER FROM MESSAGERE WHERE RECEIVER = ? ) WHERE NUM BETWEEN ? AND ?";
 		
 		int recordCountPerPage = 10;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
@@ -225,13 +225,15 @@ public class MessageDAO {
 		}
 
 	// 메시지 하나 출력 
-	public Message selectOne(Connection conn, int messageNo) {
+	public Message selectOne(Connection conn, int messageNo, String table) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Message message = new Message();
-		String query = "SELECT * FROM MESSAGE WHERE MESSAGE_NO = ?";
+		
+		String query = "SELECT * FROM "+ table +" WHERE MESSAGE_NO = ?";
 		try {
 			pstmt = conn.prepareStatement(query);
+			//pstmt.setString(1, table);
 			pstmt.setInt(1, messageNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
@@ -252,7 +254,9 @@ public class MessageDAO {
 		return message;
 	}
 	
-	// 메시지 삭제
+
+	
+	// (전송 취소 기능) 보낸 메시지 삭제 
 	public int deleteMessage(Connection conn, int messageNo) {
 		PreparedStatement pstmt = null;
 		String query = "DELETE FROM MESSAGE WHERE MESSAGE_NO = ?";
@@ -270,8 +274,28 @@ public class MessageDAO {
 		}
 		return result;
 	}
+	
+	// (전송 취소 기능) 받은 메시지 삭제 
+	public int deleteMessage2(Connection conn, int messageNo) {
+		PreparedStatement pstmt = null;
+		String query = "DELETE FROM MESSAGERE WHERE MESSAGE_NO = ?";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,	messageNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	
 
-	// 메시지 전송 
+	// 보낸 메시지 테이블에 메시지 전송 
 	public int insertMessage(Connection conn, Message message) {
 
 		PreparedStatement pstmt = null;
@@ -286,6 +310,28 @@ public class MessageDAO {
 			pstmt.setString(4, message.getSender());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	// 보낸 메시지 테이블 읽음여부 업데이트 
+	public int updateReadState(Connection conn, int messageNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MESSAGE SET READ_STATE = ? WHERE MESSAGE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, "읽음");
+			pstmt.setInt(2, messageNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
@@ -295,11 +341,11 @@ public class MessageDAO {
 		return result;
 	}
 	
-	// 읽음여부 업데이트 
-	public int updateReadState(Connection conn, int messageNo) {
+	// 받은 메시지 테이블 읽음 여부 업데이트 
+	public int updateReadState2(Connection conn, int messageNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "UPDATE MESSAGE SET READ_STATE = ? WHERE MESSAGE_NO = ?";
+		String query = "UPDATE MESSAGERE SET READ_STATE = ? WHERE MESSAGE_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -317,11 +363,12 @@ public class MessageDAO {
 	}
 	
 	
+	
 	// 받은 메시지 검색
 		public ArrayList<Message> selectSearchList(Connection conn,  String searchCategory,String search, int currentPage, String userId) {
 			PreparedStatement pstmt  = null;
 			ResultSet rset = null;
-			String query = "SELECT * FROM ( SELECT ROW_NUMBER() OVER (ORDER BY MESSAGE_NO DESC)AS NUM, MESSAGE_NO, CONTENTS, SEND_DATE, READ_STATE, RECEIVER, SENDER FROM MESSAGE WHERE "+ searchCategory +" LIKE ? AND RECEIVER = ?) WHERE NUM BETWEEN ? AND ?";
+			String query = "SELECT * FROM ( SELECT ROW_NUMBER() OVER (ORDER BY MESSAGE_NO DESC)AS NUM, MESSAGE_NO, CONTENTS, SEND_DATE, READ_STATE, RECEIVER, SENDER FROM MESSAGERE WHERE "+ searchCategory +" LIKE ? AND RECEIVER = ?) WHERE NUM BETWEEN ? AND ?";
 			ArrayList<Message> searchList = null;
 			int recordCountPerPage = 10 ; 
 			int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
@@ -397,13 +444,14 @@ public class MessageDAO {
 			// a태그 만드는 코드
 			StringBuilder sb = new StringBuilder();
 			if(needPrev) {
-				sb.append("<a href='/message/search/received?search-keyword="+search+ "&currentPage="+ (startNavi-1)+"'> 이전 </a>");
+				sb.append("<a href='/message/search/received?search-keyword="+search+ "search-category="+searchCategory+"&currentPage="+ (startNavi-1)+"'> 이전 </a>");
 			}
 			for(int i = startNavi; i <= endNavi; i++) {
-				sb.append("<a href='/message/search/received?search-keyword="+search+ "&currentPage=" + i + "'>"+ i + "    </a>");
+				if( currentPage == i) {sb.append("<a href='/message/search/received?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage=" + i + "'>"+ "<input type = 'button' class = 'btn btn-outline-primary  active' value = '"+ i + "'>    </a>"); }
+				else {sb.append("<a href='/message/search/received?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage=" + i + "'>"+ "<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>    </a>");}
 			}
 			if(needNext) {
-				sb.append("<a href='/message/search/received?search-keyword="+search+ "&currentPage="+ (endNavi+1)+"'> 다음 </a>");
+				sb.append("<a href='/message/search/received?search-keyword="+search+ "&search-category="+searchCategory+"currentPage="+ (endNavi+1)+"'> 다음 </a>");
 			}
 			
 			return sb.toString();
@@ -481,7 +529,7 @@ public class MessageDAO {
 	public String getSearchPageNaviSent(Connection conn, String searchCategory, String search, int currentPage, String userId) {
 		int recordCountPerPage = 10;
 		int naviCountPerPage = 5; 
-		int recordTotalCount = searchTotalCountSent(conn,  searchCategory, search, userId); 
+		int recordTotalCount = searchTotalCountSent(conn,searchCategory, search, userId); 
 		
 		int pageTotalCount = 0; 
 		if( recordTotalCount % recordCountPerPage > 0) { 
@@ -514,19 +562,18 @@ public class MessageDAO {
 		// a태그 만드는 코드
 		StringBuilder sb = new StringBuilder();
 		if(needPrev) {
-			sb.append("<a href='/message/search/sent?search-keyword="+search+ "&currentPage="+ (startNavi-1)+"'> 이전 </a>");
+			sb.append("<a href='/message/search/sent?search-keyword="+search+ "&serach-category="+searchCategory+"currentPage="+ (startNavi-1)+"'> 이전 </a>");
 		}
 		for(int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='/message/search/sent?search-keyword="+search+ "&currentPage=" + i + "'>"+ i + "    </a>");
+			if( currentPage == i) {sb.append("<a href='/message/search/sent?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage=" + i + "'>"+ "<input type = 'button' class = 'btn btn-outline-primary active' value = '"+ i + "'>    </a>"); }
+			else {sb.append("<a href='/message/search/sent?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage=" + i + "'>"+ "<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>    </a>");}
 		}
 		if(needNext) {
-			sb.append("<a href='/message/search/sent?search-keyword="+search+ "&currentPage="+ (endNavi+1)+"'> 다음 </a>");
+			sb.append("<a href='/message/search/sent?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage="+ (endNavi+1)+"'> 다음 </a>");
 		}
 		return sb.toString();
 	}
-	
-	
-	
+// 보낸 메시지 검색 토탈 카운트
 	public int searchTotalCountSent(Connection conn, String searchCategory , String search, String userId) {
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
@@ -552,21 +599,48 @@ public class MessageDAO {
 	return recordTotalCount;
 	
 }
+	
+	
+	
 //선택된 메세지들 삭제
-//	public int deleteMessages(Connection conn, String msgNo) {
-//		Statement stmt = null;
-//		String query = "DELETE FROM QNA WHERE QNA_NO IN ("+msgNo+")";
-//		int result = 0;
-//		
-//		try {
-//			stmt = conn.createStatement();
-//			result = stmt.executeUpdate(query);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			JDBCTemplate.close(stmt);
-//		}
-//		return result;
-//	}
+	public int deleteMessages(Connection conn, String msgNo, String table) {
+		Statement stmt = null;
+		String query = "DELETE FROM "+ table + " WHERE MESSAGE_NO IN ("+ msgNo +")";
+		int result = 0;
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		return result;
+	}
+
+	
+	//==============받은 메시지 테이블에 메시지 추가============//
+	public int insertMessage2(Connection conn, Message message) {
+		PreparedStatement pstmt = null;
+		int result2 = 0;
+		String query = "INSERT INTO MESSAGERE VALUES(MSG_NO2.NEXTVAL, ?, SYSDATE, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, message.getContents());
+			pstmt.setString(2, message.getReadState());
+			pstmt.setString(3, message.getReceiver());
+			pstmt.setString(4, message.getSender());
+			result2 = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result2;
+	}
 }

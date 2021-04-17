@@ -238,7 +238,7 @@ public class QnaDAO {
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);
 			rset = pstmt.executeQuery();
-			System.out.println("rset : " + rset);
+			
 			searchList = new ArrayList<Qna>();
 			while(rset.next()) {
 				Qna qna = new Qna();
@@ -302,13 +302,14 @@ public class QnaDAO {
 		// a태그 만드는 코드
 		StringBuilder sb = new StringBuilder();
 		if(needPrev) {
-			sb.append("<a href='/qna/search?search-keyword="+search+ "&currentPage="+ (startNavi-1)+"'> 이전 </a>");
+			sb.append("<a href='/qna/search?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage="+ (startNavi-1)+"'> 이전 </a>");
 		}
 		for(int i = startNavi; i <= endNavi; i++) {
-			sb.append("<a href='/qna/search?search-keyword="+search+ "&currentPage=" + i + "'>"+ i + "    </a>");
+			if( currentPage == i) {sb.append("<a href='/qna/search?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage=" + i + "'>"+ "<input type = 'button' class = 'btn btn-outline-primary  active' value = '"+ i + "'>    </a>"); }
+			else {sb.append("<a href='/qna/search?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage=" + i + "'>"+ "<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>    </a>");}
 		}
 		if(needNext) {
-			sb.append("<a href='/qna/search?search-keyword="+search+ "&currentPage="+ (endNavi+1)+"'> 다음 </a>");
+			sb.append("<a href='/qna/search?search-keyword="+search+ "&search-category="+searchCategory+"&currentPage="+ (endNavi+1)+"'> 다음 </a>");
 		}
 		return sb.toString();
 	}

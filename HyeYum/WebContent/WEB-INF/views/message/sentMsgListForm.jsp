@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.awt.TrayIcon.MessageType"%>
 <%@page import="message.model.vo.Message"%>
 <%@page import="java.util.ArrayList"%>
@@ -8,6 +9,8 @@
 <%
 ArrayList<Message> sentMsgList = (ArrayList<Message>)request.getAttribute("sentMsgList");
 String pageNavi = (String)request.getAttribute("pageNavi");
+SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+
 %>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,19 +25,25 @@ $("#check-all").on("click", function () {
 	  	$(".checkbox").prop("checked", false);
 	  }
 	});
+	
+function cancel() {
+	alert("전송 취소 하시겠습니까?");
+}
 });
 </script>
 
 <style>
-a:link.msg {
+
+a:link.contents {
 	color : navy;
 }
-a:visited.msg {
+a:visited.contents {
 	color : gray;
 }
-a:hover.msg {
-	font-weight: bold;
+a:hover.contents {
+	font-weight : bold;
 }
+
 </style>
 
 
@@ -155,6 +164,8 @@ a:hover.msg {
 										
     <div class="container" align = "center">
 
+
+	<form action = "/message/delete/sent" method = "get" id="delete">
     <table class = "table" style = "text-align:center">
     	<tr>
     		<th><input type = "checkbox" id="check-all"></th>
@@ -165,15 +176,22 @@ a:hover.msg {
     		<th>전송 취소</th>
     	</tr>
     	
-    	<% for( Message message : sentMsgList) {%>
+    	<% for( Message message : sentMsgList)  {%>
     		<tr>
-    			<td><input type = "checkbox" id ="checkbox" name = "checkbox">
+    			<td><input type = "checkbox" id ="checkbox" name = "checkbox" value ="<%= message.getMessageNo() %>">
     			<td>
-    			<a class="msg" href = "/message/detail?msgNo=<%= message.getMessageNo() %>">
+    			<% if (message.getContents().length() > 30) { %>
+    			<a class="contents" href = "/message/detail/sent?msgNo=<%= message.getMessageNo() %>">
+    			<%= message.getContents().substring(0,30) %>  ...</a>
+    			<% } else {%>
+    			<a class="contents" href = "/message/detail/sent?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
+    			<% } %>
     			</td>
     			<td><%= message.getReceiver() %></td>
-    			<td><%= message.getSendTime() %></td>
+    			
+    			
+    			<td><%= format1.format(message.getSendTime()) %></td>
     			<td>
     			<% if( message.getReadState().equals("읽음") ) {%>
       					<i class="bi bi-envelope-open"></i>
@@ -185,13 +203,16 @@ a:hover.msg {
     			<% if( message.getReadState().equals("읽음") ) {%>
       				
       			<% } else { %>
-      				<a href = "/message/delete?msgNo=<%= message.getMessageNo() %>"><input type = "button" value = "전송취소" class="btn btn-outline-primary btn-sm"></a>
+      				<a id = "cancel" onclick = "cancel();" href = "/message/cancel?msgNo=<%= message.getMessageNo() %>"><input type = "button" value = "전송취소" class="btn btn-outline-primary btn-sm"></a>
       			<% } %>
     			</td>
     		</tr>
     	<% } %>
     </table>
-    <button id="btn-remove" class="btn btn-danger" style = "float:right">삭제</button><br><br><br>
+    <input type = "hidden" value = "MESSAGE" name = "table">
+    <input type = "submit" value="삭제" class = "btn btn-danger" style = "float:right">
+   </form>
+   <br><br>
     <div align = "center"><%= pageNavi %></div>
     
 	</div>

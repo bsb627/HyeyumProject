@@ -52,12 +52,12 @@ public class MessageService {
 		return pd;
 	}
 	// 메시지 하나 출력
-	public Message printOne(int messageNo) {
+	public Message printOne(int messageNo, String table) {
 		Connection conn = null;
 		Message message = null;
 		try {
 			conn = factory.createConnection();
-			message = new MessageDAO().selectOne(conn, messageNo);
+			message = new MessageDAO().selectOne(conn, messageNo, table);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,11 +67,11 @@ public class MessageService {
 		return message;
 	}
 	
-	// 메시지 보내기
+	
+	// 보낸 메시지 테이블에 메시지 보내기
 	public int sendMessage(Message message) {
 		Connection conn = null;
 		int result = 0;
-		
 		try {
 			conn = factory.createConnection();
 			result = new MessageDAO().insertMessage(conn, message);
@@ -89,9 +89,34 @@ public class MessageService {
 		return result;
 		
 	}
+	
+	//받은 메시지 테이블에 보내기
+	public int sendMessage2(Message message) {
+		Connection conn = null;
+		int result2 = 0;
+		try {
+			conn = factory.createConnection();
+			result2 = new MessageDAO().insertMessage2(conn, message);
+			if( result2 > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result2;
+		
+	}
+	
+	
+	
 
-	// 메시지 삭제
-	public int deleteMessage(int messageNo) {
+	// 메시지 전송 취소 - 보낸 메시지함 삭제
+	public int cancelMessage(int messageNo) {
 
 		Connection conn = null;
 		int result = 0;
@@ -99,6 +124,29 @@ public class MessageService {
 		try {
 			conn = factory.createConnection();
 			result = new MessageDAO().deleteMessage(conn, messageNo);
+			if( result > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+	
+	// 메시지 전송 취소 - 받은 메시지함 삭제
+	public int cancelMessage2(int messageNo) {
+
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = factory.createConnection();
+			result = new MessageDAO().deleteMessage2(conn, messageNo);
 			if( result > 0 ) {
 				JDBCTemplate.commit(conn);
 			} else {
@@ -149,6 +197,8 @@ public class MessageService {
 		return pd;
 		
 	}
+	
+	// 보낸메시지 테이블 읽음여부 변경
 	public int updateReadState(int messageNo) {
 		int result = 0;
 		Connection conn = null;
@@ -169,6 +219,55 @@ public class MessageService {
 		return result;
 		
 	}
+	
+	//받은 메시지 테이블 읽음으로 변경 
+	public int updateReadState2(int messageNo) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new MessageDAO().updateReadState2(conn, messageNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+		
+	}
+	
+	
+	public int deleteMessages(String msgNo, String table) {
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = factory.createConnection();
+			result = new MessageDAO().deleteMessages(conn, msgNo, table);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
 //	public int deleteMessages(String msgNo) {
 //		Connection conn = null;
 //		int result = 0;

@@ -36,11 +36,12 @@ public class MsgReceivedDetailServlet extends HttpServlet {
 		response.setContentType("text/html; charset = UTF-8");
 		
 		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
-		
-		Message message = new MessageService().printOne(messageNo);
+		String table = "MESSAGERE";
+		Message message = new MessageService().printOne(messageNo, table);
 		
 		if( message!=null) {
 			new MessageService().updateReadState(messageNo);
+			new MessageService().updateReadState2(messageNo);
 			request.setAttribute("message", message);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/receivedDetailForm.jsp");
 			view.forward(request, response);

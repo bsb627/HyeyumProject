@@ -18,13 +18,13 @@ import message.model.vo.Message;
  * Servlet implementation class MsgSendServlet
  */
 @WebServlet("/message/send/pop")
-public class MsgSendServlet extends HttpServlet {
+public class MsgSendPopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgSendServlet() {
+    public MsgSendPopServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -58,10 +58,13 @@ public class MsgSendServlet extends HttpServlet {
 		message.setReadState("읽지않음");
 		
 		int result = new MessageService().sendMessage(message);
-		
-		if( result > 0 ) {
+		int result2 = new MessageService().sendMessage2(message);
+		if( result > 0 && result2 > 0) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('전송되었습니다.');window.open('','_self').close();</script>");
+		} else {
+			
+			
 		}
 	}
 

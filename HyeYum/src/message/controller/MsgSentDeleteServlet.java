@@ -1,8 +1,6 @@
 package message.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import message.model.service.MessageService;
-import message.model.vo.Message;
+import qna.model.service.QnaService;
 
 /**
- * Servlet implementation class MessageDetailServlet
+ * Servlet implementation class MsgDeleteServlet
  */
-@WebServlet("/message/detail/sent")
-public class MsgSentDetailServlet extends HttpServlet {
+@WebServlet("/message/delete/sent")
+public class MsgSentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MsgSentDetailServlet() {
+    public MsgSentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,19 +29,20 @@ public class MsgSentDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset = UTF-8");
+		String [] checkBoxes = request.getParameterValues("checkbox");
+		String msgNo = "";
+		String table = request.getParameter("table");
+		for( String checkBox : checkBoxes) {
+			if( checkBox.equals(checkBoxes[checkBoxes.length -1 ])) {
+				msgNo += checkBox;
+			} else {
+				msgNo += checkBox + ",";
+			}
+		}
 		
-		int messageNo = Integer.parseInt(request.getParameter("msgNo"));
-		String table = "MESSAGE";
-		Message message = new MessageService().printOne(messageNo, table);
-	
-		if( message!=null) {
-			
-			request.setAttribute("message", message);
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/sentDetailForm.jsp");
-			view.forward(request, response);
+		int result = new MessageService().deleteMessages(msgNo, table);
+		if(result > 0) {
+			response.sendRedirect("/message/sentList");
 		}
 	}
 

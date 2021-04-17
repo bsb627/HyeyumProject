@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.awt.TrayIcon.MessageType"%>
 <%@page import="message.model.vo.Message"%>
 <%@page import="java.util.ArrayList"%>
@@ -8,6 +9,7 @@
 <%
 ArrayList<Message> receivedList = (ArrayList<Message>)request.getAttribute("receivedList");
 String pageNavi = (String)request.getAttribute("pageNavi");
+SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 <head>
@@ -23,6 +25,10 @@ $("#check-all").on("click", function () {
 	  	$(".checkbox").prop("checked", false);
 	  }
 	});
+$("#delete").submit(function() {
+	alert("삭제하시겠습니까?");
+	return true;
+});
 });
 </script>
 
@@ -35,8 +41,11 @@ a:link.contents {
 a:visited.contents {
 	color : gray;
 }
+a:hover.contents {
+	font-weight : bold;
+}
 
-	</style>
+</style>
 	
   <title>문화나눔, 혜윰 </title>
 </head>
@@ -152,19 +161,21 @@ a:visited.contents {
       	</div>
 										
     <div class="container" align = "center">
+    
+    <form action = "/message/delete/received" method = "get" id = "delete">
     <table class = "table" style = "text-align:center">
     	<tr>
     		<th><input type = "checkbox" id = "check-all"></th>
     		<th> </th>
     		<th>내용</th>
     		<th>보낸 사람</th>
-    		<th>보낸 시간</th>
+    		<th>보낸 날짜</th>
     		
     	</tr>
     	
     	<% for( Message message : receivedList) {%>
     		<tr>
-    			<td><input type = "checkbox" class="checkbox">
+    			<td><input type = "checkbox" class="checkbox" name = "checkbox" value = "<%= message.getMessageNo() %>">
     			<td>
     				
  					<% if( message.getReadState().equals("읽음") ) {%>
@@ -175,16 +186,28 @@ a:visited.contents {
     				
     			</td>
     			<td>
+    			
+    			<% if (message.getContents().length() > 30) { %>
+    			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
+    			<%= message.getContents().substring(0,30) %>  ...</a>
+    			<% } else {%>
     			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
+    			<% } %>
+    			
+    			
     			</td>
-    			<td><%= message.getReceiver() %></td>
-    			<td><%= message.getSendTime() %></td>
+    			<td><%= message.getSender() %></td>
+    			<td><%= format1.format(message.getSendTime())%></td>
     			
     		</tr>
     	<% } %>
     
     </table>
+    <input type = "hidden" value = "MESSAGERE" name = "table">
+    <input type = "submit" value="삭제" class = "btn btn-danger" style = "float:right">
+    </form>
+    <br><br>
     <div align = "center"><%= pageNavi %></div>
     
 	</div>

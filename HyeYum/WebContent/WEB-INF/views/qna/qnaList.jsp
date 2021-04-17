@@ -54,12 +54,22 @@ function msgPop(receiveId) {
 	position : absolute;
 	background : white;
 	border:1px solid #ddd;
-	
+	border-radius: 5px;
 	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .msgbox:hover {
 	color: gray !important;
 }
+
+
+
+a:visited.contents {
+	color : gray;
+}
+a:hover.contents {
+	font-weight : bold;
+}
+
 </style>
 </head>
  <main id="main">
@@ -67,17 +77,22 @@ function msgPop(receiveId) {
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
       <div class="container">
-
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마당</li>
         </ol>
         <h2>문의혜윰</h2>
-
       </div>
     </section><!-- End Breadcrumbs -->
-
-    <section class="inner-page">
+  <section class="inner-page">
+    		<div class="container" data-aos="fade-up">
+			<header class="section-header">
+				<h2>QnA</h2>
+				<p class="pcomment">문의 게시판</p>
+			</header>
+			</div>
+    
+    
       <div class="container">
       	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">
@@ -122,10 +137,10 @@ function msgPop(receiveId) {
       				<td style = "text-align : left">
       				
  					<% if( qna.getStep() !=0) {%>
-      				<img src = "/assets/img/qna/qqq.gif"/>
-      				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
+      				<img src = "/assets/img/qna/qnaQQ.png"/>
+      				<a class = "contents" href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
       				<% } else { %>
-      				<a href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
+      				<a class = "contents" href="/qna/detail?qnaNo=<%= qna.getQnaNo() %>" ><%= qna.getTitle()%></a>
       				<% } %>
       				</td>
    

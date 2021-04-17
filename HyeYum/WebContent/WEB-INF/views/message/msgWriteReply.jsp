@@ -47,6 +47,17 @@
 		
       </div>
     </section><!-- End Breadcrumbs -->
+			<section id="services" class="services">
+
+				<div class="container" data-aos="fade-up">
+					<div class="inner-page">
+						<header class="section-header">
+							<h2>Message</h2>
+							<p>답장 쓰기</p>
+						</header>     
+    
+    
+    
  <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
 								<div class="col-md-12">
@@ -136,7 +147,8 @@
 							</div>
 						</section>
 <!-- ----------------------------시작 --------------------------- -->
-
+  </div></div>
+</section>
 
   </main><!-- End #main -->
 

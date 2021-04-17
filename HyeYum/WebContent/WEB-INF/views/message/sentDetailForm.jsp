@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.awt.TrayIcon.MessageType"%>
 <%@page import="message.model.vo.Message"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,13 +8,19 @@
 <%@include file="/header.jsp"%>
 <%
 	Message message = (Message)request.getAttribute("message");
+	SimpleDateFormat format2 = new SimpleDateFormat("YYYY-MM-dd  a hh:mm:ss ");
 %>
 <head>
   <title>문화나눔, 혜윰 </title>
-  <script>
-
-  	
-  </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#delete").submit(function() {
+		alert("삭제하시겠습니까?");
+		return true;
+	});
+});
+</script>
   
 </head>
 
@@ -31,6 +38,18 @@
 		
       </div>
     </section><!-- End Breadcrumbs -->
+  <!-- ======= Services Section ======= -->
+			<section id="services" class="services">
+
+				<div class="container" data-aos="fade-up">
+					<div class="inner-page">
+						<header class="section-header">
+							<h2>Message</h2>
+							<p>보낸 쪽지함</p>
+						</header>       
+    
+    
+    
   <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
 								<div class="col-md-12">
@@ -99,19 +118,20 @@
 										
     <div class="container" align = "center">
 
-<form action ="/message/delete" method = "get">
+<form action ="/message/delete/sent" method = "get" id = "delete">
  <article class="entry entry-single">
  
 		<ul style = "list-style:none; text-align : left; padding : 0; margin:0; color : navy">
               <li  class="info"><i class="bi bi-person"></i>[받는 사람] : <%= message.getReceiver() %></li>     
-              <li class="info"><i class="bi bi-clock"></i>[날짜] : <%= message.getSendTime() %></li>
+              <li class="info"><i class="bi bi-clock"></i>[보낸 시각] : <%= format2.format(message.getSendTime()) %></li>
 		</ul>
 		<hr>
         <div style = "padding : 2%" align = "left">
            	<%= message.getContents() %>
         </div>
 </article>
-	<input type ="hidden" name = "message-no" value = "<%= message.getMessageNo() %>">
+	<input type ="hidden" name = "table" value = "MESSAGE">
+	<input type ="hidden" name = "checkbox" value = "<%= message.getMessageNo() %>">
 	<input type = "submit" value = "삭제" style = "float: right" class="btn btn-outline-danger">
 </form>
 <br><br><br><br><br>
@@ -133,7 +153,8 @@
     <section class="inner-page">
 
     </section>
-
+  </div></div>
+</section>
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>

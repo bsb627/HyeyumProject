@@ -42,7 +42,12 @@
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">		
-    	
+    	<div class="container" data-aos="fade-up">
+			<header class="section-header">
+				<h2>QnA</h2>
+				<p class="pcomment">문의 게시판</p>
+			</header>
+			</div>
       	<div align = "center" class="hero-img" data-aos="zoom-out" data-aos-delay="200">
 			<img src="/assets/img/qna/qna.jpg" class="img-fluid" alt="">
 		</div>
