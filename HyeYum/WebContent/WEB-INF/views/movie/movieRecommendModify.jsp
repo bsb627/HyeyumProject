@@ -168,3 +168,7 @@ $(document).ready(function() {
 <!-- End #main -->
 
 <%@include file="/footer.jsp"%>
+<script src="/assets/note/summernote-lite.js"></script>
+<script src="/assets/note//lang/summernote-ko-KR.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+<script type="text/javascript"	src="/assets/js/note-ready.js"></script>

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import file.model.service.FileService;
+import file.model.service.MovieFileService;
+import file.model.vo.FileData;
 import movie.model.service.MovieService;
 import movie.model.vo.MovieRecommend;
 
@@ -30,7 +33,7 @@ public class MovieRecommendDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		
@@ -44,6 +47,7 @@ public class MovieRecommendDetailServlet extends HttpServlet {
 		}
 		System.out.println("recoNo" + recommendNo);
 		
+		//좋아요 할 때 
 		int likes = 0;
 		if (request.getParameter("likes") != null ) {
 			likes = Integer.parseInt(request.getParameter("likes"));
@@ -52,11 +56,15 @@ public class MovieRecommendDetailServlet extends HttpServlet {
 		}
 		
 		MovieRecommend recommend = new MovieService().printOneMovieRecommend(recommendNo);
+		//recommend.setUserId(userId);
+		//FileData fileData = new MovieFileService().printFileRecommend(recommendNo);
+		
 		if(recommend != null) {
 			
 		new MovieService().RecommendHitsCount(recommendNo); // 게시글 조회수
 			request.setAttribute("recommend", recommend);
 			request.setAttribute("likes", likes);
+			//request.setAttribute("fileData", fileData);
 			
 			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendDetail.jsp").forward(request, response);
 		} else {

@@ -266,6 +266,7 @@ public class MovieService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
+		System.out.println("recommend return : " + recommend);
 		return recommend;
 	}
 
@@ -455,12 +456,12 @@ public class MovieService {
 	
 	
 	
-	public ArrayList<MovieData> printMovieLikesCount() {
+	public ArrayList<MovieData> printMovieRecommendLikesCount() {
 		ArrayList<MovieData> mList = null;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			mList = new MovieDAO().selectMovieLikesCount(conn);
+			mList = new MovieDAO().selectMovieRecommendLikesCount(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -490,18 +491,6 @@ public class MovieService {
 		return likes;
 	}
 	
-	public ArrayList<MovieData> printLikesCount() {
-		ArrayList<MovieData> mList = null;
-		Connection conn = null;
-		try {
-			conn = factory.createConnection();
-			mList = new MovieDAO().selectMovieLikesCount(conn);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mList;
-	}
 	
 	
 		

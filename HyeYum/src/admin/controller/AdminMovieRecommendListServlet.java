@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdminLoginServlet
  */
-@WebServlet("/admin/movie/list")
-public class AdminMovieListServlet extends HttpServlet {
+@WebServlet("/admin/recommend/list")
+public class AdminMovieRecommendListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMovieListServlet() {
+    public AdminMovieRecommendListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class AdminMovieListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/admin/board/movieList.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/board/recommendList.jsp").forward(request, response);
 	}
 
 	/**

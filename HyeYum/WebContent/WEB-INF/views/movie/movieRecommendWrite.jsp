@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <head>
 <title>문화나눔, 혜윰 - 추천 글쓰기</title>
 
@@ -81,7 +82,7 @@ $(document).ready(function() {
 
 				<div class="row border col-md-12">
 
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<label class="form-label" for="title">장르</label>
 						<select class="form-select" name="genre" required>
 							<option value="" hidden="hidden">장르를 선택해주세요</option>
@@ -116,7 +117,7 @@ $(document).ready(function() {
 					<br>
 					<div>
 						<label class="form-label" for="customFile"></label> <input
-							type="file" class="form-control" id="customFile" />
+							type="file" class="form-control" id="customFile" name="up-file"/>
 					</div>
 
 

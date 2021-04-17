@@ -1,4 +1,4 @@
-package movie.controller;
+package admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,19 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import admin.model.service.AdminMovieService;
+import movie.model.vo.MovieInfo;
 
 /**
- * Servlet implementation class MovieInfoListServlet
+ * Servlet implementation class AdminMovieModifyServlet
  */
-@WebServlet("/movieInfo/list")
-public class MovieInfoListServlet extends HttpServlet {
+@WebServlet("/admin/movieInfo/modify")
+public class AdminMovieModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieInfoListServlet() {
+    public AdminMovieModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,14 +29,14 @@ public class MovieInfoListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("인포리스트서블릿 ㅇㅇ");
-		
-		/*
-		 * HttpSession session = request.getSession(); 
-		 * String userId = (String)session.getAttribute("userId");
-		 */
-		request.getRequestDispatcher("/WEB-INF/views/movie/movieInfoList.jsp").forward(request, response);
+		int infoNo = Integer.parseInt(request.getParameter("infoNo"));
+		MovieInfo mInfo = new AdminMovieService().printOneMovieInfo(infoNo);
+		if(mInfo != null) {
+			request.setAttribute("mInfo",mInfo);
+			request.getRequestDispatcher("/WEB-INF/views/admin/contents/movieInfoUpdate.jsp").forward(request, response);
+		} else {
+			
+		}
 		
 	}
 

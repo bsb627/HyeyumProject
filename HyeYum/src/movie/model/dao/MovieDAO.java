@@ -498,6 +498,7 @@ public class MovieDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		MovieRecommend mRecommend = null;
+		System.out.println("상세보기 보자보자");
 		String query = "SELECT * FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE RECOMMEND_NO = ?" ;
 		// SELECT * FROM MOVIE_RECOMMEND JOIN MEMBER USING(USER_ID) WHERE RECOMMEND_NO= '3' ;
 		try {
@@ -522,6 +523,7 @@ public class MovieDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("return "+ mRecommend);
 		return mRecommend;
 	}
 	
@@ -543,6 +545,7 @@ public class MovieDAO {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("추천등록 :" + result);
 		return result;
 	}
 	
@@ -563,6 +566,7 @@ public class MovieDAO {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("추천수정 :" + result);
 		return result;
 	}
 	
@@ -817,10 +821,11 @@ public class MovieDAO {
 		return check;
 	}
 
-	public ArrayList<MovieData> selectMovieLikesCount(Connection conn) { // 추천글 좋아요 게시글 별 갯수
+	public ArrayList<MovieData> selectMovieRecommendLikesCount(Connection conn) { // 추천글 좋아요 게시글 별 갯수 -- 따로 하기
 		ArrayList<MovieData> mList = null;
 		//SELECT COUNT(*) AS TOTALCOUNT, REVIEW_NO, RECOMMEND_NO FROM MOVIE_LIKES GROUP BY CUBE(REVIEW_NO, RECOMMEND_NO);
 		return mList;
+		
 	}
 
 	

@@ -323,11 +323,6 @@
 			</div>
 		</section>
 
-		<%
-			}
-		%>
-
-
 
 
 
@@ -391,7 +386,7 @@
 <!-- 글쓰기 모달 end  -->
 
 						<!--   ============== 글수정 모달창 ============ -->
-<% for (MovieReview mReview : review) { %>
+ <% for (MovieReview mReview : review) { %>
 <div class="modal fade" id="modifyModal<%= mReview.getInfoNo() %>" tabindex="-1" role="dialog"
 	aria-labelledby="modifyModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -446,7 +441,8 @@
 	</div>
 
 </div>
-<% } %>
+<% } }%> 
+
 
 
 <%@include file="/footer.jsp"%>

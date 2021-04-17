@@ -1,9 +1,11 @@
+<%@page import="file.model.vo.FileData"%>
 <%@page import="movie.model.vo.MovieRecommend"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	MovieRecommend recommend = (MovieRecommend)request.getAttribute("recommend");
 	int likes = (int)request.getAttribute("likes");
+	//FileData fileData = (FileData)request.getAttribute("fileData");
 	
 %>
 
@@ -52,7 +54,7 @@
 						<h2 class="entry-title">
 							<label>[<%=recommend.getGenre()%>]
 							</label>
-							<%=recommend.getTitle()%>
+							<%=recommend.getTitle() %>
 						</h2>
 
 						<hr>
@@ -62,7 +64,7 @@
 						</div>
 
 						<hr>
-
+						<%-- <img src="/upload/movie/<%= fileData.getFileName()%>" onerror="this.src='/upload/movie/<%= fileData.getFileName()%>'"alt=""/> --%>
 						<div class="entry-content">
 							<div class="blank-content">
 								<%=recommend.getContents()%>
@@ -100,8 +102,8 @@
 
 
 					<div class="blog-comments">
-
-						<h4 class="comments-count">8 Comments</h4>
+ 
+						<h4 class="comments-count"><!-- 8 Comments --></h4>
 
 						<div id="comment-1" class="comment"></div>
 						<!-- End comment #1 -->
@@ -115,14 +117,14 @@
 								<p>댓글만 달아도 기부를 할 수 있습니다. 💌
 								<p>
 								<form action="/reply/write">
-									<%--  <div class="row">
+									 <div class="row">
                     <div class="col-md-6 form-group">
                       <input name="name" type="text" class="form-control" placeholder="Your Name*" value="<%=userId %>" readonly>
                     </div>
                     <div class="col-md-6 form-group">
                       <input name="email" type="text" class="form-control" placeholder="Your Email*">
                     </div>
-                  </div> --%>
+                  </div>
 									<input type="hidden" name="type" value="show"> <input
 										type="hidden" name="review-no" value="<%=recommend.getNo()%>">
 									<div class="row">

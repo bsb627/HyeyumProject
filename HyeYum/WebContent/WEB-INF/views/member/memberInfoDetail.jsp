@@ -17,7 +17,7 @@
 				<li><a href="/index.jsp">Home</a></li>
 				<li>내 정보</li>
 			</ol>
-			<h2>회원 탈퇴</h2>
+			<h2>회원 정보</h2>
 
 		</div>
 	</section>
@@ -133,7 +133,7 @@
 								<div class="form-group">
 									<!-- 주소 -->
 									<div>
-									<a href="/member/address/address.jsp"><button type="button" class="btn btn-primary btn-sm">주소검색</button></a></div>
+									<a href="/address.jsp"><button type="button" class="btn btn-primary btn-sm"  onclick="goPopup()">주소검색</button></a></div>
 									<label class="col-form-label" for="inputDefault"></label>
 									<input type="text" class="form-control" 
 										value="<%=member.getUserAddress() %> " id="inputDefault"
@@ -228,5 +228,5 @@
 
 
 
-
+<script src="/assets/js/address.js"></script>
 <%@include file="/footer.jsp"%>
