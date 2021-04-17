@@ -18,24 +18,7 @@ public class BookFileDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String fileType = fileData.getFileType();
-		String query="";
-		switch (fileType) {
-		case "book": query = "";
-			
-			break;
-		case "share": query = "";
-			
-			break;
-		case "movie": query = "";
-			
-			break;
-		case "show": query = "INSERT INTO SHOW_FILE VALUES(SEQ_SHOW_FILE_NO.NEXTVAL,?,?,?,?,?,NULL)";
-		
-		break;
-
-		default:
-			break;
-		}
+		String query="INSERT INTO BOOK_INFO_FILE VALUES(SEQ_BOOK_INFO_FILE.NEXTVAL,?,?,?,'admin',?,?)";
 	
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -43,9 +26,8 @@ public class BookFileDAO {
 			pstmt.setString(2, fileData.getFilePath());
 			pstmt.setLong(3, fileData.getFileSize());
 			pstmt.setTimestamp(4, fileData.getUploadTime());
-//			pstmt.setInt(5, cge(conn,info));
+			pstmt.setInt(5, info.getInfoNo());
 			result = pstmt.executeUpdate();
-			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -56,49 +38,49 @@ public class BookFileDAO {
 		return result;
 	}
 
-	private int getInfoNo(Connection conn, BookShare share) {
+	private int getInfoNo(Connection conn, BookInfo info) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT REVIEW_NO FROM SHOW_REVIEW WHERE TITLE = ? AND CONTENTS = ? AND SNS_LINK = ? AND TICKET_NUMBER = ? AND USER_ID =? ORDER BY ENROLL_DATE DESC";
-		int showNo =  0;
+		String query = "SELECT INFO_NO FROM BOOK_INFO WHERE BOOK_NAME = ? AND GENRE = ? AND AUTHOR = ? AND PUBLISHER = ? AND INTRO =? ORDER BY INFO_NO ASC";
+		int infoNo =  0;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, share.getTitle());
-			pstmt.setString(2, share.getContents());
-			pstmt.setString(5, share.getNick());
+			pstmt.setString(1, info.getBookName());
+			pstmt.setString(2, info.getGenre());
+			pstmt.setString(3, info.getAuthor());
+			pstmt.setString(4, info.getPublisher());
+			pstmt.setString(5, info.getIntro());
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				showNo = rset.getInt("INFO_NO");
+				infoNo = rset.getInt("INFO_NO");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return showNo;
+		return infoNo;
 		
 	}
 
-	public ArrayList<FileData> selectFileListInfo(Connection conn, String type) {
+	public ArrayList<FileData> selectFileListInfo(Connection conn) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<FileData> list = null;
-		String query="SELECT REVIEW_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,USER_ID,UPLOAD_TIME FROM BOOK_SHARE_FILE JOIN BOOK_SHARE USING (REVIEW_NO) WHERE REVIEW_NO IS NOT NULL";
-					
+		String query="SELECT INFO_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,FILE_USER,UPLOAD_TIME FROM BOOK_INFO_FILE JOIN BOOK_INFO USING (INFO_NO) WHERE INFO_NO IS NOT NULL";
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
 			list = new ArrayList<FileData>();
 			while(rset.next()) {
 				FileData data = new FileData();
-				data.setNo(rset.getInt("REVIEW_NO"));
+				data.setNo(rset.getInt("INFO_NO"));
 				data.setFileNo(rset.getInt("FILE_NO"));
 				data.setFileName(rset.getString("FILE_NAME"));
 				data.setFilePath(rset.getString("FILE_PATH"));
 				data.setFileSize(rset.getLong("FILE_SIZE"));
 				data.setFileUser(rset.getString("USER_ID"));
-				data.setFileType(type);
 				data.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
 				list.add(data);
 			}
@@ -135,24 +117,7 @@ public class BookFileDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String fileType = fileData.getFileType();
-		String query="";
-		switch (fileType) {
-		case "book": query = "";
-			
-			break;
-		case "share": query = "";
-			
-			break;
-		case "movie": query = "";
-			
-			break;
-		case "show": query = "UPDATE SHOW_FILE SET FILE_NAME =?, FILE_PATH=?,FILE_SIZE=?,UPLOAD_TIME=? WHERE REVIEW_NO =?";
-		
-		break;
-
-		default:
-			break;
-		}
+		String query= "UPDATE BOOK_INFO_FILE SET FILE_NAME =?, FILE_PATH=?,FILE_SIZE=?,UPLOAD_TIME=? WHERE INFO_NO =?";
 	
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -160,9 +125,8 @@ public class BookFileDAO {
 			pstmt.setString(2, fileData.getFilePath());
 			pstmt.setLong(3, fileData.getFileSize());
 			pstmt.setTimestamp(4, fileData.getUploadTime());
-//			pstmt.setInt(5, review.getNo());
+			pstmt.setInt(5, info.getInfoNo());
 			result = pstmt.executeUpdate();
-			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -173,10 +137,10 @@ public class BookFileDAO {
 		return result;
 	}
 
-	public FileData selectFileOneInfo(Connection conn, int shareNo) { //FileData(파일정보)를 받아서 넘겨줌 
+	public FileData selectFileOneInfo(Connection conn, int shareNo) { 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM BOOk_SHARE_FILE WHERE SHARE_NO=?";
+		String query = "SELECT * FROM BOOk_INFO_FILE WHERE INFO_NO=?";
 		FileData fileData = null;
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -257,7 +221,7 @@ public class BookFileDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<FileData> list = null;
-		String query ="SELECT INFO_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,UPLOAD_TIME FROM SHOW_FILE JOIN SHOW_INFO USING (INFO_NO) WHERE INFO_NO IS NOT NULL";
+		String query ="SELECT INFO_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,UPLOAD_TIME FROM BOOK_SHARE_FILE JOIN BOOK_SHARE USING (SHARE_NO) WHERE SHARE_NO IS NOT NULL";
 				
 		try {
 			pstmt = conn.prepareStatement(query);

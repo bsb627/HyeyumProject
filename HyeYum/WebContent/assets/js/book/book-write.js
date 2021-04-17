@@ -105,7 +105,7 @@ function chnQnaType(type , select) {
         $('#info-no').append("<option value='12' >노르웨이숲</option>'");
         $('#info-no').append("<option value='13' >불안</option>'");
         $('#info-no').append("<option value='14' >여자가 없는 남자들</option>'");
-        $('#info-no').append("<option value='15' >혹의 기술</option>'");
+        $('#info-no').append("<option value='15' >유혹의 기술</option>'");
     } else if (type == 'genre') {  
 		$('#info-no option').remove();
 		$('#info-no').append("<option>-- 선택 --</option>'");

@@ -43,13 +43,13 @@ public class BookFileService {
 		return result;
 	}
 
-	public ArrayList<FileData> printFileList(String type) {
+	public ArrayList<FileData> printFileList() {
 		Connection conn = null;
 		ArrayList<FileData> list = null;
 		
 		try {
 			conn = factory.createConnection();
-			list = new BookFileDAO().selectFileListShare(conn, type);
+			list = new BookFileDAO().selectFileListInfo(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,13 +81,13 @@ public class BookFileService {
 		return result;
 	}
 
-	public int updateFileInfo(FileData fileData, ShowReview review) {
+	public int updateFileInfo(FileData fileData, BookInfo info) {
 		Connection conn = null;
 		int result = 0;
 		
 		try {
 			conn = factory.createConnection();
-			result = new FileDAO().updateFileInfo(conn, fileData, review);
+			result = new BookFileDAO().updateFileInfo(conn, fileData, info);
 			if(result> 0) {
 				JDBCTemplate.commit(conn);
 			}else {
@@ -145,7 +145,7 @@ public class BookFileService {
 		
 		try {
 			conn = factory.createConnection();
-			list = new FileDAO().selectFileList(conn, type);
+			list = new BookFileDAO().selectFileListShare(conn, type);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

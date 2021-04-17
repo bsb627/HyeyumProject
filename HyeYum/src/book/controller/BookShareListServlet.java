@@ -50,7 +50,7 @@ public class BookShareListServlet extends HttpServlet {
 		
 		FileData fd = new FileData();
 		fd.setFileType("share");
-		ArrayList<FileData> fList = new BookFileService().printFileList("share"); // Detail에서 화면에 가져온 이미지를 뿌려주기 위해 보내줌 
+		ArrayList<FileData> fList = new BookFileService().printFileShareList("share"); // Detail에서 화면에 가져온 이미지를 뿌려주기 위해 보내줌 
 //		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
 		
 		
