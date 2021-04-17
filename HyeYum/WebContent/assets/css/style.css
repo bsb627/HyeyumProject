@@ -15,7 +15,8 @@
 *,*:focus,*:hover{outline:none;}
 
 body {
-  font-family: "Open Sans", sans-serif;
+ /*  font-family: 'Jua', sans-serif; */
+ font-family: 'Jua', sans-serif;
   color: #444444;
 }
 
@@ -30,7 +31,8 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -193,7 +195,8 @@ section {
   font-weight: 700;
   letter-spacing: 1px;
   color: #012970;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
   margin-top: 3px;
 }
 
@@ -224,8 +227,9 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
+    font-size: 16px;
   font-weight: 700;
   color: #013289;
   white-space: nowrap;
@@ -2283,7 +2287,8 @@ section {
   font-weight: 700;
   letter-spacing: 1px;
   color: #012970;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
   margin-top: 3px;
 }
 
@@ -2291,7 +2296,8 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
+  font-family: 'Jua', sans-serif;
 }
 
 .footer .footer-top .social-links a {
