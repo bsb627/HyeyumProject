@@ -37,7 +37,7 @@ public class AdminMovieService {
 		return mList;
 	}
 
-	public int registerShowInfo(MovieInfo movieInfo) { // 관리자 영화 정보 등록
+	public int registerMovieInfo(MovieInfo movieInfo) { // 관리자 영화 정보 등록
 		int result = 0;
 		Connection conn = null;
 		
@@ -75,7 +75,7 @@ public class AdminMovieService {
 		return mInfo;
 	}
 
-	public int deleteMovieInfo(int infoNo) {
+	public int deleteMovieInfo(String infoNo) {
 		int result = 0;
 		Connection conn = null;
 		try {

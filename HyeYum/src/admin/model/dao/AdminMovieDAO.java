@@ -51,7 +51,8 @@ public class AdminMovieDAO {
 	public int insertMovieInfo(Connection conn, MovieInfo movieInfo) { // 관리자 영화 정보 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO MOVIE_INFO VALUES(SEQ_MOVIE_INFO.NEXTVAL, ?, ?, ?, ?, ?, ?,?, SYSDATE";
+		System.out.println("등록dao 들어옴");
+		String query = "INSERT INTO MOVIE_INFO VALUES(SEQ_MOVIE_INFO.NEXTVAL, ?, ?, ?, ?, ?, ?,?, SYSDATE)";
 		// INSERT INTO MOVIE_INFO VALUES(SEQ_MOVIE_INFO.NEXTVAL, MOVIE_NAME, GENRE,
 		// CAST, DIRECTOR, AGE_GROUP, RUNTIME, SYSDATE);
 
@@ -63,14 +64,15 @@ public class AdminMovieDAO {
 			pstmt.setString(4, movieInfo.getDirector());
 			pstmt.setString(5, movieInfo.getAgeGroup());
 			pstmt.setString(6, movieInfo.getRunTime());
-			pstmt.setString(6, movieInfo.getSynopsis());
+			pstmt.setString(7, movieInfo.getSynopsis());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(pstmt);
-		}
+		} 
+		System.out.println("등록dao result" + result);
 		return result;
 	}
 
@@ -105,21 +107,21 @@ public class AdminMovieDAO {
 		return mInfo;
 	}
 
-	public int deleteMovieInfo(Connection conn, int infoNo) {
-		PreparedStatement pstmt = null;
+	public int deleteMovieInfo(Connection conn, String infoNo) {
+		Statement stmt = null;
 		int result = 0;
-		String query = "DELETE FROM MOVIE_INFO WHERE INFO_NO = ?";
-		// DELETE FROM MOVIE_INFO WHERE INFO_NO = '3';
-
+		String query = "DELETE FROM MOVIE_INFO WHERE INFO_NO IN ("+infoNo+")";
+		
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, infoNo);
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(stmt);
 		}
+		
 		return result;
 	}
 
@@ -136,7 +138,8 @@ public class AdminMovieDAO {
 			pstmt.setString(4, movieInfo.getDirector());
 			pstmt.setString(5, movieInfo.getAgeGroup());
 			pstmt.setString(6, movieInfo.getRunTime());
-			pstmt.setString(6, movieInfo.getSynopsis());
+			pstmt.setString(7, movieInfo.getSynopsis());
+			pstmt.setInt(8, movieInfo.getInfoNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -144,6 +147,7 @@ public class AdminMovieDAO {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("result : " + result);
 		return result;
 	}
 
