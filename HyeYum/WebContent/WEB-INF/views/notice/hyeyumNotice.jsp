@@ -10,6 +10,13 @@ String pageNavi = (String) request.getAttribute("pageNavi");
 <%@include file="/header.jsp"%>
 <head>
 <title>문화나눔, 혜윰 - aboutUs</title>
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css'
+	rel='stylesheet' type='text/css'>
+<style>
+main * {
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+</style>
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -61,26 +68,30 @@ String pageNavi = (String) request.getAttribute("pageNavi");
       </li>
        -->
 
+			<!-- 검색창 -->
 			<div class="col-7" style="float: left">
 				<form action="/notice/write" method="get" class="form-inline">
 
 				</form>
 			</div>
 			<div style="float: left" class="col-auto" align="right">
-				<form class="row g-3" class="form-inline" " action="/notice/search"
+				<form class="row g-3" class="form-inline"  action="/notice/search"
 					method="get">
+					
 					<div class="col-auto">
 						<select name="search-category" class="form-select">
 							<option value="TITLE">제목</option>
 							<option value="USER_ID">작성자</option>
 							<option value="CONTENTS">내용</option>
 						</select>
+						
 					</div>
 					<div class="col-auto">
-						<label class="visually-hidden"></label> <input type="text"
-							class="form-control" name="search-keyword" type="text"
+						<label class="visually-hidden"></label> 
+						<input type="text" class="form-control" name="search-keyword" type="text"
 							placeholder="제목/작성자/내용">
 					</div>
+					
 					<div class="col-auto">
 						<input type="submit" class="btn btn-primary mb-3" value="검색">
 					</div>
@@ -109,8 +120,8 @@ String pageNavi = (String) request.getAttribute("pageNavi");
 					<tr>
 
 						<td><%=notice.getNoticeNo()%></td>
-						<td><a href="/notice/detail?noticeNo=<%=notice.getNoticeNo()%>">
-						<%=notice.getTitle()%></a></td>
+						<td><a
+							href="/notice/detail?noticeNo=<%=notice.getNoticeNo()%>"> <%=notice.getTitle()%></a></td>
 						<td><%=notice.getUserId()%></td>
 						<td><%=notice.getEnrollDate()%></td>
 						<td><%=notice.getHits()%></td>
@@ -123,16 +134,19 @@ String pageNavi = (String) request.getAttribute("pageNavi");
 			</table>
 		</div>
 
-		
+
 
 		<!--페이징  -->
-			<div class="container">
-			<div style="float: right">
+
+		<div class="container">
+
+			<!-- 글쓰기 작성 버튼 -->
+			<!-- <div style="float: right">
 				<a href="/hyeyumNotice/write"><button
 						class="btn btn-primary btn-right">글쓰기</button></a>
-			</div>
-				<ul class="pagination  justify-content-center">
-					<!-- <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+			</div> -->
+			<ul class="pagination  justify-content-center">
+				<!-- <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
 					</li>
 					<li class="page-item active"><a class="page-link" href="#">1</a>
 					</li>
@@ -144,12 +158,12 @@ String pageNavi = (String) request.getAttribute("pageNavi");
 
 					<li class="page-item"><a class="page-link" href="#">&raquo;</a>
 					</li> -->
-				<%=pageNavi %>
+				<%=pageNavi%>
 
 
 
-				</ul>
-			</div>
+			</ul>
+		</div>
 	</section>
 
 </main>

@@ -32,13 +32,14 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("안자고 뭐하니?");
+		
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice notice = new NoticeService().printOne(noticeNo);
 		if(notice != null) {
+			new NoticeService().updateHits(noticeNo);
 			request.setAttribute("notice", notice);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/noticeDetail.jsp");
 			view.forward(request, response);

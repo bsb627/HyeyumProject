@@ -41,18 +41,18 @@ public class NoticeSearchServlet extends HttpServlet {
 		}else {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		String search = request.getParameter("searchKeyword");
-		NoticePageData noticepageData = new NoticeService().printSearchList(search, currentPage);
+		String search = request.getParameter("search-keyword"); // hyeyumNotice.jsp의 name 값 입력
+		String searchCategory = request.getParameter("search-category");
+		NoticePageData noticepageData = new NoticeService().printSearchNoticeList(search, searchCategory, currentPage);
 		ArrayList<Notice> nList = noticepageData.getNoticeList();
 		String pageNavi = noticepageData.getPageNavi();
+		System.out.println("nList : " + nList);
 		if(!nList.isEmpty()) {
 			request.setAttribute("nList", nList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticeSearch.jsp")
 			.forward(request, response);
-		}else {
-			request.getRequestDispatcher("/WEB-INF/views/notice/noticeError.html")
-			.forward(request, response);
+		
 		}
 	}
 
