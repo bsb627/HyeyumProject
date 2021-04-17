@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.order-count {
+	padding: 0 0 0 20px;
+}
+
+.order-info{
+	padding: 30px;
+}
+
+.order-contents{
+	display: flex;
+	padding: 15px;
+}
+
+.order-img{
+	width: 100px;
+}
+
+.order-img img{
+	 width: 100px; height: 100px;
+}
+.order-product{
+	position: relative;
+	margin-left: 30px;
+
+}
+
+.order-state{
+	position : absolute;
+	bottom: 0px;
+}

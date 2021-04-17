@@ -10,7 +10,7 @@ $(document).ready(function() {
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '혜윰팔찌',
-            amount : 1000,
+            amount : 15000,
             buyer_email : 'ttt@iei.or.kr',
             buyer_name : 'tester',
             buyer_tel : '01012345678',
@@ -49,7 +49,7 @@ $(document).ready(function() {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="<%=request.getContextPath()%>/order/payFail";
+                location.href="/intro/product/failForm.jsp";
                 alert(msg);
             }
         });

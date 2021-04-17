@@ -3,11 +3,6 @@
 <%@page import="member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	ArrayList<Order> oList = (ArrayList<Order>)request.getAttribute("oList");
-	String pageNavi = (String)request.getAttribute("pageNavi");
-	int orderCount = (int)request.getAttribute("orderCount");
-%>
 
 <title>회원 상세 정보</title>
 <%@include file="/header.jsp"%>
@@ -114,42 +109,24 @@
 					<section>
 					<article>
 					<div class="order-count">
-					<h4><strong>총 <%=orderCount %>건</strong></h4>
+					<h4><strong>총 0건</strong></h4>
 					</div>
 					<hr>
 					</article>
-					<% for(Order order : oList){ %>
+				
 						<article>
 							<div class="order-box">
 								<div class="order-info">
-									<h6><strong>주문번호 <%=order.getOrderNO() %></strong></h6>
-									<sub><%=order.getOrderDate() %></sub>
+									<h6><strong>주문내역이 존재하지 않습니다.</strong></h6>
+									<sub><a href="/intro/product/productForm.jsp">주문하러가기</a></sub>
 								</div>
-								<div class="order-contents">
-									<div class="order-img">
-									 <img src="/assets/img/product/palzzi3.png">
-									</div>
-									<div class="order-product">
-									 혜윰팔찌<br>
-									 <%=order.getTotalPrice() %>원/ <%=order.getQuantity() %>개
-									 <div class="order-state">
-									 <sub><%=order.getShippingState() %></sub>
-									 </div>
-									</div>
-								</div>
+								
 							
 							</div>
 								<hr>
 						</article>
-						<%} %>
-						<div class="blog-pagination">
-				<ul class="justify-content-center">
-					<!-- 	<li><a href="#">1</a></li>
-						<li class="active"><a href="#">2</a></li>
-						<li><a href="#">3</a></li> -->
-					<%=pageNavi%>
-				</ul>
-			</div>
+						
+						
 						
 					</section>
 					

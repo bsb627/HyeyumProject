@@ -1,5 +1,6 @@
 package order.model.vo;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Order {
@@ -12,6 +13,7 @@ public class Order {
 	private String userId; // 구매자
 	private String shippingState; // 배송상태
 	private Timestamp orderTime; // 주문시간
+	private Date orderDate; // 주문일
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
@@ -79,6 +81,16 @@ public class Order {
 
 	public void setOrderTime(Timestamp orderTime) {
 		this.orderTime = orderTime;
+	}
+	
+	
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	@Override

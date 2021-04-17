@@ -17,13 +17,13 @@ public class OrderService {
 		factory = JDBCTemplate.getConnection();
 	}
 	
-	public OrderPageData printAllOrderList(int currentPage){ // 주문리스트 전체보기
+	public OrderPageData printAllOrderList(int currentPage, String userId){ // 주문리스트 전체보기
 		Connection conn = null;
 		OrderPageData pd = new OrderPageData();
 		try {
 			conn = factory.createConnection();
-			pd.setOrderList(new OrderDAO().selectAllOrderList(conn, currentPage));
-			pd.setPageNavi(new OrderDAO().getReviewPageNavi(conn, currentPage));
+			pd.setOrderList(new OrderDAO().selectAllOrderList(conn, currentPage, userId));
+			pd.setPageNavi(new OrderDAO().getReviewPageNavi(conn, currentPage, userId));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,16 +47,23 @@ public class OrderService {
 		return order;
 	}
 	
-	public int registerOrder(Order order) { // 주문하기
+	public int registerOrder(String userId) { // 주문하기
 		int result = 0;
 		Connection conn = null;
 		
 		try {
 			conn = factory.createConnection();
-			result = new OrderDAO().insertOrder(conn, order);
+			result = new OrderDAO().insertOrder(conn, userId);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
@@ -98,5 +105,20 @@ public class OrderService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public int getOrderCount(String userId) {
+		int orderCount = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			orderCount = new OrderDAO().totalOrderCount(conn, userId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return orderCount;
 	}
 }

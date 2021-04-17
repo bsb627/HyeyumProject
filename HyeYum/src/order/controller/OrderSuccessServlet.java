@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import order.model.service.OrderService;
 
 /**
  * Servlet implementation class OrderEnrollServlet
@@ -26,7 +29,16 @@ public class OrderSuccessServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/intro/product/successForm.jsp");
+		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		int result = new OrderService().registerOrder(userId);
+		if(result > 0) {
+			
+			response.sendRedirect("/intro/product/successForm.jsp");
+		}else {
+			
+		}
 	}
 
 	/**
