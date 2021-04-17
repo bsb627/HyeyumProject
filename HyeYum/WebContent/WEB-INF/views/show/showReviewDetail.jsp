@@ -81,7 +81,7 @@
 								></i></a>
 						</div>
 						
-						<h2><%=review.getTitle()%></h2>
+						<span style="font-size: 30px;"><%=review.getTitle()%></span>
 						<p>
 							<%=review.getContents()%>
 						</p>
@@ -89,12 +89,12 @@
 
 					<div class="reply-box">
 					<span id="likesTotalCount"></span>
-						<h6 class="comments-count">
+						
 							<%-- <strong>댓글 <%=totalCount %>개
 							</strong> --%>
 							<span id="totalCount"></span>
 							
-						</h6>
+						
 
 								<span id="show-contents"></span>
 						<% for(Reply reply : rList){ %>

@@ -310,8 +310,8 @@
             <div class="box">
               <span class="featured">혜윰굿즈</span>
               <h3 style="color: #65c600;">혜윰팔찌</h3>
-              <div class="price"><sup>￦</sup>33,000<span> / ko</span></div>
-              <img src="assets/img/pricing-starter.png" class="img-fluid" alt="">
+              <div class="price">33,000<span> / ko</span></div>
+              <img src="/assets/img/product/palzzi4.png" class="img-fluid" alt="">
               <ul>
                 <li>Aida dere</li>
                 <li>Nec feugiat nisl</li>

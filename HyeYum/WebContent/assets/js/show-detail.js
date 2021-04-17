@@ -62,16 +62,16 @@ function printReply(reviewNo){
 					console.log(data);
 					if(data ==null){
 							$("#replyCount").html("<i class='bi bi-chat-square-dots'> 0</i> ")
- 							$("#totalCount").html("<h6><strong>댓글 0개</strong></h6>");
+ 							$("#totalCount").html("<strong>댓글 0개</strong>");
 					}
 					else{
 					 for(var i=0; i<data.length; i++) {
 	 
-	                    str += "<div class='show-reply'><h6><strong>"+data[i].nick+"</strong> "+data[i].contents+"<h6></div>";
+	                    str += "<div class='show-reply'><strong>"+data[i].nick+"</strong> "+data[i].contents+"</div>";
 	 
 	                }
 					$("#replyCount").html("<i class='bi bi-chat-square-dots'> "+data[0].totalCount+"</i> ")
-	 				$("#totalCount").html("<h6><strong>댓글 "+data[0].totalCount+"개</strong></h6>");
+	 				$("#totalCount").html("<strong>댓글 "+data[0].totalCount+"개</strong>");
 	                $("#show-contents").html(str); 
 					}
 	                },
@@ -104,10 +104,10 @@ function printLikes(reviewNo){
 					}
 					
 					if(data[0].likesCount ==0) {
-						$("#likesTotalCount").html("<h6><strong><i class='bi bi-heart'></i> "+data[0].likesCount+"명이 좋아합니다.</strong></h6>");
+						$("#likesTotalCount").html("<strong><i class='bi bi-heart'></i> "+data[0].likesCount+"명이 좋아합니다.</strong><br>");
 						
 					}else{
-						$("#likesTotalCount").html("<h6><strong><i class='bi bi-heart-fill'></i> "+data[0].likesCount+"명이 좋아합니다.</strong></h6>");
+						$("#likesTotalCount").html("<strong><i class='bi bi-heart-fill'></i> "+data[0].likesCount+"명이 좋아합니다.</strong><br>");
 						
 					}
 					$("#likesCount").html(" <i class='bi bi-heart'> "+data[0].likesCount+"</i>");
