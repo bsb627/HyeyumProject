@@ -44,36 +44,29 @@
 			</header>
 
 			<form action="/bookReview/enroll" method="post" enctype="multipart/form-data">
-
+				이달의 도서
 				<div class="row border col-md-12">
-
+					
 					<div class="col-md-8">
 	                   <select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
 	                       <option hidden="hidden">-- 메뉴 선택 --</option>
 	                       <option value="info">이달의 도서</option>
 	                       <option value="genre">장르</option>
 	                   </select>
-	                   <select name="info-no" id="info-no">
-	                       <option disabled>-- 선택 --</option>
+	                   <select name="info-no" id="info-no" >
 	                   </select>
 					</div>
-					<!-- 파일첨부 -->
-					<!-- <div>
-					 <label class="form-label" for="customFile"></label> 
-					 	<input type="file" class="form-control" id="customFile" />
-					 	<input type="submit" class="form-control" value="업로드" onclick="javascript: form.action='/file/upload'"><br>
-						<input type="reset" class="form-control" value="취소">
-					</div> -->
-						<div class="col-md-4">
-						<label for="InputSubject1">파일첨부</label>
-							
-							<input type="text" id="userfile" name="userfile" disabled="">
-							<span class="group-span-filestyle input-group-btn" tabindex="0">
-								<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
-									
+	
+					<div class="col-md-4">
+					<label for="InputSubject1">파일첨부</label>
+						
+						<input type="text" id="userfile" name="userfile" disabled="">
+						<span class="group-span-filestyle input-group-btn" tabindex="0">
+							<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
 								
-							</span>
-						</div>
+							
+						</span>
+					</div>
 
 
 					<div class="form-outline col-md-12">

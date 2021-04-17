@@ -152,7 +152,7 @@ public class BookDAO {
 	public int insertBookReview(Connection conn, BookReview review) { // 책리뷰 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO BOOK_REVIEW VALUES(SEQ_BOOK_REVIEW.NEXTVAL,?,?,?,SYSDATE,0,?,?)";
+		String query = "INSERT INTO BOOK_REVIEW VALUES(SEQ_BOOK_REVIEW.NEXTVAL,?,?,?,SYSDATE,0,?,?,?)";
 		
 			try {
 				pstmt = conn.prepareStatement(query);
@@ -161,6 +161,7 @@ public class BookDAO {
 				pstmt.setString(3, review.getContents());
 				pstmt.setString(4, review.getUserId());
 				pstmt.setInt(5, review.getInfoNo());
+				pstmt.setString(6, review.getGenre());
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -168,6 +169,8 @@ public class BookDAO {
 			} finally {
 				JDBCTemplate.close(conn);
 			}
+			System.out.println("DAO, review.getGenre" + review.getGenre());
+			System.out.println("result :" +result);
 		return result;
 	}
 	public int updateBookReview(Connection conn, BookReview review) { // 책리뷰 수정

@@ -43,7 +43,7 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int infoNo = Integer.parseInt(request.getParameter("info-No"));
+		int infoNo = Integer.parseInt(request.getParameter("info-no"));
 		
 		BookInfo info = new BookAdminService().printOneBookInfo(infoNo);
 		

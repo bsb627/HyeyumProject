@@ -12,7 +12,7 @@
 	<!-- Page Heading -->
 	<section>
 		<div class="container">
-			<h1 class="h3 mb-4 text-gray-800">도서 등록</h1>
+			<h1 class="h3 mb-4 text-gray-800">도서 정보 수정</h1>
 			<div class="col-lg-12">
 				<form action="/admin/bookInfo/write" method="post" enctype="multipart/form-data">
 
@@ -29,16 +29,13 @@
 									</select>
 								</div>
 							</div>
-
 							<div class="col-lg-3">
 								<div class="form-group">
-									<label for="exam1">선택2</label> 
-									<select	class="browser-default custom-select" id="info-no" name="info-no" required>
-										<option selected>선택</option>
-									</select>
+									<label for="exam1">책 제목</label> <input type="text"
+										class="form-control" id="exam1" name="book-name"
+										placeholder="" required>
 								</div>
 							</div>
-
 						</div>
 					</div>
 
@@ -47,7 +44,7 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<label for="exam1">책 소개</label> <input type="text"
-										class="form-control" id="exam1" name="cast"
+										class="form-control" id="exam1" name="intro"
 										placeholder="" required>
 								</div>
 							</div>
@@ -66,7 +63,6 @@
 							</div>
 						</div>
 					</div>
-
 
 					<div class="col-lg-12">
 						<div class="form-group">

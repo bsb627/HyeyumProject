@@ -54,7 +54,7 @@ public class BookAdminDAO {
 		ResultSet rset =null;
 		String query ="SELECT * FROM BOOK_INFO WHERE INFO_NO = ?";
 		BookInfo info = new BookInfo();
-		
+		System.out.println("DAO, infoNo : " + infoNo);
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, infoNo);
@@ -74,11 +74,11 @@ public class BookAdminDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
+		System.out.println("DAO, rset : " + rset );
 		return info;
 	}
 
-	public int insertBookInfo(Connection conn, BookInfo info) { // 관리자단 공연 정보 등록 
+	public int insertBookInfo(Connection conn, BookInfo info) {  
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = "INSERT INTO BOOK_INFO VALUES(SEQ_BOOK_INFO.NEXTVAL,?,?,?,?,?,SYSDATE)";

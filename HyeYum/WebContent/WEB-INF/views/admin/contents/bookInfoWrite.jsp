@@ -12,7 +12,7 @@
 	<!-- Page Heading -->
 	<section>
 		<div class="container">
-			<h1 class="h3 mb-4 text-gray-800">도서 등록</h1>
+			<h1 class="h3 mb-4 text-gray-800">도서 정보 등록</h1>
 			<div class="col-lg-12">
 				<form action="/admin/bookInfo/write" method="post" enctype="multipart/form-data">
 
