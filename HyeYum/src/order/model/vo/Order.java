@@ -11,6 +11,11 @@ public class Order {
 	private int quantity; // 주문수량
 	private int totalPrice; // 총 가격
 	private String userId; // 구매자
+	private String nick; // 닉네임
+	private String userName; //이름
+	private String address; // 주소
+	private String email; // 이메일
+	private String userPhone; // 핸드폰
 	private String shippingState; // 배송상태
 	private Timestamp orderTime; // 주문시간
 	private Date orderDate; // 주문일
@@ -91,6 +96,50 @@ public class Order {
 
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
+	}
+	
+	
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
 
 	@Override
