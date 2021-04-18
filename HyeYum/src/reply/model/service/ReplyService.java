@@ -61,9 +61,16 @@ public class ReplyService {
 		try {
 			conn = factory.createConnection();
 			result = new ReplyDAO().updateReply(conn, reply);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 				
 		return result;
@@ -99,6 +106,8 @@ public class ReplyService {
 			count = new ReplyDAO().totalCount(conn, showNo);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return count;
 	}

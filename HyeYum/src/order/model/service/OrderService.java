@@ -43,6 +43,8 @@ public class OrderService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return order;
 	}
@@ -74,9 +76,16 @@ public class OrderService {
 		try {
 			conn = factory.createConnection();
 			result = new OrderDAO().updateShipping(conn, orderNo, shipping);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
@@ -94,15 +103,22 @@ public class OrderService {
 		return result;
 	}
 	
-	public int deleteOrder(int orderNo) { // 주문 삭제
+	public int deleteOrder(String orderNo) { // 주문 삭제
 		int result = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
 			result = new OrderDAO().deleteOrder(conn, orderNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}
@@ -120,5 +136,20 @@ public class OrderService {
 			JDBCTemplate.close(conn);
 		}
 		return orderCount;
+	}
+
+	public ArrayList<Order> adminPrintAllOrderList() { // 관리자단 주문 리스트 전체 보기
+		ArrayList<Order> oList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			oList = new OrderDAO().selectAdminAllOrderList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+ 		return oList;
 	}
 }

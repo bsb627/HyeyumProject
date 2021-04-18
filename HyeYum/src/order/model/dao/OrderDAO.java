@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import common.JDBCTemplate;
 import order.model.vo.Order;
 
@@ -72,15 +73,45 @@ public class OrderDAO {
 	}
 	
 	public int updateShipping(Connection conn, int orderNo, String shipping) { // 배송상태 변경
-		return 0;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE ORDERS SET SHIPPING_STATE = ? WHERE ORDER_NO = ?";
+		int result = 0;
+		System.out.println(orderNo);
+		System.out.println(shipping);
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, shipping);
+			pstmt.setInt(2, orderNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 	
 	public int updateOrder(Connection conn, Order order) { // 주문 변경 
 		return 0;
 	}
 
-	public int deleteOrder(Connection conn, int orderNo) { // 주문 삭제
-		return 0;
+	public int deleteOrder(Connection conn, String orderNo) { // 주문 삭제
+		Statement stmt = null;
+		int result = 0;
+		String query = "DELETE FROM ORDERS WHERE ORDER_NO IN ("+orderNo+")";
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		
+		return result;
 	}
 	
 	public String getReviewPageNavi(Connection conn, int currentPage, String userId) { // 주문 페이징
@@ -149,5 +180,41 @@ public class OrderDAO {
 			JDBCTemplate.close(stmt);
 		}
 		return recordTotalCount;
+	}
+
+	public ArrayList<Order> selectAdminAllOrderList(Connection conn) { // 관리자단 주문 리스트 전체 보기
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM ORDERS JOIN MEMBER USING(USER_ID) ORDER BY ORDER_NO DESC";
+		ArrayList<Order> oList = null;
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if ( rset != null) {
+				oList = new ArrayList<Order>();
+				while(rset.next()) {
+					Order order = new Order();
+					order.setOrderNO(rset.getInt("ORDER_NO"));
+					order.setUserId(rset.getString("USER_ID"));
+					order.setNick(rset.getString("NICK"));
+					order.setUserName(rset.getString("USER_NAME"));
+					order.setAddress(rset.getString("ADDRESS"));
+					order.setEmail(rset.getString("EMAIL"));
+					order.setUserPhone(rset.getString("USER_PHONE"));
+					order.setQuantity(rset.getInt("QUANTITY"));
+					order.setOrderDate(rset.getDate("ORDER_DATE"));
+					order.setPrice(rset.getInt("TOTALPRICE"));
+					order.setShippingState(rset.getString("SHIPPING_STATE"));
+					oList.add(order);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return oList;
 	}
 }
