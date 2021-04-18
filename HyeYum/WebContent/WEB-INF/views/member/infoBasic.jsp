@@ -69,8 +69,8 @@
 										<h3 class="sidebar-title">활동 <i class="bi bi-journals"></i></h3>
 										<div class="sidebar-item categories">
 											<ul>
-												<li><a href="/message/sentList">작성 게시글</a></li>
-												<li><a href="/message/sentList">작성 댓글</a></li>
+												<li><a href="/myPost">작성 게시글</a></li>
+												<li><a href="/myReply">작성 댓글</a></li>
 											</ul>
 											<hr>
 										</div>
