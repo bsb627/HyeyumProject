@@ -32,10 +32,10 @@ public class DonateListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		int bookCount = new DonateService().selectBook(userId);
-		int movieCount = new DonateService().selectMovie(userId);
-		int 
-		int totalcount = 0;
+//		int bookCount = new DonateService().selectBook(userId);
+//		int movieCount = new DonateService().selectMovie(userId);
+// 
+//		int totalcount = 0;
 	}
 
 	/**

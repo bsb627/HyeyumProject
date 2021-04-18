@@ -11,7 +11,9 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-
+<link href="/assets/css/find.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 <script type="text/javascript">
 (function() {
@@ -32,34 +34,32 @@ window.onload = function() {
 	        alert('이메일을 입력해주세요');
 	        event.preventDefault(); 
 	    }
-		
-		
 		//event.preventDefault(); 
-		//this.contact_number.value = Math.random() * 100000 | 0; 
+		
 		document.getElementById('contact-number').value = Math.random() * 100000 | 0;
-		// 서비스 id, 이메일 템플릿 
 		emailjs.sendForm('service_jqv7wxx', 'template_wq4eb4g', this); 
-
 	}); 
-	
-	
 } 
 </script> 
 
 </head>
 <body>
 
-<h1>비밀번호 찾기 STEP 02</h1>
-<h2>이름과 가입시 입력한 이메일을 입력해주세요.</h2>
-<form id = "contact-form" name="contactForm" method="post">
-<input type="hidden" name="contact_number" id="contact-number">
-이름 : <input type="text" placeholder = "이름을 입력해주세요 " name="user-name" id="name"> <br>
-이메일 : <input type="email" placeholder = "이메일을 입력해주세요 " name="user-email" id="email"> <br>
-<input type= "hidden" value = "<%= newPwd %>" name="new-pwd" id="new-pwd">
-<input type= "submit" id="mail-send" value = "임시비밀번호 발송">
-
+<form id = "contact-form" name="contactForm" method="post" class="form-signin">
+	<div class="wrapper" >
+	  <img src= "/assets/img/logo.png" style = "width :40px; height:40px;" >
+	  <h2 class="form-signin-heading">비밀번호 찾기</h2><br>
+	  <span style = "color:lightgray">1. 아이디 입력 >></span>
+      <span >2. 이름, 이메일 입력 >> </span> 
+      <span style = "color:lightgray"> 3. 임시 비밀번호 전송</span><br><br>
+      <span style = "color:red">※가입시 입력한 이름과 이메일 입력해주세요※</span><br><br>
+		<input type="hidden" name="contact_number" id="contact-number">
+			<input type="text" placeholder = "이름 " name="user-name" id="name" class="form-control"> <br>
+			<input type="email" placeholder = "이메일" name="user-email" id="email" class="form-control"> <br>
+			<input type= "hidden" value = "<%= newPwd %>" name="new-pwd" id="new-pwd">
+			<input type= "submit" id="mail-send" value = "임시 비밀번호 발송" class = "btn btn-primary">
+	</div>
 </form>
-
 
 </body>
 </html>

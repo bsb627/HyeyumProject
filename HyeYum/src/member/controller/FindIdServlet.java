@@ -49,7 +49,8 @@ public class FindIdServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/intro/find/idSuccess.jsp");
 			view.forward(request, response);
 		}else {
-			response.sendRedirect("/intro/find/idFail.jsp");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('존재하지 않는 회원입니다.'); history.back();</script>");
 		}
 	}
 
