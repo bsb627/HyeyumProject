@@ -36,7 +36,7 @@ public class BookAdminService {
 		return bList;
 	}
 
-	public int registerBookInfo(BookInfo info) { // 관리자 공연 정보 등록
+	public int registerBookInfo(BookInfo info) { 
 		int result = 0;
 		Connection conn = null;
 		
@@ -60,7 +60,6 @@ public class BookAdminService {
 	public BookInfo printOneBookInfo(int infoNo) {
 		BookInfo info = null;
 		Connection conn = null;
-		
 		try {
 			conn = factory.createConnection();
 			info = new BookAdminDAO().selectOneBookInfo(conn, infoNo);
@@ -70,7 +69,6 @@ public class BookAdminService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		
 		return info;
 	}
 

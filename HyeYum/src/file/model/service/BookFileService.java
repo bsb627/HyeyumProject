@@ -102,12 +102,12 @@ public class BookFileService {
 		return result;
 	}
 
-	public FileData printFileInfo(int showNo) {
+	public FileData printFileInfo(int infoNo) {
 		FileData fileData = null;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			fileData = new FileDAO().selectFileOne(conn,showNo);
+			fileData = new BookFileDAO().selectFileOneInfo(conn,infoNo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

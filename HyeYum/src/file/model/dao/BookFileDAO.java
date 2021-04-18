@@ -26,7 +26,7 @@ public class BookFileDAO {
 			pstmt.setString(2, fileData.getFilePath());
 			pstmt.setLong(3, fileData.getFileSize());
 			pstmt.setTimestamp(4, fileData.getUploadTime());
-			pstmt.setInt(5, info.getInfoNo());
+			pstmt.setInt(5, getInfoNo(conn,info));
 			result = pstmt.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -80,7 +80,6 @@ public class BookFileDAO {
 				data.setFileName(rset.getString("FILE_NAME"));
 				data.setFilePath(rset.getString("FILE_PATH"));
 				data.setFileSize(rset.getLong("FILE_SIZE"));
-				data.setFileUser(rset.getString("USER_ID"));
 				data.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
 				list.add(data);
 			}
@@ -137,14 +136,14 @@ public class BookFileDAO {
 		return result;
 	}
 
-	public FileData selectFileOneInfo(Connection conn, int shareNo) { 
+	public FileData selectFileOneInfo(Connection conn, int infoNo) { 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "SELECT * FROM BOOk_INFO_FILE WHERE INFO_NO=?";
 		FileData fileData = null;
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, shareNo);
+			pstmt.setInt(1, infoNo);
 			rset = pstmt.executeQuery();
 			while (rset.next()) {
 				fileData = new FileData();
@@ -154,7 +153,7 @@ public class BookFileDAO {
 				fileData.setFileSize(rset.getLong("FILE_SIZE"));
 				fileData.setFileUser(rset.getNString("FILE_USER"));
 				fileData.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
-				fileData.setNo(rset.getInt("SHARE_NO"));
+				fileData.setNo(rset.getInt("INFO_NO"));
 			}
 			
 		} catch (SQLException e) {

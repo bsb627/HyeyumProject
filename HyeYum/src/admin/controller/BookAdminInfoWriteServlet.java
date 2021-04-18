@@ -58,7 +58,6 @@ public class BookAdminInfoWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("써블릿");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 //		String fileUserId = (String)session.getAttribute("userId");
@@ -75,13 +74,6 @@ public class BookAdminInfoWriteServlet extends HttpServlet {
 		info.setAuthor(multi.getParameter("author"));
 		info.setPublisher(multi.getParameter("publisher"));
 		info.setIntro(multi.getParameter("intro"));
-		System.out.println("bookName : " + multi.getParameter("book-name"));
-		System.out.println("genre : " + multi.getParameter("genre"));
-		System.out.println("author : " + multi.getParameter("author"));
-		System.out.println("publisher : " + multi.getParameter("publisher"));
-		System.out.println("intro : " + multi.getParameter("intro"));
-		
-		
 		
 		int result = new BookAdminService().registerBookInfo(info);
 		System.out.println("result"+result);
@@ -101,12 +93,12 @@ public class BookAdminInfoWriteServlet extends HttpServlet {
 			fileData.setFileSize(fileSize);
 			fileData.setFileUser(fileUserId);
 			fileData.setUploadTime(uploadTime);
-			//fileData.setFileType("book");
 			System.out.println("fileName : " + fileName);
 			System.out.println("filePath : " + filePath);
 			System.out.println("fileSize : " + fileSize);
 			System.out.println("fileUserId : " + fileUserId);
 			System.out.println("uploadTime : " + uploadTime);
+			System.out.println("infoNo: " + uploadTime);
 			
 			int fileResult = new BookFileService().registerFileInfo(fileData, info);
 		

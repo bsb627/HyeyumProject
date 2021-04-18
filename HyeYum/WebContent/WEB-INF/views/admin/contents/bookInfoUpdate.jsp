@@ -1,8 +1,12 @@
+<%@page import="file.model.vo.FileData"%>
 <%@page import="book.model.vo.BookInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	BookInfo info = (BookInfo)request.getAttribute("info");
+	FileData fileData = (FileData)request.getAttribute("fileData");
+%>
 <%@include file="/admin/header.jsp"%>
 
 
@@ -18,7 +22,11 @@
 
 					<div class="col-lg-12">
 						<div class="row">
-
+							<div class="swiper-wrapper align-items-center">
+								<div class="swiper-slide">
+									<img src="/upload/info/book/<%=fileData.getFileName()%>"  <%-- onerror="this.src='/upload/info/book/ --%><%-- <%=file.getFileName()%> --%> alt="">
+								</div>
+							</div>
 							<div class="col-lg-3">
 								<div class="form-group">
 									<label for="exam1">선택1</label> 
@@ -71,6 +79,7 @@
 								id="exampleFormControlFile1" required>
 						</div>
 					</div>
+					<input type="hidden" name="info-no" value="<%=info.getInfoNo()%>">
 					<div class="btn-set" align="right">
 						<a href="/admin/bookInfo/list"><input type="button" class="btn btn-warning" value="취소"></a>
 						<button type="submit" class="btn btn-primary">등록</button>

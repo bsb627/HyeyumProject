@@ -56,6 +56,7 @@
                                             <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getIntro()%></td>
                                             <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=info.getInfoNo()%>"><%=info.getPublisher()%></td>
                                             <td  style="text-align: center"><a href="/admin/bookInfo/update?info-no=<%=info.getInfoNo()%>"><input type="button" class="btn btn-sm btn-success" value="수정"></a></td>
+											
                                             
                                         </tr>
                                        <%} %>

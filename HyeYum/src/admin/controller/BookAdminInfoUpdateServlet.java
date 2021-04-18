@@ -16,12 +16,10 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import admin.model.service.AdminService;
 import admin.model.service.BookAdminService;
 import book.model.vo.BookInfo;
 import file.model.service.BookFileService;
 import file.model.vo.FileData;
-import show.model.vo.ShowInfo;
 
 /**
  * Servlet implementation class AdminLoginServlet
@@ -44,11 +42,14 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int infoNo = Integer.parseInt(request.getParameter("info-no"));
-		
+		System.out.println("업데이트 서블릿 infoNo : " + infoNo);
 		BookInfo info = new BookAdminService().printOneBookInfo(infoNo);
 		
+		FileData fileData = new BookFileService().printFileInfo(infoNo);
+		System.out.println("업데이트 서블릿 fileData : " + fileData);
 		if(info != null) {
 			request.setAttribute("info", info);
+			request.setAttribute("fileData", fileData);
 			request.getRequestDispatcher("/WEB-INF/views/admin/contents/bookInfoUpdate.jsp").forward(request, response);
 		}else {
 			
@@ -65,6 +66,7 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 		String fileUserId = "admin";
 		String uploadFilePath = request.getServletContext().getRealPath("/upload/info/book");
 		int uploadFileSizeLimit = 5* 1024 * 1024 * 1024;
+
 		String encType = "UTF-8";
 		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 		
@@ -78,6 +80,7 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 		info.setPublisher(multi.getParameter("publisher"));
 		
 		int result = new BookAdminService().updateBookInfo(info);
+		
 		if(result > 0) {
 			File uploadFile = multi.getFile("up-file");
 			if( uploadFile != null) {
@@ -95,7 +98,6 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 			fileData.setFileSize(fileSize);
 			fileData.setFileUser(fileUserId);
 			fileData.setUploadTime(uploadTime);
-			fileData.setFileType("show");
 		
 			int fileResult = new BookFileService().updateFileInfo(fileData, info);
 		
