@@ -1,7 +1,14 @@
+<%@page import="book.model.vo.BookInfo"%>
+<%@page import="show.model.vo.ShowInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
+	ArrayList<BookInfo> bList = (ArrayList<BookInfo>)request.getAttribute("bList");
+%>
 <%@include file="/header.jsp"%>
+<script type="text/javascript"	src="/assets/js/index-ready.js"></script>
 <script>
 </script> 
 <!-- ======= Hero Section ======= -->
@@ -103,9 +110,11 @@
 	</div>
 	<!--  ============ End Chart ============== -->
 
-
+<%if(iList == null) {%>
+					<script type="text/javascript">indexReady()</script>
+				<% }else{%>
 	<!-- ======= Portfolio Section ======= -->
-	<section id="portfolio" class="portfolio">
+	 <section id="portfolio" class="portfolio">
 
 		<div class="container" data-aos="fade-up">
 
@@ -118,34 +127,62 @@
 				<div class="col-lg-12 d-flex justify-content-center">
 					<ul id="portfolio-flters">
 						<li data-filter="*" class="filter-active">전체</li>
-						<li data-filter=".filter-app">도서</li>
+						<li data-filter=".filter-book">도서</li>
 						<li data-filter=".filter-card">영화</li>
-						<li data-filter=".filter-web">공연</li>
+						<li data-filter=".filter-show">공연</li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="row gy-4 portfolio-container" data-aos="fade-up"
-				data-aos-delay="200">
+				data-aos-delay="200"  id="showInfo" style="height: 100%">
+				
+				
+<%for(BookInfo info : bList) {%>
 
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+<div class="col-lg-4 col-md-6 portfolio-item filter-book">
 					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid"
+						<img src="/upload/info/book/<%=info.getFileName() %>" class="img-fluid"
 							alt="">
 						<div class="portfolio-info">
-							<h4>App 1</h4>
-							<p>App</p>
+							<h4><%=info.getBookName() %></h4>
+							<p><%=info.getAuthor() %></p>
 							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-1.jpg"
+								<a href="/upload/info/book/<%=info.getFileName() %>"
 									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="App 1"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
+									title="<%=info.getBookName()%>"><i class="bi bi-plus"></i></a> <a
+									href="#" title="More Details"><i
 									class="bi bi-link"></i></a>
 							</div>
 						</div>
 					</div>
 				</div>
 
+<%} %>
+<%for(ShowInfo info : iList) {%>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-show">
+					<div class="portfolio-wrap">
+						<img src="/upload/info/show/<%=info.getFileName() %>" class="img-fluid"
+							alt="">
+						<div class="portfolio-info">
+							<h4><%=info.getShowName() %></h4>
+							<p><%=info.getTermDate() %></p>
+							<div class="portfolio-links">
+								<a href="/upload/info/show/<%=info.getFileName() %>"
+									data-gallery="portfolioGallery" class="portfokio-lightbox"
+									title="<%=info.getShowName()%>"><i class="bi bi-plus"></i></a> <a
+									href="/showInfo/detail?no=<%=info.getInfoNo()%>" title="More Details"><i
+									class="bi bi-link"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+<%} }%>
+
+
+				
+<!-- 
 				<div class="col-lg-4 col-md-6 portfolio-item filter-web">
 					<div class="portfolio-wrap">
 						<img src="/assets/img/portfolio/portfolio-2.jpg" class="img-fluid"
@@ -162,130 +199,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-3.jpg" class="img-fluid"
-							alt="">
-						<div class="portfolio-info">
-							<h4>App 2</h4>
-							<p>App</p>
-							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-3.jpg"
-									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="App 2"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
-									class="bi bi-link"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-		          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-		            <div class="portfolio-wrap">
-		              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-		              <div class="portfolio-info">
-		                <h4>Card 2</h4>
-		                <p>Card</p>
-		                <div class="portfolio-links">
-		                  <a href="assets/img/portfolio/portfolio-4.jpg" 
-		                  data-gallery="portfolioGallery" class="portfokio-lightbox" title="Card 2"><i class="bi bi-plus"></i></a>
-		                  <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-		                </div>
-		              </div>
-		            </div>
-		          </div>
-
-				<div class="col-lg-4 col-md-6 portfolio-item filter-web">
-					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-5.jpg" class="img-fluid"
-							alt="">
-						<div class="portfolio-info">
-							<h4>Web 2</h4>
-							<p>Web</p>
-							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-5.jpg"
-									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="Web 2"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
-									class="bi bi-link"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-6.jpg" class="img-fluid"
-							alt="">
-						<div class="portfolio-info">
-							<h4>App 3</h4>
-							<p>App</p>
-							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-6.jpg"
-									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="App 3"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
-									class="bi bi-link"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 portfolio-item filter-card">
-					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-7.jpg" class="img-fluid"
-							alt="">
-						<div class="portfolio-info">
-							<h4>Card 1</h4>
-							<p>Card</p>
-							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-7.jpg"
-									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="Card 1"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
-									class="bi bi-link"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 portfolio-item filter-card">
-					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-8.jpg" class="img-fluid"
-							alt="">
-						<div class="portfolio-info">
-							<h4>Card 3</h4>
-							<p>Card</p>
-							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-8.jpg"
-									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="Card 3"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
-									class="bi bi-link"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 portfolio-item filter-web">
-					<div class="portfolio-wrap">
-						<img src="/assets/img/portfolio/portfolio-9.jpg" class="img-fluid"
-							alt="">
-						<div class="portfolio-info">
-							<h4>Web 3</h4>
-							<p>Web</p>
-							<div class="portfolio-links">
-								<a href="/assets/img/portfolio/portfolio-9.jpg"
-									data-gallery="portfolioGallery" class="portfokio-lightbox"
-									title="Web 3"><i class="bi bi-plus"></i></a> <a
-									href="portfolio-details.html" title="More Details"><i
-									class="bi bi-link"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				
+				 
 			</div>
 		</div>
 	</section>

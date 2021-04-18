@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import book.model.vo.BookInfo;
 import common.JDBCTemplate;
 import qna.model.vo.Qna;
 import show.model.vo.ShowData;
@@ -690,6 +691,44 @@ public class ShowDAO {
 			JDBCTemplate.close(stmt);
 		}
 		return info;
+	}
+
+	public ArrayList<BookInfo> getBookInfoList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM BOOk_INFO JOIN BOOK_INFO_FILE USING (INFO_NO) ORDER BY ENROLL_DATE DESC";
+		ArrayList<BookInfo> bList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if( rset != null) {
+				bList = new ArrayList<BookInfo>();
+				while(rset.next()) {
+					BookInfo info = new BookInfo();
+					
+					info.setInfoNo(rset.getInt("INFO_NO"));
+					info.setBookName(rset.getString("BOOK_NAME"));
+					info.setGenre(rset.getString("GENRE"));
+					info.setAuthor(rset.getString("AUTHOR"));
+					info.setPublisher(rset.getString("PUBLISHER"));
+					info.setIntro(rset.getString("INTRO"));
+					info.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					info.setFileNo(rset.getInt("FILE_NO"));
+					info.setFileName(rset.getString("FILE_NAME"));
+					info.setFilePath(rset.getString("FILE_PATH"));
+					bList.add(info);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return bList;
 	}
 	
 	

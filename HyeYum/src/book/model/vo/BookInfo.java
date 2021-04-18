@@ -10,6 +10,10 @@ public class BookInfo { // 이달의 도서
 	private String publisher; // 출판사
 	private String intro; // 내용
 	private Date enrollDate; // 등록일
+	private int fileNo; 
+	private String fileName;
+	private String filePath;
+	
 	
 	public BookInfo() {
 		// TODO Auto-generated constructor stub
@@ -71,6 +75,38 @@ public class BookInfo { // 이달의 도서
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
+	
+	
+
+	public int getFileNo() {
+		return fileNo;
+	}
+
+
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
+	}
+
+
+	public String getFileName() {
+		return fileName;
+	}
+
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 
 	@Override
 	public String toString() {

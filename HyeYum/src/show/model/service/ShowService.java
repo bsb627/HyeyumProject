@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import book.model.vo.BookInfo;
 import common.JDBCTemplate;
 import show.model.dao.ShowDAO;
 import show.model.vo.ShowData;
@@ -400,5 +401,21 @@ public class ShowService {
 		}
 		
 		return likes;
+	}
+
+	public ArrayList<BookInfo> getBookInfoList() {
+		ArrayList<BookInfo> bList =null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			bList = new ShowDAO().getBookInfoList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return bList;
 	}
 }
