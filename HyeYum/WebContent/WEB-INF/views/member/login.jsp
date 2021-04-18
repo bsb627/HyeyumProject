@@ -38,14 +38,17 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="user-pwd" id="your_pass" placeholder="Password"/>
                             </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
                             </div>
+                            
+                            <div class="form-group">
+                                <a href = "/intro/find/findId.jsp">아이디 찾기</a>
+                                <a href = "/intro/find/findPwd.jsp">비밀번호 찾기</a>
+                            </div>
+
                         </form>
+                        	
                        <!--  <div class="social-login">
                             <span class="social-label">SNS 계정으로 로그인</span>
                             <ul class="socials">

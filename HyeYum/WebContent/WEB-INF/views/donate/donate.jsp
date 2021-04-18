@@ -41,9 +41,9 @@
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
-          <li>쪽지</li>
+          <li>기부</li>
         </ol>
-        <h2>쪽지 쓰기</h2>
+        <h2>기부 내역</h2>
 		
       </div>
     </section><!-- End Breadcrumbs -->
@@ -101,10 +101,10 @@
 														<hr>
 													</div>
 													<!-- End sidebar tags-->
-													<h3 class="sidebar-title">기부</h3>
+													<h3 class="sidebar-title">주문</h3>
 													<div class="sidebar-item categories">
 														<ul>
-															<li><a href="/donate/list">기부내역</a></li>
+															<li><a href="/message/sentList">주문내역</a></li>
 															<li><a href="/message/sentList">주문내역</a></li>
 														</ul>
 
