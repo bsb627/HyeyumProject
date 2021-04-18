@@ -1,3 +1,4 @@
+<%@page import="movie.model.vo.MovieData"%>
 <%@page import="movie.model.vo.MovieRecommend"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
 <%
 	ArrayList<MovieRecommend> recommend = (ArrayList<MovieRecommend>)request.getAttribute("recommend");
 	String pageNavi = (String)request.getAttribute("pageNavi");
+	ArrayList<MovieData> likesCount = (ArrayList<MovieData>)request.getAttribute("likesCount");
 %>
 
 
@@ -47,7 +49,12 @@
 		<div class="container" data-aos="fade-up">
 			<header class="section-header">
 				<h2>Movie Recommend</h2>
-				<p class="pcomment">이 영화를 추천합니다!</p>
+				<p class="pcomment">이 영화를 추천합니다!</p><br><br>
+				
+				<div class="hero-img" data-aos="zoom-out" data-aos-delay="50">
+					<img src="/assets/img/movie/movietime.jpg"
+						style="width: 800px; height: 450px;" class="img-fluid" alt="">
+				</div>
 			</header>
 		</div>
 	</section>
@@ -110,7 +117,7 @@
 
 			<div class="contaioner">
 				<table class="table table-hover table-borderless"
-					style="text-align: center">
+					style="text-align: center;">
 					<thead>
 						<tr class="table-light">
 							<th scope="col">글번호</th>
@@ -125,14 +132,21 @@
 					<tbody>
 						<% for(MovieRecommend mRecommend : recommend) {%>
 						<tr>
-							<th><p class="text-center"><%=mRecommend.getRowNo() %></p></th>
-							<td><%= mRecommend.getGenre()%></td>
+							<th style="vertical-align:center;"><p class="text-center"><%=mRecommend.getRowNo() %></p></th>
+							<td valign="middle"><%= mRecommend.getGenre()%></td>
 							<td><a
 								href="/movieRecommend/detail?recommendNo=<%=mRecommend.getRowNo()%>"><%= mRecommend.getTitle()%></a></td>
 							<td><%= mRecommend.getNick() %></td>
 							<td><%= mRecommend.getEnrollDate() %></td>
 							<td><%= mRecommend.getHits() %></td>
-							<td><%= mRecommend.getLikes() %></td>
+							<%-- <td><%= mRecommend.getLikes() %></td>  --%>
+							
+							
+							 <%for (MovieData likes : likesCount) { %>
+							<% if(mRecommend.getRowNo() == likes.getRecommendNo()) { %>  
+							<td><i class="bi bi-hand-thumbs-up" style="color:navy;"> <%= likes.getLikesCount()%></i></td>
+							<% } } %>    
+							 
 						</tr>
 						<% } %>
 
@@ -155,7 +169,7 @@
 			<!-- 페이징 처리 할 곳 !! -->
 			<div class="blog-pagination">
 				<ul class="justify-content-center">
-					<%=pageNavi%>
+					<%= pageNavi%>
 				</ul>
 			</div>
 		</section>

@@ -1,11 +1,17 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import admin.model.service.AdminMovieService;
+import movie.model.vo.MovieRecommend;
+import movie.model.vo.MovieReview;
 
 /**
  * Servlet implementation class AdminLoginServlet
@@ -26,7 +32,14 @@ public class AdminMovieReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/admin/board/movieList.jsp").forward(request, response);
+		ArrayList<MovieReview> mList = new AdminMovieService().printAllMovieReviewList();
+		System.out.println("리뷰리스트 : " + mList);
+		if(!mList.isEmpty()) {
+			request.setAttribute("mList", mList);
+			request.getRequestDispatcher("/WEB-INF/views/admin/board/reviewList.jsp").forward(request, response);
+		} else {
+			
+		}
 	}
 
 	/**

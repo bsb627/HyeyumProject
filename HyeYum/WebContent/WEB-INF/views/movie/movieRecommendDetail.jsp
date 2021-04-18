@@ -88,7 +88,7 @@
 								<a href="/movieRecommend/minusLikes?no=<%=recommend.getNo() %>">
 								<i class="fa fa-thumbs-up fa-2x"></i></a>
 								 <% } %> 
-								
+								<p><%= recommend.getLikes() %></p>
 								<!-- 
 								<a href=""><button class="btn btn-sm btn-outline-danger">
 										<i class="bi bi-heart-fill" style="color: #dc3545"></i> 좋아요 취소
@@ -112,7 +112,7 @@
 
 
 
-							<div class="reply-form">
+						<%-- 	<div class="reply-form">
 								<h4>댓글</h4>
 								<p>댓글만 달아도 기부를 할 수 있습니다. 💌
 								<p>
@@ -138,7 +138,7 @@
 									</div>
 
 								</form>
-							</div>
+							</div> --%>
 
 						</div>
 						<!-- End blog comments -->
@@ -164,6 +164,7 @@
 									<li><strong>조회수</strong> <%=recommend.getHits()%></li>
 									<li><strong>작성자</strong> <%=recommend.getNick()%></li>
 									<li><strong>작성일</strong> <%=recommend.getEnrollDate()%></li>
+									<li><strong>좋아요</strong> <%=recommend.getLikes()%></li>
 									<br>
 									
 								</ul>

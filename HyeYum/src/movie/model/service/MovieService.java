@@ -237,7 +237,7 @@ public class MovieService {
 		return mpd;
 	}
 	
-	// 추천혜윰
+	//////// 추천혜윰
 	public MoviePageData printAllMovieRecommend(int currentPage) { // 추천글 전체보기
 		Connection conn = null;
 		MoviePageData mpd = new MoviePageData();
@@ -348,7 +348,7 @@ public class MovieService {
 		return mpd;
 	}
 
-	public int RecommendPlusLikesCount(int recommendNo, String userId) { // 추천글 좋아요 수 증가
+	public int RecommendPlusLikesCount(int recommendNo, String userId) { // 추천글 좋아요 증가
 		Connection conn = null;
 		int result = 0;
 		try {
@@ -368,7 +368,7 @@ public class MovieService {
 		return result;
 	}
 	
-	public int RecommendMinusLikesCount(int recommendNo, String userId, String state) { // 추천글 좋아요 수 감소
+	public int RecommendMinusLikesCount(int recommendNo, String userId, String state) { // 추천글 좋아요 취소
 		Connection conn = null;
 		int likes = 0;
 		try {
@@ -423,7 +423,7 @@ public class MovieService {
 		return mList;
 	}
 	
-	public int getMovieRecommendLikes(String userId, int recommendNo) {
+	public int getMovieRecommendLikes(String userId, int recommendNo) { // 추천글 좋아요 체크한 글 조회
 		int likes = 0;
 		Connection conn = null;
 		try {
@@ -438,7 +438,7 @@ public class MovieService {
 		return likes;
 	}
 	
-	public int checkRecommendLikes(String userId, int recommendNo) {
+	public int checkRecommendLikes(String userId, int recommendNo) { // 추천글 좋아요 여부
 		int result = 0;
 		Connection conn = null;
 		
@@ -455,28 +455,13 @@ public class MovieService {
 	}
 	
 	
-	
-	public ArrayList<MovieData> printMovieRecommendLikesCount() {
-		ArrayList<MovieData> mList = null;
-		Connection conn = null;
-		try {
-			conn = factory.createConnection();
-			mList = new MovieDAO().selectMovieRecommendLikesCount(conn);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(conn);
-		}
-		return mList;
-	}
 
-	public int updateRecommendLikesCount(int recommendNo, String userId, String state) {
+	public int updateRecommendLikesCount(int recommendNo, String userId, String state) { // 좋아요 다시 수정
 		int likes = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			likes = new MovieDAO().updateLikesRecommend(conn, recommendNo, userId, state);
+			likes = new MovieDAO().updateLikesRecommend(conn, recommendNo, userId, state); // updateDAO를 다시
 			if(likes > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
@@ -491,7 +476,19 @@ public class MovieService {
 		return likes;
 	}
 	
-	
+	public ArrayList<MovieData> printAllRecommendLikesCount() { // 추천게시글에 대한 좋아요 총 갯수
+		ArrayList<MovieData> mList = null;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			mList = new MovieDAO().selectAllRecommendLikesCount(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mList;
+	}
+
 	
 		
 }

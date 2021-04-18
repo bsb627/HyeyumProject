@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import movie.model.service.MovieService;
+import movie.model.vo.MovieData;
 import movie.model.vo.MoviePageData;
 import movie.model.vo.MovieRecommend;
 
@@ -44,10 +45,12 @@ public class MovieRecommendListServlet extends HttpServlet {
 		MoviePageData mPageData = new MovieService().printAllMovieRecommend(currentPage);
 		ArrayList<MovieRecommend> recommend = mPageData.getRecommendList();
 		String pageNavi = mPageData.getPageNavi();
+		ArrayList<MovieData>likesCount = new MovieService().printAllRecommendLikesCount(); 
 		
 		if(!recommend.isEmpty()) {
 			request.setAttribute("recommend", recommend);
 			request.setAttribute("pageNavi", pageNavi);
+			request.setAttribute("likesCount", likesCount);
 			request.getRequestDispatcher("/WEB-INF/views/movie/movieRecommendList.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);

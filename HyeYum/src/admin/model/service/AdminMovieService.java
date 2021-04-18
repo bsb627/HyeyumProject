@@ -8,6 +8,7 @@ import admin.model.dao.AdminDAO;
 import admin.model.dao.AdminMovieDAO;
 import common.JDBCTemplate;
 import movie.model.vo.MovieInfo;
+import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
@@ -154,12 +155,12 @@ public class AdminMovieService {
 		return result;
 	}
 	
-	public int deleteMovieRecommend(int recommendNo) {
+	public int deleteMovieRecommend(String recommendNo) {
 		int result = 0;
 		Connection conn = null;
 		try {
 			conn = factory.createConnection();
-			result = new AdminMovieDAO().deleteMovieReview(conn, recommendNo);
+			result = new AdminMovieDAO().deleteMovieRecommend(conn, recommendNo);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
@@ -172,5 +173,39 @@ public class AdminMovieService {
 		}
 		
 		return result;
+	}
+
+
+	public ArrayList<MovieRecommend> printAllMovieRecommendList() {
+		ArrayList<MovieRecommend> mList = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			mList = new AdminMovieDAO().selectAllMovieRecommendList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return mList;
+	}
+
+
+	public MovieRecommend printOneMovieRecommend(int recommendNo) {
+		MovieRecommend recommend = new MovieRecommend();
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			recommend = new AdminMovieDAO().selectOneMovieRecommend(conn, recommendNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return recommend;
 	}
 }

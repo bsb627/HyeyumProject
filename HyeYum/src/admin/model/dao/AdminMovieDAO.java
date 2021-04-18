@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import movie.model.vo.MovieInfo;
+import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
 
 public class AdminMovieDAO {
@@ -121,7 +122,6 @@ public class AdminMovieDAO {
 		} finally {
 			JDBCTemplate.close(stmt);
 		}
-		
 		return result;
 	}
 
@@ -155,7 +155,7 @@ public class AdminMovieDAO {
 		Statement stmt = null;
 		ResultSet rset = null;
 		ArrayList<MovieReview> mList = null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.ENROLL_DATE DESC) AS NUM, REVIEW_NO, A.USER_ID, TICKET_NUMBER, MOVIE_NAME,CONTENTS,NICK,(A.ENROLL_DATE), STAR_RATING,SPOILER, B.GENRE, B.INFO_NO FROM MOVIE_REVIEW A JOIN MOVIE_INFO B ON A.INFO_NO=B.INFO_NO JOIN MEMBER C ON A.USER_ID=C.USER_ID) WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY A.ENROLL_DATE DESC) AS NUM, REVIEW_NO, A.USER_ID, TICKET_NUMBER, MOVIE_NAME,CONTENTS,NICK,(A.ENROLL_DATE), STAR_RATING,SPOILER, B.GENRE, B.INFO_NO FROM MOVIE_REVIEW A JOIN MOVIE_INFO B ON A.INFO_NO=B.INFO_NO JOIN MEMBER C ON A.USER_ID=C.USER_ID)";
 		try {
 			stmt = conn.prepareStatement(query);
 			rset = stmt.executeQuery(query);
@@ -207,23 +207,85 @@ public class AdminMovieDAO {
 		return result;
 	}
 	
-	public int deleteMovieRecommend(Connection conn, int recommendNo) { // 관리자 영화추천글 삭제
-		PreparedStatement pstmt = null;
+	public int deleteMovieRecommend(Connection conn, String recommendNo) { // 관리자 영화추천글 삭제
+		Statement stmt = null;
 		int result = 0;
-		String query = "DELETE FROM MOVIE_RECOMMEND WHERE RECOMMEND_NO = ?";
+		String query = "DELETE FROM MOVIE_RECOMMEND WHERE RECOMMEND_NO IN ("+recommendNo+")";
 		
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, recommendNo);
-			result = pstmt.executeUpdate();
-			
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  finally {
-			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(stmt);
 		}
 			System.out.println("result : " + result);
 		return result;
+	}
+
+	public ArrayList<MovieRecommend> selectAllMovieRecommendList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<MovieRecommend> mList = null;
+		String query = "SELECT RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, NICK, USER_ID, ENROLL_DATE FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) ORDER BY ENROLL_DATE DESC";
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				mList = new ArrayList<MovieRecommend>();
+				while(rset.next()) {
+					MovieRecommend recommend = new MovieRecommend();
+					recommend.setRowNo(rset.getInt("RECOMMEND_NO"));
+					recommend.setGenre(rset.getString("GENRE"));
+					recommend.setTitle(rset.getString("TITLE"));
+					recommend.setContents(rset.getString("CONTENTS"));
+					recommend.setHits(rset.getInt("HITS"));
+					recommend.setNick(rset.getString("NICK"));
+					recommend.setUserId(rset.getString("USER_ID"));
+					recommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					mList.add(recommend);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		} System.out.println("mList : " + mList);
+		return mList;
+	}
+
+	public MovieRecommend selectOneMovieRecommend(Connection conn, int recommendNo) {
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		String query = "SELECT RECOMMEND_NO, GENRE, TITLE, CONTENTS, HITS, NICK, USER_ID, ENROLL_DATE FROM MOVIE_RECOMMEND JOIN MEMBER USING (USER_ID) WHERE RECOMMEND_NO = ?";
+		MovieRecommend recommend = new MovieRecommend();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, recommendNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				recommend.setRowNo(rset.getInt("RECOMMEND_NO"));
+				recommend.setGenre(rset.getString("GENRE"));
+				recommend.setTitle(rset.getString("TITLE"));
+				recommend.setContents(rset.getString("CONTENTS"));
+				recommend.setHits(rset.getInt("HITS"));
+				recommend.setNick(rset.getString("NICK"));
+				recommend.setUserId(rset.getString("USER_ID"));
+				recommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally { 
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		} System.out.println("sysout dao : " + recommend);
+		return recommend;
 	}
 }

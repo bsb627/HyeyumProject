@@ -705,7 +705,7 @@ public class MovieDAO {
 		return recordTotalCount;
 	}
 	
-	public int updateHitsRecommend(Connection conn, int recommendNo) { // 해당 게시글 조회수 증가
+	public int updateHitsRecommend(Connection conn, int recommendNo) { // 추천글 게시글 조회수 증가
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -724,8 +724,7 @@ public class MovieDAO {
 		return result;
 	}
 	
-	public int insertLikesRecommend(Connection conn, int recommendNo, String userId) { // 추천글 좋아요 등록
-		System.out.println("dao 들옴");
+	public int insertLikesRecommend(Connection conn, int recommendNo, String userId) { // 추천글 좋아요 증가
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = "INSERT INTO MOVIE_LIKES VALUES(SEQ_MOVIE_LIKES.NEXTVAL, 1, NULL, ?, ?)";
@@ -743,6 +742,7 @@ public class MovieDAO {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("좋아요 dao 증가" + result);
 		return result;
 	}
 	
@@ -764,6 +764,7 @@ public class MovieDAO {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("좋아요 dao 변동" + likes);
 		return likes;
 	}
 
@@ -773,7 +774,7 @@ public class MovieDAO {
 	}
 	
 	
-	public int selectRecommendLikes(Connection conn, String userId, int recommendNo) { // 추천글 좋아요 체크 조회
+	public int selectRecommendLikes(Connection conn, String userId, int recommendNo) { // 추천글 좋아요 체크한 글 조회
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int likes = 0;
@@ -793,6 +794,7 @@ public class MovieDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(pstmt);
+			System.out.println("좋아요 dao 조회" + likes);
 		} return likes;
 	}
 
@@ -818,12 +820,36 @@ public class MovieDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("좋아요 dao 여부" + check);
 		return check;
 	}
 
-	public ArrayList<MovieData> selectMovieRecommendLikesCount(Connection conn) { // 추천글 좋아요 게시글 별 갯수 -- 따로 하기
+	public ArrayList<MovieData> selectAllRecommendLikesCount(Connection conn) { // 추천글 좋아요 게시글 별 갯수 -- 따로 하기
 		ArrayList<MovieData> mList = null;
-		//SELECT COUNT(*) AS TOTALCOUNT, REVIEW_NO, RECOMMEND_NO FROM MOVIE_LIKES GROUP BY CUBE(REVIEW_NO, RECOMMEND_NO);
+		//SELECT COUNT(*) AS TOTALCOUNT, RECOMMEND_NO FROM MOVIE_LIKES GROUP BY RECOMMEND_NO;
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT, RECOMMEND_NO FROM MOVIE_LIKES GROUP BY RECOMMEND_NO";
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				mList = new ArrayList<MovieData>();
+				while(rset.next()) {
+					MovieData data = new MovieData();
+					data.setRecommendNo(rset.getInt("RECOMMEND_NO"));
+					data.setLikesCount(rset.getInt("TOTALCOUNT"));
+					mList.add(data);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		} System.out.println("좋아요 갯수 :" + mList);
 		return mList;
 		
 	}
