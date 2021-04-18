@@ -109,7 +109,7 @@ function chnQnaType(type , select) {
 		        $('#info-no').append("<option value='15' >유혹의 기술</option>");
 			}else{ // info-no이 존재하지 않으면
 				$("#genre").remove();
-				$("#info-type").after('<select id="info-no" name="info-no"><option>-- 선택 --</option><option value="11">게으름도 습관이다</option><option value="12">노르웨이숲</option><option value="13">불안</option><option value="14">여자가 없는 남자들</option><option value="15">유혹의 기술</option></select> <input type="hidden" name="genre" value="null">');
+				$("#info-type").after('<select id="info-no" name="info-no" required><option>-- 선택 --</option><option value="11">게으름도 습관이다</option><option value="12">노르웨이숲</option><option value="13">불안</option><option value="14">여자가 없는 남자들</option><option value="15">유혹의 기술</option></select> <input type="hidden" name="genre" value="null">');
 				
 			}
 		break;
@@ -125,11 +125,11 @@ function chnQnaType(type , select) {
 		        $('#info-no').append("<option value='26' >건강/다이어트</option>'");
 		        $('#info-no').append("<option value='27' >생활/취미</option>'");
 				$("#info-no").remove();
-				$("#info-type").after('<select id="genre" name="genre"><option>-- 선택 --</option><option value="Home">Home</option><option value="Home">Home</option><option value="Home">Home</option><option value="Home">Home</option><option value="Home">Home</option><option value="Home">Home</option><option value="Home">Home</option></select><input type="hidden" name="info-no" value="0"> ');
+				$("#info-type").after('<select id="genre" name="genre" required><option>-- 선택 --</option><option value="인문/사회">인문/사회</option><option value="소설">소설</option><option value="에세이">에세이</option><option value="시">시</option><option value="자기계발">자기계발</option><option value="건강/다이어트">건강/다이어트</option><option value="생활/취미">생활/취미</option></select><input type="hidden" name="info-no" value="0"> ');
 				
 				
 			}else{ // info-no이 존재하지 않으면
-				$("#info-type").after('<select id="info-no" name="info-no"><option>-- 선택 --</option><option value="인문/사회">인문/사회</option><option value="소설">소설</option><option value="에세이">에세이</option><option value="시">시</option><option value="자기계발">자기계발</option><option value="건강/다이어트">건강/다이어트</option><option value="생활/취미">생활/취미</option></select> <input type="hidden" name="genre" value="null">');
+				$("#info-type").after('<select id="genre" name="genre" required><option>-- 선택 --</option><option value="인문/사회">인문/사회</option><option value="소설">소설</option><option value="에세이">에세이</option><option value="시">시</option><option value="자기계발">자기계발</option><option value="건강/다이어트">건강/다이어트</option><option value="생활/취미">생활/취미</option></select> <input type="hidden" name="genre" value="null">');
 			}
 		break;
 		

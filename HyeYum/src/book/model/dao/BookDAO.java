@@ -176,7 +176,7 @@ public class BookDAO {
 	public int updateBookReview(Connection conn, BookReview review) { // 책리뷰 수정
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "UPDATE BOOK_REVIEW SET DIVISION = ?, TITLE = ?, CONTENTS = ?, INFO_NO=? WHERE REVIEW_NO = ? ";
+		String query = "UPDATE BOOK_REVIEW SET DIVISION = ?, TITLE = ?, CONTENTS = ?, INFO_NO=?, GENRE= ? WHERE REVIEW_NO = ? ";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -184,7 +184,8 @@ public class BookDAO {
 			pstmt.setString(2, review.getTitle());
 			pstmt.setString(3, review.getContents());
 			pstmt.setInt(4, review.getInfoNo());
-			pstmt.setInt(5, review.getNo());
+			pstmt.setString(5, review.getGenre());
+			pstmt.setInt(6, review.getNo());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

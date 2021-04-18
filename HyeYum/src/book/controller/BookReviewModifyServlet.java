@@ -80,6 +80,7 @@ public class BookReviewModifyServlet extends HttpServlet {
 		review.setInfoNo(Integer.parseInt(multi.getParameter("info-no")));
 		review.setDivision(multi.getParameter("info-type"));
 		review.setTitle(multi.getParameter("review-title"));
+		review.setGenre(multi.getParameter("genre"));
 		review.setContents(multi.getParameter("review-content"));
 		review.setNick((String)session.getAttribute("userId"));
 		

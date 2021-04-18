@@ -44,11 +44,10 @@
 			</header>
 
 			<form action="/bookReview/enroll" method="post" enctype="multipart/form-data">
-				이달의 도서
 				<div class="row border col-md-12">
 					
 					<div class="col-md-8">
-	                   <select name="info-type" id="info-type" onchange="chnQnaType(this.value)">
+	                   <select name="info-type" id="info-type" onchange="chnQnaType(this.value)"required>
 	                       <option hidden="hidden">-- 메뉴 선택 --</option>
 	                       <option value="info">이달의 도서</option>
 	                       <option value="genre">장르</option>
@@ -59,12 +58,9 @@
 	
 					<div class="col-md-4">
 					<label for="InputSubject1">파일첨부</label>
-						
 						<input type="text" id="userfile" name="userfile" disabled="">
 						<span class="group-span-filestyle input-group-btn" tabindex="0">
 							<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
-								
-							
 						</span>
 					</div>
 
