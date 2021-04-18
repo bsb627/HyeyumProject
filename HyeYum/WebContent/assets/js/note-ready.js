@@ -18,5 +18,17 @@ $(document).ready(function() {
 		  ]
 	});
 			
+			
+			$("#write-btn").on("click",function(){
+				checkForm();
+			});
 	
 });
+
+function checkForm(){
+	
+	if($("#summernote").val()==""){
+		alert("내용을 입력해주세요");
+		return;
+	}
+}

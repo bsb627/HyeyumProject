@@ -96,7 +96,7 @@
 					</div>
 				
 					<div class="form-outline show-form">
-					 <textarea id="summernote" name="show-content"></textarea>
+					 <textarea id="summernote" name="show-content" required></textarea>
 					</div>
 					
 					 <label class="form-label show-form" for="customFile"></label> <input
@@ -108,7 +108,7 @@
 					  취소
 					</button>
 					</a>
-					<button type="submit" class="btn btn-primary " data-mdb-ripple-color="dark">
+					<button type="submit" id="write-btn" class="btn btn-primary " data-mdb-ripple-color="dark">
 					  등록
 					</button>
 					</div>
