@@ -101,7 +101,7 @@ public class FindDAO {
 	public int updatePwd(Connection conn, String userName, String newPwd) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "UDATE MEMBER SET USER_PWD = ? WHERE USER_NAME = ?";
+		String query = "UPDATE MEMBER SET USER_PWD = ? WHERE USER_NAME = ?";
 		
 		
 		try {

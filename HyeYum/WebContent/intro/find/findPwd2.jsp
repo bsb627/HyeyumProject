@@ -24,6 +24,7 @@ emailjs.init("user_6A0xYDbD9AoTXZ7Gfppe6");
 window.onload = function() { 
 	// form id, #contact-form 안에 있는 것들 전송 
 	document.getElementById('contact-form').addEventListener('submit', function(event) {
+		document.contactForm.action = '/member/find/pwd/second';
 		if(document.getElementById('name').value.length === 0){
 	        alert('이름을 입력해주세요');
 	        event.preventDefault(); 
@@ -33,15 +34,12 @@ window.onload = function() {
 	    }
 		
 		
-		event.preventDefault(); this.contact_number.value = Math.random() * 100000 | 0; 
+		//event.preventDefault(); 
+		//this.contact_number.value = Math.random() * 100000 | 0; 
+		document.getElementById('contact-number').value = Math.random() * 100000 | 0;
 		// 서비스 id, 이메일 템플릿 
 		emailjs.sendForm('service_jqv7wxx', 'template_wq4eb4g', this); 
-		
-/* 		var name = document.getElementById('name');
-		var newPwd = document.getElementById('new-pwd')
-		var email = document.getElementById('email');
-		
-		location.href ="/member/find/pwd/2?newPwd="+newPwd+"&name="+name+"&email="+email; */
+
 	}); 
 	
 	
@@ -53,12 +51,12 @@ window.onload = function() {
 
 <h1>비밀번호 찾기 STEP 02</h1>
 <h2>이름과 가입시 입력한 이메일을 입력해주세요.</h2>
-<form id = "contact-form" action = "#">
-<input type="hidden" name="contact_number">
-이름 : <input type = "text" placeholder = "이름을 입력해주세요 " name = "name" id="name"> <br>
-이메일 : <input type = "email" placeholder = "이메일을 입력해주세요 " name = "email" id="email"> <br>
-<input type = "hidden" value = "<%= newPwd %>" name = "new-pwd" id="new-pwd">
-<input type = "submit" value = "임시비밀번호 발송">
+<form id = "contact-form" name="contactForm" method="post">
+<input type="hidden" name="contact_number" id="contact-number">
+이름 : <input type="text" placeholder = "이름을 입력해주세요 " name="user-name" id="name"> <br>
+이메일 : <input type="email" placeholder = "이메일을 입력해주세요 " name="user-email" id="email"> <br>
+<input type= "hidden" value = "<%= newPwd %>" name="new-pwd" id="new-pwd">
+<input type= "submit" id="mail-send" value = "임시비밀번호 발송">
 
 </form>
 

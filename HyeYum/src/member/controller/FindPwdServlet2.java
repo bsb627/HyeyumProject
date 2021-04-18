@@ -15,7 +15,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class FindPwdServlet2
  */
-@WebServlet("/member/find/pwd/2")
+@WebServlet("/member/find/pwd/second")
 public class FindPwdServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,9 +31,10 @@ public class FindPwdServlet2 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName = request.getParameter("name");
-		String email = request.getParameter("email");
-		String newPwd = request.getParameter("newPwd");
+		request.setCharacterEncoding("utf-8");
+		String userName = request.getParameter("user-name");
+		String email = request.getParameter("user-email");
+		String newPwd = request.getParameter("new-pwd");
 		Member member = new FindService().findOneNameEmail(userName, email);
 		
 		if(member!=null) {
@@ -43,6 +44,7 @@ public class FindPwdServlet2 extends HttpServlet {
 			response.sendRedirect("/intro/find/pwdSuccess.jsp");
 			
 		} else {
+			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('입력하신 이름과 이메일이 일치하지 않습니다.');history.back(); </script>");
 		}
