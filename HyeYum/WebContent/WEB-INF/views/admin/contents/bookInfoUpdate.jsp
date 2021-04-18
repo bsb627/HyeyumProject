@@ -18,7 +18,7 @@
 		<div class="container">
 			<h1 class="h3 mb-4 text-gray-800">도서 정보 수정</h1>
 			<div class="col-lg-12">
-				<form action="/admin/bookInfo/write" method="post" enctype="multipart/form-data">
+				<form action="/admin/bookInfo/update" method="post" enctype="multipart/form-data">
 
 					<div class="col-lg-12">
 						<div class="row">
@@ -29,11 +29,16 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="form-group">
-									<label for="exam1">선택1</label> 
-									<select	class="browser-default custom-select" id="info-type" name="info-type" onchange="chnQnaType(this.value)" required>
-										<option selected>메뉴 선택</option>
-					                    <option value="info">이달의 도서</option>
-					                    <option value="genre">장르</option>
+									<label for="exam1">장르</label> 
+									<select	class="browser-default custom-select" id="genre" name="genre" onchange="chnQnaType(this.value)" required>
+										<option selected>장르 선택</option>
+					                    <option value="인문/사회">인문/사회</option>
+					                    <option value="소설">소설</option>
+					                    <option value="에세이">에세이</option>
+					                    <option value="시">시</option>
+					                    <option value="자기계발">자기계발</option>
+					                    <option value="건강/다이어트">건강/다이어트</option>
+					                    <option value="생활/취미">생활/취미</option>
 									</select>
 								</div>
 							</div>

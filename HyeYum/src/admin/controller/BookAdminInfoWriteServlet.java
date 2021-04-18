@@ -70,7 +70,7 @@ public class BookAdminInfoWriteServlet extends HttpServlet {
 		BookInfo info = new BookInfo();
 		
 		info.setBookName(multi.getParameter("book-name"));
-		info.setGenre(multi.getParameter("info-type"));
+		info.setGenre(multi.getParameter("genre"));
 		info.setAuthor(multi.getParameter("author"));
 		info.setPublisher(multi.getParameter("publisher"));
 		info.setIntro(multi.getParameter("intro"));

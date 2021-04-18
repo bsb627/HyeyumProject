@@ -14,11 +14,11 @@ import show.model.vo.ShowReview;
 
 public class BookAdminDAO {
 
-	public ArrayList<BookInfo> selectAllBookInfoList(Connection conn) { // 관리자 공연 정보 리스트 출력
+	public ArrayList<BookInfo> selectAllBookInfoList(Connection conn) { 
 
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM BOOK_INFO WHERE INFO_NO BETWEEN 11 AND 15 ORDER BY INFO_NO ASC";
+		String query = "SELECT * FROM BOOK_INFO ORDER BY INFO_NO ASC";
 		ArrayList<BookInfo> bList = null;
 		
 		try {
@@ -102,7 +102,7 @@ public class BookAdminDAO {
 	public int updateBookInfo(Connection conn, BookInfo info) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String query = "UPDATE BOOK_INFO SET BOOK_NAME = ?, GENRE = ?, AUTHOR = ?, PUBLISHER = ?, INTRO = ?, SYSDATE WHERE = INFO_NO = ?";
+		String query = "UPDATE BOOK_INFO SET BOOK_NAME = ?, GENRE = ?, AUTHOR = ?, PUBLISHER = ?, INTRO = ?, ENROLL_DATE = SYSDATE WHERE INFO_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -119,7 +119,8 @@ public class BookAdminDAO {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		
+		System.out.println("DAO info : " + info);
+		System.out.println("DAO result :" + result);
 		return result ;
 	}
 

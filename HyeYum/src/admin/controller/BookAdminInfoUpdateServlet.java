@@ -73,11 +73,11 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 		BookInfo info = new BookInfo();
 		
 		info.setInfoNo(Integer.parseInt(multi.getParameter("info-no")));
-		info.setBookName(multi.getParameter("bookName"));
+		info.setBookName(multi.getParameter("book-name"));
 		info.setGenre(multi.getParameter("genre"));
 		info.setAuthor(multi.getParameter("author"));
-		info.setIntro(multi.getParameter("intro"));
 		info.setPublisher(multi.getParameter("publisher"));
+		info.setIntro(multi.getParameter("intro"));
 		
 		int result = new BookAdminService().updateBookInfo(info);
 		
@@ -103,7 +103,7 @@ public class BookAdminInfoUpdateServlet extends HttpServlet {
 		
 			System.out.println(uploadFilePath);
 			}
-			request.getRequestDispatcher("/admin/showInfo/list").forward(request, response);
+			request.getRequestDispatcher("/admin/bookInfo/list").forward(request, response);
 		}else {
 			
 		}
