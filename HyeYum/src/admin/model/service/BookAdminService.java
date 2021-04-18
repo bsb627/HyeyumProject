@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import admin.model.dao.AdminDAO;
 import admin.model.dao.BookAdminDAO;
 import book.model.vo.BookInfo;
+import book.model.vo.BookReview;
 import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
@@ -113,5 +114,21 @@ public class BookAdminService {
 		
 		return result;
 	}
-
+	// BookReview
+	public ArrayList<BookReview> printAllBookReviewList() { 
+		ArrayList<BookReview> rList = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			rList = new BookAdminDAO().selectAllBookReviewList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return rList;
+	}
 }

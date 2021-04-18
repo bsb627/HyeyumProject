@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import book.model.vo.BookInfo;
+import book.model.vo.BookReview;
 import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
@@ -141,6 +142,43 @@ public class BookAdminDAO {
 		}
 		
 		return result;
+	}
+	// BookReview
+	public ArrayList<BookReview> selectAllBookReviewList(Connection conn) {
+
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM BOOK_REVIEW ORDER BY INFO_NO ASC";
+		ArrayList<BookReview> rList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				rList = new ArrayList<BookReview>();
+				while (rset.next()) {
+					BookReview review = new BookReview();
+					review.setNo(rset.getInt("REVIEW_NO"));
+					review.setDivision(rset.getString("DIVISION"));
+					review.setTitle(rset.getString("TITLE"));
+					review.setContents(rset.getString("CONTENTS"));
+					review.setGenre(rset.getString("GENRE"));
+					review.setInfoNo(rset.getInt("INFO_NO"));
+					review.setUserId(rset.getString("USER_ID"));
+					review.setHits(rset.getInt("HITS"));
+					review.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					rList.add(review);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return rList;
 	}
 
 

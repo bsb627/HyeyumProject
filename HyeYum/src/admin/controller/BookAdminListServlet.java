@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.model.service.AdminService;
 import admin.model.service.BookAdminService;
-import book.model.vo.BookInfo;
+import book.model.vo.BookReview;
 import file.model.service.FileService;
 import file.model.vo.FileData;
 
 /**
  * Servlet implementation class AdminLoginServlet
  */
-@WebServlet("/admin/bookInfo/listlist")
+@WebServlet("/admin/book/list")
 public class BookAdminListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +33,7 @@ public class BookAdminListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<BookInfo> rList = new BookAdminService().printAllBookInfoList();
+		ArrayList<BookReview> rList = new BookAdminService().printAllBookReviewList();
 		FileData fd = new FileData();
 		fd.setFileType("book");
 		ArrayList<FileData> fList = new FileService().printShowReviewFileList();
@@ -43,7 +42,7 @@ public class BookAdminListServlet extends HttpServlet {
 		if(!rList.isEmpty()) {
 			request.setAttribute("rList", rList);
 			request.setAttribute("fList", fList);
-			request.getRequestDispatcher("/WEB-INF/views/admin/contents/bookInfo.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/admin/board/bookList.jsp").forward(request, response);
 			
 		}else {
 			
