@@ -131,4 +131,25 @@ public class BookAdminService {
 		
 		return rList;
 	}
+
+	public int deleteBookReview(String reviewNo) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookAdminDAO().deleteBookReview(conn, reviewNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+
 }

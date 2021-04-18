@@ -180,6 +180,22 @@ public class BookAdminDAO {
 		
 		return rList;
 	}
+	public int deleteBookReview(Connection conn, String reviewNo) {
+		Statement stmt = null;
+		int result = 0;
+		String query = "DELETE FROM BOOK_REVIEW WHERE REVIEW_NO IN ("+reviewNo+")";
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		return result;
+	}
 
 
 //	public ArrayList<ShowReview> selectAllShowReviewList(Connection conn) {  // 관리자 공연 리뷰 리스트 출력

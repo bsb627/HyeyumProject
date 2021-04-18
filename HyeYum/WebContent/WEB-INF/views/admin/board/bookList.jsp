@@ -2,8 +2,7 @@
 <%@page import="file.model.vo.FileData"%>
 <%@page import="book.model.vo.BookInfo"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%
      ArrayList<BookReview> rList = (ArrayList<BookReview>)request.getAttribute("rList");
     ArrayList<FileData> fList = (ArrayList<FileData>)request.getAttribute("fList");
@@ -13,6 +12,7 @@
     <link href="/assets/admin/css/admin-show.css" rel="stylesheet">
     </head>
       <!-- Begin Page Content -->
+               
                 <div class="container-fluid">
  				 <form action="/admin/book/delete" method="get">
                     <!-- Page Heading -->
@@ -33,33 +33,32 @@
                                     <thead>
                                         <tr>
                                         	<th style="text-align: center"><input type="checkbox" id="check_all"/></th>
-                                        	<th>이미지</th>
                                             <th>제목</th>
                                             <th>아이디</th>
                                             <th>닉네임</th>
                                             <th>조회수</th>
                                             <th>등록일</th>
+                                        	<!-- <th>이미지</th> -->
                                          
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                       <% for(BookReview review : rList) {%>
+                                       <% for(BookReview re : rList) {%>
+                                       <%-- <% if(review.getNo()==file.getNo()){ %> --%>
                                         <tr >
-                                        <td  style="text-align: center"><input type="checkbox" class="checkbox_group" name="review-no" value="<%=review.getNo()%>"/></td>
-                                        <%for(FileData file : fList){ %>
-                                        <%if(review.getNo()==file.getNo()){ %>
-                                        	<td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>" style="text-align: center"><img src="/upload/book/<%=file.getFileName() %>" height="30px" class="thumbnail" /></td>
-                                        	<%} } %>
-                                        	<td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>"><%=review.getTitle() %></td>
-                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>"><%=review.getUserId() %></td>
-                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>"><%=review.getNick()%></td>
-                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>"><%=review.getHits()%></td>
-                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>"><%=review.getEnrollDate()%></td>
+                                        <td  style="text-align: center"><input type="checkbox" class="checkbox_group" name="review-no" value="<%=re.getNo()%>"/></td>
+                                        	<td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=re.getNo()%>"><%=re.getTitle() %></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=re.getNo()%>"><%=re.getUserId() %></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=re.getNo()%>"><%=re.getNick()%></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=re.getNo()%>"><%=re.getHits()%></td>
+                                            <td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=re.getNo()%>"><%=re.getEnrollDate()%></td>
+                                        <%-- <%for(FileData file : fList){ %>
+                                       <%--  	<td class="show-cursor" data-toggle="modal" data-target="#exampleModalCenter<%=review.getNo()%>" style="text-align: center"><img src="/upload/book/<%=file.getFileName() %>" height="30px" class="thumbnail" /></td> --%>
+                                       <%}%>
+                                      	<%-- <%} } %> --%>
                                             
                                         </tr>
-                                       <%} %>
-                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -69,56 +68,54 @@
                 <button type="submit" class="btn btn-danger">삭제</button>
 			</div>
                 </form>
-                
-                <!-- Modal -->
-                 <% for(BookReview review : rList) {%>
-                  <%for(FileData file : fList){ %>
-                  <%if(review.getNo()==file.getNo()){ %>
-<div class="modal fade" id="exampleModalCenter<%=review.getNo()%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><strong><%=review.getTitle()%></strong></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" >
-      
-      <div class="container">
-      <div class="col-ma-12">
-      <div class="row"> 
-      <div class="col-md-6">
-        <img src="/upload/show/<%=file.getFileName() %>" width="100%" class="thumbnail"/>
-      </div>
-   
-      <div class="col-md-6">
-      <ul class="list-group">
-  <li class="list-group-item active"><strong>후기정보</strong></li>
-  <li class="list-group-item"><small>장르</small> <strong><%=review.getGenre() %></strong></li>
-  <li class="list-group-item"><small>제목</small> <strong><%=review.getTitle() %></strong></li>
-  <li class="list-group-item review-contents"><small>내용</small> <strong><%=review.getContents() %></strong></li>
-  <li class="list-group-item"><small>아이디</small> <strong><%=review.getUserId() %></strong></li>
-  <li class="list-group-item"><small>닉네임</small> <strong><%=review.getNick() %></strong></li>
-  <li class="list-group-item"><small>조회수</small> <strong><%=review.getHits() %></strong></li>
-  <li class="list-group-item"><small>등록일</small> <strong><%=review.getEnrollDate() %></strong></li>
-  <li class="list-group-item"><small>도서번호</small> <strong><%=review.getInfoNo() %></strong></li>
-</ul>
-      
-      </div>
-      </div>
-      </div>
-      </div>
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
+      <!-- Modal -->
+ <% for(BookReview review : rList) {%>
+  <%-- <%if(review.getNo()==file.getNo()){ %> --%>
+<div class="modal fade" id="exampleModalCenter<%=review.getNo()%>"
+	tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">
+					<strong><%=review.getTitle()%></strong>
+				</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="col-ma-12">
+						<div class="row">
+							<div class="col-md-6">
+								<ul class="list-group">
+									<li class="list-group-item active"><strong>후기정보</strong></li>
+									<li class="list-group-item"><small>장르</small> <strong><%=review.getGenre()%></strong></li>
+									<li class="list-group-item"><small>제목</small> <strong><%=review.getTitle()%></strong></li>
+									<li class="list-group-item review-contents"><small>내용</small>
+										<strong><%=review.getContents()%></strong></li>
+									<li class="list-group-item"><small>아이디</small> <strong><%=review.getUserId()%></strong></li>
+									<li class="list-group-item"><small>닉네임</small> <strong><%=review.getNick()%></strong></li>
+									<li class="list-group-item"><small>조회수</small> <strong><%=review.getHits()%></strong></li>
+									<li class="list-group-item"><small>등록일</small> <strong><%=review.getEnrollDate()%></strong></li>
+									<li class="list-group-item"><small>도서번호</small> <strong><%=review.getInfoNo()%></strong></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
 </div>
-<%} } } %>
-               <!--  end modal --> 
+<%}   %> -
+<!--  end modal --> 
+
                 </div>
                 <!-- /.container-fluid -->
                 
@@ -126,3 +123,8 @@
                 
 <%@include file="/admin/footer.jsp"%>
  <script src="/assets/admin/js/show/contents-list.js"></script>
+
+
+
+
+ 
