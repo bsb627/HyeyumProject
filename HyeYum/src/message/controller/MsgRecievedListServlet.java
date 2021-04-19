@@ -59,7 +59,8 @@ public class MsgRecievedListServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/receivedMsgListForm.jsp");
 			view.forward(request, response);
 		}else {
-			
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/noneReceivedMessage.jsp");
+			view.forward(request, response);
 		}
 	}
 

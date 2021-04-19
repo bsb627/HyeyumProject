@@ -11,25 +11,6 @@
 <head>
   <title>문화나눔, 혜윰 </title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script>
- $(document).ready(function() {
-		$("#msg-write-page").submit(function() {
-
-			var contents = $("#contents");
-			var receiveId = $("#receiveId");
-			if(contents.val() =="") {
-				alert("내용을 입력해주세요. ");
-				return false;
-			}else if (receiveId.val() == "") {
-				alert("받는사람을 입력해주세요");
-				return false;
-			}
-			alert("전송하시겠습니까?");
-			return true;
-		});
-	 });
- 
- </script>
 </head>
 
  <main id="main">
@@ -54,7 +35,7 @@
 					<div class="inner-page">
 						<header class="section-header">
 							<h2>Message</h2>
-							<p>쪽지 쓰기</p>
+							<p>받은 쪽지함</p>
 						</header> 
  <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
@@ -118,17 +99,12 @@
 										
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
-										
-	<form action ="/message/send/page" method = "post" id ="msg-write-page">
-	<%-- <i class="bi bi-person"></i>  보내는 사람 : <%= sendId %> <br><br> --%>
-	
-	<i class="bi bi-person-fill"></i>  받는 사람 : <input type = "text" name = "receiveId" class = "form-control inline" id="receiveId"><br>
-	<i class="bi bi-chat-left-text"></i>  내용 : <br>
-	<textarea name = "contents" class = "form-control" rows ="20" id="contents"> </textarea><br>
-	<input type = "submit" value = "전송" style = "float: right" class = "btn btn-primary">
-	</form>
-										
-
+<article class="entry entry-single">   
+<div style = "text-align:center">
+<i style = "font-size : 100px;" class="bi bi-chat-dots"></i><br>
+<h1>받은 쪽지가 없습니다</h1>			
+</div>
+</article>
 </div>
 			<!--============== 여기에 작성하기 끝================================ -->
 									</div>

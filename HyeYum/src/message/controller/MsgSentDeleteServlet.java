@@ -1,6 +1,8 @@
 package message.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +31,10 @@ public class MsgSentDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset = UTF-8");
+		
 		String [] checkBoxes = request.getParameterValues("checkbox");
 		String msgNo = "";
 		String table = request.getParameter("table");
@@ -43,6 +49,10 @@ public class MsgSentDeleteServlet extends HttpServlet {
 		int result = new MessageService().deleteMessages(msgNo, table);
 		if(result > 0) {
 			response.sendRedirect("/message/sentList");
+		}
+		else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('삭제할 항목을 선택해 주세요.'); history.back();</script>");
 		}
 	}
 

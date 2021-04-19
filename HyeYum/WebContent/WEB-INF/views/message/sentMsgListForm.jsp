@@ -26,6 +26,15 @@ $("#check-all").on("click", function () {
 	  }
 	});
 	
+$("#delete").submit(function() {
+	if( $("#checkbox").is(":checked") == false) {
+		alert("삭제할 항목을 선택해 주세요");
+		return false;
+	}
+	alert("삭제하시겠습니까?");
+	return true;
+});
+	
 function cancel() {
 	alert("전송 취소 하시겠습니까?");
 }
@@ -82,60 +91,57 @@ a:hover.contents {
 									<div class="row">
 										<div class="col-md-3">
 
-											<div class="sidebar">
+							<div class="sidebar">
+							<div class="sidebar-item recent-posts"> 
+								<div class="post-item clearfix">
+								<!-- <img src="/assets/img/features.png"> -->
+								</div>
+								<h3 class="sidebar-title">내정보 <i class="bi bi-person-bounding-box"></i></h3>
+								<div class="sidebar-item categories">
+									<ul>
+										<li><a href="/member/modify">정보수정</a></li>
+									</ul>
+									<hr>
 
+									<h3 class="sidebar-title">쪽지 <i class="bi bi-envelope"></i></h3>
+									<div class="sidebar-item categories">
+										<ul>
+											<li><a href="/message/write/page">쪽지 쓰기</a></li>
+											<li><a href="/message/receivedList">받은 쪽지함</a></li>
+											<li><a href="/message/sentList">보낸 쪽지함</a></li>
+										</ul>
+										<hr>
 
-												<h3 class="sidebar-title">쪽지</h3>
-												<div class="sidebar-item categories">
-													<ul>
-														<li><a href="/message/write/page">쪽지 쓰기</a></li>
-														<li><a href="/message/receivedList">받은 쪽지함</a></li>
-														<li><a href="/message/sentList">보낸 쪽지함</a></li>
+										<h3 class="sidebar-title">활동 <i class="bi bi-journals"></i></h3>
+										<div class="sidebar-item categories">
+											<ul>
+												<li><a href="/myPost">작성 게시글</a></li>
+												<li><a href="/myReply">작성 댓글</a></li>
+											</ul>
+											<hr>
+										</div>
+										<!-- End sidebar tags-->
 
-													</ul>
-													<hr>
-
-													<h3 class="sidebar-title">주문</h3>
-													<div class="sidebar-item categories">
-														<ul>
-															<li><a href="/message/sentList">주문내역</a></li>
-														</ul>
-														<hr>
-													</div>
-													<!-- End sidebar tags-->
-
-													<h3 class="sidebar-title">주문</h3>
-													<div class="sidebar-item categories">
-														<ul>
-															<li><a href="/message/sentList">주문내역</a></li>
-														</ul>
-														<hr>
-													</div>
-													<!-- End sidebar tags-->
-
-													<h3 class="sidebar-title">주문</h3>
-													<div class="sidebar-item categories">
-														<ul>
-															<li><a href="/message/sentList">주문내역</a></li>
-														</ul>
-														<hr>
-													</div>
-													<!-- End sidebar tags-->
-													<h3 class="sidebar-title">주문</h3>
-													<div class="sidebar-item categories">
-														<ul>
-															<li><a href="/message/sentList">주문내역</a></li>
-															<li><a href="/message/sentList">주문내역</a></li>
-														</ul>
-
-													</div>
-													<!-- End sidebar tags-->
-
-
-												</div>
-												<!-- End sidebar -->
-
-											</div>
+										<h3 class="sidebar-title">주문 <i class="bi bi-credit-card"></i></h3>
+										<div class="sidebar-item categories">
+											<ul>
+												<li><a href="/order/list">주문 내역</a></li>
+											</ul>
+											<hr>
+										</div>
+										<!-- End sidebar tags-->
+										<h3 class="sidebar-title">기부 <i class="bi bi-gift"></i></h3>
+										<div class="sidebar-item categories">
+											<ul>
+												<li><a href="/donate/list">기부 내역</a></li>
+											</ul>
+											
+										</div>
+										<!-- End sidebar tags-->
+									</div>
+								</div>
+								</div>
+							</div>
 											<!-- End blog sidebar -->
 										</div>
 										

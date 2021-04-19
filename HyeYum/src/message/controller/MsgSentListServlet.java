@@ -60,7 +60,8 @@ public class MsgSentListServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/sentMsgListForm.jsp");
 			view.forward(request, response);
 		}else {
-			
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/message/noneSentMessage.jsp");
+			view.forward(request, response);
 		}
 	}
 
