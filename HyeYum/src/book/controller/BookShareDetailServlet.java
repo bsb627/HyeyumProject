@@ -68,6 +68,9 @@ public class BookShareDetailServlet extends HttpServlet {
 		FileData fileData = new BookFileService().printFileShare(shareNo);
 
 		BookShare share = new BookService().printOneBookShare(shareNo);
+		System.out.println("detail 서블릿 share : " + share);
+		System.out.println("detail 서블릿 fileData : " + fileData);
+		System.out.println("detail 서블릿 likes : " + likes);
 		if(share != null) {
 			request.setAttribute("share", share);
 			request.setAttribute("fileData", fileData);

@@ -54,10 +54,8 @@ public class MovieReview extends Board{ // 영화 리뷰 게시판
 	}
 	@Override
 	public String toString() {
-		return "MovieReview [reNo=" + reNo + ", movieName=" + movieName + ", starRating=" + starRating + ", spoiler="
+		return "MovieReview [no=" + super.no + ", title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ",reNo=" + reNo + ", movieName=" + movieName + ", starRating=" + starRating + ", spoiler="
 				+ spoiler + ", ticketNumber=" + ticketNumber + ", infoNo=" + infoNo + ", genre=" + genre + "]";
 	}
-	
-
 		
 }

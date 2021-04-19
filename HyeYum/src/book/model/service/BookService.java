@@ -92,6 +92,7 @@ public class BookService {
 		}
 		return pd;
 	}
+
 	public BookReview printOneBookReview(int no) {//책리뷰 상세보기
 		BookReview review = null;
 		Connection conn = null;
@@ -280,10 +281,9 @@ public class BookService {
 		}finally {
 			JDBCTemplate.close(conn);
 		}
-//		System.out.println("Service pd : " + pd);
 		return pd;
 	}
-	
+
 	public BookShare printOneBookShare(int shareNo) { // 책나눔 상세보기
 		BookShare share = null;
 		Connection conn = null;
@@ -481,5 +481,9 @@ public class BookService {
 		}
 		return result;
 	}
+
+
+
+
 
 }

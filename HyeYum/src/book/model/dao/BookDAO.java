@@ -121,6 +121,7 @@ public class BookDAO {
 		System.out.println("allselect DAO, bList : " + bList);
 		return bList;
 	}
+	
 	public BookReview selectOneBookReview(Connection conn, int reviewNo) { //책리뷰 상세보기
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -145,6 +146,9 @@ public class BookDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
 		System.out.println("DAO selectOne, review : HIT값확인 " + review.getHits());
 		return review;
@@ -451,6 +455,9 @@ public class BookDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
 		System.out.println("share :" + share);
 		return share;
@@ -677,4 +684,5 @@ public class BookDAO {
 		}
 		return check;
 	}
+
 }

@@ -156,9 +156,9 @@ if (userId == null) {
 								<a href="/bookShare/modify?share-no=<%=share.getNo()%>">
 								<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
 								  수정
+			                    <%} %>
 								</button></a>
 			                    <a href="/bookShare/list"> <button type="button" id="list" class="btn btn-default">목록</button></a>
-			                    <%} %>
                            		</span>
                                </td>
                            </tr>
