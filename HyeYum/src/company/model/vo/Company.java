@@ -6,9 +6,9 @@ import java.sql.Date;
 public class Company { // 기업
 	private int companyCode; // 키업코드
 	private String companyName;// 기업명
-	private String companyNumber;// 사업자번호
+	private int companyNumber;// 사업자번호
 	private String email;// 이메일주소
-	private String phone;// 전화번호
+	private int phone;// 전화번호
 	private String address;// 주소
 	private String contents;// 목적 및 내용
 	private Date enrollDate;// 등록일
@@ -34,11 +34,11 @@ public class Company { // 기업
 		this.companyName = companyName;
 	}
 
-	public String getCompanyNumber() {
+	public int getCompanyNumber() {
 		return companyNumber;
 	}
 
-	public void setCompanyNumber(String companyNumber) {
+	public void setCompanyNumber(int companyNumber) {
 		this.companyNumber = companyNumber;
 	}
 
@@ -50,11 +50,11 @@ public class Company { // 기업
 		this.email = email;
 	}
 
-	public String getPhone() {
+	public int getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
