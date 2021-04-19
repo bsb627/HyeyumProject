@@ -105,7 +105,7 @@
             </ul>
           </li>
           <% } %>
-          <li><a class="getstarted scrollto" href="#">제휴문의</a></li>
+          <li><a class="getstarted scrollto" href="/intro/partners.jsp">제휴문의</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

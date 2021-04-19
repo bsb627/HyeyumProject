@@ -30,9 +30,6 @@ public class CompanyEnrollServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/views/board/companyList.jsp").forward(request, response); 
-		// 경로..? ? ? ? ? 
 	}
 
 	/**
@@ -45,24 +42,17 @@ public class CompanyEnrollServlet extends HttpServlet {
 		Company company = new Company();
 		
 		company.setCompanyName(request.getParameter("company-name"));
-		company.setCompanyNumber(request.getParameter("company-no"));
-		company.setPhone(request.getParameter("company-phone"));
-		company.setEmail(request.getParameter("company-email"));
+		company.setEmail(request.getParameter("email"));
+		company.setCompanyNumber(Integer.parseInt(request.getParameter("company-number")));
+		company.setPhone(Integer.parseInt(request.getParameter("phone")));
+		company.setAddress(request.getParameter("address"));
+		company.setContents(request.getParameter("contents"));
 		
-		System.out.println(company.getCompanyCode());
-		System.out.println(company.getCompanyName());
-		System.out.println(company.getCompanyNumber());
-		System.out.println(company.getPhone());
-		System.out.println(company.getContents());
-		System.out.println(company.getAddress());
-		System.out.println(company.getEmail());
-		System.out.println(company.getPartnership());
-		System.out.println(company.getEnrollDate());
 		
 		int result = new CompanyService().registerCompany(company);
 		if(result > 0) {
 		
-			request.getRequestDispatcher("/company/list").forward(request, response);
+			request.getRequestDispatcher("/intro/partnersSuccess.jsp").forward(request, response);
 		}else {
 			
 		}

@@ -62,7 +62,7 @@ public class MyPostListServlet extends HttpServlet {
 		}
 //		request.getParameter("board-name");
 		 
-		//MyPostPageData pPageData = new MyPostService().printAllList(currentPage,userId);
+		//MyPostPageData pPageData = new MyPostService().printAll(currentPage,userId);
 		BookPageData brPageData = new MyPostService().printAllBookReview(currentPage,userId); 
 		BookPageData bsPageData = new MyPostService().printAllBookShare(currentPage,userId); 
 		MoviePageData mrvPageData = new MyPostService().printAllMovieReviewList(currentPage,userId);
@@ -86,11 +86,7 @@ public class MyPostListServlet extends HttpServlet {
 		System.out.println("srList : "+srList);
 		
 		//String pPageNavi = pPageData.getPageNavi();
-		String brPageNavi = brPageData.getPageNavi();
-		String bsPageNavi = bsPageData.getPageNavi();
-		String mrvPageNavi = mrvPageData.getPageNavi();
-		String mrcPageNavi = mrcPageData.getPageNavi();
-		String sPageNavi = sPageData.getPageNavi();
+
 		if(!brList.isEmpty()) {
 			
 			//request.setAttribute("pList", pList);
@@ -99,13 +95,8 @@ public class MyPostListServlet extends HttpServlet {
 			request.setAttribute("mrvList", mrvList);
 			request.setAttribute("mrcList", mrcList);
 			request.setAttribute("srList", srList);
-			
 			//request.setAttribute("pageNavi", pPageNavi);
-			request.setAttribute("pageNavi", brPageNavi);
-			request.setAttribute("pageNavi", bsPageNavi);
-			request.setAttribute("pageNavi", mrvPageNavi);
-			request.setAttribute("pageNavi", mrcPageNavi);
-			request.setAttribute("pageNavi", sPageNavi);
+
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/myPostList.jsp");
 			view.forward(request, response);
 		}else {

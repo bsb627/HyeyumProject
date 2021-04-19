@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import book.model.vo.BookReview;
 import common.JDBCTemplate;
 import member.model.vo.MyPost;
-import message.model.vo.Message;
 import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
-import qna.model.vo.Qna;
 import show.model.vo.ShowReview;
 
 public class MyPostDAO {
@@ -261,6 +259,85 @@ public class MyPostDAO {
 			}
 			return sb.toString();
 		}
+
+	public ArrayList<MyPost> selectAll(Connection conn, int currentPage, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<MyPost> pList = null;
+		String query = "SELECT B1.TITLE TITLE, B1.ENROLL_DATE ENROLL_DATE, B1.HITS HITS FROM BOOK_REVIEW B1, BOOK_SHARE B2, MOVIE_REVIEW M, SHOW_REVIEW S WHERE B1.USER_ID = B2.USER_ID AND B2.USER_ID = M.USER_ID AND M.USER_ID = S.USER_ID AND S.USER_ID = ?";
+		
+		int recordCountPerPage = 8;
+		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
+		int end = currentPage*recordCountPerPage;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			if (rset != null) {
+				pList = new ArrayList<MyPost>();
+				while(rset.next()) {
+					MyPost post = new MyPost();
+					post.setTitle(rset.getString("TITLE"));
+					post.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					post.setHits(rset.getInt("HITS"));
+					pList.add(post);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return pList;
+	}
+	
+	public String getPageNavi(Connection conn, int currentPage, String userId) {
+		int recordTotalCount = totalCount(conn, userId);
+		int pageTotalCount = 0;
+		int recordCountPerPage = 10;
+		if ( recordTotalCount % recordCountPerPage > 0 ) {
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+		if(currentPage < 1 ) {
+			currentPage = 1;
+		} else if(currentPage >  pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
+		
+		int naviCountPerPage = 10;
+		int startNavi = ((currentPage -1) / naviCountPerPage) * naviCountPerPage + 1;
+		int endNavi = startNavi + naviCountPerPage - 1;
+		// 오류방지 코드
+		if( endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) {
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		StringBuilder sb = new StringBuilder();
+		if( needPrev ) {
+			sb.append("<a href='/message/receivedList?currentPage=" + (startNavi-1) + "'> < </a>");
+		}
+		for(int i = startNavi; i <= endNavi; i++) {
+			if( currentPage == i) { sb.append("<a href='/message/receivedList?currentPage=" + i + "'>" +"<input type = 'button' class = 'btn btn-outline-primary active' value = '"+ i + "'>  </a>");}
+			else { sb.append("<a href='/message/receivedList?currentPage=" + i + "'>" +"<input type = 'button' class = 'btn btn-outline-primary' value = '"+ i + "'>  </a>"); }
+		}
+		if( needNext) {
+			sb.append("<a href='/message/receivedList?currentPage=" + (endNavi + 1) + "'> > </a>");
+		}
+		return sb.toString();
+	}
 
 
 }
