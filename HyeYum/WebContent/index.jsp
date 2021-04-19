@@ -91,23 +91,27 @@
 	</div>
 </section>
 <!-- End Counts Section -->
+ <link href="/assets/css/chart/chart.css" rel="stylesheet">
 
 <main id="main">
 	<!--  ============ Chart ============== -->
 	<div style="text-align: center;">
-	<h2>문화나눔, 혜윰의 지난해 성과</h2>
+	<header class="section-header">
+				<h2>chart</h2>
+				<p>혜윰이 세운 업적</p>
+			</header>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
-		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
-		<script src="https://code.highcharts.com/modules/exporting.js"></script>
-		<script src="https://code.highcharts.com/modules/export-data.js"></script>
-		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-		
-		<figure class="highcharts-figure">
-		  <div id="container"></div>
-		  <p class="highcharts-description">
-		  </p>
-		</figure>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <p class="highcharts-description">
+   
+  </p>
+</figure>
 	</div>
+
 	<!--  ============ End Chart ============== -->
 
 <%if(iList == null) {%>
@@ -227,16 +231,13 @@
             <div class="box">
               <span class="featured">혜윰굿즈</span>
               <h3 style="color: #65c600;">혜윰팔찌</h3>
-              <div class="price">33,000<span> / ko</span></div>
+              <div class="price">15,000<span>원</span></div>
               <img src="/assets/img/product/palzzi4.png" class="img-fluid" alt="">
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>혜윰과 함께 불우 이웃 돕기에 동참해주세요!</li>
+                <li>불우 이웃 돕기에 동참해주신 분들께 감사 굿즈를 전달 드립니다.</li>
               </ul>
-              <a href="#" class="btn-buy">참여하기</a>
+              <a href="/intro/product/productForm.jsp" class="btn-buy">참여하기</a>
             </div>
           </div>
 
@@ -299,3 +300,4 @@
 </main>
 <!-- End #main -->
 <%@include file="/footer.jsp"%>
+<script src="/assets/js/chart/chart-ready.js"></script>

@@ -26,37 +26,37 @@
 				<div class="col-sm-2 col-2 footer-links">
 					<h4>소개</h4>
 					<ul>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">혜윰이란?</a></li>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">혜윰 벗</a></li>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">혜윰소개</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/intro/aboutUs.jsp">혜윰이란?</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/intro/partners.jsp">혜윰 벗</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/notice/list">혜윰소개</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2 col-2 footer-links">
 					<h4>도서</h4>
 					<ul>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">독서혜윰</a></li>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">나눔혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/bookReview/list">독서혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/bookShare/list">나눔혜윰</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2 col-2 footer-links">
 					<h4>영화</h4>
 					<ul>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">감상혜윰</a></li>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">추천혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/movieReview/list">감상혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/movieRecommend/list">추천혜윰</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2 col-2 footer-links">
 					<h4>공연</h4>
 					<ul>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">언제혜윰</a></li>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">관람혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/showInfo/list">언제혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/showReview/list">관람혜윰</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2 col-2 footer-links">
 					<h4>마당</h4>
 					<ul>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">문의혜윰</a></li>
-						<li><i class="bi bi-chevron-right"></i> <a href="#">참여혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/qna/list">문의혜윰</a></li>
+						<li><i class="bi bi-chevron-right"></i> <a href="/intro/product/productForm.jsp">참여혜윰</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-2 col-2 footer-links">
