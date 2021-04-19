@@ -41,6 +41,12 @@ public class MoviePageData {
 	public void setPageNavi(String pageNavi) {
 		this.pageNavi = pageNavi;
 	}
+
+	@Override
+	public String toString() {
+		return "MoviePageData [movieList=" + movieList + ", reviewList=" + reviewList + ", recommendList="
+				+ recommendList + ", pageNavi=" + pageNavi + "]";
+	}
 	
 	
 }

@@ -78,12 +78,12 @@ public class MyPostListServlet extends HttpServlet {
 		ArrayList<BookShare> bsList = bsPageData.getShareList();
 		ArrayList<MovieReview> mrvList = mrvPageData.getReviewList();
 		ArrayList<MovieRecommend> mrcList = mrcPageData.getRecommendList();
-		ArrayList<ShowReview> sList = sPageData.getReviewList();
+		ArrayList<ShowReview> srList = sPageData.getReviewList();
 		System.out.println("brList : "+brList);
 		System.out.println("bsList : "+bsList);
 		System.out.println("mrvList : "+mrvList);
 		System.out.println("mrcList : "+mrcList);
-		System.out.println("sList : "+sList);
+		System.out.println("srList : "+srList);
 		
 		//String pPageNavi = pPageData.getPageNavi();
 		String brPageNavi = brPageData.getPageNavi();
@@ -98,7 +98,7 @@ public class MyPostListServlet extends HttpServlet {
 			request.setAttribute("bsList", bsList);
 			request.setAttribute("mrvList", mrvList);
 			request.setAttribute("mrcList", mrcList);
-			request.setAttribute("sList", sList);
+			request.setAttribute("srList", srList);
 			
 			//request.setAttribute("pageNavi", pPageNavi);
 			request.setAttribute("pageNavi", brPageNavi);
