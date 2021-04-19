@@ -36,7 +36,7 @@ public class ReplyDeleteServlet extends HttpServlet {
 		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String type = request.getParameter("type");
-		int result = new ReplyService().deleteReply(replyNo,type);
+		int result = new ReplyService().deleteReply(replyNo);
 		if(result > 0) {
 			switch (type) {
 			case "book":

@@ -323,5 +323,122 @@ public class ReplyDAO {
 			return replyList;
 		}
 
+	public ArrayList<Reply> selecAllReplyList(Connection conn,int currentPage, String userId) { // 댓글모아보기
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query ="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM, TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM (SELECT '독서혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_REVIEW_REPLY WHERE USER_ID=? UNION ALL SELECT '나눔혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_SHARE_REPLY WHERE USER_ID=? UNION ALL SELECT '감상혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM MOVIE_RECOMMEND_REPLY WHERE USER_ID=? UNION ALL SELECT '관람혜윰'AS TYPE, REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO FROM SHOW_REVIEW_REPLY WHERE USER_ID=? ))WHERE NUM BETWEEN ? AND ?";
+		ArrayList<Reply> rList = null;
+		int recordCountPerPage = 10;
+		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
+		int end = currentPage*recordCountPerPage;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userId);
+			pstmt.setString(4, userId);
+			pstmt.setInt(5, start);
+			pstmt.setInt(6, end);
+			rset = pstmt.executeQuery();
+			if(rset != null) {
+				rList = new ArrayList<Reply>();
+				while(rset.next()) {
+					Reply reply = new Reply();
+					reply.setNum(rset.getInt("NUM"));
+					reply.setNo(rset.getInt("NO"));
+					reply.setReplyNo(rset.getInt("REPLY_NO"));
+					reply.setReplyType(rset.getString("TYPE"));
+					reply.setContents(rset.getString("REPLY_CONTENTS"));
+					reply.setUserId(rset.getString("USER_ID"));
+					reply.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					rList.add(reply);
+					
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		// TODO Auto-generated method stub
+		System.out.println("dao :" + rList);
+		return rList;
+	}
 	
+	public String getAllPageNavi(Connection conn, int currentPage, String userId) { // 댓글모아보기 페이징
+		int recordTotalCount = totalAllCount(conn, userId);
+		int pageTotalCount = 0;
+		int recordCountPerPage = 10;
+		if ( recordTotalCount % recordCountPerPage > 0 ) {
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+		if(currentPage < 1 ) {
+			currentPage = 1;
+		} else if(currentPage >  pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
+		
+		int naviCountPerPage = 10;
+		int startNavi = ((currentPage -1) / naviCountPerPage) * naviCountPerPage + 1;
+		int endNavi = startNavi + naviCountPerPage - 1;
+		// 오류방지 코드
+		if( endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) {
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		StringBuilder sb = new StringBuilder();
+		if( needPrev ) {
+			sb.append("<li><a href='/myReply?currentPage="+ (startNavi-1) + "'> 이전 </a></li>");
+		}
+		for(int i = startNavi; i <= endNavi; i++) {
+			if(currentPage == i) {
+				sb.append("<li class='active'><a href='/myReply?&currentPage="+ i +"'>" + i + "</a></li>");
+			}else {
+				sb.append("<li><a href='/myReply?currentPage="+ i +"'>" + i + "</a></li>");
+			}
+		}
+		if( needNext) {
+			sb.append("<li><a href='/myReply?currentPage="+ (endNavi + 1) + "'> 다음 </a></li>");
+		}
+		System.out.println("페이징"+sb.toString());
+		return sb.toString();
+	}
+
+	
+	public int totalAllCount(Connection conn, String userId) { // 댓글 모아보기 총 개수
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM (SELECT 'BR'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_REVIEW_REPLY WHERE USER_ID=? UNION ALL SELECT 'BS'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_SHARE_REPLY WHERE USER_ID=? UNION ALL SELECT 'MR'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM MOVIE_RECOMMEND_REPLY WHERE USER_ID=? UNION ALL SELECT 'SR'AS TYPE, REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO FROM SHOW_REVIEW_REPLY WHERE USER_ID=?)";
+		int recordTotalCount = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userId);
+			pstmt.setString(4, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("count :" + recordTotalCount);
+		return recordTotalCount;
+	}
 }

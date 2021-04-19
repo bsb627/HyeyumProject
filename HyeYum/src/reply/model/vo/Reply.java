@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Reply {
 	private int no; // 글번호
 	private int replyNo; // 댓글번호
+	private int num; // 로우넘버
 	private String contents; // 내용
 	private String userId; // 작성자
 	private String nick; // 닉네임
@@ -21,6 +22,16 @@ public class Reply {
 
 	public void setNo(int no) {
 		this.no = no;
+	}
+	
+	
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public int getReplyNo() {

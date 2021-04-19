@@ -201,4 +201,21 @@ public class ReplyService {
 		return rList;
 	}
 
+	public ReplyPageData printAllReplyList(int currentPage,String userId) {
+		ReplyPageData pd = new ReplyPageData();
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			pd.setReplyList(new ReplyDAO().selecAllReplyList(conn, currentPage, userId));
+			pd.setPageNavi(new ReplyDAO().getAllPageNavi(conn, currentPage, userId));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		System.out.println("service" + pd);
+		return pd;
+	}
+
 }

@@ -1,17 +1,16 @@
-<%@page import="order.model.vo.Order"%>
+<%@page import="reply.model.vo.Reply"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	ArrayList<Order> oList = (ArrayList<Order>)request.getAttribute("oList");
+	ArrayList<Reply> rList = (ArrayList<Reply>)request.getAttribute("rList");
 	String pageNavi = (String)request.getAttribute("pageNavi");
-	int orderCount = (int)request.getAttribute("orderCount");
 %>
 
 <title>회원 상세 정보</title>
 <%@include file="/header.jsp"%>
-<link href="/assets/css/order-custom.css" rel="stylesheet">
+
 <!-- ======= Breadcrumbs ======= -->
 <section class="breadcrumbs">
 	<div class="container">
@@ -20,7 +19,7 @@
 			<li><a href="/index.jsp">Home</a></li>
 			<li>내 정보</li>
 		</ol>
-		<h2>주문/ 주문내역</h2>
+		<h2>활동/ 댓글 모아보기</h2>
 
 	</div>
 </section>
@@ -38,8 +37,8 @@
 				<div class="container" data-aos="fade-up">
 					<div class="inner-page">
 						<header class="section-header">
-							<h2>ORDER</h2>
-							<p>주문 내역</p>
+							<h2>Reply</h2>
+							<p>댓글 모아보기</p>
 						</header>
 
 
@@ -75,8 +74,8 @@
 										<h3 class="sidebar-title">활동 <i class="bi bi-journals"></i></h3>
 										<div class="sidebar-item categories">
 											<ul>
-												<li><a href="/message/sentList">작성 게시글</a></li>
-												<li><a href="/message/sentList">작성 댓글</a></li>
+												<li><a href="/myPost">작성 게시글</a></li>
+												<li><a href="/myReply">작성 댓글</a></li>
 											</ul>
 											<hr>
 										</div>
@@ -104,45 +103,35 @@
 							</div>
 							<!-- End blog sidebar -->
 						</div>
-						
-						
 										<div class="col-md-9 info-card">
 					
-		
-
-					<!-- order -->
-					<section>
-					<article>
-					<div class="order-count">
-					<h4><strong>총 <%=orderCount %>건</strong></h4>
-					</div>
-					<hr>
-					</article>
-					<% for(Order order : oList){ %>
-						<article>
-							<div class="order-box">
-								<div class="order-info">
-									<h6><strong>주문번호 <%=order.getOrderNO() %></strong></h6>
-									<sub><%=order.getOrderDate() %></sub>
-								</div>
-								<div class="order-contents">
-									<div class="order-img">
-									 <img src="/assets/img/product/palzzi3.png">
-									</div>
-									<div class="order-product">
-									 혜윰팔찌<br>
-									 <%=order.getTotalPrice() %>원/ <%=order.getQuantity() %>개
-									 <div class="order-state">
-									 <sub><%=order.getShippingState() %></sub>
-									 </div>
-									</div>
-								</div>
-							
-							</div>
-								<hr>
-						</article>
-						<%} %>
-						<div class="blog-pagination">
+					
+									<table class="table" style="text-align: center;">
+									<tr>
+										<th>번호</th>
+										<th>게시판</th>
+										<th>댓글내용</th>
+										<th>등록날짜</th>
+									</tr>
+									<% for(Reply reply : rList) {%>
+									<tr>
+										<td><%=reply.getNum() %></td>
+										<td><%=reply.getReplyType() %></td>
+										<%if(reply.getReplyType().equals("독서혜윰")) {%>
+										<td><a href="/bookReview/detail?review-no=<%=reply.getNo()%>"><%=reply.getContents() %></a></td>
+										<%} else if(reply.getReplyType().equals("나눔혜윰")){%>
+										<td><a href="/bookShare/detail?share-no=<%=reply.getNo()%>"><%=reply.getContents() %></a></td>
+										<%} else if(reply.getReplyType().equals("감상혜윰")){%>
+										<td><a href="/moiveRecommend/detail?recommendNo==<%=reply.getNo()%>"><%=reply.getContents() %></a></td>
+										<%} else if(reply.getReplyType().equals("관람혜윰")){%>
+										<td><a href="/showReview/detail?no=<%=reply.getNo()%>"><%=reply.getContents() %></a></td>
+										<%} %>
+										<td><%=reply.getEnrollDate()%></td>
+									</tr>
+									
+									<%} %>
+									</table>
+										<div class="blog-pagination">
 				<ul class="justify-content-center">
 					<!-- 	<li><a href="#">1</a></li>
 						<li class="active"><a href="#">2</a></li>
@@ -150,10 +139,7 @@
 					<%=pageNavi%>
 				</ul>
 			</div>
-						
-					</section>
-					
-					<!--  order end -->
+									
 					</div>
 					
         </div><!--  end row  -->

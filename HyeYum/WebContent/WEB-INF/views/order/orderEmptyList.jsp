@@ -15,7 +15,7 @@
 			<li><a href="/index.jsp">Home</a></li>
 			<li>내 정보</li>
 		</ol>
-		<h2>정보 수정 / 탈퇴</h2>
+		<h2>주문/ 주문내역</h2>
 
 	</div>
 </section>

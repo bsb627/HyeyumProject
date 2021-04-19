@@ -70,10 +70,10 @@
 							<a href="/showReview/minusLikes?no=<%=review.getNo()%>"><i
 								class="bi bi-heart-fill show-icon heart-hate"></i></a>
 							<%} %> --%>
+							<span class = "msgbox" id="sendMsg" onclick ="msgPop('<%= review.getUserId()%>')"><i class="bi bi-envelope-open direct show-icon"></i></span>
 							
-							
-							<span data-toggle="modal"
-	data-target="#exampleModal"><i class="bi bi-envelope-open direct show-icon"></i></span>
+							<!-- <span data-toggle="modal"
+	data-target="#exampleModal"><i class="bi bi-envelope-open direct show-icon"></i></span> -->
 							
 							 
 							<a href="<%=review.getSnsLink() %>" target="_blank"><i
