@@ -5,9 +5,6 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/header.jsp"%>
-<% 
-	
-%>
 <head>
   <title>문화나눔, 혜윰 </title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,9 +19,9 @@
         <ol>
           <li><a href="/index.jsp">Home</a></li>
           <li>마이페이지</li>
-          <li>기부</li>
+          <li>내 정보</li>
         </ol>
-        <h2>기부내역</h2>
+        <h2>회원 탈퇴</h2>
 		
       </div>
     </section><!-- End Breadcrumbs -->
@@ -34,8 +31,8 @@
 				<div class="container" data-aos="fade-up">
 					<div class="inner-page">
 						<header class="section-header">
-							<h2>Message</h2>
-							<p>받은 쪽지함</p>
+							<h2>Secession</h2>
+							<p>회원 탈퇴</p>
 						</header> 
  <section id="blog" class="blog" >
 							<div class="container" data-aos="fade-up">
@@ -101,8 +98,8 @@
 <div class="col-md-9 info-card">
 <article class="entry entry-single">   
 <div style = "text-align:center">
-<i style = "font-size : 100px;" class="bi bi-chat-dots"></i><br>
-<h1>기부 내역이 없습니다.</h1>			
+<h1>비밀번호를 입력해주세요.</h1>
+<img src = "/assets/img/qna/pwd.png">		
 </div>
 </article>
 </div>

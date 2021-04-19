@@ -120,7 +120,7 @@ public class MemberDAO {
 	public int insertMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO MEMBER VALUES(?,?,?,?,?,?,?,SYSDATE, NULL, NULL,NULL)";
+		String query = "INSERT INTO MEMBER VALUES(?,?,?,?,?,?,?,SYSDATE, NULL, ? ,NULL)";
 		//USER_ID, USER_PWD, USER_NAME, NICK, USER_PHONE, EMAIL, ADDRESS, ENROLL_DATE, OUT_DATE, OUT_STATE, OUT_REASON
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -131,6 +131,7 @@ public class MemberDAO {
 			pstmt.setString(5, member.getUserPhone());
 			pstmt.setString(6, member.getUserEmail());
 			pstmt.setString(7, member.getUserAddress());
+			pstmt.setString(8, "N");
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
