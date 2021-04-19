@@ -72,7 +72,7 @@ public class MemberDAO {
 		Statement stmt = null;
 		ResultSet rset = null;
 		ArrayList<Member> list = null;
-		String query = "SELECT * FROM MEMBER";
+		String query = "SELECT * FROM MEMBER ORDER BY REG_DATE DESC";
 		//USER_ID, USER_PWD, USER_NAME, NICK, USER_PHONE, EMAIL, ADDRESS, ENROLL_DATE, OUT_DATE, OUT_STATE, OUT_REASON
 		try {
 			stmt = conn.createStatement();
