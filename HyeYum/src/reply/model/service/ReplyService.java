@@ -76,13 +76,13 @@ public class ReplyService {
 		return result;
 	}
 	
-	public int deleteReply(int replyNo, String type) { // 댓글 삭제
+	public int deleteReply(int replyNo) { // 댓글 삭제
 		int result = 0;
 		Connection conn = null;
 		
 		try {
 			conn = factory.createConnection();
-			result = new ReplyDAO().deleteReply(conn, replyNo, type);
+			result = new ReplyDAO().deleteReply(conn, replyNo);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
 			}else {

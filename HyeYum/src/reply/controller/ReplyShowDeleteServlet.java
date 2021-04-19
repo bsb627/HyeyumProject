@@ -2,7 +2,6 @@ package reply.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,15 +18,15 @@ import reply.model.vo.Reply;
 /**
  * Servlet implementation class ReplyServlet
  */
-@WebServlet("/reply/show/print")
+@WebServlet("/reply/show/delete")
 
-public class ReplyShowPrintServlet extends HttpServlet {
+public class ReplyShowDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReplyShowPrintServlet() {
+    public ReplyShowDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,28 +38,14 @@ public class ReplyShowPrintServlet extends HttpServlet {
 		 request.setCharacterEncoding("utf-8");
 		 response.setCharacterEncoding("UTF-8");
 	     response.setContentType("text/html; charset=utf-8");
-	     String result = "";
-	     int showNo = Integer.parseInt(request.getParameter("no"));
-	     ArrayList<Reply> rList = new ReplyService().printReplyList(showNo);
-	     int totalCount = new ReplyService().totalCount(showNo);
-			if(!rList.isEmpty()) {
-				for(int i=0; i<rList.size(); i++) {
-						result += "{\"no\":\"" + i+"";
-						result += "\",\"totalCount\":\"" + totalCount;
-						result += "\",\"replyNo\":\"" + rList.get(i).getReplyNo();
-						result += "\",\"userId\":\"" + rList.get(i).getUserId();
-				        result += "\",\"nick\":\"" + rList.get(i).getNick();
-				        result += "\",\"contents\":\"" + rList.get(i).getContents();
-				        result += "\",\"enrollDate\":\"" + rList.get(i).getEnrollDate() + "\"},";
-				        
-				}
-				 result = result.substring(0,result.length()-1);
-				    result = "[" + result + "]";
+	     int replyNo = Integer.parseInt(request.getParameter("no"));
+			int result = new ReplyService().deleteReply(replyNo);
+			if(result > 0) {
 				PrintWriter out = response.getWriter();
-	            out.print(result);
+	            out.print("1");
 			}else {
 				PrintWriter out = response.getWriter();
-	            out.print("null");
+	            out.print("0");
 			}
 	     
 		

@@ -43,6 +43,12 @@ hr{
     font-weight: 600;
    
 }
+
+.reply-delete{
+	cursor: pointer;
+	color: red;
+	
+}
 .review-box{
 	 
 }

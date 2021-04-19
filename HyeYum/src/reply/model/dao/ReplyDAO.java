@@ -106,28 +106,10 @@ public class ReplyDAO {
 		return 0;
 	}
 
-	public int deleteReply(Connection conn, int replyNo, String type) { // 댓글 삭제
+	public int deleteReply(Connection conn, int replyNo) { // 댓글 삭제
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "";
-		switch (type) {
-		case "book":
-			
-			break;
-		case "share":
-			
-			break;
-		case "movie":
-			
-			break;
-		case "show":
-			query = "DELETE FROM SHOW_REVIEW_REPLY WHERE REPLY_NO = ?";
-			break;
-
-		default:
-			break;
-		}
-		
+		String query = "DELETE FROM SHOW_REVIEW_REPLY WHERE REPLY_NO = ?";		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, replyNo);
@@ -135,6 +117,8 @@ public class ReplyDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
 		
