@@ -78,5 +78,93 @@ public class DonateDAO {
 		return bookCount;
 	}
 
+	public int countAllBook(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int bookAllCount = 0;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM BOOK_REVIEW";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				bookAllCount = rset.getInt("TOTALCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return bookAllCount;
+	}
+
+	public int countAllMovie(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int movieAllCount = 0;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MOVIE_REVIEW";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				movieAllCount = rset.getInt("TOTALCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return movieAllCount;
+	}
+
+	public int countAllShow(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int showAllCount = 0;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM SHOW_REVIEW";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				showAllCount = rset.getInt("TOTALCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return showAllCount;
+	}
+
+	public int countAllMember(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int memberAllCount = 0;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				memberAllCount = rset.getInt("TOTALCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return memberAllCount;
+	}
+
 	
 }

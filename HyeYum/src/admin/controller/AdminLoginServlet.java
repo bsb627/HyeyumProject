@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import admin.model.dao.AdminDAO;
 import admin.model.service.AdminService;
+import member.model.service.DonateService;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
@@ -51,13 +52,22 @@ public class AdminLoginServlet extends HttpServlet {
 		Member member = new MemberService().selectOneMember(userId, userPwd);
 		HttpSession session = request.getSession();
 		session.setAttribute("userId", member.getUserId());
+
+		int bookAllCount = new DonateService().countAllBook();
+		int movieAllCount = new DonateService().countAllMovie();
+		int showAllCount = new DonateService().countAllShow();
+		int memberAllCount = new DonateService().countAllMember();
 		
 		if(member!=null && userId.equals("admin") ) {
+			request.setAttribute("bookAllCount", bookAllCount);
+			request.setAttribute("movieAllCount", movieAllCount);
+			request.setAttribute("showAllCount", showAllCount);
+			request.setAttribute("memberAllCount", memberAllCount);
+			
 			RequestDispatcher view = request.getRequestDispatcher("/admin/index.jsp");
 			view.forward(request, response);
 		}else {
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('권한이 없습니다')</script>");
+			
 		}
 	}
 

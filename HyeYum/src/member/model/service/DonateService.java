@@ -61,5 +61,76 @@ public class DonateService {
 		}
 		return showCount;
 	}
+	
+	
+	
+	//==================관리자============================//
+
+	public int countAllBook() {
+		Connection conn = null;
+		int bookAllCount = 0;
+		
+		try {
+			conn = factory.createConnection();
+			bookAllCount = new DonateDAO().countAllBook(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return bookAllCount;
+	}
+
+	public int countAllMovie() {
+		Connection conn = null;
+		int movieAllCount = 0;
+		
+		try {
+			conn = factory.createConnection();
+			movieAllCount = new DonateDAO().countAllMovie(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return movieAllCount;
+	}
+
+	public int countAllShow() {
+		Connection conn = null;
+		int showAllCount = 0;
+		
+		try {
+			conn = factory.createConnection();
+			showAllCount = new DonateDAO().countAllShow(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return showAllCount;
+	}
+
+	public int countAllMember() {
+		Connection conn = null;
+		int memberAllCount = 0;
+		
+		try {
+			conn = factory.createConnection();
+			memberAllCount = new DonateDAO().countAllMember(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return memberAllCount;
+	}
+
+	
+
 
 }
