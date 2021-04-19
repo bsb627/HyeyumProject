@@ -12,12 +12,6 @@
 
 <%@include file="/header.jsp"%>
 <%
-String pPageNavi = (String)request.getAttribute("pPageNavi");
-String brPageNavi = (String)request.getAttribute("brPageNavi");
-String bsPageNavi = (String)request.getAttribute("bsPageNavi");
-String mrvPageNavi = (String)request.getAttribute("mrvPageNavi");
-String mrcPageNavi = (String)request.getAttribute("mrcPageNavi");
-String sPageNavi = (String)request.getAttribute("sPageNavi");
 //String pageNavi = (String)request.getAttribute("spageNavi");
 SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 ArrayList<BookReview> brList = (ArrayList<BookReview>)request.getAttribute("brList");
@@ -52,254 +46,140 @@ ArrayList<ShowReview> srList = (ArrayList<ShowReview>)request.getAttribute("srLi
     
     <!-- End Breadcrumbs -->
     <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
 	<div class="container" data-aos="fade-up">
 		<div class="inner-page">
 			<header class="section-header">
-				<h2>Message</h2>
-				<p>보낸 쪽지함</p>
-			</header>
+				<h2>활동</h2>
+				<p>작성 게시글</p>
+			</header> 
 
 			<!-- ======= 사이드바 ======= -->
 			<section id="blog" class="blog">
 				<div class="container" data-aos="fade-up">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-md-3">
-								<div class="sidebar">
-									<h3 class="sidebar-title">쪽지</h3>
+						<div class="col-md-3">
+
+							<div class="sidebar">
+							<div class="sidebar-item recent-posts"> 
+								<div class="post-item clearfix">
+								<!-- <img src="/assets/img/features.png"> -->
+								</div>
+								<h3 class="sidebar-title">내정보 <i class="bi bi-person-bounding-box"></i></h3>
+								<div class="sidebar-item categories">
+									<ul>
+										<li><a href="#">정보수정</a></li>
+									</ul>
+									<hr>
+
+									<h3 class="sidebar-title">쪽지 <i class="bi bi-envelope"></i></h3>
 									<div class="sidebar-item categories">
 										<ul>
 											<li><a href="/message/write/page">쪽지 쓰기</a></li>
 											<li><a href="/message/receivedList">받은 쪽지함</a></li>
 											<li><a href="/message/sentList">보낸 쪽지함</a></li>
-
 										</ul>
 										<hr>
 
-										<h3 class="sidebar-title">주문</h3>
+										<h3 class="sidebar-title">활동 <i class="bi bi-journals"></i></h3>
 										<div class="sidebar-item categories">
 											<ul>
-												<li><a href="/message/sentList">주문내역</a></li>
+												<li><a href="/myPost">작성 게시글</a></li>
+												<li><a href="/myReply">작성 댓글</a></li>
 											</ul>
 											<hr>
 										</div>
 										<!-- End sidebar tags-->
 
-										<h3 class="sidebar-title">주문</h3>
+										<h3 class="sidebar-title">주문 <i class="bi bi-credit-card"></i></h3>
 										<div class="sidebar-item categories">
 											<ul>
-												<li><a href="/message/sentList">주문내역</a></li>
+												<li><a href="/order/list">주문 내역</a></li>
 											</ul>
 											<hr>
 										</div>
 										<!-- End sidebar tags-->
-
-										<h3 class="sidebar-title">주문</h3>
+										<h3 class="sidebar-title">기부 <i class="bi bi-gift"></i></h3>
 										<div class="sidebar-item categories">
 											<ul>
-												<li><a href="/message/sentList">주문내역</a></li>
+												<li><a href="/message/sentList">기부 내역</a></li>
 											</ul>
-											<hr>
+											
 										</div>
 										<!-- End sidebar tags-->
-										<h3 class="sidebar-title">주문</h3>
-										<div class="sidebar-item categories">
-											<ul>
-												<li><a href="/message/sentList">주문내역</a></li>
-												<li><a href="/message/sentList">주문내역</a></li>
-											</ul>
-
-										</div>
-										<!-- End sidebar tags-->
-
-
 									</div>
-									<!-- End sidebar -->
-
 								</div>
-								<!-- End blog sidebar -->
+								</div>
 							</div>
+							<!-- End blog sidebar -->
+						</div>
 
 							<!--============== 사이드바 끝================================ -->
 
 							<!--     	 <section id="portfolio" class="portfolio">-->
-							<div class="col-md-9 info-card">
-								<div style="float: center">
-									<section id="portfolio" class="portfolio">
+						<div class="col-md-9 info-card">
+								<table class="table" style="text-align: center;">
+									<tr>
+										<th>게시판</th>
+										<th>제목</th>
+										<th>등록 날짜</th>
+										<th>조회수</th>
+									</tr>
+										<%for(BookReview bReview : brList) {%>
+									
+									<tr>
+										<td>독서혜윰</td>
+										<td><%=bReview.getTitle() %></td>
+										<td><%=bReview.getEnrollDate() %></td>
+										<td><%=bReview.getHits() %></td>
+									</tr>
+									<%} %>
+										<%for(BookShare bShare : bsList) {%>
+									
+									<tr>
+										<td>나눔혜윰</td>
+										<td><%=bShare.getTitle() %></td>
+										<td><%=bShare.getEnrollDate() %></td>
+										<td><%=bShare.getHits() %></td>
+									</tr>
+									<%} %>
+										<%for(MovieReview mReview : mrvList) {%>
+									
+									<tr>
+										<td>감상혜윰</td>
+										<td><%=mReview.getContents()%></td>
+										<td><%=mReview.getEnrollDate() %></td>
+										<td><%=mReview.getHits() %></td>
+									</tr>
+									<%} %>
 
-										<div class="container" data-aos="fade-up">
-											<div class="row" data-aos="fade-up" data-aos-delay="100">
-												<div class="col-lg-12 d-flex justify-content-center">
-													<ul id="portfolio-flters">
-														<li data-filter="*" class="filter-active">모두</li>
-														<li data-filter=".filter-book">도서</li>
-														<li data-filter=".filter-moview">영화</li>
-														<li data-filter=".filter-show">공연</li>
-													</ul>
-												</div>
-											</div>
-
-											<div class="row gy-4 portfolio-container" data-aos="fade-up"
-												data-aos-delay="200">
-												<div class="col-lg-12 portfolio-item filter-book">
-													<div class="portfolio-wrap">
-														<!-- 도서리뷰 -->
-														<h2 style="text-align: center">독서혜윰</h2>
-														<div class="container fluid" align="center">
-															<table class="table" style="text-align: center">
-																<tr>
-																	<th>제목</th>
-																	<th>등록 날짜</th>
-																	<th>조회수</th>
-																</tr>
-																<%for(BookReview bReview : brList) {%>
-																<tr>
-																	<td>
-																		<h4><%=bReview.getTitle() %></h4>
-																	</td>
-																	<td>
-																		<h4><%=bReview.getEnrollDate() %></h4>
-																	</td>
-																	<td>
-																		<h4><%=bReview.getHits() %></h4>
-																	</td>
-																</tr>
-																<%} %>
-															</table>
-														</div>
-														<br>
-														<br>
-														<hr>
-													</div>
-												</div>
-
-												<div class="col-lg-12 portfolio-item filter-book">
-													<div class="portfolio-wrap">
-														<h2 style="text-align: center">나눔혜윰</h2>
-														<div class="container fluid">
-															<table class="table" style="text-align: center">
-																<tr>
-																	<th>제목</th>
-																	<th>등록 날짜</th>
-																	<th>조회수</th>
-																</tr>
-																<%for(BookShare bShare : bsList) {%>
-																<tr>
-																	<td>
-																		<h4><%=bShare.getTitle() %></h4>
-																	</td>
-																	<td>
-																		<h4><%=bShare.getEnrollDate() %></h4>
-																	</td>
-																	<td>
-																		<h4><%=bShare.getHits() %></h4>
-																	</td>
-																</tr>
-																<%} %>
-															</table>
-														</div>
-														<br>
-														<br>
-														<hr>
-													</div>
-												</div>
-
-
-												<div class="col-lg-12 portfolio-item filter-moview">
-													<div class="portfolio-wrap">
-														<h2 style="text-align: center">감상혜윰</h2>
-														<div class="container fluid">
-															<table class="table" style="text-align: center">
-																<tr>
-																	<th>제목</th>
-																	<th>등록 날짜</th>
-																	<th>조회수</th>
-																</tr>
-																<%for(MovieReview mReview : mrvList) {%>
-																<tr>
-																	<td>
-																		<h4><%=mReview.getContents()%></h4>
-																	</td>
-																	<td>
-																		<h4><%=mReview.getEnrollDate()%></h4>
-																	</td>
-																	<td>
-																		<h4><%=mReview.getHits() %></h4>
-																	</td>
-																</tr>
-																<%} %>
-															</table>
-														</div>
-													</div>
-												</div>
-												<br>
-												<br>
-												<hr>
-												<div class="col-lg-12 portfolio-item filter-moview">
-													<div class="portfolio-wrap">
-														<h2 style="text-align: center">추천혜윰</h2>
-														<div class="container fluid">
-															<table class="table" style="text-align: center">
-																<tr>
-																	<th>제목</th>
-																	<th>등록 날짜</th>
-																	<th>조회수</th>
-																</tr>
-																<%for(MovieRecommend recommend : mrcList) {%>
-																<tr>
-																	<td>
-																		<h4><%=recommend.getTitle() %></h4>
-																	</td>
-																	<td>
-																		<h4><%=recommend.getEnrollDate() %></h4>
-																	</td>
-																	<td>
-																		<h4><%=recommend.getHits() %></h4>
-																	</td>
-																</tr>
-																<%
-																	}
-																%>
-															</table>
-														</div>
-													</div>
-												</div>
-												<br>
-												<br>
-												<hr>
-
-												<div class="col-lg-12 portfolio-item filter-show">
-													<div class="portfolio-wrap">
-														<h2 style="text-align: center">관람혜윰</h2>
-														<div class="container fluid">
-															<table class="table" style="text-align: center">
-																<tr>
-																	<th>제목</th>
-																	<th>등록 날짜</th>
-																	<th>조회수</th>
-																</tr>
-																<%for(ShowReview sReview : srList) {%>
-																<tr>
-																	<td>
-																		<h4><%=sReview.getTitle()%></h4>
-																	</td>
-																	<td>
-																		<h4><%=sReview.getEnrollDate()%></h4>
-																	</td>
-																	<td>
-																		<h4><%=sReview.getHits() %></h4>
-																	</td>
-																</tr>
-																<%}%>
-															</table>
-														</div>
-													</div>
-												</div>
-												<br>
-												<br>
-												<hr>
-											</div>
-										</div>
+										<%for(MovieRecommend recommend : mrcList) {%>
+									<tr>
+										<td>추천혜윰</td>
+										<td><%=recommend.getTitle()%></td>
+										<td><%=recommend.getEnrollDate() %></td>
+										<td><%=recommend.getHits() %></td>
+									</tr>
+									<%} %>
+									<%for(ShowReview sReview : srList) {%>
+									<tr>
+										<td>관람혜윰</td>
+										<td><%=sReview.getTitle()%></td>
+										<td><%=sReview.getEnrollDate() %></td>
+										<td><%=sReview.getHits() %></td>
+									</tr>
+									<%} %>
+								</table>
+							<div class="blog-pagination">
+								<ul class="justify-content-center">
+									<%-- <%=pageNavi%> --%>
+								</ul>	
+							</div>
+						</div>	
+					  </div>
+					</div>
+				  </div>				
 									</section>
 									<!-- End Portfolio Section -->
 
@@ -309,12 +189,8 @@ ArrayList<ShowReview> srList = (ArrayList<ShowReview>)request.getAttribute("srLi
 								</div>
 								<!--  end row  -->
 							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
+				</section>
+
 
 </main><!-- End #main -->
 
