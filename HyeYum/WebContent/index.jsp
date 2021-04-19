@@ -100,7 +100,7 @@
 	<div style="text-align: center;">
 	<header class="section-header">
 				<h2>chart</h2>
-				<p>혜윰이 세운 업적</p>
+				<p>혜윰의 성과</p>
 			</header>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
