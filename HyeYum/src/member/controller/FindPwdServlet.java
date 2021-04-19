@@ -33,6 +33,10 @@ public class FindPwdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset = UTF-8");
+		
 		String userId = request.getParameter("user-id");
 		Member member = new FindService().findOneId(userId);
 		
@@ -42,7 +46,7 @@ public class FindPwdServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('입력하신 아이디를 찾을 수가 없습니다.') return false </script>");
+			out.println("<script>alert('존재하지 않는 아이디 입니다.');history.back(); </script>");
 		}
 	}
 

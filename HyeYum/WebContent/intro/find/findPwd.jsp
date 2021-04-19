@@ -3,37 +3,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="/assets/css/find.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-<script type="text/javascript">
-(function() {
-emailjs.init("user_6A0xYDbD9AoTXZ7Gfppe6");
-})();
-</script>
-
-
 <script type="text/javascript">
 window.onload = function() { 
-	// form id, #contact-form 안에 있는 것들 전송 
+	
 	document.getElementById('contact-form').addEventListener('submit', function(event) {
-		event.preventDefault(); this.contact_number.value = Math.random() * 100000 | 0; 
-		// 서비스 id, 이메일 템플릿 
-		emailjs.sendForm('contact_service', 'contact_template', this); 
-		}); 
-	} 
-</script> -->
+		if(document.getElementById('id').value.length === 0){
+	        alert('아이디를 입력해주세요');
+	        event.preventDefault(); 
+	    } 
+	    
+	}); 
+} 
+</script> 
 
 </head>
 <body>
+<div class="form-signin">
+  <div class="wrapper" >
+  	<img src= "/assets/img/logo.png" style = "width :40px; height:40px;" >
+      <h2 class="form-signin-heading">비밀번호 찾기</h2><br>
+      <span>1. 아이디 입력 </span> >> 
+      <span style = "color:lightgray">2. 이름, 이메일 입력</span> 
+      <span style = "color:lightgray">>> 3. 임시 비밀번호 전송</span><br><br>
+      <span style = "color:red">※찾을 비밀번호의 아이디를 입력해주세요※</span><br><br>
+      <form action = "/member/find/pwd" method = "get" id="contact-form">
+		<input type = "text" placeholder = "아이디 " name = "user-id" id="id"> <br><br>
+				<input type = "submit" value = "다음" class="btn btn-primary">
+	</form>
+  </div>
 
-<h1>비밀번호 찾기 STEP 01</h1>
-<h2>비밀번호를 찾고자 하는 아이디를 입력해주세요.</h2>
-<form action = "/member/find/pwd" method = "get">
-아이디 : <input type = "text" placeholder = "아이디를 입력해주세요 " name = "user-id"> <br>
-<input type = "submit" value = "다음">
-</form>
+</div>
 
 
 

@@ -101,11 +101,11 @@
 														<hr>
 													</div>
 													<!-- End sidebar tags-->
-													<h3 class="sidebar-title">주문</h3>
+													<h3 class="sidebar-title">기부</h3>
 													<div class="sidebar-item categories">
 														<ul>
-															<li><a href="/message/sentList">주문내역</a></li>
-															<li><a href="/message/sentList">주문내역</a></li>
+															<li><a href="/donate/list">기부내역</a></li>
+															
 														</ul>
 
 													</div>
@@ -122,14 +122,10 @@
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
 										
-	<form action ="/message/send/page" method = "post" id ="msg-write-page">
-	<%-- <i class="bi bi-person"></i>  보내는 사람 : <%= sendId %> <br><br> --%>
-	
-	<i class="bi bi-person-fill"></i>  받는 사람 : <input type = "text" name = "receiveId" class = "form-control inline" id="receiveId"><br>
-	<i class="bi bi-chat-left-text"></i>  내용 : <br>
-	<textarea name = "contents" class = "form-control" rows ="20" id="contents"> </textarea><br>
-	<input type = "submit" value = "전송" style = "float: right" class = "btn btn-primary">
-	</form>
+	내가 작성한 게시글 수: <br>
+	<%= %>
+	나의 총 기부 금액 <br>
+	<%= %>
 										
 
 </div>
