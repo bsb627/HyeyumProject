@@ -69,6 +69,8 @@ public class DeleteServlet extends HttpServlet {
             out.println("location.href='/index.jsp';");
             out.println("</script>");
             
+            session.invalidate();
+            
 		} else {
 			response.sendRedirect("/member/memberError.html");
 		}
