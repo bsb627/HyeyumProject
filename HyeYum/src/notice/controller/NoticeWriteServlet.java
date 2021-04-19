@@ -51,9 +51,9 @@ public class NoticeWriteServlet extends HttpServlet {
 			//String userId = (String)session.getAttribute("userId");
 			
 			//Notice notice = new Notice();
-			notice.setTitle(title);
-			notice.setContents(content);
-			notice.setUserId(userId);
+			// notice.setTitle(title);
+			 // notice.setContents(contents);
+			 //notice.setUserId(userId);
 			
 			int result = new NoticeService().registerNotice(notice);
 			if(result > 0) {

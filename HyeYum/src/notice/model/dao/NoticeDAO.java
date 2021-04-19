@@ -91,6 +91,7 @@ public class NoticeDAO {
 		return sb.toString();
 	}
 	
+	// 전체조회
 	private int totalCount(Connection conn) {
 		Statement stmt = null;
 		ResultSet rset = null;

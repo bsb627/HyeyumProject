@@ -164,6 +164,7 @@ public class NoticeService {
 		return result; 
 	}
 
+	// 조회
 	public int updateHits(int noticeNo) {
 		int result = 0;
 		Connection conn = null;
@@ -185,6 +186,8 @@ public class NoticeService {
 		
 	}
 }
+
+
 	
 
 

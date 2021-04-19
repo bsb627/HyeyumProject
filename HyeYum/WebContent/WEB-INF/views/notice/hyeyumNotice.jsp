@@ -140,11 +140,11 @@ main * {
 
 		<div class="container">
 
-			<!-- 글쓰기 작성 버튼 -->
-			<!-- <div style="float: right">
+			
+	<div style="float: right">
 				<a href="/hyeyumNotice/write"><button
 						class="btn btn-primary btn-right">글쓰기</button></a>
-			</div> -->
+			</div>
 			<ul class="pagination  justify-content-center">
 				<!-- <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
 					</li>

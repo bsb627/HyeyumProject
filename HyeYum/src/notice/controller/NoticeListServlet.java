@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
@@ -34,7 +35,9 @@ public class NoticeListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	System.out.println("뭐라고해요?");
-	  int currentPage = 0; 
+	//HttpSession session = request.getSession();
+	//String userId = (String)session.getAttribute("userId");  
+	int currentPage = 0; 
 	  if(request.getParameter("currentPage") == null) {
 	  currentPage = 1; 
 	  

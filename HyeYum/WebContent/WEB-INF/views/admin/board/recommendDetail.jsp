@@ -1,140 +1,119 @@
-<%@page import="movie.model.vo.MovieRecommend"%>
-<%@page import="movie.model.vo.MovieInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-	MovieRecommend recommend = (MovieRecommend) request.getAttribute("recommend");
-%>
-<%@include file="/admin/header.jsp"%>
-<!-- Begin Page Content -->
+   pageEncoding="UTF-8"%>
+
+<%@include file="/header.jsp"%>
 <head>
-<link href="/assets/admin/css/admin-movie.css" rel="stylesheet">
+  <title>문화나눔, 혜윰 - aboutUs</title>
 </head>
+ <main id="main">
 
-<!--    Page Heading -->
-<div class="container-fluid">
-<h1 class="h3 mb-4 text-gray-800 text-center">상세보기</h1>
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
 
-<form action="/admin/recommend/delete" method="get">
-	<div class="container">
+        <ol>
+          <li><a href="/index.jsp">Home</a></li>
+          <li>소개</li>
+        </ol>
+        <h2>혜윰 벗</h2>
 
-		<div class="col-lg-12">
-			<div class="row">
-				<div class="col-lg-3"></div>
+      </div>
+    </section><!-- End Breadcrumbs -->
 
-				<div class="col-lg-6">
+    <section class="inner-page">
+      <div class="container">
+      
+          
+             <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
 
-					<div class="row">
+      <div class="container" data-aos="fade-up">
 
-						<div class="col-lg-4">
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">장르:</label> <input
-									type="text" class="form-control" id="recipient-name"
-									name="genre" value="<%=recommend.getGenre()%>" readonly>
-							</div>
-						</div>
+        <header class="section-header">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
+        </header>
 
-						<div class="col-lg-4">
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">작성일:</label>
-								<input type="text" class="form-control" id="recipient-name"
-									name="enrollDate" value="<%=recommend.getEnrollDate()%>"
-									readonly>
-							</div>
-						</div>
+        <div class="row gy-4">
 
-						<div class="col-lg-4">
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">조회수:</label>
-								<input type="text" class="form-control" id="recipient-name"
-									name="hits" value="<%=recommend.getHits()%>" readonly>
-							</div>
-						</div>
+          <div class="col-lg-6">
 
-					</div>
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>Address</h3>
+                  <p>A108 Adam Street,<br>New York, NY 535022</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-telephone"></i>
+                  <h3>Call Us</h3>
+                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>info@example.com<br>contact@example.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-clock"></i>
+                  <h3>Open Hours</h3>
+                  <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+                </div>
+              </div>
+            </div>
 
+          </div>
 
-				</div>
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" class="php-email-form">
+              <div class="row gy-4">
 
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                </div>
 
-			</div>
-			<div class="col-lg-3"></div>
-		</div>
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                </div>
 
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                </div>
 
-		<div class="col-lg-12">
-			<div class="row">
-				<div class="col-lg-3"></div>
-				<div class="col-lg-3">
-					<div class="form-group">
-						<label for="recipient-name" class="col-form-label">아이디:</label> <input
-							type="text" class="form-control" id="recipient-name"
-							name="userId" value="<%=recommend.getUserId()%>" readonly>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="form-group">
-						<label for="recipient-name" class="col-form-label">작성자:</label> <input
-							type="text" class="form-control" id="recipient-name" name="nick"
-							value="<%=recommend.getNick()%>" readonly>
-					</div>
-				</div>
-				<div class="col-lg-3"></div>
-			</div>
-		</div>
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                </div>
 
-		<div class="col-lg-12">
-			<div class="row">
-				<div class="col-lg-3"></div>
-				<div class="col-lg-6">
-					<div class="form-group">
-						<label for="recipient-name" class="col-form-label">제목:</label> <input
-							type="text" class="form-control" id="recipient-name" name="title"
-							value="<%=recommend.getTitle()%>" readonly>
-					</div>
-				</div>
-				<div class="col-lg-3"></div>
-			</div>
-		</div>
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
 
+                  <button type="submit">Send Message</button>
+                </div>
 
+              </div>
+            </form>
 
+          </div>
 
+        </div>
 
-		<div class="col-lg-12">
+      </div>
 
-			<div class="row">
+    </section><!-- End Contact Section -->
+          
+        </p>
+      </div>
+    </section>
 
-				<div class="col-lg-3"></div>
+  </main><!-- End #main -->
 
-				<div class="col-lg-6" style="margin: auto;">
-					<div class="form-group">
-						<div class="container">
-							<div class="form-group">
-								<label for="message-text" class="col-form-label">내용:</label>
-								<textarea class="form-control sys" id="message-text"
-									name="contents" readonly><%=recommend.getContents()%></textarea>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="form-group">
-						<input type="hidden" name="infoNo" value="<%=recommend.getNo()%>">
-						<div class="btn-set" align="center">
-							<a href="/admin/recommend/list"><button type="button"
-									class="btn btn-secondary">목록으로</button></a>
-							<button type="submit" class="btn btn-primary">삭제하기</button>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-lg-3"></div>
-
-			</div>
-
-		</div>
-	</div>
-</form>
-</div>
-<%@include file="/admin/footer.jsp"%>
+<%@include file="/footer.jsp"%>

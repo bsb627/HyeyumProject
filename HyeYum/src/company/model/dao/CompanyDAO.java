@@ -1,40 +1,31 @@
 package company.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import company.model.vo.Company;
 
 public class CompanyDAO {
-	
 
 	
-	public ArrayList<Company> selectAllList(Connection conn, int currentPage) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public String getPageNavi(Connection conn, int currentPage) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public int totalCount(Connection conn) {
+
+	public int registerCompany(Connection conn, Company company) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO COMPANY "
+				+ "VALUES(SEQ_COMPANY.NEXTVAL,?,?,?,SYSDATE)";  
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
+
+
 	
-	public Company selectOneCompany(Connection conn, int companyCode) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public int insertCompany(Connection conn, Company company) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public int updateCompany(Connection conn, Company company) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public int deleteCompany(Connection conn, int companyCode) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

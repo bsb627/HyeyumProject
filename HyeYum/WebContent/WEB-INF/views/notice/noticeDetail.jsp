@@ -55,7 +55,7 @@ main * {
   글쓴이 : <%= notice.getUserId() %> <%= notice.getEnrollDate() %></div>
   <div class="card-body" style= "line-height:50px;" >
     
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+ <!--    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 </div>
   </div>
 
@@ -86,7 +86,7 @@ main * {
     </tr>
      </tr>
  
-</table>
+</table> -->
     
 	<a href="/notice/list?noticeNo=<%= notice.getNoticeNo()%>">목록</a>
 
