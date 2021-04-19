@@ -8,6 +8,18 @@
 <head>
   <title>문화나눔, 혜윰 </title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+ $("#delete").submit(function() {
+	if( $("#checkbox").is(":checked") == false) {
+		alert("동의 사항 체크 해주세요");
+		return false;
+	}
+	alert("정말 탈퇴하시겠습니까?");
+	return true;
+	});
+});
+ </script>
 </head>
 
  <main id="main">
@@ -98,11 +110,11 @@
 <div class="col-md-9 info-card">
 <article class="entry entry-single">   
 <div style = "text-align:center">
-<form action = "/member/delete/pass"  method = "post" style = "text-align:center">
-<h1>비밀번호를 입력해주세요.</h1>
-<img src = "/assets/img/qna/pwd.png">
-<input type = "password" class="form-control" style =" align:center" name = "user-pass"><br>
-<input type = "submit" class ="btn btn-primary">
+<form action = "/member/delete"  method = "post" style = "text-align:center" id="delete">
+<h1 style = "color:red"><i class="bi bi-x-circle"></i>탈퇴하면 복구가 불가능합니다.<i class="bi bi-x-circle"></i> </h1><br>
+<h2>그래도 탈퇴하시겠습니까?</h2><br>
+<input type = "checkbox" id="checkbox">동의합니다. <br><br><br>
+<input type = "submit" class ="btn btn-danger" value ="탈퇴" >
 </form>		
 </div>
 </article>

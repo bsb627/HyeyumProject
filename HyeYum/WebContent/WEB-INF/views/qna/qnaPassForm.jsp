@@ -37,7 +37,7 @@ int qnaNo = (int)request.getAttribute("qnaNo");
 		<img src = "/assets/img/qna/pwd.png">
 		<form action = "/qna/detail" method = "post">
 		비밀번호를 입력하세요. <br><br>
-		<input type = "hidden" name = "qna-no" value ="<%= qnaNo %>"> <!--!!!!!!!!!!1 여기여기여기여기 !!!!!!!!!!!!-->
+		
 		<input type = "password" class="form-control" style = "width : 30%" name ="qna-pass">
 		<br>
 		<a href = "/qna/list"><input type = "button" class ="btn btn-outline-dark" value = "취소"></a>
