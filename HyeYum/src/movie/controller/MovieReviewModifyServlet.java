@@ -55,6 +55,7 @@ public class MovieReviewModifyServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String spoiler = request.getParameter("spoiler");
 		
+		System.out.println("review-no :" + reviewNo);
 		
 		MovieReview movieReview = new MovieReview();
 		movieReview.setInfoNo(infoNo);

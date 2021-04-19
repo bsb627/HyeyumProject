@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import movie.model.service.MovieService;
+import movie.model.vo.MovieInfo;
+
 /**
  * Servlet implementation class MovieInfoDetailServlet
  */
@@ -26,8 +29,18 @@ public class MovieInfoDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/views/movie/movieInfoDetail.jsp").forward(request, response);
+		int infoNo = Integer.parseInt(request.getParameter("no"));
+		
+		System.out.println("infoNo :" + infoNo);
+		
+		MovieInfo mInfo = new MovieService().getMovieInfo(infoNo);
+		if (mInfo != null) {
+			request.setAttribute("mInfo", mInfo);
+			request.getRequestDispatcher("/WEB-INF/views/movie/movieInfoDetail.jsp").forward(request, response);
+		} else {
+			
+		}
+		
 	}
 
 	/**

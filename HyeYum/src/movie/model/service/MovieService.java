@@ -506,6 +506,25 @@ public class MovieService {
 		return mList;
 	}
 
+	public MovieInfo getMovieInfo(int infoNo) {
+		// TODO Auto-generated method stub
+		MovieInfo mInfo = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			mInfo = new MovieDAO().getMovieInfo(conn, infoNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		// TODO Auto-generated method stub
+		return mInfo;
+	}
+
+	
 	
 		
 }
