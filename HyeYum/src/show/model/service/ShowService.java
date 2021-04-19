@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import book.model.vo.BookInfo;
 import common.JDBCTemplate;
+import movie.model.vo.MovieInfo;
 import show.model.dao.ShowDAO;
 import show.model.vo.ShowData;
 import show.model.vo.ShowInfo;
@@ -417,5 +418,21 @@ public class ShowService {
 			JDBCTemplate.close(conn);
 		}
 		return bList;
+	}
+
+	public ArrayList<MovieInfo> getMovieInfoList() {
+		ArrayList<MovieInfo> mList =null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			mList = new ShowDAO().getMovieInfoList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return mList;
 	}
 }

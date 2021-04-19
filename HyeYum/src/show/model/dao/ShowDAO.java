@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import book.model.vo.BookInfo;
 import common.JDBCTemplate;
+import movie.model.vo.MovieInfo;
 import qna.model.vo.Qna;
 import show.model.vo.ShowData;
 import show.model.vo.ShowInfo;
@@ -729,6 +730,44 @@ public class ShowDAO {
 		}
 		
 		return bList;
+	}
+
+	public ArrayList<MovieInfo> getMovieInfoList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM MOVIE_INFO JOIN MOVIE_FILE USING (INFO_NO) ORDER BY ENROLL_DATE DESC";
+		ArrayList<MovieInfo> mList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if( rset != null) {
+				mList = new ArrayList<MovieInfo>();
+				while(rset.next()) {
+					MovieInfo info = new MovieInfo();
+					
+					info.setInfoNo(rset.getInt("INFO_NO"));
+					info.setMovieName(rset.getString("MOVIE_NAME"));
+					info.setGenre(rset.getString("GENRE"));
+					info.setCast(rset.getString("CAST"));
+					info.setDirector(rset.getString("DIRECTOR"));
+					info.setSynopsis(rset.getString("SYNOPSIS"));
+					info.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					info.setFileNo(rset.getInt("FILE_NO"));
+					info.setFileName(rset.getString("FILE_NAME"));
+					info.setFilePath(rset.getString("FILE_PATH"));
+					mList.add(info);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return mList;
 	}
 	
 	

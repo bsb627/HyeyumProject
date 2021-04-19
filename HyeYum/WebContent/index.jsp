@@ -1,3 +1,4 @@
+<%@page import="movie.model.vo.MovieInfo"%>
 <%@page import="book.model.vo.BookInfo"%>
 <%@page import="show.model.vo.ShowInfo"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,6 +7,7 @@
 <%
 	ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 	ArrayList<BookInfo> bList = (ArrayList<BookInfo>)request.getAttribute("bList");
+	ArrayList<MovieInfo> mList = (ArrayList<MovieInfo>)request.getAttribute("mList");
 %>
 <%@include file="/header.jsp"%>
 <script type="text/javascript"	src="/assets/js/index-ready.js"></script>
@@ -132,7 +134,7 @@
 					<ul id="portfolio-flters">
 						<li data-filter="*" class="filter-active">전체</li>
 						<li data-filter=".filter-book">도서</li>
-						<li data-filter=".filter-card">영화</li>
+						<li data-filter=".filter-movie">영화</li>
 						<li data-filter=".filter-show">공연</li>
 					</ul>
 				</div>
@@ -163,6 +165,28 @@
 				</div>
 
 <%} %>
+
+<%for(MovieInfo info : mList) {%>
+<div class="col-lg-4 col-md-6 portfolio-item filter-movie">
+					<div class="portfolio-wrap">
+						<img src="/upload/info/movie/<%=info.getFileName() %>" class="img-fluid"
+							alt="">
+						<div class="portfolio-info">
+							<h4><%=info.getMovieName() %></h4>
+							<p><%=info.getCast()%></p>
+							<div class="portfolio-links">
+								<a href="/upload/info/movie/<%=info.getFileName() %>"
+									data-gallery="portfolioGallery" class="portfokio-lightbox"
+									title="<%=info.getMovieName()%>"><i class="bi bi-plus"></i></a> <a
+									href="#" title="More Details"><i
+									class="bi bi-link"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+<%} %>
+
+
 <%for(ShowInfo info : iList) {%>
 
 <div class="col-lg-4 col-md-6 portfolio-item filter-show">

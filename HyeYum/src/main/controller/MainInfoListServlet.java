@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import book.model.service.BookService;
 import book.model.vo.BookInfo;
+import movie.model.vo.MovieInfo;
 import reply.model.service.ReplyService;
 import reply.model.vo.Reply;
 import show.model.service.ShowService;
@@ -40,9 +41,11 @@ public class MainInfoListServlet extends HttpServlet {
 		
 		ArrayList<ShowInfo> iList = new ShowService().getShowInfoList();
 		ArrayList<BookInfo> bList = new ShowService().getBookInfoList();
-		if(!iList.isEmpty() && !bList.isEmpty()) {
+		ArrayList<MovieInfo> mList = new ShowService().getMovieInfoList();
+ 		if(!iList.isEmpty() && !bList.isEmpty()&& !mList.isEmpty()) {
 			request.setAttribute("iList", iList);
 			request.setAttribute("bList", bList);
+			request.setAttribute("mList", mList);
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}else {
 			
