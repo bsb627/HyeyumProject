@@ -5,8 +5,7 @@
 <%
 	Member member = (Member) request.getAttribute("member");
 %>
-<script src="/assets/js/member/memberInfoDetail.js"></script>
-<title><%=member.getUserName()%> 님 상세 정보</title>
+<title><%=member.getUserName()%> 님 의 회원 탈퇴</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/member/memberInfoDetail.css" rel="stylesheet">
 <!-- ======= Breadcrumbs ======= -->
@@ -18,7 +17,7 @@
 				<li><a href="/index.jsp">Home</a></li>
 				<li>내 정보</li>
 			</ol>
-			<h2>회원 정보 수정</h2>
+			<h2>회원 정보</h2>
 
 		</div>
 	</section>
@@ -28,9 +27,9 @@
 		<div class="container">
 			<header class="section-header">
 				<h2>MY INFORMATION</h2>
-				<p>회원 정보 수정</p>
+				<p>회원 탈퇴</p>
 			</header>
-			<form action="/member/modify" method="post">
+			<form action="/member/delete" method="get">
 				<p name="userId">
 					아이디 :
 					<%=member.getUserId()%></p>
@@ -44,17 +43,17 @@
 			<div class="container" data-aos="fade-up">
 
 				<div class="row">
-					<div class="col-8" style="margin: auto;">
+					<div class="col-6" style="margin: auto;">
 
 						<article class="entry">
 
 							<!-- ============ 폼 내용 ============= -->
 							<!-- 보여지는 정보 : USER_ID, USER_PWD, USER_NAME, NICK, USER_PHONE, EMAIL, ADDRESS, ENROLL_DATE, OUT_DATE, OUT_STATE, OUT_REASON 
 										수정 가능한 것 : USER_PWD , USER_PHONE, EMAIL, ADDRESS  -->
-							<h2 class="entry-title" style="color: navy;">회원 정보 수정</h2>
+							<h2 class="entry-title" style="color: navy;">회원 탈퇴</h2>
 
-							<form action="/member/modify" method="post">
-								<div class="form-group">
+							<form action="/member/delete" method="post">
+								<%-- <div class="form-group">
 									<!-- 아이디 -->
 									<fieldset disabled="">
 										<label class="control-label" for="disabledInput"><p>아이디</p>
@@ -133,10 +132,12 @@
 
 								<div class="form-group">
 									<!-- 주소 -->
-									<label class="col-form-label" for="inputDefault"><p>주소</p></label>
-									<input type="text" class="form-control" placeholder=""
-										value="<%=member.getUserAddress()%>" id="inputDefault"
-										name="userAddress">
+									<div>
+									<a href="/address.jsp"><button type="button" class="btn btn-primary btn-sm"  onclick="goPopup()">주소검색</button></a></div>
+									<label class="col-form-label" for="inputDefault"></label>
+									<input type="text" class="form-control" 
+										value="<%=member.getUserAddress() %> " id="inputDefault"
+										name="userAddress" required readonly>
 								</div>
 
 								<hr>
@@ -206,7 +207,7 @@
 										<!-- 	<div class="read-more" style="display: inline-block">
 											<a href="/index.jsp">메인으로</a> -->
 									</div>
-								</div>
+								</div> --%>
 							</form>
 						</article>
 					</div>
@@ -227,5 +228,5 @@
 
 
 
-
+<script src="/assets/js/address.js"></script>
 <%@include file="/footer.jsp"%>

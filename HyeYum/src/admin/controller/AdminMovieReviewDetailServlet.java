@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.model.service.AdminMovieService;
+import movie.model.vo.MovieReview;
+
 /**
  * Servlet implementation class AdminMovieReviewDetailServlet
  */
@@ -26,8 +29,17 @@ public class AdminMovieReviewDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int reNo = Integer.parseInt(request.getParameter("reNo"));
+
+		MovieReview review = new AdminMovieService().printOneMovieReview(reNo);
+
+		if (review != null) {
+			request.setAttribute("review", review);
+
+			request.getRequestDispatcher("/WEB-INF/views/admin/board/reviewDetail.jsp").forward(request, response);
+		} else {
+		}
+
 	}
 
 	/**

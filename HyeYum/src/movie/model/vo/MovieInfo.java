@@ -12,6 +12,8 @@ public class MovieInfo { // 영화 컨텐츠
 	private String runTime;	// 러닝타임
 	private String synopsis; // 영화줄거리
 	private String fileName; // 첨부파일명
+	private int fileNo; // 파일번호
+	private String filePath; //파일경로
 	private Date enrollDate; // 등록일
 
 	public MovieInfo() {
@@ -98,12 +100,32 @@ public class MovieInfo { // 영화 컨텐츠
 		this.enrollDate = enrollDate;
 	}
 
+	public int getFileNo() {
+		return fileNo;
+	}
+
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 	@Override
 	public String toString() {
 		return "MovieInfo [infoNo=" + infoNo + ", movieName=" + movieName + ", genre=" + genre + ", cast=" + cast
 				+ ", director=" + director + ", ageGroup=" + ageGroup + ", runTime=" + runTime + ", synopsis="
-				+ synopsis + ", fileName=" + fileName + ", enrollDate=" + enrollDate + "]";
+				+ synopsis + ", fileName=" + fileName + ", fileNo=" + fileNo + ", filePath=" + filePath
+				+ ", enrollDate=" + enrollDate + "]";
 	}
+
+	
+	
 	
 	
 }

@@ -15,8 +15,10 @@
 <h1 class="h3 mb-4 text-gray-800 text-center">영화 정보 등록</h1>
 
 <div class="contaioner">
-	<form action="/admin/movieInfo/write" method="post">
+	<form action="/admin/movieInfo/write" method="post" enctype="multipart/form-data">
+	
 		<div class="col-lg-12">
+		
 			<div class="row">
 				<div class="col-lg-3"></div>
 				<div class="col-lg-3">
@@ -71,29 +73,48 @@
 							name="runTime" required>
 					</div>
 				</div>
+				<div class="col-lg-3"></div>
 			</div>
-			<div class="form-group">
-				<div class="col-lg-6" style="margin: auto;">
-					<div class="container">
-						<div class="form-group-lg">
-							<label for="message-text" class="col-form-label">시놉시스:</label>
-							<textarea class="form-control sys" id="message-text" name="synopsis" required></textarea>
-						</div>
-					</div>
-				</div>
-				<br><br>
-					<div class="form-group">
-					<input type="hidden" name="infoNo"
-						value="">
-					<div class="btn-set" align="center">
-						<a href="/admin/movieInfo/list"><button type="button"
-								class="btn btn-secondary">취소</button></a>
-						<button type="submit" class="btn btn-primary">등록하기</button>
-						</div>
-					</div>
-				</div>
 
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-3"></div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label for="exampleFormControlFile1">이미지 업로드</label> <input
+								type="file" class="form-control-file" name="up-file"
+								id="exampleFormControlFile1" required>
+						</div>
+					</div>
+					<div class="col-lg-3"></div>
+				</div>
 			</div>
+
+			<div class="form-group">
+						<div class="col-8" style="margin: auto;">
+							<div class="container">
+								<div class="form-group-lg">
+									<label for="message-text" class="col-form-label">시놉시스:</label>
+									<textarea class="form-control sys" id="message-text"
+										name="synopsis" required></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<br>
+					<br>
+					<div class="form-group">
+						<input type="hidden" name="infoNo" value="">
+						<div class="btn-set" align="center">
+							<a href="/admin/movieInfo/list"><button type="button"
+									class="btn btn-secondary">취소</button></a>
+							<button type="submit" class="btn btn-primary">등록하기</button>
+						</div>
+					</div>
+					
+
+		</div>
 		
 
 

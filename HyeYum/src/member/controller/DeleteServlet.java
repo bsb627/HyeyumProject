@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class loginServlet
@@ -32,12 +33,14 @@ public class DeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		session.getAttribute("userId");
+        
 		String userId = (String)session.getAttribute("userId");
+		Member member = new MemberService().selectOneById(userId);
 		
-		int result = new MemberService().deleteMember(userId);
-		
-		if (result > 0) {
-			request.setAttribute("userId", userId);
+		if (member != null) {
+			request.setAttribute("member", member);
+			
 			request.getRequestDispatcher("/WEB-INF/views/member/memberDelete.jsp").forward(request, response);
 		}  else {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -53,7 +56,22 @@ public class DeleteServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		
+		int result = new MemberService().deleteMember(userId);
+		if(result > 0) {
+
+			PrintWriter out=response.getWriter();
+            out.println("<script>");
+            out.println("alert('회원탈퇴가 정상적으로 되었습니다.');");
+			/* out.println("location.href='/member/logout';"); */
+            out.println("location.href='/index.jsp';");
+            out.println("</script>");
+            
+		} else {
+			response.sendRedirect("/member/memberError.html");
+		}
 
 	}
 

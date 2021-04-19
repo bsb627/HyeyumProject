@@ -188,20 +188,19 @@ public class AdminMovieDAO {
 		return mList;
 	}
 
-	public int deleteMovieReview(Connection conn, int reviewNo) { // 관리자 영화리뷰 삭제
+	public int deleteMovieReview(Connection conn, String reviewNo) { // 관리자 영화리뷰 삭제
 		int result = 0;
-		PreparedStatement pstmt = null;
-		String query = "DELETE FROM MOVIE_REVIEW WHERE REVIEW_NO = ? ";
+		Statement stmt = null;
+		String query = "DELETE FROM MOVIE_REVIEW WHERE REVIEW_NO IN ("+reviewNo+")";
 
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, reviewNo);
-			result = pstmt.executeUpdate();
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(stmt);
 		}
 		System.out.println("result : " + result);
 		return result;
@@ -287,5 +286,36 @@ public class AdminMovieDAO {
 			JDBCTemplate.close(rset);
 		} System.out.println("sysout dao : " + recommend);
 		return recommend;
+	}
+
+	public MovieReview selectOneMovieReview(Connection conn, int reviewNo) {
+		System.out.println("리뷰dao 들어옴");
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		String query ="SELECT REVIEW_NO, INFO_NO, MOVIE_NAME, STAR_RATING, CONTENTS, SPOILER, TICKET_NUMBER, USER_ID, NICK FROM MOVIE_REVIEW JOIN MEMBER USING (USER_ID) JOIN MOVIE_INFO USING(INFO_NO) WHERE REVIEW_NO = ?";
+		MovieReview review = new MovieReview();
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				review.setReNo(rset.getInt("REVIEW_NO"));
+				review.setInfoNo(rset.getInt("INFO_NO"));
+				review.setMovieName(rset.getString("MOVIE_NAME"));
+				review.setStarRating(rset.getInt("STAR_RATING"));
+				review.setContents(rset.getString("CONTENTS"));
+				review.setSpoiler(rset.getString("SPOILER"));
+				review.setTicketNumber(rset.getString("TICKET_NUMBER"));
+				review.setNick(rset.getString("NICK"));
+				review.setUserId(rset.getString("USER_ID"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally { 
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		} System.out.println("sysout dao : " + review);
+		return review;
 	}
 }

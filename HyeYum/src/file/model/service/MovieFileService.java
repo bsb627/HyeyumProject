@@ -21,7 +21,85 @@ public class MovieFileService {
 	public MovieFileService() {
 		factory = JDBCTemplate.getConnection();
 	}
+
+	public int registerFileMovieInfo(FileData fileData, MovieInfo info) { // 영화정보 파일등록
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = factory.createConnection();
+			result = new MovieFileDAO().insertFileMovieInfo(conn, fileData, info);
+			if(result> 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public ArrayList<FileData> printMovieInfoFileList() {
+		Connection conn = null;
+		ArrayList<FileData> list = null;
+		
+		try {
+			conn = factory.createConnection();
+			list = new MovieFileDAO().selectMovieInfoFileList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return list;
+	}
+
+	public int updateFileMovieInfo(FileData fileData, MovieInfo info) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = factory.createConnection();
+			result = new MovieFileDAO().updateMovieFileInfo(conn, fileData, info);
+			if(result> 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
 	
+	public int deleteMovieFileInfo(String filePath, String fileUser) {
+		Connection conn =null;
+		int result = 0;
+		try {
+			conn = factory.createConnection();
+			result = new MovieFileDAO().deleteMovieFileInfo(conn, filePath, fileUser);
+			if(result > 0 ) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+		
+	}
 	
 	/*
 	 * 

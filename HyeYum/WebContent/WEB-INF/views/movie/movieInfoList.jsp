@@ -1,3 +1,5 @@
+<%@page import="file.model.vo.FileData"%>
+<%@page import="movie.model.vo.MovieInfo"%>
 <%@page import="movie.model.vo.MovieReview"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,12 +7,15 @@
 <%
 	ArrayList<MovieReview> review = (ArrayList<MovieReview>)request.getAttribute("review");
 	String pageNavi = (String) request.getAttribute("pageNavi");
+	ArrayList<MovieInfo> mList = (ArrayList<MovieInfo>)request.getAttribute("mList");
+	ArrayList<FileData> fList = (ArrayList<FileData>)request.getAttribute("fList");
 	
 %>
 <head>
+<title>문화나눔, 혜윰 - 영화</title>
 <%@include file="/header.jsp"%>
 <link href="/assets/css/movie/movieinfo.css" rel="stylesheet">
-<title>문화나눔, 혜윰 - 영화</title>
+
 </head>
 
 
@@ -48,131 +53,30 @@
 					data-aos="fade-up" data-aos-delay="200">
 					<div class="swiper-wrapper">
 
+					 <% for(MovieInfo mInfo : mList) { %>
+					 
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<div class="portfolio-wrap">
-									<img src="/assets/img/movie/movieinfo/info1.jpg" alt=""
+									<img src="/upload/info/movie/<%=mInfo.getFileName()%>" alt=""
 										class="img-fluid">
 									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
+										<h4><%=mInfo.getMovieName()%></h4>
+										<p><%=mInfo.getGenre() %></p>
 										<div class="portfolio-links">
-											<a href="/assets/img/movie/movieinfo/info1.jpg"
+											<a href="/upload/info/movie/<%=mInfo.getFileName()%>"
 												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
+												title="<%=mInfo.getMovieName()%>"><i class="bi bi-plus"></i></a> <a
+												href="/movieInfo/detail?no=<%=mInfo.getInfoNo()%>" title="More Details"><i
 												class="bi bi-link"></i></a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<% } %>
 						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/movie/movieinfo/info1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/movie/movieinfo/info1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/movie/movieinfo/info1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/movie/movieinfo/info1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/movie/movieinfo/info1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/movie/movieinfo/info1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/movie/movieinfo/info1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/movie/movieinfo/info1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<div class="portfolio-wrap">
-									<img src="/assets/img/movie/movieinfo/info1.jpg" alt=""
-										class="img-fluid">
-									<div class="portfolio-info">
-										<h4>App 1</h4>
-										<p>App</p>
-										<div class="portfolio-links">
-											<a href="/assets/img/movie/movieinfo/info1.jpg"
-												data-gallery="portfolioGallery" class="portfokio-lightbox"
-												title="App 1"><i class="bi bi-plus"></i></a> <a
-												href="portfolio-details.html" title="More Details"><i
-												class="bi bi-link"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
+						
 
 					</div>
 					<!--  <div class="swiper-pagination"></div> -->
@@ -184,7 +88,7 @@
 		<!-- End Testimonials Section -->
 
 
-		<section>
+	 	<section>
 
 			<div class="container" data-aos="fade-up">
 
@@ -193,7 +97,7 @@
 					<p>영화 리뷰</p>
 				</header>
 
-				<%
+				 <%
 					if (userId == null) {
 				%>
 				<div class="container" data-aos="fade-up">
@@ -202,13 +106,13 @@
 				</div>
 				<%
 					}
-				%>
+				%> 
 
 				<!-- 로그인 할 시 -->
 
 				<%
 					if (userId != null && userId != "") {
-				%>
+				%> 
 					<!-- ========= 글쓰기 버튼 Button trigger modal ========= -->
 				<div style="text-align: center;">
 					<button type="button" class="btn btn-primary btn-write"
@@ -304,7 +208,6 @@
 				</article>
 						
 
-<!-- ======== 글 수정 모달 end ======== -->
 						<!-- End blog entry -->
 					</div>
 					<%
@@ -335,7 +238,7 @@
 	aria-labelledby="writeModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-		<form action="/movieReview/write" method="post">
+		<form action="/movieReview/write" method="post"  enctype="multipart/form-data">
 			<div class="modal-header">
 				<h5 class="modal-title" id="writeModalLabel">영화 리뷰 등록</h5>
 				<button type="button" class="close" data-dismiss="modal"
@@ -346,13 +249,16 @@
 				<div class="modal-body">
 					<label class="form-label" for="title">제목</label> <select
 						class="form-select" name="info-no" required>
+						
 						<option value="" hidden="hidden">영화를 선택해주세요</option>
-						<option value="1">info1</option>
-						<option value="2">info2</option>
+						<% for(MovieInfo mInfo : mList) { %>
+						<option value="<%= mInfo.getInfoNo()%>"><%=mInfo.getMovieName() %></option>
+						<!-- <option value="2">info2</option>
 						<option value="3">info3</option>
 						<option value="4">info4</option>
 						<option value="5">info5</option>
-						<option value="6">info6</option>
+						<option value="6">info6</option> -->
+						<% } %>
 					</select>
 
 					<div class="form-group">
@@ -367,7 +273,7 @@
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">예매일련번호</label>
-						<input type="text" class="form-control" id="recipient-name" name="ticket-number">
+						<input type="text" class="form-control" id="recipient-name" name="ticket-number" required>
 					</div>
 
 					<div class="modal-footer">
@@ -386,7 +292,10 @@
 <!-- 글쓰기 모달 end  -->
 
 						<!--   ============== 글수정 모달창 ============ -->
- <% for (MovieReview mReview : review) { %>
+
+<%
+	for (MovieReview mReview : review ) { 
+	%>
 <div class="modal fade" id="modifyModal<%= mReview.getInfoNo() %>" tabindex="-1" role="dialog"
 	aria-labelledby="modifyModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -441,8 +350,8 @@
 	</div>
 
 </div>
-<% } }%> 
-
+<% } %>
+<% } %>
 
 
 <%@include file="/footer.jsp"%>

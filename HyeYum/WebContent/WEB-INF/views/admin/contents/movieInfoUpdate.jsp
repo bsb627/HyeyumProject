@@ -1,21 +1,23 @@
+<%@page import="file.model.vo.FileData"%>
 <%@page import="movie.model.vo.MovieInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	MovieInfo mInfo = (MovieInfo) request.getAttribute("mInfo");
+	MovieInfo mInfo = (MovieInfo)request.getAttribute("mInfo");
+	FileData file = (FileData)request.getAttribute("file");
 %>
 <%@include file="/admin/header.jsp"%>
 <!-- Begin Page Content -->
-	<head>
-   <link href="/assets/admin/css/admin-movie.css" rel="stylesheet">
-   </head>
+<head>
+<link href="/assets/admin/css/admin-movie.css" rel="stylesheet">
+</head>
 
 <!-- 
                     Page Heading -->
 <h1 class="h3 mb-4 text-gray-800 text-center">영화 정보 수정</h1>
 
 <div class="contaioner">
-	<form action="/admin/movieInfo/modify" method="post">
+	<form action="/admin/movieInfo/modify" method="post" enctype="multipart/form-data">
 		<div class="col-lg-12">
 			<div class="row">
 				<div class="col-lg-3"></div>
@@ -28,7 +30,8 @@
 					<div class="form-group">
 						<input type="hidden" id="genre" value="<%=mInfo.getGenre()%>" />
 						<label for="recipient-name" class="col-form-label">장르:</label> <select
-							class="browser-default custom-select" id="selectGenre" name="genre" required>
+							class="browser-default custom-select" id="selectGenre"
+							name="genre" required>
 							<option selected>장르</option>
 							<option value="드라마">드라마</option>
 							<option value="로맨스">로맨스</option>
@@ -55,9 +58,11 @@
 							name="director" value="<%=mInfo.getDirector()%>" required>
 					</div>
 					<div class="form-group">
-					<input type="hidden" id="ageGroup" value="<%=mInfo.getGenre()%>" />
-						<label for="recipient-name" class="col-form-label">관람등급:</label> <select
-							class="browser-default custom-select" id="ageGroup" name="ageGroup" onchange="SetSelectBox();" required>
+						<input type="hidden" id="ageGroup"
+							value="<%=mInfo.getAgeGroup()%>" /> <label for="recipient-name"
+							class="col-form-label">관람등급:</label> <select
+							class="browser-default custom-select" id="ageGroup"
+							name="ageGroup" onchange="SetSelectBox();" required>
 							<option selected>관람등급</option>
 							<option value="전체관람가">전체관람가</option>
 							<option value="12세 이상">12세 이상</option>
@@ -71,30 +76,48 @@
 							name="runTime" value="<%=mInfo.getRunTime()%>" required>
 					</div>
 				</div>
+				<div class="col-lg-3"></div>
+
 			</div>
+
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-3"></div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label for="exampleFormControlFile1">이미지 업로드</label> <input
+								type="file" class="form-control-file" name="up-file"
+								id="exampleFormControlFile1" value="<%= mInfo.getFileName() %>">
+						</div>
+					</div>
+					<div class="col-lg-3"></div>
+				</div>
+			</div>
+
 			<div class="form-group">
-				<div class="col-lg-6" style="margin: auto;">
+				<div class="col-8" style="margin: auto;">
 					<div class="container">
 						<div class="form-group-lg">
 							<label for="message-text" class="col-form-label">시놉시스:</label>
-							<textarea class="form-control sys" id="message-text" name="synopsis" required><%=mInfo.getSynopsis()%></textarea>
+							<textarea class="form-control sys" id="message-text"
+								name="synopsis" required><%=mInfo.getSynopsis()%></textarea>
 						</div>
 					</div>
 				</div>
-				<br><br>
-					<div class="form-group">
-					<input type="hidden" name="infoNo"
-						value="<%=mInfo.getInfoNo()%>">
+				<br>
+				<br>
+				<div class="form-group">
+					<input type="hidden" name="infoNo" value="<%=mInfo.getInfoNo()%>">
 					<div class="btn-set" align="center">
 						<a href="/admin/movieInfo/list"><button type="button"
 								class="btn btn-secondary">취소</button></a>
 						<button type="submit" class="btn btn-primary">수정</button>
-						</div>
 					</div>
 				</div>
-
 			</div>
-		
+
+		</div>
+
 
 
 

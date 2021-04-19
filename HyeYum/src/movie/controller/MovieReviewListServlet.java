@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import movie.model.service.MovieService;
+import movie.model.vo.MovieInfo;
 import movie.model.vo.MoviePageData;
 import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
@@ -45,12 +46,13 @@ public class MovieReviewListServlet extends HttpServlet {
 		MoviePageData mPageData = new MovieService().printAllMovieReviewList(currentPage);
 		ArrayList<MovieReview> review = mPageData.getReviewList();
 		String pageNavi = mPageData.getPageNavi();
-		
+		ArrayList<MovieInfo> mList = new MovieService().getMovieInfoList();
 	
 		
 		if(!review.isEmpty()) {
 			request.setAttribute("review", review);
 			request.setAttribute("pageNavi", pageNavi);
+			request.setAttribute("mList", mList);
 			request.getRequestDispatcher("/WEB-INF/views/movie/movieInfoList.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);

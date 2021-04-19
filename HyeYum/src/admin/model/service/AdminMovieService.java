@@ -135,7 +135,7 @@ public class AdminMovieService {
 		return mList;
 	}
 
-	public int deleteMovieReview(int reviewNo) {
+	public int deleteMovieReview(String reviewNo) {
 		int result = 0;
 		Connection conn = null;
 		try {
@@ -207,5 +207,23 @@ public class AdminMovieService {
 			JDBCTemplate.close(conn);
 		}
 		return recommend;
+	}
+
+
+	public MovieReview printOneMovieReview(int reviewNo) {
+		MovieReview review = new MovieReview();
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			review = new AdminMovieDAO().selectOneMovieReview(conn, reviewNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		System.out.println("review service : " + review);
+		return review;
 	}
 }

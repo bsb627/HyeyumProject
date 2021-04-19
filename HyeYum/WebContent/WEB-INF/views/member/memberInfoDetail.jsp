@@ -27,7 +27,7 @@
 		<div class="container">
 			<header class="section-header">
 				<h2>MY INFORMATION</h2>
-				<p>회원 탈퇴</p>
+				<p>회원 정보 수정</p>
 			</header>
 			<form action="/member/delete" method="get">
 				<p name="userId">

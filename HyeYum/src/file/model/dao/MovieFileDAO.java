@@ -13,16 +13,137 @@ import movie.model.vo.MovieRecommend;
 
 public class MovieFileDAO {
 
-	/*
-	public int insertMovieFileInfo(Connection conn, FileData fileData, MovieInfo movieInfo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertFileMovieInfo(Connection conn, FileData fileData, MovieInfo info) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String fileType = fileData.getFileType();
+		String query="INSERT INTO MOVIE_FILE VALUES(SEQ_MOVIE_FILE.NEXTVAL,?,?,?,?,?,NULL)";
+	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, fileData.getFileName());
+			pstmt.setString(2, fileData.getFilePath());
+			pstmt.setLong(3, fileData.getFileSize());
+			pstmt.setTimestamp(4, fileData.getUploadTime());
+			pstmt.setInt(5, getMovieInfoNo(conn,info));
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
-	public ArrayList<FileData> selectMovieFileList(Connection conn, String type) {
-		// TODO Auto-generated method stub
-		return null;
+	private int getMovieInfoNo(Connection conn, MovieInfo info) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "SELECT INFO_NO FROM MOVIE_INFO WHERE MOVIE_NAME= ? AND GENRE = ? AND CAST = ? AND DIRECTOR = ? AND AGE_GROUP = ? AND RUNTIME = ? AND SYNOPSIS = ? ORDER BY ENROLL_DATE DESC";
+		int infoNo = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, info.getMovieName());
+			pstmt.setString(2, info.getGenre());
+			pstmt.setString(3, info.getCast());
+			pstmt.setString(4, info.getDirector());
+			pstmt.setString(5, info.getAgeGroup());
+			pstmt.setString(6, info.getRunTime());
+			pstmt.setString(7, info.getSynopsis());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				infoNo = rset.getInt("INFO_NO");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return infoNo;
 	}
+
+	public ArrayList<FileData> selectMovieInfoFileList(Connection conn) {
+		//System.out.println("select list dao");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<FileData> list = null;
+		String query = "SELECT INFO_NO, FILE_NO, FILE_NAME, FILE_PATH, FILE_SIZE, UPLOAD FROM MOVIE_FILE JOIN MOVIE_INFO USING (INFO_NO) WHERE INFO_NO IS NOT NULL";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			list = new ArrayList<FileData>();
+			while(rset.next()) {
+				FileData data = new FileData();
+				data.setNo(rset.getInt("INFO_NO"));
+				data.setFileNo(rset.getInt("FILE_NO"));
+				data.setFileName(rset.getString("FILE_NAME"));
+				data.setFilePath(rset.getString("FILE_PATH"));
+				data.setFileSize(rset.getLong("FILE_SIZE"));
+				data.setUploadTime(rset.getTimestamp("UPLOAD"));
+				list.add(data);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		//System.out.println("파일리스트 :" + list);
+		return list;
+	}
+
+	public int updateMovieFileInfo(Connection conn, FileData fileData, MovieInfo info) {
+		System.out.println("Modify DAO");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MOVIE_FILE SET FILE_NAME =?, FILE_PATH=?,FILE_SIZE=?, UPLOAD=? WHERE INFO_NO = ?";
+	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, fileData.getFileName());
+			pstmt.setString(2, fileData.getFilePath());
+			pstmt.setLong(3, fileData.getFileSize());
+			pstmt.setTimestamp(4, fileData.getUploadTime());
+			pstmt.setInt(5, info.getInfoNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("Modify DAO result : " + result);
+		return result;
+	}
+
+	public int deleteMovieFileInfo(Connection conn, String filePath, String fileUser) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM FILETBL WHERE FILEPATH = ? AND FILEUSER = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, filePath);
+			pstmt.setString(2, fileUser);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	/*
+	
 
 	public int deleteMovieFile(Connection conn, String filePath, String fileUser) {
 		// TODO Auto-generated method stub

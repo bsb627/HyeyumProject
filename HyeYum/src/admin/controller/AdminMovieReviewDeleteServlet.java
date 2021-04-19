@@ -1,29 +1,25 @@
-package movie.controller;
+package admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import movie.model.service.MovieService;
-import movie.model.vo.MovieInfo;
+import admin.model.service.AdminMovieService;
 
 /**
- * Servlet implementation class MovieInfoListServlet
+ * Servlet implementation class AdminMovieReviewDeleteServlet
  */
-@WebServlet("/movieInfo/list")
-public class MovieInfoListServlet extends HttpServlet {
+@WebServlet("/admin/movie/delete")
+public class AdminMovieReviewDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieInfoListServlet() {
+    public AdminMovieReviewDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +28,25 @@ public class MovieInfoListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("인포리스트서블릿 ㅇㅇ");
-		// ArrayList<MovieInfo> mList = new MovieService().printAllMovieInfo();
-		ArrayList<MovieInfo> mList = new MovieService().getMovieInfoList();
-		/*
-		 * HttpSession session = request.getSession(); 
-		 * String userId = (String)session.getAttribute("userId");
-		 */
-		if(!mList.isEmpty()) {
-			request.setAttribute("mList", mList);
-			System.out.println("mList :" + mList);
-			request.getRequestDispatcher("/WEB-INF/views/movie/movieInfoList.jsp").forward(request, response);
+		String[] noArr = request.getParameterValues("reNo");
+		String reviewNo = "";
+		for (String no : noArr) {
+			if (no.equals(noArr[noArr.length - 1])) {
+				reviewNo += no;
+				System.out.println(no);
+			} else {
+				reviewNo += no+",";
+				System.out.print(no + ",");
+			}
 		}
-		
-		
+		System.out.println("보내는 번호"+reviewNo);
+		  int result = new AdminMovieService().deleteMovieReview(reviewNo);
+		  System.out.println("성공"+result);
+		  if(result > 0) {
+			  request.getRequestDispatcher("/admin/movie/list").forward(request, response);
+		  }else {
+			  
+		  }
 	}
 
 	/**

@@ -854,6 +854,45 @@ public class MovieDAO {
 		
 	}
 
+	public ArrayList<MovieInfo> getMovieInfoList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM MOVIE_INFO JOIN MOVIE_FILE USING (INFO_NO) ORDER BY ENROLL_DATE DESC";
+		ArrayList<MovieInfo> mList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				mList = new ArrayList<MovieInfo>();
+				while(rset.next()) {
+					MovieInfo mInfo = new MovieInfo();
+					
+					mInfo.setInfoNo(rset.getInt("INFO_NO"));
+					mInfo.setMovieName(rset.getString("MOVIE_NAME"));
+					mInfo.setGenre(rset.getString("GENRE"));
+					mInfo.setCast(rset.getString("CAST"));
+					mInfo.setDirector(rset.getString("DIRECTOR"));
+					mInfo.setAgeGroup(rset.getString("AGE_GROUP"));
+					mInfo.setRunTime(rset.getString("RUNTIME"));
+					mInfo.setSynopsis(rset.getString("SYNOPSIS"));
+					mInfo.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					mInfo.setFileNo(rset.getInt("FILE_NO"));
+					mInfo.setFileName(rset.getString("FILE_NAME"));
+					mInfo.setFilePath(rset.getString("FILE_PATH"));
+					mList.add(mInfo);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return mList;
+	}
+
 	
 	
 }

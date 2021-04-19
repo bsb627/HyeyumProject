@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
     <%
     ArrayList<MovieReview> mList = (ArrayList<MovieReview>)request.getAttribute("mList");
     %>
@@ -60,7 +61,7 @@
 								<td><%= review.getUserId() %></td>
 								<td><%= review.getNick() %></td>
 								<td><%= review.getEnrollDate() %></td>
-								<td style="text-align: center"><a href="/admin/recommend/detail?rowNo=<%=review.getReNo()%>"><button type="button" style="color:black;" 
+								<td style="text-align: center"><a href="/admin/movie/detail?reNo=<%=review.getReNo()%>"><button type="button" style="color:black;" 
 									class="btn btn-outline-warning">상세보기</button></a></td>
 							
 							</tr>

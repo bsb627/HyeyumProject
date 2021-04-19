@@ -13,6 +13,7 @@ import movie.model.vo.MovieRecommend;
 import movie.model.vo.MovieReview;
 import show.model.dao.ShowDAO;
 import show.model.vo.ShowData;
+import show.model.vo.ShowInfo;
 
 public class MovieService {
 	
@@ -485,6 +486,22 @@ public class MovieService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		return mList;
+	}
+
+	public ArrayList<MovieInfo> getMovieInfoList() {
+		ArrayList<MovieInfo> mList =null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			mList = new MovieDAO().getMovieInfoList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
 		}
 		return mList;
 	}
