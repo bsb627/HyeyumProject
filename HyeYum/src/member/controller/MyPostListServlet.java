@@ -68,22 +68,22 @@ public class MyPostListServlet extends HttpServlet {
 		MoviePageData mrvPageData = new MyPostService().printAllMovieReviewList(currentPage,userId);
 		MoviePageData mrcPageData = new MyPostService().printAllMovieRecommend(currentPage,userId);
 		ShowPageData sPageData = new MyPostService().printAllShowReview(currentPage, userId);
-//		System.out.println("brPageData : "+brPageData);
-//		System.out.println("bsPageData : "+bsPageData);
-//		System.out.println("mrvPageData : "+mrvPageData);
-//		System.out.println("mrcPageData : "+mrcPageData);
-//		System.out.println("sPageData : "+sPageData);
+		System.out.println("brPageData : "+brPageData);
+		System.out.println("bsPageData : "+bsPageData);
+		System.out.println("mrvPageData : "+mrvPageData);
+		System.out.println("mrcPageData : "+mrcPageData);
+		System.out.println("sPageData : "+sPageData);
 		//ArrayList<MyPost> pList = pPageData.getMyPList();
 		ArrayList<BookReview> brList = brPageData.getReviewList();
 		ArrayList<BookShare> bsList = bsPageData.getShareList();
 		ArrayList<MovieReview> mrvList = mrvPageData.getReviewList();
 		ArrayList<MovieRecommend> mrcList = mrcPageData.getRecommendList();
 		ArrayList<ShowReview> sList = sPageData.getReviewList();
-//		System.out.println("brList : "+brList);
-//		System.out.println("bsList : "+bsList);
-//		System.out.println("mrvList : "+mrvList);
-//		System.out.println("mrcList : "+mrcList);
-//		System.out.println("sList : "+sList);
+		System.out.println("brList : "+brList);
+		System.out.println("bsList : "+bsList);
+		System.out.println("mrvList : "+mrvList);
+		System.out.println("mrcList : "+mrcList);
+		System.out.println("sList : "+sList);
 		
 		//String pPageNavi = pPageData.getPageNavi();
 		String brPageNavi = brPageData.getPageNavi();
@@ -91,11 +91,6 @@ public class MyPostListServlet extends HttpServlet {
 		String mrvPageNavi = mrvPageData.getPageNavi();
 		String mrcPageNavi = mrcPageData.getPageNavi();
 		String sPageNavi = sPageData.getPageNavi();
-//		System.out.println("brPageNavi : "+brPageNavi);
-//		System.out.println("bsPageNavi : "+bsPageNavi);
-//		System.out.println("mrvPageNavi : "+mrvPageNavi);
-//		System.out.println("mrcPageNavi : "+mrcPageNavi);
-//		System.out.println("sPageNavi : "+sPageNavi);
 		if(!brList.isEmpty()) {
 			
 			//request.setAttribute("pList", pList);
@@ -114,7 +109,7 @@ public class MyPostListServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/myPostList.jsp");
 			view.forward(request, response);
 		}else {
-			System.out.println("bList가 비었음");
+			
 		}
 	}
 

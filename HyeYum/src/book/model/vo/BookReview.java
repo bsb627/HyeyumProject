@@ -58,7 +58,8 @@ public class BookReview extends Board{ // 도서 리뷰 게시판
 
 	@Override
 	public String toString() {
-			return "BookReview [no=" + super.no + ", title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ", enrollDate=" + super.enrollDate + ", bookName=\" + bookName + \", division=\" + division + \", userId=\" + userId + \", genre=\" + genre\r\n" + 
+			return "BookReview [no=" + super.no + ", title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ", enrollDate=" + super.enrollDate + ", bookName=" + bookName + ", division=" + division + ", userId=" + userId + ", genre=" + genre
+					+ ", infoNo=" + infoNo + "]";
 	}
 	
 }

@@ -23,8 +23,7 @@ public class BookShare extends Board{ // 나눔 게시판
 
 	@Override
 	public String toString() {
-		return "BookShare [region=" + region +  "]";
+		return "BookShareReview [no=" + super.no + ", title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ", enrollDate=" + super.enrollDate + "BookShare [region=" + region +  "]";
 	}
-	
 	
 }

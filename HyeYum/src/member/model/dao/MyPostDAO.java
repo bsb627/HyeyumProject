@@ -144,7 +144,6 @@ public class MyPostDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		System.out.println("POST DAO, Review : " + review);
 		return review;
 	}
 	// MovieRecommend
@@ -181,7 +180,6 @@ public class MyPostDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		System.out.println("POST DAO, recommend : " + recommend);
 			return recommend;
 		}
 	// showReview
@@ -217,7 +215,6 @@ public class MyPostDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		System.out.println("POST DAO, showList : " + showList);
 		return showList;
 	}
 	

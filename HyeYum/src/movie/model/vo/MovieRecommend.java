@@ -28,9 +28,8 @@ public class MovieRecommend extends Board { // 영화 추천 게시판
 
 	@Override
 	public String toString() {
-		return "MovieRecommend [genre=" + genre + "]";
+		return "MovieRecommend [no=" + super.no + ", title=" + super.title + ", contents=" + super.contents +", nick=" + super.nick + ", hits=" + super.hits+" likes=" + super.likes + ", enrollDate=" + super.enrollDate + ", genre=" + genre + "]";
 	}
-	
 	
 	
 	
