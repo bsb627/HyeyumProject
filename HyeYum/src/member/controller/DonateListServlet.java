@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,13 +31,20 @@ public class DonateListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
+		String userId = (String)session.getAttribute("userId");
+		int bookCount = new DonateService().countBook(userId);
+		int movieCount = new DonateService().countMovie(userId);
+		int showCount = new DonateService().countShow(userId);
 		
-//		int bookCount = new DonateService().selectBook(userId);
-//		int movieCount = new DonateService().selectMovie(userId);
-// 
-//		int totalcount = 0;
+		
+		
+		request.setAttribute("bookCount", bookCount);
+		request.setAttribute("movieCount", movieCount);
+		request.setAttribute("showCount", showCount);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/donateList.jsp");
+		view.forward(request, response);
 	}
 
 	/**

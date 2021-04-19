@@ -50,9 +50,6 @@ public class MsgReceivedDeleteServlet extends HttpServlet {
 		int result = new MessageService().deleteMessages(msgNo, table);
 		if(result > 0) {
 			response.sendRedirect("/message/receivedList");
-		}else {
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('삭제할 항목을 선택해 주세요.'); history.back();</script>");
 		}
 	}
 

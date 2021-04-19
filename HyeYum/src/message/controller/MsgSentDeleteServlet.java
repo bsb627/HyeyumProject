@@ -50,10 +50,7 @@ public class MsgSentDeleteServlet extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect("/message/sentList");
 		}
-		else {
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('삭제할 항목을 선택해 주세요.'); history.back();</script>");
-		}
+		
 	}
 
 	/**
