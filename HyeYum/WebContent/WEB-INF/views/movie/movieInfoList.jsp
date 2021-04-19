@@ -238,7 +238,7 @@
 	aria-labelledby="writeModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-		<form action="/movieReview/write" method="post"  enctype="multipart/form-data">
+		<form action="/movieReview/write" method="post"  >
 			<div class="modal-header">
 				<h5 class="modal-title" id="writeModalLabel">영화 리뷰 등록</h5>
 				<button type="button" class="close" data-dismiss="modal"
@@ -300,7 +300,7 @@
 	aria-labelledby="modifyModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-		<form action="/movieReview/modify" method="post">
+		<form action="/movieReview/modify" method="post" >
 			<div class="modal-header">
 				<h5 class="modal-title" id="modifyModalLabel">영화 리뷰 수정</h5>
 				<button type="button" class="close" data-dismiss="modal"
@@ -313,13 +313,16 @@
 				<div class="modal-body">
 					<label class="form-label" for="title">제목</label> <select
 						class="form-select" name="info-no" required>
+						
 						<option value="" hidden="hidden">영화를 선택해주세요</option>
-						<option value="1">info1</option>
-						<option value="2">info2</option>
+						<% for(MovieInfo mInfo : mList) { %>
+						<option value="<%= mInfo.getInfoNo()%>"><%=mInfo.getMovieName() %></option>
+						<!-- <option value="2">info2</option>
 						<option value="3">info3</option>
 						<option value="4">info4</option>
 						<option value="5">info5</option>
-						<option value="6">info6</option>
+						<option value="6">info6</option> -->
+						<% } %>
 					</select>
 
 

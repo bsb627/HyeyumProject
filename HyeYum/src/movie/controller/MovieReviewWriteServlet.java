@@ -55,6 +55,9 @@ public class MovieReviewWriteServlet extends HttpServlet {
 		String ticketNum = request.getParameter("ticket-number");
 		String spoiler = request.getParameter("spoiler");
 
+		
+		System.out.println("infoNo : " + infoNo);
+		
 		HttpSession session = request.getSession();
 		if (session != null && (session.getAttribute("userId")) != null) {
 			String userId = (String) session.getAttribute("userId");
@@ -65,8 +68,11 @@ public class MovieReviewWriteServlet extends HttpServlet {
 			review.setNick(userId);
 			review.setStarRating(star);
 			review.setSpoiler(spoiler);
-
+			
+		
+			
 			int result = new MovieService().registerMovieReview(review);
+			System.out.println("re:"+result);
 			if (result > 0) {
 				PrintWriter out = response.getWriter();
 
