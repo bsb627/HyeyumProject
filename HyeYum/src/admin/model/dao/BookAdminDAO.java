@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import book.model.vo.BookInfo;
 import book.model.vo.BookReview;
+import book.model.vo.BookShare;
 import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
@@ -184,6 +185,56 @@ public class BookAdminDAO {
 		Statement stmt = null;
 		int result = 0;
 		String query = "DELETE FROM BOOK_REVIEW WHERE REVIEW_NO IN ("+reviewNo+")";
+		
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(stmt);
+		}
+		return result;
+	}
+	// BookShare
+	public ArrayList<BookShare> selectAllBookShareList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM BOOK_SHARE ORDER BY SHARE_NO ASC";
+		ArrayList<BookShare> rList = null;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset != null) {
+				rList = new ArrayList<BookShare>();
+				while (rset.next()) {
+					BookShare share = new BookShare();
+					share.setNo(rset.getInt("SHARE_NO"));
+					share.setRegion(rset.getString("REGION"));
+					share.setTitle(rset.getString("TITLE"));
+					share.setContents(rset.getString("CONTENTS"));
+					share.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					share.setHits(rset.getInt("HITS"));
+					share.setUserId(rset.getString("USER_ID"));
+					rList.add(share);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return rList;
+	}
+	public int deleteBookShare(Connection conn, String shareNo) {
+		Statement stmt = null;
+		int result = 0;
+		String query = "DELETE FROM BOOK_SHARE WHERE SHARE_NO IN ("+shareNo+")";
 		
 		try {
 			stmt = conn.createStatement();

@@ -8,6 +8,7 @@ import admin.model.dao.AdminDAO;
 import admin.model.dao.BookAdminDAO;
 import book.model.vo.BookInfo;
 import book.model.vo.BookReview;
+import book.model.vo.BookShare;
 import common.JDBCTemplate;
 import show.model.vo.ShowInfo;
 import show.model.vo.ShowReview;
@@ -138,6 +139,43 @@ public class BookAdminService {
 		try {
 			conn = factory.createConnection();
 			result = new BookAdminDAO().deleteBookReview(conn, reviewNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+	// BookShare
+	public ArrayList<BookShare> printAllBookShareList() {
+		ArrayList<BookShare> rList = null;
+		Connection conn = null;
+		
+		try {
+			conn = factory.createConnection();
+			rList = new BookAdminDAO().selectAllBookShareList(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return rList;
+	}
+
+	public int deleteBookShare(String shareNo) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookAdminDAO().deleteBookShare(conn, shareNo);
 			if(result > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
