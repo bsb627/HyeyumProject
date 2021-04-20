@@ -37,7 +37,7 @@ public class QnaService {
 	}
 	
 	// 하나출력
-	public Qna printOne(int qnaNo, String qnaPass) {
+	public Qna printOne(int qnaNo, String qnaPass ) {
 		Connection conn = null;
 		Qna qna = null;
 		try {

@@ -121,7 +121,7 @@ public class QnaDAO {
 	public Qna selectOne(Connection conn, int qnaNo, String qnaPass) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Qna qna = new Qna();
+		Qna qna = null; 
 		String query = "SELECT * FROM QNA WHERE QNA_NO = ? AND QUESTION_PWD = ?";
 		
 		try {
@@ -131,7 +131,7 @@ public class QnaDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				
+				qna = new Qna();
 				qna.setQnaNo(rset.getInt("QNA_NO"));
 				qna.setCategory(rset.getString("CATEGORY"));
 				qna.setTitle(rset.getString("TITLE"));
@@ -143,13 +143,11 @@ public class QnaDAO {
 				qna.setFamily(rset.getInt("FAMILY"));
 				qna.setStep(rset.getInt("STEP"));
 			}
-		} catch (NullPointerException e){
-		
-
-		
-		}catch (SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+						e.printStackTrace();
+		}finally {
 			JDBCTemplate.close(pstmt);
-			JDBCTemplate.close(rset);
 		}
 		
 		return qna;

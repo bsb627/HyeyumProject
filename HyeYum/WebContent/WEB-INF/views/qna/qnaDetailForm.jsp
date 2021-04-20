@@ -7,6 +7,7 @@
 	Qna qna = (Qna)request.getAttribute("qna"); // detail서블랫애서 샛 해줫음
 %>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<script>
 	 $(document).ready(function() {
