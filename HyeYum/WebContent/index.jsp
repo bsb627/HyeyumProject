@@ -48,7 +48,7 @@
 				<div class="count-box">
 					<i class="bi bi-emoji-heart-eyes"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="2567"
+						<span data-purecounter-start="0" data-purecounter-end="2121231233"
 							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
 						<p>참여자 수</p>
 					</div>
