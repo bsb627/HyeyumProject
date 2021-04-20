@@ -60,9 +60,9 @@ public class MsgSendPageServlet extends HttpServlet {
 		
 		//보낸메시지 테이블
 		int result = new MessageService().sendMessage(message);
-		
 		//받은메시지 테이블
 		int result2 = new MessageService().sendMessage2(message);
+		
 		
 		if( result > 0 && result2 >0) {
 //			PrintWriter out = response.getWriter();
@@ -72,9 +72,8 @@ public class MsgSendPageServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('존재하지 않은 아이디 입니다 다시 확인해주세요.')</script>");
-			RequestDispatcher view = request.getRequestDispatcher("/message/send/page");
-			view.forward(request, response);
+			out.println("<script>alert('존재하지 않은 아이디 입니다 다시 확인해주세요.'); history.back();</script>");
+		
 		}
 	}
 
