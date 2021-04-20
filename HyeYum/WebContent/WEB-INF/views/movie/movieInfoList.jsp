@@ -324,7 +324,7 @@
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">별점</label>
-						<input type="text" class="form-control" id="recipient-name" name="star-rating" value="(<%= mReview.getStarRating() %>)점">
+						<input type="text" class="form-control" id="recipient-name" name="star-rating" value="(<%= mReview.getStarRating() %>)">
 					</div>
 
 					<div class="form-group">

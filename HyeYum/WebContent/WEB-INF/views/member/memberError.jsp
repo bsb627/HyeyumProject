@@ -7,24 +7,24 @@
 %>
 
 <title>회원 상세 정보</title>
-<%@include file="/header.jsp"%>
+  <%@include file="/header.jsp"%>  
 <link href="/assets/css/member/beforecheck.css" rel="stylesheet">
 
 <main id="main">
 
-	<!-- ======= Breadcrumbs ======= -->
+	<!-- <!-- ======= Breadcrumbs ======= -->
 	<section class="breadcrumbs">
 		<div class="container">
 
 			<ol>
 				<li><a href="/index.jsp">Home</a></li>
-				<li>내 정보</li>
+				<li></li>
 			</ol>
 			<h2>로그인 오류</h2>
 
 		</div>
 	</section>
-	<!-- End Breadcrumbs -->
+	<!--End Breadcrumbs -->
 
 	<!--  ========== 추천게시판 팝업 ============= -->
 	<section id="testimonials" class="testimonials portfolio">
@@ -60,4 +60,4 @@
 
 
 
-<%@include file="/footer.jsp"%>
+<%@include file="/footer.jsp"%> 

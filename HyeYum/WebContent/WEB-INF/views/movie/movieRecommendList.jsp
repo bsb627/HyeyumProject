@@ -52,7 +52,7 @@
 				<p class="pcomment">이 영화를 추천합니다!</p><br><br>
 				
 				<div class="hero-img" data-aos="zoom-out" data-aos-delay="50">
-					<img src="/assets/img/movie/movietime.jpg"
+					<img src="/assets/img/movie/thumb.jpg"
 						style="width: 800px; height: 450px;" class="img-fluid" alt="">
 				</div>
 			</header>
@@ -145,8 +145,8 @@
 							 <%for (MovieData likes : likesCount) { %>
 							<% if(mRecommend.getRowNo() == likes.getRecommendNo()) { %>  
 							<td><i class="bi bi-hand-thumbs-up" style="color:navy;"> <%= likes.getLikesCount()%></i></td>
-							<% } } %>    
-							 
+							 <% } } %>   
+							
 						</tr>
 						<% } %>
 

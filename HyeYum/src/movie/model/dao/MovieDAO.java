@@ -412,6 +412,7 @@ public class MovieDAO {
 				mRecommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mRecommend.setNick(rset.getString("NICK"));
 				mRecommend.setUserId(rset.getString("USER_ID"));
+				mRecommend.setLikes(getLikeCount(conn, rset.getInt("RECOMMEND_NO")));
 				recommend.add(mRecommend);
 			}
 		} catch (SQLException e) {
@@ -424,6 +425,28 @@ public class MovieDAO {
 			return recommend;
 		}
 	
+	private int getLikeCount(Connection conn, int recommendNo) {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM MOVIE_LIKES WHERE RECOMMEND_NO = ? AND IS_CHECK = 1";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, recommendNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
+	}
+
 	public String getMovieRecommendPageNavi(Connection conn, int currentPage)  { // 추천글 페이징
 		int recordTotalCount = totalRecommendCount(conn); // 전체 게시물
 		int recordCountPerPage = 10; // 5개씩

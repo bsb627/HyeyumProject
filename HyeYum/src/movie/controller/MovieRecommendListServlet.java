@@ -47,6 +47,7 @@ public class MovieRecommendListServlet extends HttpServlet {
 		String pageNavi = mPageData.getPageNavi();
 		ArrayList<MovieData>likesCount = new MovieService().printAllRecommendLikesCount(); 
 		
+		
 		if(!recommend.isEmpty()) {
 			request.setAttribute("recommend", recommend);
 			request.setAttribute("pageNavi", pageNavi);

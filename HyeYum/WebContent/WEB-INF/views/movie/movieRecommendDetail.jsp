@@ -5,6 +5,7 @@
 <%
 	MovieRecommend recommend = (MovieRecommend)request.getAttribute("recommend");
 	int likes = (int)request.getAttribute("likes");
+	
 	//FileData fileData = (FileData)request.getAttribute("fileData");
 	
 %>
@@ -60,7 +61,6 @@
 						<hr>
 
 						<div class="entry-meta">
-							일단 여기 보류 
 						</div>
 
 						<hr>
@@ -82,13 +82,14 @@
 								<!--  좋아요를 할 때 -->
 								 <% if (likes == 0) { %>
 								<a href="/movieRecommend/plusLikes?no=<%=recommend.getNo() %>">
-								<i class="fa fa-thumbs-o-up fa-2x"></i></a> 
+								<i class="fa fa-thumbs-o-up fa-2x"><%= recommend.getLikes() %></i></a> 
 								<!-- 좋아요를 취소할 때  -->
 								<% } else { %> 
 								<a href="/movieRecommend/minusLikes?no=<%=recommend.getNo() %>">
-								<i class="fa fa-thumbs-up fa-2x"></i></a>
-								 <% } %> 
-								<p><%= recommend.getLikes() %></p>
+								<i class="fa fa-thumbs-up fa-2x"><%= recommend.getLikes() %></i></a>
+								 <% } %>
+								
+								
 								<!-- 
 								<a href=""><button class="btn btn-sm btn-outline-danger">
 										<i class="bi bi-heart-fill" style="color: #dc3545"></i> 좋아요 취소

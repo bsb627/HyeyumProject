@@ -51,6 +51,7 @@ public class MovieReviewModifyServlet extends HttpServlet {
 		
 		int reviewNo = Integer.parseInt(request.getParameter("review-no"));
 		int star = Integer.parseInt(request.getParameter("star-rating"));
+		//String star = request.getParameter("star-rating"));
 		int infoNo = Integer.parseInt(request.getParameter("info-no"));
 		String content = request.getParameter("content");
 		String spoiler = request.getParameter("spoiler");

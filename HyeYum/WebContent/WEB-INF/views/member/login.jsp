@@ -41,8 +41,8 @@
                                 <input type="password" name="user-pwd" id="your_pass" placeholder="Password"/>
                             </div>
                             <div class="form-group form-button" style="float:center;">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="회원가입"/>
+                               <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
+                               <!--  <input type="submit" name="enroll" id="enroll" class="form-submit" value="회원가입"/> -->
                             </div>
 
 							<div class="form-group">

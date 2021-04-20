@@ -145,7 +145,7 @@
 								<hr>
 								<hr>
 								<!-- 기입란 end -->
-								<h3>지울거</h3>
+							<!-- 	<h3>지울거</h3>
 								<div class="form-group">
 									<fieldset>
 										<label class="control-label" for="readOnlyInput">Readonly
@@ -189,7 +189,7 @@
 										placeholder=".form-control-sm" id="inputSmall">
 								</div>
 
-
+ -->
 
 								<div class="entry-content" style="text-align: center">
 									<div class="out">

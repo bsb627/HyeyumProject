@@ -59,6 +59,7 @@ public class MovieRecommendDetailServlet extends HttpServlet {
 		//recommend.setUserId(userId);
 		//FileData fileData = new MovieFileService().printFileRecommend(recommendNo);
 		
+		
 		if(recommend != null) {
 		new MovieService().RecommendHitsCount(recommendNo); // 게시글 조회수
 			request.setAttribute("recommend", recommend);
