@@ -266,7 +266,7 @@ public class ReplyDAO {
 		return result;
 	}
 
-	public int totalCountBookReview(Connection conn, int reviewNo) {
+	public int totalCountBookReview(Connection conn, int reviewNo) { // 댓글 수
 		Statement stmt = null;
 		ResultSet rset = null;
 		System.out.println("totalcount reviewNo DAO" + reviewNo);
@@ -496,6 +496,28 @@ public class ReplyDAO {
 		}
 		System.out.println("DAO에서 share replyList : "+replyList);
 		return replyList;
+	}
+
+	public int totalCountBookShare(Connection conn, int shareNo) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		System.out.println("totalcount shareNo DAO" + shareNo);
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM BOOK_SHARE_REPLY WHERE SHARE_NO = "+shareNo;
+		int recordTotalCount = 0;
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return recordTotalCount;
 	}
 
 }

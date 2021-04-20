@@ -19,7 +19,7 @@
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문화나눔, 혜윰 - 나눔혜윰 상세보기</title>
-	<link href="/assets/css/show-custom.css" rel="stylesheet">
+    <link href="/assets/css/book/book-custom.css" rel="stylesheet">
     </head>
     <body>
 <%
@@ -38,13 +38,11 @@ if (userId == null) {
 <!-- ======= Breadcrumbs ======= -->
 <section class="breadcrumbs">
 	<div class="container">
-	   <header class="section-header">
 		<ol>
 			<li><a href="/index.jsp">Home</a></li>
 			<li>도서</li>
 		</ol>
 		<h2>나눔혜윰</h2>
-	  </header>
 	</div>
 </section>
 <!-- End Breadcrumbs -->
@@ -89,7 +87,7 @@ if (userId == null) {
 									<%} else { %>
 									<a href="/bookShare/minusLikes?share-no=<%=share.getNo()%>">
 									<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
-									<%}%> <%=share.getLikes() %>
+									<%}%> <%=totalCount%>
                                 </span>
                                 </td>
                             </tr>

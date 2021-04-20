@@ -63,13 +63,13 @@ public class ReviewAddHitsCountServlet extends HttpServlet {
 		if (request.getParameter("likes") !=  null) {
 			likes = Integer.parseInt(request.getParameter("likes"));
 		}else {
-			likes = new ShowService().getLikes(userId,reviewNo);
+			likes = new BookService().getLikesReview(userId,reviewNo);
 		}
-		/*
-		 * ReplyPageData pageData = new ReplyService().printAllReply(currentPage,
-		 * replyType,showNo); ArrayList<Reply> replyList = pageData.getReplyList();
-		 * String pageNavi = pageData.getPageNavi();
-		 */
+		
+//		 ReplyPageData pageData = new ReplyService().printAllReply(currentPage,
+//		 replyType,showNo); ArrayList<Reply> replyList = pageData.getReplyList();
+//		 String pageNavi = pageData.getPageNavi();
+		 
 		ArrayList<Reply> rList = new ReplyService().printReplyList(reviewNo); 
 		int totalCount = new ReplyService().totalCountBookReview(reviewNo);
 		int addHitsResult = new BookService().addHitsCount(reviewNo);
@@ -81,18 +81,12 @@ public class ReviewAddHitsCountServlet extends HttpServlet {
 		BookReview review = new BookService().printOneBookReview(reviewNo);
 		System.out.println("addhits서블릿, review : " + review);
 
-		//		BookInfo info = new BookService().getBookInfo(review.getInfoNo());
 		if(review != null) {
 			request.setAttribute("review", review);
-			
-			//request.setAttribute("replyList", replyList);
-			//request.setAttribute("pageNavi", pageNavi);
-			//request.setAttribute("addHits", addHits); 
 			request.setAttribute("rList", rList);
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("likes", likes);
 			request.setAttribute("fileData", fileData);
-			//request.setAttribute("info", info);
 			request.getRequestDispatcher("/bookReview/detail").forward(request, response);
 		}else {
 			
