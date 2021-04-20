@@ -8,7 +8,7 @@ public class Company { // 기업
 	private String companyName;// 기업명
 	private int companyNumber;// 사업자번호
 	private String email;// 이메일주소
-	private int phone;// 전화번호
+	private String phone;// 전화번호
 	private String address;// 주소
 	private String contents;// 목적 및 내용
 	private Date enrollDate;// 등록일
@@ -50,11 +50,11 @@ public class Company { // 기업
 		this.email = email;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

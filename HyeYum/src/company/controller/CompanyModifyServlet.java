@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import company.model.service.CompanyService;
+
 /**
  * Servlet implementation class CompanyModifyServlet
  */
@@ -26,8 +28,14 @@ public class CompanyModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String state = request.getParameter("state");
+		int no = Integer.parseInt(request.getParameter("no"));
+		int result = new CompanyService().modifyCompany(state,no);
+		if(result > 0) {
+			request.getRequestDispatcher("/admin/company/list").forward(request, response);
+		}else {
+			
+		}
 	}
 
 	/**

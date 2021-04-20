@@ -125,4 +125,4 @@
                 
                 
 <%@include file="/admin/footer.jsp"%>
- <script src="/assets/admin/js/order/contents-update.js"></script>
+ <script src="/assets/admin/js/show/contents-list.js"></script>

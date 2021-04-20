@@ -44,7 +44,7 @@ public class CompanyEnrollServlet extends HttpServlet {
 		company.setCompanyName(request.getParameter("company-name"));
 		company.setEmail(request.getParameter("email"));
 		company.setCompanyNumber(Integer.parseInt(request.getParameter("company-number")));
-		company.setPhone(Integer.parseInt(request.getParameter("phone")));
+		company.setPhone(request.getParameter("phone"));
 		company.setAddress(request.getParameter("address"));
 		company.setContents(request.getParameter("contents"));
 		
