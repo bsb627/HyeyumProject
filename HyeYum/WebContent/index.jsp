@@ -20,8 +20,51 @@
 %>
 <%@include file="/header.jsp"%>
 
-<script type="text/javascript"	src="/assets/js/index-ready.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+$(document).ready(function() {
+	
+		   console.log($(document).height() - $(window).height());
+	$(window).scroll(function(){ 
+	   if($(window).scrollTop() == 1 || $(window).scrollTop() == 100 || $(window).scrollTop() == 500 || $(window).scrollTop() == 1000 || $(window).scrollTop() == 1500 || $(window).scrollTop() == 2000){
+		   var memberCountConTxt= <%= donateAllCount %>;
+
+		   $({ val : 0 }).animate({ val : memberCountConTxt }, {
+		    duration: 2000,
+		   step: function() {
+		     var num = numberWithCommas(Math.floor(this.val));
+		     $(".memberCountCon").text(num);
+		   },
+		   complete: function() {
+		     var num = numberWithCommas(Math.floor(this.val));
+		     $(".memberCountCon").text(num);
+		   }
+		   });
+	   } 
+	});
+	  var memberCountConTxt= <%= donateAllCount %>;
+
+$({ val : 0 }).animate({ val : memberCountConTxt }, {
+ duration: 2000,
+step: function() {
+  var num = numberWithCommas(Math.floor(this.val));
+  $(".memberCountCon").text(num);
+},
+complete: function() {
+  var num = numberWithCommas(Math.floor(this.val));
+  $(".memberCountCon").text(num);
+}
+});
+
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+        
+});
+
+
 </script> 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero d-flex align-items-center">
@@ -62,7 +105,7 @@
 					<i class="bi bi-emoji-heart-eyes"></i>
 					<div>
 						<span data-purecounter-start="0" data-purecounter-end="<%= memberAllCount %>"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+							data-purecounter-duration="1" data-purecounter-delay="10" data-purecounter-once = "false" class="purecounter"></span>
 						<p>참여자 수</p>
 					</div>
 				</div>
@@ -73,7 +116,7 @@
 					<i class="bi bi-journal-check" style="color: #ee6c20;"></i>
 					<div>
 						<span data-purecounter-start="0" data-purecounter-end="<%= postAllCount %>"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+							data-purecounter-duration="1" data-purecounter-delay="10" data-purecounter-once = "false" class="purecounter"></span>
 						<p>게시글 수</p>
 					</div>
 				</div>
@@ -83,8 +126,9 @@
 				<div class="count-box">
 					<i class="bi bi-gift" style="color: #15be56;"></i>
 					<div>
-						<span id = "donate" data-purecounter-start="0" data-purecounter-end="<%= donateAllCount %>"
-							data-purecounter-duration="1" data-purecounter-once = "false" data-purecounter-decimals="" class="purecounter"><%= donateAllCount %></span>
+						<%-- <span id = "donate" data-purecounter-start="0" data-purecounter-end="<%= donateAllCount %>"
+							data-purecounter-duration="1" data-purecounter-once = "false" data-purecounter-decimals="" class="purecounter"><%= donateAllCount %></span> --%>
+							<span class="memberCountCon"></span>
 						<p>총 기부금</p>
 					</div>
 				</div>
@@ -95,7 +139,7 @@
 					<i class="bi bi-people" style="color: #bb0852;"></i>
 					<div>
 						<span data-purecounter-start="0" data-purecounter-end="<%= companyAllCount %>"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+							data-purecounter-duration="1" data-purecounter-delay="10" data-purecounter-once = "false" class="purecounter"></span>
 						<p>제휴기업</p>
 					</div>
 				</div>
@@ -334,4 +378,4 @@
 </main>
 <!-- End #main -->
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/chart/chart-ready.js"></script>
+<!-- <script src="/assets/js/chart/chart-ready.js"></script> -->

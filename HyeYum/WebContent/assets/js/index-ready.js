@@ -1,5 +1,4 @@
-
-
-function indexReady(){
-	location.href='/main/Info/list';
-}
+   $(document).ready(function() {
+	alert('asd');
+          
+        });
