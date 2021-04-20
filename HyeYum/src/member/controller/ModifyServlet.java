@@ -60,6 +60,10 @@ public class ModifyServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.getAttribute("userId");
 		
+		 String address1 = request.getParameter("userAddress1");
+		 String address2 = request.getParameter("userAddress2");
+		 String address = address1 + " " + address2;
+		  
 		Member member = new Member();
 		member.setUserId((String)session.getAttribute("userId"));
 		member.setUserPwd(request.getParameter("userPwd"));
@@ -67,7 +71,7 @@ public class ModifyServlet extends HttpServlet {
 		member.setUserNick(request.getParameter("userNick"));
 		member.setUserPhone(request.getParameter("userPhone"));
 		member.setUserEmail(request.getParameter("userEmail"));
-		member.setUserAddress(request.getParameter("userAddress"));
+		member.setUserAddress(address);
 		System.out.println("servlet:"+member);
 		int result = new MemberService().modifyMember(member);
 			System.out.println("member :" + result);

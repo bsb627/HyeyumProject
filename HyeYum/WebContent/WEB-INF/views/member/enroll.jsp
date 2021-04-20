@@ -140,7 +140,6 @@
 									<!-- 주소 -->
 											
 								<div class="form-group">
-								<% StringBuilder sb = new StringBuilder(); %>
 								<label class="col-form-label" for="inputDefault"><h5>주소</h5></label>
 									<label for="address"><i class="zmdi zmdi-email"></i></label> 
 									<!-- <input type="text" name="user-address" id="user-address" placeholder="공백 포함하여 주소 입력" required /> --> 

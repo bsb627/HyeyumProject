@@ -332,6 +332,7 @@ public class MovieDAO {
 			pstmt.setString(2, movieReview.getContents());
 			pstmt.setString(3, movieReview.getSpoiler());
 			pstmt.setInt(4, movieReview.getReNo());
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
