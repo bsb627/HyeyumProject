@@ -106,23 +106,24 @@ if (userId == null) {
 					</p>
 			</div>
 				<hr>
+				<!-- 댓글 시작 -->
 					<div class="reply-box">
 						<h6 class="comments-count">
 							<strong>댓글 <%=totalCount%>개
 							</strong>
 						</h6>
 
-						<!-- End comment #1 -->
 						<form action="/bookReviewReply/write" method="get">
 							<div class="reply-form">
-								<input type="hidden" name="type" value="review"> 
+								<!-- <input type="hidden" name="type" value="review">  -->
 								<input type="hidden" name="review-no" value="<%=review.getNo()%>">
 								<input type="text" class="form-control " name="comment"
 									placeholder="댓글달기" required>
 								<div class="col-md-12">
-								<button type="submit" class="btn btn-light" style='float:right'>
+								<button type="submit" class="btn btn-reply" >
 									<small><strong>등록</strong></small>
 								</button>
+								</div>
 							</div>
 						</form>
 						<br>
@@ -144,7 +145,9 @@ if (userId == null) {
 								
 							</div>
 						</div>
+						
 						<%} %>
+					<!-- 댓글 끝 -->
                     <!-- 하단 버튼 시작 -->
                     <table class="table table-condensed">
                         <thead>
@@ -180,3 +183,4 @@ if (userId == null) {
         </div>
         <%@include file="/footer.jsp"%>    
 </section>
+<script src="/assets/js/show-detail.js"></script>

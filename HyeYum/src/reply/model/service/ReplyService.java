@@ -217,5 +217,40 @@ public class ReplyService {
 		System.out.println("service" + pd);
 		return pd;
 	}
+	// BookShare
+	public int registerReplyBookShare(Reply reply) {
+			int result = 0;
+			Connection conn = null;
+			try {
+				conn = factory.createConnection();
+				result = new ReplyDAO().insertReplyBookShare(conn, reply);
+				if(result > 0) {
+					JDBCTemplate.commit(conn);
+				}else {
+					JDBCTemplate.rollback(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(conn);
+			}
+			return result;
+		}
 
+	public ArrayList<Reply> printReplyListBookShare(int shareNo) {
+		ArrayList<Reply> rList = null;
+		Connection conn =null;
+		try {
+			conn = factory.createConnection();
+			rList = new ReplyDAO().selectReplyListBookShare(conn,shareNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		// TODO Auto-generated method stub
+		return rList;
+	}
 }

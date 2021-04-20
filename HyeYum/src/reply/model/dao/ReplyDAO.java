@@ -441,4 +441,61 @@ public class ReplyDAO {
 		System.out.println("count :" + recordTotalCount);
 		return recordTotalCount;
 	}
+	// BookShare
+	public int insertReplyBookShare(Connection conn, Reply reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO BOOK_SHARE_REPLY VALUES(SEQ_BOOK_SHARE_REPLY.NEXTVAL,?,SYSDATE,?,?) ";
+		//String type = reply.getReplyType();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reply.getContents());
+			pstmt.setString(2, reply.getUserId());
+			pstmt.setInt(3, reply.getNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<Reply> selectReplyListBookShare(Connection conn, int shareNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Reply> replyList = null;
+		System.out.println("DAO, shareNo" + shareNo);
+		String query  = "SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,SHARE_NO,NICK FROM BOOK_SHARE_REPLY JOIN MEMBER USING(USER_ID) WHERE SHARE_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			rset = pstmt.executeQuery();
+			if (rset != null) {
+				replyList = new ArrayList<Reply>();
+				while(rset.next()) {
+					Reply reply = new Reply();
+					reply.setNo(rset.getInt("SHARE_NO"));
+					reply.setReplyNo(rset.getInt("REPLY_NO"));
+					reply.setContents(rset.getString("REPLY_CONTENTS"));
+					reply.setEnrollDate(rset.getDate("ENROLL_DATE"));
+					reply.setUserId(rset.getString("USER_ID"));
+					reply.setNick(rset.getString("NICK"));
+					replyList.add(reply);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("DAO에서 share replyList : "+replyList);
+		return replyList;
+	}
+
 }

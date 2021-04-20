@@ -220,7 +220,7 @@ public class BookFileDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<FileData> list = null;
-		String query ="SELECT INFO_NO,FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,UPLOAD_TIME FROM BOOK_SHARE_FILE JOIN BOOK_SHARE USING (SHARE_NO) WHERE SHARE_NO IS NOT NULL";
+		String query ="SELECT FILE_NO,FILE_NAME,FILE_PATH,FILE_SIZE,UPLOAD_TIME,SHARE_NO FROM BOOK_SHARE_FILE JOIN BOOK_SHARE USING (SHARE_NO) WHERE SHARE_NO IS NOT NULL";
 				
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -228,12 +228,12 @@ public class BookFileDAO {
 			list = new ArrayList<FileData>();
 			while(rset.next()) {
 				FileData data = new FileData();
-				data.setNo(rset.getInt("INFO_NO"));
 				data.setFileNo(rset.getInt("FILE_NO"));
 				data.setFileName(rset.getString("FILE_NAME"));
 				data.setFilePath(rset.getString("FILE_PATH"));
 				data.setFileSize(rset.getLong("FILE_SIZE"));
 				data.setUploadTime(rset.getTimestamp("UPLOAD_TIME"));
+				data.setNo(rset.getInt("SHARE_NO"));
 				list.add(data);
 			}
 		} catch (SQLException e) {

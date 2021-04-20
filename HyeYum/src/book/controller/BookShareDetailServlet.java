@@ -1,6 +1,7 @@
 package book.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import book.model.service.BookService;
 import book.model.vo.BookShare;
 import file.model.service.BookFileService;
 import file.model.vo.FileData;
+import reply.model.service.ReplyService;
+import reply.model.vo.Reply;
 import show.model.service.ShowService;
 
 /**
@@ -67,14 +70,18 @@ public class BookShareDetailServlet extends HttpServlet {
 		bookShare.setUserId(userId);
 		FileData fileData = new BookFileService().printFileShare(shareNo);
 
+		// 댓글
+		int totalCount = new ReplyService().totalCountBookReview(shareNo);
+		ArrayList<Reply> rList = new ReplyService().printReplyListBookShare(shareNo);
+		System.out.println("쉐어 디테일 서블릿 rList" + rList);
 		BookShare share = new BookService().printOneBookShare(shareNo);
 		System.out.println("detail 서블릿 share : " + share);
-		System.out.println("detail 서블릿 fileData : " + fileData);
-		System.out.println("detail 서블릿 likes : " + likes);
 		if(share != null) {
 			request.setAttribute("share", share);
-			request.setAttribute("fileData", fileData);
 			request.setAttribute("likes", likes);
+			request.setAttribute("fileData", fileData);
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("rList", rList);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/book/bookShareDetail.jsp");
 			view.forward(request, response);
 		}else {

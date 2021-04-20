@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="book.model.vo.BookShare"%>
 <%@page import="file.model.vo.FileData"%>
 <%@page import="reply.model.vo.Reply"%>
@@ -8,6 +9,8 @@
 	BookShare share = (BookShare)request.getAttribute("share");
 	int likes = (int)request.getAttribute("likes"); 
 	FileData fileData = (FileData)request.getAttribute("fileData");
+	ArrayList<Reply> rList=(ArrayList<Reply>)request.getAttribute("rList");
+	int totalCount = (int)request.getAttribute("totalCount");
 %>
 <html lang="ko">
 <%@include file="/header.jsp"%>
@@ -16,9 +19,7 @@
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문화나눔, 혜윰 - 나눔혜윰 상세보기</title>
-
-        <!-- Bootstrap -->
-        <link href="/assets/css/book/contents.css" rel="stylesheet" type="text/css"/>
+	<link href="/assets/css/show-custom.css" rel="stylesheet">
     </head>
     <body>
 <%
@@ -116,25 +117,40 @@ if (userId == null) {
 
 					</div>
 			<!-- 좋아요 끝  -->	
-                <span class="form-inline" role="form">
-                    <strong>
-                        댓글
-                    </strong>
-                </span>
-				
-				<form action="/reply/write" method="get">
-					<div class="reply-form">
-						<input type="hidden" name="type" value="show"> 
-						<input type="hidden" name="review-no" value="<%=share.getNo()%>">
-						<input type="text" class="form-control " name="comment"	placeholder="댓글달기">
-						<button type="submit" class="btn btn-reply">
-							<span style='float:right'>
-								<small><strong>등록</strong></small>
-							</span>
-						</button>
+					<div class="reply-box">
+						<h6 class="comments-count">
+							<strong>댓글 <%=totalCount%>개
+							</strong>
+						</h6>
+
+						<form action="/bookShareReply/write" method="get">
+							<div class="reply-form">
+								<!-- <input type="hidden" name="type" value="share"> --> 
+								<input type="hidden" name="share-no" value="<%=share.getNo()%>">
+								<input type="text" class="form-control " name="comment"	placeholder="댓글달기" required>
+								<button type="submit" class="btn btn-reply">
+									<small><strong>등록</strong></small>
+								</button>
+								
+							</div>
+						</form>
+						<br>
+						<span class="post-date">
+							<%-- <i class="bi bi-eye"> <%=review.getHits()%></i> --%>							
+						</span>
 					</div>
-				</form>
-			<!-- End comment #1 -->
+					 <% for(Reply reply : rList){ %>
+						<div id="" class="show-reply">
+							<div class="show-contents">
+								<h6>
+									<a href="#" style="color:#333"><%=reply.getNick() %></a> 
+									<small><strong> 
+									<%=reply.getContents()%> <time datetime="2020-01-01" style='float:right'><%=share.getEnrollDate()%></time>
+									</strong></small>
+								</h6>
+							</div>
+						</div>
+						<%} %>
 
 
 			<!-- 하단 버튼 시작-->
@@ -170,3 +186,4 @@ if (userId == null) {
 	<!-- End Main -->
 </section>
 <%@include file="/footer.jsp"%>    
+<script src="/assets/js/show-detail.js"></script>

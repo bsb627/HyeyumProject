@@ -66,7 +66,7 @@
 								</tr>
 								<% } %>
 							<div>
-								<a href="/bookReview/enroll"><button	class="btn btn-primary btn-write">글쓰기</button></a>
+								<a href="/bookReview/enroll"><button class="btn btn-primary btn-write">글쓰기</button></a>
 							</div>
 							</tbody>
 							<tfoot>
