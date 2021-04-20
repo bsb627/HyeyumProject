@@ -1,6 +1,8 @@
 package admin.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminNoticeService;
 import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
 
 /**
  * Servlet implementation class AdminNoticeDeleteServlet
@@ -30,14 +33,30 @@ public class AdminNoticeDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		int result = new AdminNoticeService().deleteNotice(noticeNo);
-		 System.out.println("성공"+result);
-		if(result > 0) {
-			response.sendRedirect("admin/notice/list");
+		String[] noArr = request.getParameterValues("noticeNo");
+		String noticeNo = "";
+		for (String no : noArr) {
+			if (no.equals(noArr[noArr.length - 1])) {
+				noticeNo += no;
+				System.out.println(no);
+			} else {
+				noticeNo += no+",";
+				System.out.print(no + ",");
+			}
 		}
+		System.out.println("보내는 번호"+noticeNo);
+		
+		
+		int result = new AdminNoticeService().deleteNotice(noticeNo);
+
+		if(result > 0) {
+			
+			RequestDispatcher view = request.getRequestDispatcher("/admin/notice/list");
+			view.forward(request, response);
+	} 
+		
 	}
+		
 	
 
 	/**

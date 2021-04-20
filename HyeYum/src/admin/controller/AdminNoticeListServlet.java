@@ -34,7 +34,7 @@ public class AdminNoticeListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 ArrayList<Notice> nList = new AdminNoticeService().printAllAdminNoticeList();
 		 System.out.println("nList");
-		if(!nList.isEmpty()) {
+		if(!nList.isEmpty()) { 
 			  request.setAttribute("nList", nList); 
 			   
 

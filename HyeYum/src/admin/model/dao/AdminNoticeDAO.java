@@ -48,14 +48,14 @@ public class AdminNoticeDAO {
 	public int insertNotice(Connection conn, Notice notice) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO NOTICE "
-				+ "VALUES(SEQ_NOTICE.NEXTVAL,?,?,?,SYSDATE)";
+		String query ="INSERT INTO NOTICE VALUES(SEQ_NOTICE.NEXTVAL, ? , ?, SYSDATE, 0,  ?)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, notice.getTitle());
 			pstmt.setString(2, notice.getContents());
 			pstmt.setString(3, notice.getUserId());
 			result = pstmt.executeUpdate(); // ?
+			System.out.println("인서트 노티스 디에이오 : 노티스" + notice);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,21 +67,22 @@ public class AdminNoticeDAO {
 	}
 
 	// 삭제
-	public int deleteNotice(Connection conn, int noticeNo) {
-		PreparedStatement pstmt = null; 
+	public int deleteNotice(Connection conn, String noticeNo) {
+		Statement stmt = null; 
 		int result = 0;
-		String query ="DELETE FROM NOTICE WHERE NOTICENO = ?"; 
+		String query ="DELETE FROM NOTICE WHERE NOTICE_NO IN("+ noticeNo+ ")"; 
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, noticeNo); 
-			result =pstmt.executeUpdate(); 
+			stmt = conn.createStatement();
+			result =stmt.executeUpdate(query); 
+			System.out.println("들어왔나요?");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(stmt);
 		}
+		System.out.println("result" + result);
 		return result;
 	}
 
@@ -104,6 +105,7 @@ public class AdminNoticeDAO {
 				notice.setUserId(rset.getString("USER_ID"));
 				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				notice.setHits(rset.getInt("HITS"));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -120,8 +122,7 @@ public class AdminNoticeDAO {
 	public int updateNotice(Connection conn, Notice notice) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "UPDATE NOTICE "
-				+ "SET TITLE = ?, CONTENTS =? WHERE NOTICENO = ?";
+		String query = "UPDATE NOTICE  SET TITLE = ?, CONTENTS =? WHERE NOTICE_NO = ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, notice.getTitle());
@@ -139,22 +140,15 @@ public class AdminNoticeDAO {
 
 	// 조회?... 
 	
-	public int updateHitsNotice(Connection conn, int noticeNo) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String query = "UPDATE NOTICE SET HITS = NVL(HITS,0) + 1 WHERE NOTICE_NO = ?";
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, noticeNo);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(pstmt);
-		}
-		return result;
-	}
+	/*
+	 * public int updateHitsNotice(Connection conn, int noticeNo) {
+	 * PreparedStatement pstmt = null; int result = 0; String query =
+	 * "UPDATE NOTICE SET HITS = NVL(HITS,0) + 1 WHERE NOTICE_NO = ?"; try { pstmt =
+	 * conn.prepareStatement(query); pstmt.setInt(1, noticeNo); result =
+	 * pstmt.executeUpdate(); } catch (SQLException e) { // TODO Auto-generated
+	 * catch block e.printStackTrace(); }finally { JDBCTemplate.close(pstmt); }
+	 * return result; }
+	 */
 
 	
 	

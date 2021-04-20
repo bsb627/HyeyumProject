@@ -43,19 +43,24 @@ public class AdminNoticeWriteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	System.out.println("들어왔니?");
 	request.setCharacterEncoding("UTF-8");
-
+	
+	HttpSession session = request.getSession();
+	String userId = (String) session.getAttribute("userId");
 	String title = request.getParameter("title");
-	String contents = request.getParameter("content");
-	String fileUserId = "admin";
+	String contents = request.getParameter("contents");
+	
+	
 	
 		Notice notice = new Notice();
 		notice.setTitle(title);
 		notice.setContents(contents);
+		notice.setUserId(userId);
 		
 		int result = new AdminNoticeService().registerNotice(notice);
-		System.out.println("result"+result);
+		
 		if(result > 0) {
-			response.sendRedirect("admin/notice/list");
+			System.out.println("노티스 등록완료");
+			response.sendRedirect("/admin/notice/list");
 			
 		}
 	} 

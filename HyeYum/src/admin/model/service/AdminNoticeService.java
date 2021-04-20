@@ -52,12 +52,14 @@ public class AdminNoticeService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {					// 후..............
+			JDBCTemplate.close(conn); // 꺼진 finally도 다시보자.......................................
 		}
 		return result;
 	}
 
 	// 삭제
-	public int deleteNotice(int noticeNo) {
+	public int deleteNotice(String noticeNo) {
 		Connection conn = null;
 		int result = 0;
 		try {
@@ -92,8 +94,8 @@ public class AdminNoticeService {
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
-		return notice;
 	}
+		return notice;
 
 	
 	
@@ -118,6 +120,8 @@ public class AdminNoticeService {
 		}
 		return result;
 	}
+}
+
 
 
 	/*
@@ -127,25 +131,13 @@ public class AdminNoticeService {
 	 */
 	
 	
-// 조회증가
-	public int updateHits(int noticeNo) {
-		int result = 0;
-		Connection conn = null;
-		try {
-			conn = factory.createConnection();
-			result = new AdminNoticeDAO().updateHitsNotice(conn, noticeNo);
-			if(result > 0) {
-				JDBCTemplate.commit(conn);
-			}else {
-				JDBCTemplate.rollback(conn);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(conn);
-		}
-		return result;
-	}
-
-}
+	/*
+	 * // 조회증가 public int updateHits(int noticeNo) { int result = 0; Connection conn
+	 * = null; try { conn = factory.createConnection(); result = new
+	 * AdminNoticeDAO().updateHitsNotice(conn, noticeNo); if(result > 0) {
+	 * JDBCTemplate.commit(conn); }else { JDBCTemplate.rollback(conn); } } catch
+	 * (SQLException e) { // TODO Auto-generated catch block e.printStackTrace();
+	 * }finally { JDBCTemplate.close(conn); } return result; }
+	 * 
+	 * }
+	 */

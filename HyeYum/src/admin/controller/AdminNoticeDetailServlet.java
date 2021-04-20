@@ -33,14 +33,13 @@ public class AdminNoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); // ?
-		String userId = (String)session.getAttribute("userId"); // ?
+		
 		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice notice = new AdminNoticeService().printOneAdmin(noticeNo);
 		
 		if(notice != null) {
-			new AdminNoticeService().updateHits(noticeNo);
+			
 			request.setAttribute("notice", notice);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/admin/board/adminNoticeDetail.jsp");
 			view.forward(request, response);

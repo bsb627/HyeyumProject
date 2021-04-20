@@ -46,9 +46,10 @@ public class AdminNoticeUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("UTF-8"); // 한글 인코딩
-		String title = request.getParameter("title"); 
-		String content = request.getParameter("content");
+		String title = request.getParameter("notice-title"); 
+		String content = request.getParameter("notice-contents");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		System.out.println("정해진거없죠?" + noticeNo);
 		// UPDATE NOTICE SET TITLE = ?, CONTENTS = ? WHERE NOTICENO = ?;
 		Notice notice = new Notice();
 		notice.setTitle(title);
@@ -56,7 +57,7 @@ public class AdminNoticeUpdateServlet extends HttpServlet {
 		notice.setNoticeNo(noticeNo);
 		int result = new AdminNoticeService().modifyNotice(notice);
 		if(result > 0) {
-			response.sendRedirect("admin/notice/list");
+			request.getRequestDispatcher("/admin/notice/list").forward(request, response);
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticeError.html").forward(request, response);
 		}
