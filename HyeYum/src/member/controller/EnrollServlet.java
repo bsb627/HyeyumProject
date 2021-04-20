@@ -42,13 +42,18 @@ public class EnrollServlet extends HttpServlet {
 		  request.setCharacterEncoding("UTF-8"); 
 		  // user-id, user-pwd , user-repwd,user-name, user-nick, user-email,
 		   // user-address, 
+		  String address1 = request.getParameter("user-address1");
+		  String address2 = request.getParameter("user-address2");
+		  String address = address1 + " " + address2;
 		  Member member = new Member(); 
+		  
 		  member.setUserId(request.getParameter("user-id"));
 		  member.setUserPwd(request.getParameter("user-pwd"));
 		  member.setUserName(request.getParameter("user-name"));
 		  member.setUserNick(request.getParameter("user-nick"));
 		  member.setUserEmail(request.getParameter("user-email"));
-		  member.setUserAddress(request.getParameter("user-address"));
+		  member.setUserAddress(address);
+		
 		  
 		 int result = new MemberService().registerMember(member); 
 		  if (result > 0) { //회원가입 성공 
