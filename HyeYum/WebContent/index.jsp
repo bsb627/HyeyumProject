@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="movie.model.vo.MovieInfo"%>
 <%@page import="book.model.vo.BookInfo"%>
 <%@page import="show.model.vo.ShowInfo"%>
@@ -8,8 +9,17 @@
 	ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 	ArrayList<BookInfo> bList = (ArrayList<BookInfo>)request.getAttribute("bList");
 	ArrayList<MovieInfo> mList = (ArrayList<MovieInfo>)request.getAttribute("mList");
+	
+	
+ 	String postAllCount = (String)request.getAttribute("postAllCount");  
+ 	String memberAllCount = (String)request.getAttribute("memberAllCount");
+ 	String companyAllCount = (String)request.getAttribute("companyAllCount");
+ 	String donateAllCount = (String)request.getAttribute("donateAllCount");
+ 	
+ 	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 <%@include file="/header.jsp"%>
+
 <script type="text/javascript"	src="/assets/js/index-ready.js"></script>
 <script>
 </script> 
@@ -38,6 +48,9 @@
 </section>
 <!-- End Hero -->
 
+<%if(iList == null) {%>
+					<script type="text/javascript">indexReady()</script>
+				<% }else{%>
 <!-- ======= Counts Section ======= -->
 <section id="counts" class="counts">
 	<div class="container" data-aos="fade-up">
@@ -48,7 +61,7 @@
 				<div class="count-box">
 					<i class="bi bi-emoji-heart-eyes"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="2121231233"
+						<span data-purecounter-start="0" data-purecounter-end="<%= memberAllCount %>"
 							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
 						<p>참여자 수</p>
 					</div>
@@ -59,7 +72,7 @@
 				<div class="count-box">
 					<i class="bi bi-journal-check" style="color: #ee6c20;"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="12789"
+						<span data-purecounter-start="0" data-purecounter-end="<%= postAllCount %>"
 							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
 						<p>게시글 수</p>
 					</div>
@@ -70,8 +83,8 @@
 				<div class="count-box">
 					<i class="bi bi-gift" style="color: #15be56;"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="1456321"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+						<span id = "donate" data-purecounter-start="0" data-purecounter-end="<%= donateAllCount %>"
+							data-purecounter-duration="1" data-purecounter-once = "false" data-purecounter-decimals="" class="purecounter"><%= donateAllCount %></span>
 						<p>총 기부금</p>
 					</div>
 				</div>
@@ -81,7 +94,7 @@
 				<div class="count-box">
 					<i class="bi bi-people" style="color: #bb0852;"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="1512"
+						<span data-purecounter-start="0" data-purecounter-end="<%= companyAllCount %>"
 							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
 						<p>제휴기업</p>
 					</div>
@@ -116,9 +129,6 @@
 
 	<!--  ============ End Chart ============== -->
 
-<%if(iList == null) {%>
-					<script type="text/javascript">indexReady()</script>
-				<% }else{%>
 	<!-- ======= Portfolio Section ======= -->
 	 <section id="portfolio" class="portfolio">
 

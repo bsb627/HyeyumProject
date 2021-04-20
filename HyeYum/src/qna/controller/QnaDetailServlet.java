@@ -58,13 +58,13 @@ public class QnaDetailServlet extends HttpServlet {
 		
 	
 		if(qna!=null) {
-			System.out.println("큐엔에이 비번 맞앗다고" + qna);
+			
 			new QnaService().addHitsCount(qnaNo);
 			request.setAttribute("qna", qna);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaDetailForm.jsp");
 			view.forward(request, response);
 		} else {
-			System.out.println("틀렷다고");
+			
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('비밀번호가 일치하지 않습니다'); history.back(); </script>");
 		}
