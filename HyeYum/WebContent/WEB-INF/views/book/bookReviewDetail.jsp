@@ -17,6 +17,7 @@
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문화나눔, 혜윰 - 독서혜윰 상세보기</title>
+    <link href="/assets/css/show-custom.css" rel="stylesheet">
     </head>
     <body>
 <%
@@ -119,11 +120,9 @@ if (userId == null) {
 								<input type="hidden" name="review-no" value="<%=review.getNo()%>">
 								<input type="text" class="form-control " name="comment"
 									placeholder="댓글달기" required>
-								<div class="col-md-12">
 								<button type="submit" class="btn btn-reply" >
 									<small><strong>등록</strong></small>
 								</button>
-								</div>
 							</div>
 						</form>
 						<br>
@@ -183,4 +182,3 @@ if (userId == null) {
         </div>
         <%@include file="/footer.jsp"%>    
 </section>
-<script src="/assets/js/show-detail.js"></script>

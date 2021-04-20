@@ -131,7 +131,6 @@ if (userId == null) {
 								<button type="submit" class="btn btn-reply">
 									<small><strong>등록</strong></small>
 								</button>
-								
 							</div>
 						</form>
 						<br>
@@ -186,4 +185,3 @@ if (userId == null) {
 	<!-- End Main -->
 </section>
 <%@include file="/footer.jsp"%>    
-<script src="/assets/js/show-detail.js"></script>
