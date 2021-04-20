@@ -299,6 +299,7 @@
 		<form action="/movieReview/modify" method="post" >
 			<div class="modal-header">
 				<h5 class="modal-title" id="modifyModalLabel">영화 리뷰 수정</h5>
+				<input type="hidden" name="review-no" value="<%= mReview.getReNo() %>" />
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -324,7 +325,7 @@
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">별점</label>
-						<input type="text" class="form-control" id="recipient-name" name="star-rating" value="(<%= mReview.getStarRating() %>)">
+						<input type="number" min="1" max="5" class="form-control" id="recipient-name" name="star-rating" value="<%= mReview.getStarRating() %>" >
 					</div>
 
 					<div class="form-group">
