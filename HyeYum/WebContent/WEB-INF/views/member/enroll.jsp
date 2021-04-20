@@ -48,7 +48,6 @@
 
 		<!-- Sign up form -->
 		<section id="blog" class="blog">
-			<div class="container" data-aos="fade-up">
 
 				<div class="row">
 					<div class="col-6" style="margin: auto;">
@@ -67,7 +66,7 @@
 									<!-- 아이디 -->
 									<label class="control-label" for="disabledInput"><h5>아이디</h5>
 									</label> <input class="form-control" name="user-id" id="user-id"
-										placeholder="아이디 입력(영어소문자로 시작하며 숫자포함 4~12자리)" required>
+										placeholder="아이디 입력(영어소문자로 시작하며 숫자포함 4~12자리)" >
 								</div>
 
 								<hr>
@@ -76,7 +75,7 @@
 									<!-- 이름 -->
 									<label class="control-label" for="disabledInput"><h5>이름</h5>
 									</label> <input class="form-control" name="user-name" id="user-name"
-										placeholder="이름 입력" required>
+										placeholder="이름 입력" >
 
 								</div>
 
@@ -86,7 +85,7 @@
 									<!-- 비밀번호 -->
 									<label class="col-form-label" for="inputDefault"><h5>비밀번호</h5></label>
 									<input type="password" class="form-control" name="user-pwd"
-										id="user-pwd" placeholder="비밀번호(숫자,영어대소문자 조합 8~12자리)" required />
+										id="user-pwd" placeholder="비밀번호(숫자,영어대소문자 조합 8~12자리)"  />
 									<!-- <span>비밀번호 유효성 조건</span> -->
 								</div>
 
@@ -97,7 +96,7 @@
 									<label class="col-form-label" for="inputDefault"><h5>비밀번호
 											확인</h5></label> <input type="password" class="form-control"
 										name="user-repwd" id="user-repwd" placeholder="비밀번호 확인"
-										required />
+										/>
 									<div id="alert-success" class="valid-feedback">Success!
 										You've done it.</div>
 									<div id="alert-danger" class="invalid-feedback">Sorry,
@@ -111,7 +110,7 @@
 									<!-- 닉네임 -->
 									<label class="control-label" for="disabledInput"><h5>닉네임</h5>
 									</label> <input class="form-control" name="user-nick" id="user-nick"
-										placeholder="닉네임 입력(한글,영문,숫자 조합 최소2자~최대10자)" required />
+										placeholder="닉네임 입력(한글,영문,숫자 조합 최소2자~최대10자)" />
 
 								</div>
 
@@ -122,7 +121,7 @@
 									<label class="col-form-label" for="inputDefault"><h5>전화번호</h5></label>
 									<input type="text" class="form-control" name="user-phone"
 										id="user-phone" placeholder="-없이 연락 가능한 전화번호 입력(010포함 필수)"
-										required />
+										 />
 								</div>
 
 								<hr>
@@ -132,7 +131,7 @@
 									<label class="col-form-label" for="inputDefault"><h5>이메일</h5></label>
 									<input type="text" class="form-control" name="user-email"
 										id="user-email"
-										placeholder="@포함하여 이메일 입력 (ex_ hyeyum@gmail.com)" required />
+										placeholder="@포함하여 이메일 입력 (ex_ hyeyum@gmail.com)" />
 								</div>
 
 								<hr>
@@ -260,12 +259,12 @@
     </div>
  -->
 	<!-- JS -->
-	<script src="/assets/js/member/enroll.js"></script>
 	<script src="/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="/assets/js/member/enroll.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-    function sample4_execDaumPostcode() {
+/*     function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -320,7 +319,7 @@
                 }
             }
         }).open();
-    }
+    } */
 </script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
