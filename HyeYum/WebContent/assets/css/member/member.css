@@ -165,6 +165,8 @@ input[type=radio] {
   -ms-appearance: radio !important; }
 
 img {
+	padding : 30px;
+	width : 500px;
   max-width: 100%;
   height: auto; }
 
@@ -177,9 +179,10 @@ p {
   color: #777; }
 
 h2 {
+  text-align : center;
   line-height: 1.66;
-  margin: 0;
-  padding: 0;
+  margin: auto;
+  padding: 15px;
   font-weight: bold;
   color: #222;
   font-family: Poppins;
@@ -201,7 +204,8 @@ body {
   font-family: Poppins; }
 
 .container {
-  width: 900px;
+	height:850px;
+  width: 700px;
   background: #fff;
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -269,16 +273,16 @@ body {
   margin-top: 45px; }
 
 figure {
-  margin-bottom: 50px;
+ /*  margin-bottom: 50px; */
   text-align: center; }
 
 .form-submit {
   display: inline-block;
-  background: #6dabe4;
+  background: #6dabe4; 
   color: #fff;
   border-bottom: none;
   width: auto;
-  padding: 15px 39px;
+  padding: 15px 30px;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -287,7 +291,7 @@ figure {
   margin-top: 25px;
   cursor: pointer; }
   .form-submit:hover {
-    background: #4292dc; }
+    background: #102f78; }
 
 #signin {
   margin-top: 16px; }
@@ -451,8 +455,11 @@ label.valid {
   font-size: 18px; }
 
 .signin-content {
-  padding-top: 67px;
-  padding-bottom: 87px; }
+  /* padding-top: 67px;
+  padding-bottom: 87px;  */
+  width : 500px;
+  margin: auto;
+  }
 
 .social-login {
   align-items: center;
@@ -507,6 +514,7 @@ label.valid {
   background: #e72734; } */
 
 .signin-form {
+  text-align : center;
   margin-right: 90px;
   margin-left: 80px; }
 
@@ -589,4 +597,5 @@ label.valid {
     margin-right: 0px;
     margin-bottom: 10px; } }
 
+	
 /*# sourceMappingURL=style.css.map */

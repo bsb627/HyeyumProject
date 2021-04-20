@@ -43,7 +43,7 @@
 			<div class="container" data-aos="fade-up">
 
 				<div class="row">
-					<div class="col-8" style="margin: auto;">
+					<div class="col-6" style="margin: auto;">
 
 						<article class="entry">
 
@@ -56,7 +56,7 @@
 								<div class="form-group">
 									<!-- 아이디 -->
 									<fieldset disabled="">
-										<label class="control-label" for="disabledInput"><p>아이디</p>
+										<label class="control-label" for="disabledInput"><h5>아이디</h5>
 										</label> <input class="form-control" id="" type="text"
 											value="<%=member.getUserId()%>" name="userId" readonly>
 									</fieldset>
@@ -67,7 +67,7 @@
 								<div class="form-group">
 									<!-- 이름 -->
 									<fieldset disabled="">
-										<label class="control-label" for="disabledInput"><p>이름</p>
+										<label class="control-label" for="disabledInput"><h5>이름</h5>
 										</label> <input class="form-control" id="" type="text"
 											value="<%=member.getUserName()%>" name="userName" readonly>
 									</fieldset>
@@ -77,7 +77,7 @@
 
 								<div class="form-group-pwd">
 									<!-- 비밀번호 -->
-									<label class="col-form-label" for="inputDefault"><p>비밀번호</p></label>
+									<label class="col-form-label" for="inputDefault"><h5>비밀번호</h5></label>
 									<input type="password" class="form-control" placeholder=""
 										value="" id="inputDefault-pwd" name="userPwd"><span>비밀번호
 										유효성 조건</span>
@@ -87,8 +87,8 @@
 
 								<div class="form-group-pwd">
 									<!-- 비밀번호 재확인 -->
-									<label class="col-form-label" for="inputDefault"><p>비밀번호
-											확인</p></label> <input type="password" class="form-control" placeholder=""
+									<label class="col-form-label" for="inputDefault"><h5>비밀번호
+											확인</h5></label> <input type="password" class="form-control" placeholder=""
 										value="" id="inputDefault-repwd" name="userRePwd">
 									<div id="alert-success" class="valid-feedback">Success!
 										You've done it.</div>
@@ -102,7 +102,7 @@
 								<div class="form-group">
 									<!-- 닉네임 -->
 									<fieldset disabled="">
-										<label class="control-label" for="disabledInput"><p>닉네임</p>
+										<label class="control-label" for="disabledInput"><h5>닉네임</h5>
 										</label> <input class="form-control" id="" type="text"
 											value="<%=member.getUserNick()%>" name="userNick" readonly>
 									</fieldset>
@@ -112,7 +112,7 @@
 
 								<div class="form-group">
 									<!-- 전화번호 -->
-									<label class="col-form-label" for="inputDefault"><p>전화번호</p></label>
+									<label class="col-form-label" for="inputDefault"><h5>전화번호</h5></label>
 									<input type="text" class="form-control" placeholder=""
 										value="<%=member.getUserPhone()%>" id="inputDefault"
 										name="userPhone">
@@ -122,7 +122,7 @@
 
 								<div class="form-group">
 									<!-- 이메일 -->
-									<label class="col-form-label" for="inputDefault"><p>이메일</p></label>
+									<label class="col-form-label" for="inputDefault"><h5>이메일</h5></label>
 									<input type="text" class="form-control" placeholder=""
 										value="<%=member.getUserEmail()%>" id="inputDefault"
 										name="userEmail">
@@ -133,11 +133,12 @@
 								<div class="form-group">
 									<!-- 주소 -->
 									<div>
-									<a href="/address.jsp"><button type="button" class="btn btn-primary btn-sm"  onclick="goPopup()">주소검색</button></a></div>
+									<button type="button" class="btn btn-primary btn-sm"  onclick="sample4_execDaumPostcode()">주소검색</button></div>
 									<label class="col-form-label" for="inputDefault"></label>
 									<input type="text" class="form-control" 
 										value="<%=member.getUserAddress() %> " id="inputDefault"
-										name="userAddress" required readonly>
+										name="userAddress" required readonly> 
+										
 								</div>
 
 								<hr>
@@ -193,11 +194,11 @@
 								<div class="entry-content" style="text-align: center">
 									<div class="out">
 										<br>
-										<p>
+										<h5>
 											<strong> 상기와 같이 <%=member.getUserId()%> 님의 정보를
 												변경합니다.
 											</strong>
-										</p>
+										</h5>
 									</div>
 
 									<div class="in" style="float: center">
@@ -227,6 +228,6 @@
 <!-- End #main -->
 
 
-
-<script src="/assets/js/address.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/assets/js/memberInfoDatail.js"></script>
 <%@include file="/footer.jsp"%>

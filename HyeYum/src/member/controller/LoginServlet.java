@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("userId", member.getUserId());
 			response.sendRedirect("/index.jsp");
 		} else {
-			request.getRequestDispatcher("/WEB-INF/views/member/memberError.html").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/member/memberError.jsp").forward(request, response);
 		}
 	}
 

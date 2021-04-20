@@ -138,8 +138,6 @@
 						for (MovieReview mReview : review) {
 					%>
 				
-				
-				
 
 					<div class="col-8" style="margin: auto;">
 						<!-- col-lg-8 entries -->
@@ -161,9 +159,7 @@
 										class="bi bi-person"></i><%=mReview.getNick()%></li>
 									<li class="d-flex align-items-center"><i
 										class="bi bi-clock"></i> <time datetime="2020-01-01"></time><%=mReview.getEnrollDate()%></li>
-									<li class="d-flex align-items-center"><i
-										class="bi bi-card-text"></i><%=mReview.getStarRating()%> 여기에
-										별점넣고싶어ㅠㅠ</li>
+									<li class="d-flex align-items-center"><i class="bi bi-star"></i><b><%=mReview.getStarRating()%> 점을 주었습니다!</b></b></li>
 
 								</ul>
 							</div>

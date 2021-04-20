@@ -10,6 +10,8 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Nanum+Gothic&family=Roboto+Condensed&display=swap" rel="stylesheet">
 
     <!-- Main css -->
     <link rel="stylesheet" href="/assets/css/member/member.css">
@@ -21,12 +23,12 @@
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="/assets/img/login/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="/member/enroll" class="signup-image-link">회원가입</a><a href="/index.jsp" class="signup-image-link">메인페이지</a><br>
-                    </div>
-
+            	
+             <figure><img src="/assets/img/login/login.jpg" alt="sing up image">  </figure>
+           		
+           		
+           		
+           		<div class="signin-content">
                     <div class="signin-form">
                         <h2 class="form-title">로그인</h2>
                         <form action="/member/login" method="POST" class="register-form" id="login-form">
@@ -38,16 +40,21 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="user-pwd" id="your_pass" placeholder="Password"/>
                             </div>
-                            <div class="form-group form-button">
+                            <div class="form-group form-button" style="float:center;">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
-                            </div>
-                            
-                            <div class="form-group">
-                                <a href = "/intro/find/findId.jsp">아이디 찾기</a>
-                                <a href = "/intro/find/findPwd.jsp">비밀번호 찾기</a>
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="회원가입"/>
                             </div>
 
-                        </form>
+							<div class="form-group">
+								<a href="/intro/find/findId.jsp">아이디 찾기</a> <a
+									href="/intro/find/findPwd.jsp">비밀번호 찾기</a>
+
+							</div>
+							<div class="form-group">
+								<a href="/member/enroll" class="signup-image-link">회원가입</a> <a
+									href="/index.jsp" class="signup-image-link">메인페이지</a>
+							</div>
+						</form>
                         	
                        <!--  <div class="social-login">
                             <span class="social-label">SNS 계정으로 로그인</span>
@@ -59,32 +66,19 @@
                         </div> -->
                     </div>
                 </div>
-            </div>
+               </div>
+             
+             <div class="signin-content">
+                       
+				</div>
+            
+                
+				
+            
         </section>
 
     </div>
-<!-- 	<a href="javascript:kakaoLogin()"><img src="https://play-lh.googleusercontent.com/8_0SDfkFXAFm12A7XEqkyChCdGC055J6fC8JR7qynNuO3qNOczIoNHo4U4lad8xYMJOL" style="height:60px;width:auto;"></a>
-   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-   <script>
-   //9af5bb49e91b4be276f23399b1d13feb
-   window.Kakao.init("9af5bb49e91b4be276f23399b1d13feb");
-   
-   function kakaoLogin() { 
-	   window.Kakao.Auth.login({
-		  scope:'profile, account_email,gender',
-		  success : funtion(auth0bj) {
-			  console.log(auth0bj);
-			  window.Kakao.API.request({
-				  url:'/v2/user/me',
-				  success : res => {
-					  const kakao_account = res.kakao_account;
-					  console.log(kakao_account);
-				  }
-			  });
-		  }
-	   });
-   }
-   </script> -->
+
     <!-- JS -->
      <script src="/assets/vendor/jquery/jquery.min.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
