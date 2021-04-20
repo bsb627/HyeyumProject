@@ -126,6 +126,8 @@ a:focus, a:active {
   -o-transition: all 300ms ease 0s;
   -ms-transition: all 300ms ease 0s; }
 
+
+
 input, select, textarea {
   outline: none;
   appearance: unset !important;
@@ -166,7 +168,7 @@ input[type=radio] {
 
 img {
 	padding : 30px;
-	width : 500px;
+	width : 350px;
   max-width: 100%;
   height: auto; }
 

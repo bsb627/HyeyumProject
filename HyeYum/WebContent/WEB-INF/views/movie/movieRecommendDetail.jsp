@@ -82,11 +82,11 @@
 								<!--  좋아요를 할 때 -->
 								 <% if (likes == 0) { %>
 								<a href="/movieRecommend/plusLikes?no=<%=recommend.getNo() %>">
-								<i class="fa fa-thumbs-o-up fa-2x"></i></a> 
+								<i class="fa fa-thumbs-o-up fa-2x"></i><%= recommend.getLikes() %></a> 
 								<!-- 좋아요를 취소할 때  -->
 								<% } else { %> 
 								<a href="/movieRecommend/minusLikes?no=<%=recommend.getNo() %>">
-								<i class="fa fa-thumbs-up fa-2x"></i></a>
+								<i class="fa fa-thumbs-up fa-2x"></i><%= recommend.getLikes() %></a>
 								 <% } %>
 								
 								
