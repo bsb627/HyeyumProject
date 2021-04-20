@@ -26,7 +26,7 @@ $("#check-all").on("click", function () {
 	  }
 	});
 $("#delete").submit(function() {
-	if( $("#checkbox").is(":checked") == false) {
+	if( $(".checkbox").is(":checked") == false) {
 		alert("삭제할 항목을 선택해 주세요");
 		return false;
 	}

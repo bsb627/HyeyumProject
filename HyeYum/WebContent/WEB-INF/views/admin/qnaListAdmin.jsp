@@ -19,6 +19,15 @@ $("#check-all").on("click", function () {
 	  	$(".checkbox").prop("checked", false);
 	  }
 	});
+	
+$("#delete").submit(function() {
+	if( $(".checkbox").is(":checked") == false) {
+		alert("삭제할 항목을 선택해 주세요");
+		return false;
+	}
+	alert("삭제하시겠습니까?");
+	return true;
+});
 });
 </script>
 <style>
@@ -36,12 +45,11 @@ a:visited.admin {
 </style>
       <!-- Begin Page Content -->
                 <div class="container-fluid">
-					  <form action = "/admin/qna/delete" method = "get">
+					  <form action = "/admin/qna/delete" method = "get" id="delete">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">QNA</h1>
+                   <p class="mb-4">고객문의<a target="_blank"
+                            href="https://datatables.net"></a></p>
                            
                                 <table class ="table" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
