@@ -1,6 +1,18 @@
 $(document).ready(function(){
 
-	
+	 $("form").on("submit", function() {
+		if($('.checkbox_group').is(":checked") == false){
+			 alert('체크된 값이 없습니다.');
+			return false;
+		}else{
+				 if (!confirm("정말 삭제하시겠습니까?")) {
+	        // 취소(아니오) 버튼 클릭 시 이벤트
+				return false;
+		    } else {
+		        // 확인(예) 버튼 클릭 시 이벤트
+		    }
+		}
+    });
 
 
 });

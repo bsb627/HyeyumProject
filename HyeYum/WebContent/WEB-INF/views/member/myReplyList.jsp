@@ -48,7 +48,7 @@
       <div class="container" data-aos="fade-up">
 <div class="col-md-12">
         <div class="row">
-						<div class="col-md-3">
+							<div class="col-md-3">
 
 							<div class="sidebar">
 							<div class="sidebar-item recent-posts"> 
@@ -58,7 +58,7 @@
 								<h3 class="sidebar-title">내정보 <i class="bi bi-person-bounding-box"></i></h3>
 								<div class="sidebar-item categories">
 									<ul>
-										<li><a href="#">정보수정</a></li>
+										<li><a href="/member/modify">정보수정</a></li>
 									</ul>
 									<hr>
 
@@ -92,7 +92,7 @@
 										<h3 class="sidebar-title">기부 <i class="bi bi-gift"></i></h3>
 										<div class="sidebar-item categories">
 											<ul>
-												<li><a href="/message/sentList">기부 내역</a></li>
+												<li><a href="/donate/list">기부 내역</a></li>
 											</ul>
 											
 										</div>

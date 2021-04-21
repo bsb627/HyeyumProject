@@ -35,8 +35,8 @@
 
           <div class="col-lg-6 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="box">
-              <img src="/assets/img/pricing-free.png" class="img-fluid" alt="">
-              <h3 style="color: #07d5c0;">결제가 취소되었습니다.</h3>
+              <img src="/assets/img/order/cancle.jpg" class="img-fluid" alt="">
+              <h3 style="color: #ff0071;">결제가 취소되었습니다.</h3>
               <a href="/intro/product/productForm.jsp" class="btn-buy">다시 주문하기</a>
             </div>
           </div>
