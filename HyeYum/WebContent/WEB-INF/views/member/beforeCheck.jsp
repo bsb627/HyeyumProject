@@ -28,9 +28,7 @@
 	<div class="container">
 
 		<form action="/member/modify" method="post">
-			<p name="userId">
-				들어오는지 체크용 아이디 :
-				<%=member.getUserId()%></p>
+			
 			<!-- ======= Services Section ======= -->
 			<section id="services" class="services">
 
@@ -55,6 +53,10 @@
 								<div class="post-item clearfix">
 								<!-- <img src="/assets/img/features.png"> -->
 								</div>
+								<h3 class="sidebar-title" style="text-align:center; color:#ff7a00"><%=member.getUserId()%><span style="color:012970;">님</span></h3>
+								<h3 class="sidebar-title" style="text-align:center;">환영합니다!</h3>
+								<hr>
+								
 								<h3 class="sidebar-title">내정보 <i class="bi bi-person-bounding-box"></i></h3>
 								<div class="sidebar-item categories">
 									<ul>

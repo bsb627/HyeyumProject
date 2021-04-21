@@ -13,6 +13,7 @@
 %>
 <head>
 <title>문화나눔, 혜윰 - 영화</title>
+
 <%@include file="/header.jsp"%>
 <link href="/assets/css/movie/movieinfo.css" rel="stylesheet">
 
@@ -92,17 +93,29 @@
 
 			<div class="container" data-aos="fade-up">
 
-				<header class="section-header">
+				<!-- <header class="section-header">
 					<h2>MOVIE REVIEW</h2>
 					<p>영화 리뷰</p>
-				</header>
+				</header> -->
 
 				 <%
 					if (userId == null) {
 				%>
+				
 				<div class="container" data-aos="fade-up">
+				<header class="section-header">
+					<h2>MOVIE REVIEW</h2>
+					<p>영화 리뷰</p>
+				
 					<strong>잠깐 ! </strong> 해당글은 <a href="/member/login"
 						class="alert-link">로그인</a>후 이용이 가능합니다.
+				
+				<div class="hero-img" data-aos="zoom-out" data-aos-delay="100">
+					<img src="/assets/img/movie/review2.jpg"
+						style="width: 600px; height: 450px;" class="img-fluid" alt="">
+
+				</div>
+				</header>
 				</div>
 				<%
 					}
@@ -114,10 +127,15 @@
 					if (userId != null && userId != "") {
 				%> 
 					<!-- ========= 글쓰기 버튼 Button trigger modal ========= -->
+					<header class="section-header">
+					<h2>MOVIE REVIEW</h2>
+					<p>영화 리뷰</p>
+					</header>
 				<div style="text-align: center;">
+				
 					<button type="button" class="btn btn-primary btn-write"
 						data-toggle="modal" data-target="#writeModal"
-						data-whatever="@getbootstrap">글쓰기</button>
+						data-whatever="@getbootstrap" id="write-button">글쓰기</button>
 				</div>
 	
 
@@ -170,17 +188,17 @@
 							</div>
 
 					<div class="entry-footer">
-						<i class="bi bi-folder"></i>
-						<ul class="cats">
-							<li><a href="#">Business</a></li>
-						</ul>
+						<i class="bi bi-camera-reels-fill"></i>
+						 <a href="/movieInfo/detail?no=<%=mReview.getInfoNo()%>" title="More Details">영화 정보 보기</a>
+	
+						
 
-						<i class="bi bi-tags"></i>
+						<!-- <i class="bi bi-tags"></i>
 						<ul class="tags">
 							<li><a href="#">Creative</a></li>
 							<li><a href="#">Tips</a></li>
 							<li><a href="#">Marketing</a></li>
-						</ul>
+						</ul> -->
 						<div style="float: right">
 						
 							<%
@@ -259,23 +277,23 @@
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">별점</label>
-						<input type="text" class="form-control" id="recipient-name" name="star-rating">
+						<input type="number" min="1" max="5" class="form-control" id="recipient-name" name="star-rating">
 					</div>
 
 					<div class="form-group">
 						<label for="message-text" class="col-form-label"><b>감상평</b></label>
-						<textarea class="form-control" id="message-text" name="content"> </textarea>
+						<textarea class="form-control" id="review-content" name="content"> </textarea>
 					</div>
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">예매일련번호</label>
-						<input type="text" class="form-control" id="recipient-name" name="ticket-number" required>
+						<input type="text" class="form-control" id="ticket-number" name="ticket-number" required>
 					</div>
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
-						<button type="submit" class="btn btn-primary">등록</button>
+						<button type="submit" class="btn btn-primary"  id="write-btn">등록</button>
 					</div>
 				</div>
 				</form>
@@ -355,3 +373,4 @@
 
 
 <%@include file="/footer.jsp"%>
+ <script type="text/javascript"	src="/assets/js/movieInfo.js"></script> 

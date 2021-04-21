@@ -57,7 +57,7 @@
 							<% for (MovieRecommend recommend : mList) { %>
 							<tr>
 								<td style="text-align: center"><input type="checkbox"
-									class="checked-no" name="rowNo" value="<%=recommend.getRowNo() %>" /></td>
+									class="checkbox_group" name="rowNo" value="<%=recommend.getRowNo() %>" /></td>
 								<!-- <td>포스터</td> -->
 								<td><%= recommend.getGenre() %></td>
 							 	<td><%= recommend.getTitle() %></td>

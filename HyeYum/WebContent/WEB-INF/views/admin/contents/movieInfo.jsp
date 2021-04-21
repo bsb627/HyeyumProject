@@ -129,7 +129,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <a href="/admin/movieInfo/update?infoNo=<%=mInfo.getInfoNo()%>"> <button type="button" class="btn btn-primary">수정</button></a>
+        <a href="/admin/movieInfo/modify?infoNo=<%=mInfo.getInfoNo()%>"> <button type="button" class="btn btn-primary">수정</button></a>
       </div>
     </div>
   </div>

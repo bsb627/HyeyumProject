@@ -53,7 +53,7 @@
 				
 				<div class="hero-img" data-aos="zoom-out" data-aos-delay="50">
 					<img src="/assets/img/movie/thumb.jpg"
-						style="width: 800px; height: 450px;" class="img-fluid" alt="">
+						style="width: 600px; height: 400px;" class="img-fluid" alt="">
 				</div>
 			</header>
 		</div>

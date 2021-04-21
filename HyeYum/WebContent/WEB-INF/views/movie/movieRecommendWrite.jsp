@@ -77,14 +77,14 @@ $(document).ready(function() {
 
 
 			<!-- 파일 할 때 enctype="multipart/form-data" 작성 -->
-			<form action="/movieRecommend/write" method="post" >
+			<form action="/movieRecommend/write" method="post" id="recommend-form" >
 
 
 				<div class="row border col-md-12">
 
 					<div class="col-md-6">
 						<label class="form-label" for="title">장르</label>
-						<select class="form-select" name="genre" required>
+						<select class="form-select" name="genre" id=genre" required>
 							<option value="" hidden="hidden">장르를 선택해주세요</option>
 							<option value="드라마/로맨스">드라마/로맨스</option>
 							<option value="판타지/SF">판타지/SF</option>
@@ -115,10 +115,10 @@ $(document).ready(function() {
 					</div> -->
 					<textarea id="summernote" name="content"></textarea>
 					<br>
-					<div>
+					<!-- <div>
 						<label class="form-label" for="customFile"></label> <input
 							type="file" class="form-control" id="customFile" name="up-file"/>
-					</div>
+					</div> -->
 
 
 					<!-- Submit button -->
@@ -141,6 +141,7 @@ $(document).ready(function() {
 <!-- End #main -->
 
 <%@include file="/footer.jsp"%>
+<script src="/assets/js/movieRecommendWrite.js"></script>
 <script src="/assets/note/summernote-lite.js"></script>
 <script src="/assets/note//lang/summernote-ko-KR.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
