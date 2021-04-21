@@ -18,14 +18,14 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class DeletePassServlet
  */
-@WebServlet("/member/changePwd")
-public class ChagePwdServlet extends HttpServlet {
+@WebServlet("/member/checkPwd")
+public class CheckPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChagePwdServlet() {
+    public CheckPwdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,10 @@ public class ChagePwdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/member/chagePwd.jsp").forward(request, response);
+		/*
+		 * request.getRequestDispatcher("/WEB-INF/views/member/chagePwd.jsp").forward(
+		 * request, response);
+		 */
 	}
 
 	/**
@@ -45,23 +48,18 @@ public class ChagePwdServlet extends HttpServlet {
 		  request.setCharacterEncoding("UTF-8");
 		  response.setCharacterEncoding("UTF-8");
 		  response.setContentType("text/html; charset=UTF-8");
-		  
 		  HttpSession session = request.getSession(); 
-		  String userId = (String)session.getAttribute("userId"); 
-		  String changePwd =  request.getParameter("change-pass-confirm");
-		  System.out.println("바꿀패스워드 : "+changePwd);
-			PrintWriter out = response.getWriter();
-		  int result = new MemberService().modifyMemberPwd(userId, changePwd);
-		  if(result > 0) {
-			  out.println("<script> alert('정보수정이 완료되었습니다.');");
-				out.println("location.href='/member/logout';");
-				out.println("</script>");
+		  String userId = (String)session.getAttribute("userId");
+		  String userPwd = request.getParameter("password");
+		  System.out.println("패스워드 : "+userPwd);
+		  Member member = new MemberService().selectOneMember(userId, userPwd);
+		  
+		  PrintWriter out = response.getWriter();
+		  if(member!=null) {
+			  out.print("1");
 		  }else {
-			  
+			  out.print("0");
 		  }
-		  
-		  
-		 
-	}
 
+	}
 }

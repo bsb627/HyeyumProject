@@ -165,4 +165,24 @@ public class MemberService {
 		return result;
 	}
 
+	public int modifyMemberPwd(String userId, String changePwd) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new MemberDAO().updateMemberPwd(conn,userId,changePwd);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
 }

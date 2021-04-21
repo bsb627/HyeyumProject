@@ -72,7 +72,7 @@
 
 <!-- --------------------------------------------------------------------- -->
 
-<p><span class="btn btn-primary btn-write"
+<p><span class=""
 						data-toggle="modal" data-target="#kakaoWriteModal"
 						data-whatever="@getbootstrap"><img src = "/assets/img/qna/kakao.jpg" id = "kakao" ></span></p>
 

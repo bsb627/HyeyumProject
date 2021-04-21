@@ -200,4 +200,23 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	public int updateMemberPwd(Connection conn, String userId, String changePwd) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE MEMBER SET USER_PWD = ? WHERE USER_ID = ?";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, changePwd);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

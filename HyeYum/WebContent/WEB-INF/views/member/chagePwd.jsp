@@ -99,12 +99,13 @@
 <article class="entry entry-single">   
 <div>
 <form action = "/member/changePwd"  method = "post" >
-현재 비밀번호
-<input type = "password" class="form-control" id="origin-pass" name = "origin-pass"><br>
-변경할 비밀번호
-<input type = "password" class="form-control" id="change-pass" name = "change-pass"><br>
+현재 비밀번호 
+
+&nbsp; <input type = "password" class="form-control" id="origin-pass" name = "origin-pass"  style="width:50%; display: inline-block;"> <span style="display: inline-block;" id="check-msg"><p></p></span><br><br>
+변경 비밀번호
+&nbsp;<input type = "password" class="form-control" id="change-pass" name = "change-pass"  style="width:50%; display: inline-block;"> <span style="display: inline-block;" id="check-msg"><p></p></span><br><br>
 비밀번호 확인
-<input type = "password" class="form-control" id="change-pass-confirm" name = "change-pass-confirm"><br>
+&nbsp;<input type = "password" class="form-control" id="change-pass-confirm" name = "change-pass-confirm"  style="width:50%; display: inline-block;"> <span style="display: inline-block;" id="check-msg"><p></p></span><br><br>
 <input type = "submit" class ="btn btn-primary">
 </form>		
 </div>
