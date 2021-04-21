@@ -48,15 +48,17 @@ public class AdminMovieInfoServlet extends HttpServlet {
 		ArrayList<FileData> fList = new MovieFileService().printMovieInfoFileList();
 		
 		
-		/*
-		 * System.out.println(mList); 
-		 * System.out.println(fList);
-		 */
+		
+		 System.out.println(mList); 
+		 System.out.println(fList);
+		 
 		
 		if(!mList.isEmpty()) {
 			request.setAttribute("mList", mList);
 			request.setAttribute("fList", fList);
 			request.getRequestDispatcher("/WEB-INF/views/admin/contents/movieInfo.jsp").forward(request, response);
+		} else {
+			
 		}
 		
 	}

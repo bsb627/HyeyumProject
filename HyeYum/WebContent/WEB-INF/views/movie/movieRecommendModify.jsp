@@ -142,10 +142,10 @@ $(document).ready(function() {
 					</div> -->
 					<textarea id="summernote" name="content"><%= recommend.getContents() %></textarea>
 					<br>
-					<div>
+				<!-- 	<div>
 						<label class="form-label" for="customFile"></label> <input
 							type="file" class="form-control" id="customFile" />
-					</div>
+					</div> -->
 
 					<input type="hidden" name="no" value="<%=recommend.getNo()%>" />
 					<!-- Submit button -->

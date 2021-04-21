@@ -110,15 +110,20 @@ public class AdminMovieModifyServlet extends HttpServlet {
 
 			int fileResult = new MovieFileService().updateFileMovieInfo(fileData, info);
 			
-				PrintWriter out = response.getWriter();
-
-				out.println("<script> alert('게시글이 수정되었습니다.');");
-				out.println("location.href='/admin/movieInfo/list';");
-				out.println("</script>");
+				/*
+				 * PrintWriter out = response.getWriter();
+				 * 
+				 * out.println("<script> alert('게시글이 수정되었습니다.');");
+				 * out.println("location.href='/admin/movieInfo/list';");
+				 * out.println("</script>");
+				 */
+			System.out.println("modify 서블릿 들어옴");
+			}
+			System.out.println("modify 서블릿 들어옴2222");
+			request.getRequestDispatcher("/admin/movieInfo/list").forward(request, response);
 			} else {
 
 			}
 
 		}
 	}
-}

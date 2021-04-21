@@ -168,7 +168,11 @@
 									<li><strong>조회수</strong> <%=recommend.getHits()%></li>
 									<li><strong>작성일</strong> <%=recommend.getEnrollDate()%></li>
 									<li><i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>&nbsp<span style="font-size:large;"><%=recommend.getLikes()%>명이 좋아합니다.</span></li>
-									<li><button type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-envelope-open"></i></button></li>
+									<li><button type="button" class="btn btn-outline-secondary btn-lg msgbox" id="sendMsg" onclick ="msgPop('<%= recommend.getUserId()%>')"><i class="bi bi-envelope-open"></i>
+									</button></li>
+									
+									
+									
 									</ul>
 							</div>
 							
