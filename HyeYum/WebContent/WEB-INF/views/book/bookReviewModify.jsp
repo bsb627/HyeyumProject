@@ -74,14 +74,7 @@ if (userId == null) {
 	                   </select>
 					</div>
 	
-					<div class="col-md-4">
-					<label for="InputSubject1">파일첨부</label>
-						<input type="text" id="userfile" name="userfile" disabled="">
-						<span class="group-span-filestyle input-group-btn" tabindex="0">
-							<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
-						</span>
-					</div>
-				
+			
                 <div class="col-md-12">
                     <table class="table table-condensed">
                         <thead>
