@@ -39,14 +39,14 @@ $("#delete").submit(function() {
 
 <style>
 
-a:link.contents {
-	color : navy;
+a:link.msgcontents {
+	color : navy !important;
 }
-a:visited.contents {
-	color : gray;
+a:visited.msgcontents {
+	color : gray !important;
 }
-a:hover.contents {
-	font-weight : bold;
+a:hover.msgcontents {
+	font-weight : bold ;
 }
 
 </style>
@@ -189,10 +189,10 @@ a:hover.contents {
     			<td>
     			
     			<% if (message.getContents().length() > 30) { %>
-    			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
+    			<a class="msgcontents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents().substring(0,30) %>  ...</a>
     			<% } else {%>
-    			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
+    			<a class="msgcontents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
     			<% } %>
     			
@@ -227,4 +227,3 @@ a:hover.contents {
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/qna/qnaList.js"></script>

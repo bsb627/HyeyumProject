@@ -132,7 +132,7 @@ $(document).ready(function(){
 	<input type = "submit" value = "삭제" style = "float: right" class="btn btn-outline-danger">
 </form>
 <br><br><br><br><br>
-		<form action = "/message/receivedList">
+		<form action = "/message/sentList">
 		<input type = "submit" value = "목록" class="btn btn-primary" style = "float: center">
 	</form>
 	

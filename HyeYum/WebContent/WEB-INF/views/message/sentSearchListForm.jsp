@@ -142,7 +142,7 @@ a:hover.contents {
 <div class="col-md-9 info-card">
 									
 			<div style = "float : right">
-			<form class="row g-3" action = "/message/search/received" method = "get">
+			<form class="row g-3" action = "/message/search/sent" method = "get">
 			  <div class="col-auto">
 			    <select name = "search-category" class="form-select">
 			      	<option value = "RECEIVER" >아이디</option>
@@ -164,18 +164,19 @@ a:hover.contents {
 										
     <div class="container" align = "center">
     <form action = "/message/delete/sent" method = "get" id="delete">
-    <table class = "table" style = "text-align:center">
+      <table class = "table" style = "text-align:center">
     	<tr>
     		<th><input type = "checkbox" id="check-all"></th>
     		<th>내용</th>
     		<th>받는 사람</th>
     		<th>보낸 날짜</th>
     		<th>읽음 여부</th>
+    		<th>전송 취소</th>
     	</tr>
     	
-    	<% for( Message message : searchList) {%>
+    	<% for( Message message : searchList)  {%>
     		<tr>
-    			<td><input type = "checkbox" class ="checkbox" name = "checkbox" value = "<%= message.getMessageNo() %>">
+    			<td><input type = "checkbox" class ="checkbox" name = "checkbox" value ="<%= message.getMessageNo() %>">
     			<td>
     			<% if (message.getContents().length() > 30) { %>
     			<a class="contents" href = "/message/detail/sent?msgNo=<%= message.getMessageNo() %>">
@@ -186,18 +187,25 @@ a:hover.contents {
     			<% } %>
     			</td>
     			<td><%= message.getReceiver() %></td>
+    			
+    			
     			<td><%= format1.format(message.getSendTime()) %></td>
     			<td>
     			<% if( message.getReadState().equals("읽음") ) {%>
       					<i class="bi bi-envelope-open"></i>
       				<% } else { %>
       					<i style = "color : navy" class="bi bi-envelope"></i>
-      				<% } %>
-    			
+      			<% } %>
+    			</td>
+    			<td>
+    			<% if( message.getReadState().equals("읽음") ) {%>
+      				
+      			<% } else { %>
+      				<a id = "cancel" onclick = "cancel();" href = "/message/cancel?msgNo=<%= message.getMessageNo() %>"><input type = "button" value = "전송취소" class="btn btn-outline-primary btn-sm"></a>
+      			<% } %>
     			</td>
     		</tr>
     	<% } %>
-    
     </table>
    <input type = "hidden" value = "MESSAGE" name = "table">
    <input type = "submit" value="삭제" class = "btn btn-danger" style = "float:right">

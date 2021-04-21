@@ -175,7 +175,7 @@ a:hover.contents {
     	
     	<% for( Message message : searchList) {%>
     		<tr>
-    			<td><input type = "checkbox" class="checkbox" name = "checkbox" value = "<%= message.getMessageNo() %>">
+    			<td><input id ="checkbox" type = "checkbox" class="checkbox" name = "checkbox" value = "<%= message.getMessageNo() %>">
     			<td>
     				
  					<% if( message.getReadState().equals("읽음") ) {%>
@@ -186,6 +186,7 @@ a:hover.contents {
     				
     			</td>
     			<td>
+    			
     			<% if (message.getContents().length() > 30) { %>
     			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents().substring(0,30) %>  ...</a>
@@ -193,8 +194,10 @@ a:hover.contents {
     			<a class="contents" href = "/message/detail/received?msgNo=<%= message.getMessageNo() %>">
     			<%= message.getContents() %></a>
     			<% } %>
+    			
+    			
     			</td>
-    			<td><%= message.getReceiver() %></td>
+    			<td><%= message.getSender() %></td>
     			<td><%= format1.format(message.getSendTime())%></td>
     			
     		</tr>
@@ -224,4 +227,3 @@ a:hover.contents {
   </main><!-- End #main -->
 
 <%@include file="/footer.jsp"%>
-<script src="/assets/js/qna/qnaList.js"></script>
