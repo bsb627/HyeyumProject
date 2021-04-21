@@ -61,14 +61,14 @@
 							<div class="member">
 								<div class="member-img">
 									<img
-										src="http://lh3.googleusercontent.com/K_mFHnwoSoiYN4VDFNRTdz2RRwvLO0FBHPq8WOBgTy0Xea1wrlgW6X07jL5xp83xy9p3Nac0bmwIq4lNhpwAlvuLMaWP-MY1QFusrO_u=w600-h600-n"
+										src="/assets/img/intro/Professionalism.jpg"
 										class="img-fluid" alt="">
-									<div class="social">
+									<!-- <div class="social">
 										<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
 											class="bi bi-facebook"></i></a> <a href=""><i
 											class="bi bi-instagram"></i></a> <a href=""><i
 											class="bi bi-linkedin"></i></a>
-									</div>
+									</div> -->
 								</div>
 
    
@@ -88,14 +88,14 @@
 							<div class="member">
 								<div class="member-img">
 									<img
-										src="http://lh3.googleusercontent.com/K_mFHnwoSoiYN4VDFNRTdz2RRwvLO0FBHPq8WOBgTy0Xea1wrlgW6X07jL5xp83xy9p3Nac0bmwIq4lNhpwAlvuLMaWP-MY1QFusrO_u=w600-h600-n"
+										src="/assets/img/intro/Share.jpg"
 										class="img-fluid" alt="">
-									<div class="social">
+									<!-- <div class="social">
 										<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
 											class="bi bi-facebook"></i></a> <a href=""><i
 											class="bi bi-instagram"></i></a> <a href=""><i
 											class="bi bi-linkedin"></i></a>
-									</div>
+									</div> -->
 								</div>
 
 								<div class="member-info">
@@ -111,14 +111,14 @@
 							<div class="member">
 								<div class="member-img">
 									<img
-										src="http://lh3.googleusercontent.com/K_mFHnwoSoiYN4VDFNRTdz2RRwvLO0FBHPq8WOBgTy0Xea1wrlgW6X07jL5xp83xy9p3Nac0bmwIq4lNhpwAlvuLMaWP-MY1QFusrO_u=w600-h600-n"
+										src="/assets/img/intro/Innovation.jpg"
 										class="img-fluid" alt="">
-									<div class="social">
+									<!-- <div class="social">
 										<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
 											class="bi bi-facebook"></i></a> <a href=""><i
 											class="bi bi-instagram"></i></a> <a href=""><i
 											class="bi bi-linkedin"></i></a>
-									</div>
+									</div> -->
 								</div>
 
 								<div class="member-info">
@@ -135,15 +135,15 @@
 							<div class="member">
 								<div class="member-img">
 									<img
-										src="http://lh3.googleusercontent.com/K_mFHnwoSoiYN4VDFNRTdz2RRwvLO0FBHPq8WOBgTy0Xea1wrlgW6X07jL5xp83xy9p3Nac0bmwIq4lNhpwAlvuLMaWP-MY1QFusrO_u=w600-h600-n"
+										src="/assets/img/intro/Trust.jpg"
 										class="img-fluid" alt="">
 
-									<div class="social">
+									<!-- <div class="social">
 										<a href=""><i class="bi bi-twitter"></i></a> <a href=""><i
 											class="bi bi-facebook"></i></a> <a href=""><i
 											class="bi bi-instagram"></i></a> <a href=""><i
 											class="bi bi-linkedin"></i></a>
-									</div>
+									</div> -->
 								</div>
 
 								<div class="member-info">

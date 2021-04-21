@@ -233,7 +233,7 @@ function numberWithCommas(x) {
 								<a href="/upload/info/movie/<%=info.getFileName() %>"
 									data-gallery="portfolioGallery" class="portfokio-lightbox"
 									title="<%=info.getMovieName()%>"><i class="bi bi-plus"></i></a> <a
-									href="#" title="More Details"><i
+									href="/movieInfo/detail?no=<%=info.getInfoNo() %>" title="More Details"><i
 									class="bi bi-link"></i></a>
 							</div>
 						</div>

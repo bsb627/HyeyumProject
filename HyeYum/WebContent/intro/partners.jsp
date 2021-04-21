@@ -4,9 +4,10 @@
 <%@include file="/header.jsp"%>
 <head>
 <title>문화나눔, 혜윰 - aboutUs</title>
+
+<link href="/assets/css/show-custom.css" rel="stylesheet">
 </head>
 <main id="main">
-
 	<!-- ======= Breadcrumbs ======= -->
 	<section class="breadcrumbs">
 		<div class="container">
@@ -34,6 +35,9 @@
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
+    
+    <img src="/assets/img/intro/company.jpg" class="img-fluid" alt="Responsive image">
+ 
 
       <div class="container" data-aos="fade-up">
 
@@ -58,7 +62,6 @@
       </div>
 
     </section><!-- End Clients Section -->
-<br>
 <br>
 						<header class="section-header">
 							<h2>HYEYUM PARTNERS</h2>

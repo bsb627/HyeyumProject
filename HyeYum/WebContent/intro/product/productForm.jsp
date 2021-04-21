@@ -7,7 +7,19 @@
 
 </head>
  <main id="main">
-
+<%
+	if (userId == null) {
+%>
+<script type="text/javascript">
+	if (confirm("로그인 후 이용가능합니다.")) {
+		location.href="/member/login";
+	} else {
+		history.back();
+	}
+</script>
+<%
+	}
+%>
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
       <div class="container">

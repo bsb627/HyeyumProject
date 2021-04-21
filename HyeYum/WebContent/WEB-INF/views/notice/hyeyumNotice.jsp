@@ -43,9 +43,9 @@ main * {
 			<section id="testimonials" class="testimonials portfolio">
 				<div class="container" data-aos="fade-up">
 					<header class="section-header">
-						<h1>Notice</h1>
-						<p class="pcomment">공지사항</p>
-					</header>
+							<h2>HYEYUM NOTICE</h2>
+							<p>공지사항</p>
+						</header>
 				</div>
 			</section>
 
