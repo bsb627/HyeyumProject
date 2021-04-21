@@ -185,4 +185,34 @@ public class MemberService {
 		return result;
 	}
 
+	public int checkId(String inputId) {
+		int checkId = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			checkId = new MemberDAO().selectCheckId(conn,inputId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return checkId;
+	}
+
+	public int checkNick(String inputNick) {
+		int checkNick = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			checkNick = new MemberDAO().selectCheckNick(conn,inputNick);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return checkNick;
+	}
+
 }

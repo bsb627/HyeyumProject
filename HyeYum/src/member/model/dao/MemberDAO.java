@@ -219,4 +219,48 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	public int selectCheckId(Connection conn, String inputId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS CHECKID FROM MEMBER WHERE USER_ID = ?";
+		int checkId = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, inputId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				checkId = rset.getInt("CHECKID");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return checkId;
+	}
+
+	public int selectCheckNick(Connection conn, String inputNick) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS CHECKNICK FROM MEMBER WHERE NICK = ?";
+		int checkNick = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, inputNick);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				checkNick = rset.getInt("CHECKNICK");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return checkNick;
+	}
 }

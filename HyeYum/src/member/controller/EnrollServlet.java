@@ -51,16 +51,17 @@ public class EnrollServlet extends HttpServlet {
 		  member.setUserPwd(request.getParameter("user-pwd"));
 		  member.setUserName(request.getParameter("user-name"));
 		  member.setUserNick(request.getParameter("user-nick"));
+		  member.setUserPhone(request.getParameter("user-phone"));
 		  member.setUserEmail(request.getParameter("user-email"));
 		  member.setUserAddress(address);
 		
 		  
 		 int result = new MemberService().registerMember(member); 
 		  if (result > 0) { //회원가입 성공 
-			  response.sendRedirect("/index.jsp"); 
+			  request.getRequestDispatcher("/main/Info/list").forward(request, response);
 		  } else {
-		 response.sendRedirect("/WEB-INF/views/member/memberError.html"); }
-		
+			  request.getRequestDispatcher("/WEB-INF/views/member/memberError.html").forward(request, response);
+		  }
 		
 	}
 
