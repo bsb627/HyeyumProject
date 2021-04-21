@@ -166,7 +166,7 @@
 
 					<header class="section-header">
 						<h2>문화나눔, 혜윰이란?</h2>
-						<p>문화나눔, 혜윰 사업의 주요 개념</p>
+						<p>문화나눔, 혜윰 사업의 주요 개념과 사회적 목표</p>
 					</header>
 
 					<div class="row">
@@ -197,7 +197,9 @@
 									</h2>
 									<div id="faq-content-2" class="accordion-collapse collapse"
 										data-bs-parent="#faqlist1">
-										<div class="accordion-body">영역별로 분리되고 기관별로 분절화 되어있는 서비스로는 개인,기업,지역사회의 다양한 욕구를 채우는 데이 한계가 있습니다.
+										<div class="accordion-body">영역별로 분리되고 기관별로 분절화 되어있는 서비스로는 개인,기업,지역사회의 다양한 욕구를 채우는 데에는 한계가 있습니다.
+										혜윰은 현장 중심의 사업수행을 바탕으로 지역별 유관기관과의 네트워크 강화를 통해서 함께 문제를 고민하고 해결해 나가겠습니다. 
+										분야별로 사회적 의제를 제시하여 지역 복지발전 향상을 위해 노력하겠습니다.
 										</div>
 									</div>
 								</div>
@@ -206,11 +208,12 @@
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed" type="button"
 											data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-											내용들어가요</button>
+											3. 유명한 기부단체가 되려고 하지 않겠습니다.</button>
 									</h2>
 									<div id="faq-content-3" class="accordion-collapse collapse"
 										data-bs-parent="#faqlist1">
-										<div class="accordion-body">잠시비워둡니다</div>
+										<div class="accordion-body">혜윰은 유명인사나 대기업에 의존하지 않으며, 사회적 이슈에 휩쓸리는 일회성 기부를 지양합니다. 올바른 기부문화와 정착 지속 가능한
+										진실한 모금을 통해 후원자님 한 분 한 분에게 기억되는 복지단체가 되기 위해 노력하겠습니다.</div>
 									</div>
 								</div>
 
@@ -226,11 +229,13 @@
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed" type="button"
 											data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
-											여기도..</button>
+											4. 혜윰은 함게 호흡하겠습니다.</button>
 									</h2>
 									<div id="faq2-content-1" class="accordion-collapse collapse"
 										data-bs-parent="#faqlist2">
-										<div class="accordion-body">여기도..</div>
+										<div class="accordion-body">혜윰은 정부의 지원 없이 시민들의 자발적인 참여로 운영되는 비영리 복지 단체입니다.
+										우리의 사명을 믿고 지지하여 주시는 많은 후원자님들로 인해 더욱 행복하고 힘이 납니다.
+										항상 눈과 귀를 열어 여러분의 의견을 경청하고 우리의 노력에 진심을 담겠습니다. </div>
 									</div>
 								</div>
 
@@ -238,11 +243,12 @@
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed" type="button"
 											data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
-											여기도..</button>
+											5. 혜윰은 부자단체가 되려고 하지 않겠습니다.</button>
 									</h2>
 									<div id="faq2-content-2" class="accordion-collapse collapse"
 										data-bs-parent="#faqlist2">
-										<div class="accordion-body">여기도..</div>
+										<div class="accordion-body">혜윰은 전국에서 하나 하나 모아진 기부금의 의미를 잘 알고 있습니다. 여러분의 소중한 기부금을 장기간 쌓아두지 않고 필요로 하는 곳에
+										신속히 배분함으로서 기금수혜자의 만족을 위해 노력하며 후원자님께는 행복한 감동으로 되돌려 드리겠습니다.</div>
 									</div>
 								</div>
 
@@ -250,11 +256,12 @@
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed" type="button"
 											data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
-											여기도.</button>
+											6. 혜윰은 따뜻한 마음을 전달하는 단체가 되겠습니다.</button>
 									</h2>
 									<div id="faq2-content-3" class="accordion-collapse collapse"
 										data-bs-parent="#faqlist2">
-										<div class="accordion-body">아마.</div>
+										<div class="accordion-body">혜윰은 도서,영화,공연 등 복지분야의 다양한 문화지원사업을 펼치고 있습니다.
+										또한 단순 지원을 넘어서 어려운 문화산업분야가 미래에 대한 꿈을 꾸며, 희망을 가지고 자립할 수 있도록 함께 노력하겠습니다. </div>
 									</div>
 								</div>
 

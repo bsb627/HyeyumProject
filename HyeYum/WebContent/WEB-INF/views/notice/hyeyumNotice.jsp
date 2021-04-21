@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	ArrayList<Notice> nList = (ArrayList<Notice>) request.getAttribute("nList");
-String pageNavi = (String) request.getAttribute("pageNavi");
+	String pageNavi = (String) request.getAttribute("pageNavi");
 %>
 
 <%@include file="/header.jsp"%>
@@ -141,9 +141,9 @@ main * {
 		<div class="container">
 
 			
-	<div style="float: right">
-				<a href="/hyeyumNotice/write"><button
-						class="btn btn-primary btn-right">글쓰기</button></a>
+	<!-- <div style="float: right"> -->
+			<!-- 	<a href="/hyeyumNotice/write"><button -->
+						<!-- class="btn btn-primary btn-right">글쓰기</button></a> -->
 			</div>
 			<ul class="pagination  justify-content-center">
 				<!-- <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>

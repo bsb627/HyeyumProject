@@ -39,7 +39,7 @@ public class AdminNoticeDetailServlet extends HttpServlet {
 		Notice notice = new AdminNoticeService().printOneAdmin(noticeNo);
 		
 		if(notice != null) {
-			
+			System.out.println("notice" + notice);
 			request.setAttribute("notice", notice);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/admin/board/adminNoticeDetail.jsp");
 			view.forward(request, response);

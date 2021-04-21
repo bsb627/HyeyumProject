@@ -29,13 +29,15 @@
                   </div>
                </div>
 
-               <div class="col-lg-12">
-                  <div class="row">
-                     <div class="col-lg-12">
-                        <div class="form-group">
-                           <label for="exam1">내용</label> <input type="text"
-                              class="form-control" id="exam1" name="contents"
-                              placeholder="" required>
+							<div class="col-lg-12">
+                 			 <div class="row">
+                     			<div class="col-lg-12">
+                       			 <div class="form-group">
+                          			 <label for="exam1">내용</label> 
+                           		<textarea  class="form-control" name="contents"rows="20" cols=""></textarea>
+                           		
+                           		
+               
                         </div>
                      </div>
                      <br>

@@ -14,14 +14,14 @@ public class AdminNoticeDAO {
 
 // 전체
  	public ArrayList<Notice> selectAllAdminNoticeList(Connection conn) {
-		PreparedStatement pstmt = null; 
+		Statement stmt = null; 
 		ResultSet rset = null;
 		ArrayList<Notice> nList = null;
 		String query = "SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_NO, TITLE, CONTENTS, USER_ID, ENROLL_DATE , HITS FROM NOTICE";
 
 		try {
-			pstmt = conn.prepareStatement(query);
-			rset = pstmt.executeQuery();		
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);		
 			nList = new ArrayList<Notice>(); 
 			while(rset.next()) { 
 				Notice notice = new Notice(); 
@@ -38,7 +38,7 @@ public class AdminNoticeDAO {
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(stmt);
 		}
 		System.out.println("DAO.." + nList);
 		return nList;
@@ -105,7 +105,7 @@ public class AdminNoticeDAO {
 				notice.setUserId(rset.getString("USER_ID"));
 				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				notice.setHits(rset.getInt("HITS"));
-				
+				System.out.println("notice : " + notice);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

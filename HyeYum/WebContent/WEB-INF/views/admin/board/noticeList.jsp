@@ -57,6 +57,7 @@
                     </div>
 <div class="btn-set" align="right">
                <input type="submit" class="btn btn-danger" value="삭제"><a href="/admin/notice/write"><input type="button" class="btn btn-primary" value="등록"></a>
+              <!--  꺼진 submit도 다시보자.. -->
                 </div>
                 </form>
                 </div>

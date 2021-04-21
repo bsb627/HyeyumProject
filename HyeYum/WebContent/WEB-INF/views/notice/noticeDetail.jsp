@@ -48,48 +48,49 @@ main * {
 					</header>
 				</div>
 			</section>
-        
+         
+         <section id="blog" class="blog">
+     		 <div class="container" data-aos="fade-up" style ="width : 80%">
+          <div class="col-lg-12 entries">
+            <article class="entry entry-single">
+                <h2 class="entry-title">
+                <a href="#"><%= notice.getTitle() %></a>
+              </h2>
+              <div class="entry-meta">
+                <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i>[작성자]  <%= notice.getUserId() %></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i>[작성일]  <%= notice.getEnrollDate() %></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> [조회수]  <%= notice.getHits() %></li>
+                </ul>
+                
+                <hr>
+                </div>
+                 <div class="blank-content">
+                <%= notice.getContents() %> 
+            <%--    <div class="blank-content">
+                <%= notice.getContents() %>
+                --%>
+              </div>
+              </div>
+
+             
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+              
+              </div>
+              </article>
+            </div>
+      	</div>
+    </section>
+    </div>
+    </section>
      
-<div class="card border-light " >
-  <div class="card-header">제목 : <%=notice.getTitle() %>
-  글쓴이 : <%= notice.getUserId() %> <%= notice.getEnrollDate() %></div>
-  <div class="card-body" style= "line-height:50px;" >
-    
- <!--    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-</div>
-  </div>
-
-<div class="jumbotron-default" >
-  <h2 class="display-3" style="line-height:50%;"> Hello, world!</h2>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
-</div>
-  
-  <table class="table" style="line-height:100px;">
- 
-
-    
-      <td colspan="1"=>Default</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr style="line-height:300px;">
- 		<th scope="row">Default</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-     </tr>
- 
-</table> -->
-    
-	<a href="/notice/list?noticeNo=<%= notice.getNoticeNo()%>">목록</a>
+</main><!-- End #main -->
+		<div align = "center">
+		<form action="/notice/list" >
+			<input type = "submit"  value = "목록" class = "btn btn-primary">
+		</form>
+		</div>
+<%@include file="/footer.jsp"%>
 
 
-<%@include file="/footer.jsp"%>  
-</section>
