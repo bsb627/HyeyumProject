@@ -56,14 +56,14 @@
 	                   </select>
 					</div>
 	
-					<div class="col-md-4">
+<!-- 					<div class="col-md-4">
 					<label for="InputSubject1">파일첨부</label>
 						<input type="text" id="userfile" name="userfile" disabled="">
 						<span class="group-span-filestyle input-group-btn" tabindex="0">
 							<a href="/file/upload"><span class="glyphicon fa fa-upload"></span></a>
 						</span>
 					</div>
-
+ -->
 
 					<div class="form-outline col-md-12">
 						<input type="text" id="review-title" class="form-control" name="review-title" autocomplete="off" required/> <label

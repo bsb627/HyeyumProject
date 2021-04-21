@@ -206,7 +206,47 @@ public class BookDAO {
 		
 			try {
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, review.getDivision());
+				switch (review.getInfoNo()) {
+				case 11:
+					pstmt.setString(1, "게으름도 습관이다");
+					break;
+				case 12:
+					pstmt.setString(1, "노르웨이숲");
+					break;
+				case 13:
+					pstmt.setString(1, "불안");
+					break;
+				case 14:
+					pstmt.setString(1, "여자가 없는 남자들");
+					break;
+				case 15:
+					pstmt.setString(1, "유혹의 기술");
+					break;
+				case 21:
+					pstmt.setString(1, "인문/사회");
+					break;
+				case 22:
+					pstmt.setString(1, "소설");
+					break;
+				case 23:
+					pstmt.setString(1, "에세이");
+					break;
+				case 24:
+					pstmt.setString(1, "시");
+					break;
+				case 25:
+					pstmt.setString(1, "자기계발");
+					break;
+				case 26:
+					pstmt.setString(1, "건강/다이어트");
+					break;
+				case 27:
+					pstmt.setString(1, "생활/취미");
+					break;
+
+				default:
+					break;
+				}
 				pstmt.setString(2, review.getTitle());
 				pstmt.setString(3, review.getContents());
 				pstmt.setString(4, review.getUserId());
