@@ -22,6 +22,7 @@
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/assets/js/index-ready.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -378,4 +379,4 @@ function numberWithCommas(x) {
 </main>
 <!-- End #main -->
 <%@include file="/footer.jsp"%>
-<!-- <script src="/assets/js/chart/chart-ready.js"></script> -->
+<script src="/assets/js/chart/chart-ready.js"></script>

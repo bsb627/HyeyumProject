@@ -1,4 +1,3 @@
-   $(document).ready(function() {
-	alert('asd');
-          
-        });
+function indexReady(){
+	location.href='/main/Info/list';
+}
