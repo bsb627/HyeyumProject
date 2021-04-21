@@ -54,7 +54,7 @@
 							<% for (MovieReview review : mList) { %>
 							<tr>
 								<td style="text-align: center"><input type="checkbox"
-									class="checked-no" name="reNo" value="<%=review.getReNo() %>" /></td>
+									class="checkbox_group"" name="reNo" value="<%=review.getReNo() %>" /></td>
 								<!-- <td>포스터</td> -->
 								<td><%= review.getMovieName()  %></td>
 							 	<td><%= review.getContents() %></td>
@@ -84,3 +84,4 @@
 
   
 <%@include file="/admin/footer.jsp"%>
+ <script src="/assets/admin/js/show/contents-list.js"></script>

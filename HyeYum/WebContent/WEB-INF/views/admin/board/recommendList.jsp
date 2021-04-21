@@ -88,3 +88,4 @@
   
 <!-- /.container-fluid -->
 <%@include file="/admin/footer.jsp"%>
+ <script src="/assets/admin/js/show/contents-list.js"></script>

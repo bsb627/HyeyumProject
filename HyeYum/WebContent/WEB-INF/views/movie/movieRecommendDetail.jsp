@@ -15,6 +15,7 @@
 <%@include file="/header.jsp"%>
 <link href="/assets/css/movie/movie-custom.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 <main id="main">
 
@@ -58,7 +59,6 @@
 							<%=recommend.getTitle() %>
 						</h2>
 
-						<hr>
 
 						<div class="entry-meta">
 						</div>
@@ -71,8 +71,7 @@
 							</div>
 						</div>
 
-						<div class="entry-footer">
-						
+						<hr>
 								<!-- 닉네임, 시간, 조회수 -->
 								<div class="d-flex align-items-center">
 								<i class="bi bi-person">&nbsp;</i><%=recommend.getNick()%>&nbsp;&nbsp;
@@ -82,20 +81,23 @@
 								<!--  좋아요를 할 때 -->
 								 <% if (likes == 0) { %>
 								<a href="/movieRecommend/plusLikes?no=<%=recommend.getNo() %>">
-								<i class="fa fa-thumbs-o-up fa-2x"></i><%= recommend.getLikes() %></a> 
+								 <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up good"></i> 좋아요</button></a>
+								<%-- <i class="fa fa-thumbs-o-up fa-2x"></i><%= recommend.getLikes() %></a>  --%>
 								<!-- 좋아요를 취소할 때  -->
 								<% } else { %> 
 								<a href="/movieRecommend/minusLikes?no=<%=recommend.getNo() %>">
-								<i class="fa fa-thumbs-up fa-2x"></i><%= recommend.getLikes() %></a>
+								<button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up-fill"></i> 좋아요 취소</button></a>
+								<%-- <i class="fa fa-thumbs-up fa-2x"></i><%= recommend.getLikes() %></a> --%>
 								 <% } %>
+								 
+								 
+							<!-- 	 <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up-fill"></i> 좋아요 취소</button>
+								 <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up good"></i> 좋아요</button>
+								 -->
 								
 								
-								<!-- 
-								<a href=""><button class="btn btn-sm btn-outline-danger">
-										<i class="bi bi-heart-fill" style="color: #dc3545"></i> 좋아요 취소
-									</button></a> -->
 							</div>
-						</div>
+					
 
 					</article>
 					<!-- End blog entry -->
@@ -162,14 +164,14 @@
 							<hr>
 							<div class="sidebar-item categories">
 								<ul>
-									<li><strong>조회수</strong> <%=recommend.getHits()%></li>
 									<li><strong>작성자</strong> <%=recommend.getNick()%></li>
+									<li><strong>조회수</strong> <%=recommend.getHits()%></li>
 									<li><strong>작성일</strong> <%=recommend.getEnrollDate()%></li>
-									<li><strong>좋아요</strong> <%=recommend.getLikes()%></li>
-									<br>
-									
-								</ul>
+									<li><i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>&nbsp<span style="font-size:large;"><%=recommend.getLikes()%>명이 좋아합니다.</span></li>
+									</ul>
 							</div>
+							
+							
 							<hr>
 							<div align="center">
 								<%
