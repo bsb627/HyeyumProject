@@ -1,5 +1,14 @@
 $(document).ready(function(){
-
+	// 체크박스 전체 선택
+		$("#check_all").on("click", function () {
+		  var checked = $(this).is(":checked");
+		
+		  if(checked){
+		  	$(".checkbox_group").prop("checked", true);
+		  } else {
+		  	$(".checkbox_group").prop("checked", false);
+		  }
+		});
 	 $("form").on("submit", function() {
 		if($('.checkbox_group').is(":checked") == false){
 			 alert('체크된 값이 없습니다.');

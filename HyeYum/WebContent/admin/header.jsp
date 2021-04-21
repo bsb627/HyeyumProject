@@ -3,6 +3,7 @@
     
  <%
  	String userId = (String)session.getAttribute("userId");
+ 	String userPwd = (String)session.getAttribute("userPwd");
  %>
 <!DOCTYPE html>
 <html>
@@ -58,7 +59,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/admin/index.jsp">
+                <a class="nav-link" href="/admin/login">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>

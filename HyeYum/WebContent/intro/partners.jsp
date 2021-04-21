@@ -5,7 +5,7 @@
 <head>
 <title>문화나눔, 혜윰 - aboutUs</title>
 
-<link href="/assets/css/show-custom.css" rel="stylesheet">
+<link href="/assets/css/intro.css" rel="stylesheet">
 </head>
 <main id="main">
 	<!-- ======= Breadcrumbs ======= -->
@@ -31,12 +31,41 @@
 
 					<div class="container" data-aos="fade-up">
 
-						
+					    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Who We Are</h3>
+              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+              <p>
+                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="#send" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>제휴 문의</span>
+             		<i class="ri-send-plane-fill"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="/assets/img/intro/company5.jpg" class="img-fluid" alt="">
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->	
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
-    
-    <img src="/assets/img/intro/company.jpg" class="img-fluid" alt="Responsive image">
+     
+    <!-- <img src="/assets/img/intro/company.jpg" class="img-fluid" alt="Responsive image"> -->
  
 
       <div class="container" data-aos="fade-up">
@@ -63,12 +92,12 @@
 
     </section><!-- End Clients Section -->
 <br>
-						<header class="section-header">
+						<header class="section-header" id="send">
 							<h2>HYEYUM PARTNERS</h2>
 							<p>제휴 문의</p>
 						</header>
 
-						<div class="col-lg-12" style="background: #fafbff;  padding: 30px;">
+						<div class="col-lg-12"  style="background: #fafbff;  padding: 30px;">
 							<!--  가로너비 -->
 							<form action="/company/enroll" method="post">
 								<div class="row gy-4">

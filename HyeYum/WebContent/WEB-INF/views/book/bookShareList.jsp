@@ -39,6 +39,13 @@
     <section class="inner-page">
       <div class="container">
 <div class="col-xs-12">
+<div align="center">
+<div class="hero-img"  data-aos="zoom-out" data-aos-delay="100">
+					<img src="/assets/img/book/bookshare.jpg"
+						style="width: 600px; height: 450px;" class="img-fluid" alt="">
+
+				</div>
+				</div>
 					<div class="table-responsive" data-pattern="priority-columns">
 						<table class="table table-bordered table-hover">
 							<thead>

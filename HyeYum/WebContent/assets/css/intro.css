@@ -1,4 +1,10 @@
-main{
-	
-background: linear-gradient(to bottom, #fcbf74, #ec84b0);
+
+.about .btn-read-more {
+    line-height: 0;
+    padding: 25px 40px;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #fff;
+    background: #4154f1;
+    box-shadow: 0px 5px 25px rgb(65 84 241 / 30%);
 }

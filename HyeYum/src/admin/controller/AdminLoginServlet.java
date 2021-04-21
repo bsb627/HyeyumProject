@@ -36,7 +36,24 @@ public class AdminLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		String userPwd = (String)session.getAttribute("userPwd");
+
+		
+		int bookAllCount = new DonateService().countAllBook();
+		int movieAllCount = new DonateService().countAllMovie();
+		int showAllCount = new DonateService().countAllShow();
+		int memberAllCount = new DonateService().countAllMember();
+		Member member = new MemberService().selectOneMember(userId, userPwd);
+		if(member!=null && userId.equals("admin") ) {
+			request.setAttribute("bookAllCount", bookAllCount);
+			request.setAttribute("movieAllCount", movieAllCount);
+			request.setAttribute("showAllCount", showAllCount);
+			request.setAttribute("memberAllCount", memberAllCount);
+			RequestDispatcher view = request.getRequestDispatcher("/admin/index.jsp");
+			view.forward(request, response);
+		}
 	
 	}
 
@@ -44,22 +61,25 @@ public class AdminLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+
 		String userId = request.getParameter("user-id");
 		String userPwd = request.getParameter("user-pwd");
 		
 		Member member = new MemberService().selectOneMember(userId, userPwd);
-		HttpSession session = request.getSession();
-		session.setAttribute("userId", member.getUserId());
-
-		int bookAllCount = new DonateService().countAllBook();
-		int movieAllCount = new DonateService().countAllMovie();
-		int showAllCount = new DonateService().countAllShow();
-		int memberAllCount = new DonateService().countAllMember();
+		
 		
 		if(member!=null && userId.equals("admin") ) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", member.getUserId());
+			session.setAttribute("userPwd", member.getUserPwd());
+
+			int bookAllCount = new DonateService().countAllBook();
+			int movieAllCount = new DonateService().countAllMovie();
+			int showAllCount = new DonateService().countAllShow();
+			int memberAllCount = new DonateService().countAllMember();
 			request.setAttribute("bookAllCount", bookAllCount);
 			request.setAttribute("movieAllCount", movieAllCount);
 			request.setAttribute("showAllCount", showAllCount);
@@ -68,7 +88,9 @@ public class AdminLoginServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/admin/index.jsp");
 			view.forward(request, response);
 		}else {
-			
+			System.out.println("널ㄹ");
+			 RequestDispatcher view = request.getRequestDispatcher("/admin/login/loginFail.html");
+				view.forward(request, response);
 		}
 	}
 
