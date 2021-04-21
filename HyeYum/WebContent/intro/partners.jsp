@@ -39,10 +39,10 @@
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
-              <h3>Who We Are</h3>
-              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+              <h3>기업후원</h3>
+               <h2>세상을 위한 좋은 변화. 소중한 나눔의 첫 걸음. 신뢰할 수 있는 NGO. </h2> 
+              혜윰은 차별화된 프로그램으로 기업과의 파트너쉽을 통하여 문화인들의 행복한 세상을 만들어갑니다.
               <p>
-                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
               </p>
               <div class="text-center text-lg-start">
                 <a href="#send" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
