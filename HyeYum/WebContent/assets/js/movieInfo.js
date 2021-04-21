@@ -7,11 +7,27 @@ $(document).ready(function() {
 	$("#modify-btn").on("click",function(){
 		modifyForm();
 			});
-
+	
+	/*$("delete-btn").on("click", function() {
+		alert("삭제하시겠습니까?");
+		return true;
+	}*/
+	 $("#delete-btn").on("click",function(){
+		 if (!confirm("삭제하시겠습니까?")) {
+			 //취소 
+			return false;
+		 	} else {
+		        // 확인
+		 		}
+	 		});
+	
 	
 });
 
 	
+
+
+
 function contentForm(){
 	console.log($('#summernote').val());
 	if($('#summernote').val()==""){

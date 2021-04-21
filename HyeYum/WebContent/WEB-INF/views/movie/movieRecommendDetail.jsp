@@ -178,7 +178,7 @@
 								<a href="/movieRecommend/modify?no=<%=recommend.getNo()%>">
 									<input type="button" class="btn btn-primary " value="수정">
 								</a> <a href="/movieRecommend/delete?no=<%=recommend.getNo()%>"><input
-									type="button" class="btn btn-primary" value="삭제"></a>
+									type="button" class="btn btn-primary" id="recommend-delete-btn" value="삭제"></a>
 								<%
 									}
 								%>
@@ -195,4 +195,7 @@
 </main>
 <!-- End #main -->
 <script src="assets/js/main.js"></script>
+
+
 <%@include file="/footer.jsp"%>
+ <script type="text/javascript"	src="/assets/js/movieRecommendDetail.js"></script> 

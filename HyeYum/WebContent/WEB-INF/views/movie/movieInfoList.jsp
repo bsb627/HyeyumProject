@@ -211,7 +211,7 @@
 								data-whatever="@getbootstrap">수정하기</button>
 								
 								<a href="/movieReview/delete?no=<%=mReview.getReNo()%>"><input
-									type="button" class="btn btn-primary" value="삭제"></a>
+									type="button" class="btn btn-primary" id="delete-btn" value="삭제"></a>
 							<%
 								}
 							%>
