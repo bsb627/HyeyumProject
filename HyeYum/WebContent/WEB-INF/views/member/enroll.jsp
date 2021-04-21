@@ -62,12 +62,16 @@
 							<br> <br>
 
 							<form action="/member/enroll" method="POST" class="register-form" id="register-form">
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 아이디 -->
-									<label class="control-label" for="disabledInput"><h5>아이디</h5>
-									</label> <input class="form-control" name="user-id" id="user-id"
+									
+									<label class="form-control-label" for="user-id"><h5>아이디</h5>
+									</label> <input class="form-control " name="user-id" id="user-id"
 										placeholder="아이디 입력(영어소문자로 시작하며 숫자포함 4~12자리)" autocomplete="none" >
 										<span id="check-id-msg"></span>
+										
+									
+										
 								</div>
 
 
