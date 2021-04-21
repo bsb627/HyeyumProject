@@ -166,5 +166,27 @@ public class DonateDAO {
 		return memberAllCount;
 	}
 
+	public int countAllCompany(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int companyAllCount = 0;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM COMPANY";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				companyAllCount = rset.getInt("TOTALCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return companyAllCount;
+	}
+
 	
 }

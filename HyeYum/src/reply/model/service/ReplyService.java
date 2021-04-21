@@ -253,4 +253,18 @@ public class ReplyService {
 		// TODO Auto-generated method stub
 		return rList;
 	}
+
+	public int totalCountBookShare(int shareNo) {
+		int count = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			count = new ReplyDAO().totalCountBookShare(conn, shareNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return count;
+	}
 }

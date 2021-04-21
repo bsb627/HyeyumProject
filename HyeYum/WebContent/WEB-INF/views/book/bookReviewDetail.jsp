@@ -17,7 +17,7 @@
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문화나눔, 혜윰 - 독서혜윰 상세보기</title>
-    <link href="/assets/css/show-custom.css" rel="stylesheet">
+    <link href="/assets/css/book/book-custom.css" rel="stylesheet">
     </head>
     <body>
 <%

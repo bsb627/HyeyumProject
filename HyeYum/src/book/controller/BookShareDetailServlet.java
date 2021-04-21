@@ -69,9 +69,9 @@ public class BookShareDetailServlet extends HttpServlet {
 		BookShare bookShare = new BookShare();
 		bookShare.setUserId(userId);
 		FileData fileData = new BookFileService().printFileShare(shareNo);
+		int totalCount = new ReplyService().totalCountBookShare(shareNo); // 댓글 수
 
 		// 댓글
-		int totalCount = new ReplyService().totalCountBookReview(shareNo);
 		ArrayList<Reply> rList = new ReplyService().printReplyListBookShare(shareNo);
 		System.out.println("쉐어 디테일 서블릿 rList" + rList);
 		BookShare share = new BookService().printOneBookShare(shareNo);

@@ -64,11 +64,11 @@ public class BookReviewDetailServlet extends HttpServlet {
 		}else {
 			likes = new BookService().getLikesReview(userId,reviewNo);
 		}
+		int totalCount = new ReplyService().totalCountBookReview(reviewNo); // 좋아요 수
 		
 		// 댓글
-		int totalCount = new ReplyService().totalCountBookReview(reviewNo);
 		ArrayList<Reply> rList = new ReplyService().printReplyListBookReview(reviewNo);
-		
+
 		BookReview review = new BookService().printOneBookReview(reviewNo);
 		if(review != null) {
 			request.setAttribute("review", review);

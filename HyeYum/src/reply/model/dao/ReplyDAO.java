@@ -266,7 +266,7 @@ public class ReplyDAO {
 		return result;
 	}
 
-	public int totalCountBookReview(Connection conn, int reviewNo) {
+	public int totalCountBookReview(Connection conn, int reviewNo) { // 댓글 수
 		Statement stmt = null;
 		ResultSet rset = null;
 		System.out.println("totalcount reviewNo DAO" + reviewNo);
@@ -326,7 +326,7 @@ public class ReplyDAO {
 	public ArrayList<Reply> selecAllReplyList(Connection conn,int currentPage, String userId) { // 댓글모아보기
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query ="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM, TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM (SELECT '독서혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_REVIEW_REPLY WHERE USER_ID=? UNION ALL SELECT '나눔혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_SHARE_REPLY WHERE USER_ID=? UNION ALL SELECT '감상혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM MOVIE_RECOMMEND_REPLY WHERE USER_ID=? UNION ALL SELECT '관람혜윰'AS TYPE, REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO FROM SHOW_REVIEW_REPLY WHERE USER_ID=? ))WHERE NUM BETWEEN ? AND ?";
+		String query ="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY ENROLL_DATE DESC)AS NUM, TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM (SELECT '독서혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_REVIEW_REPLY WHERE USER_ID=? UNION ALL SELECT '나눔혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,SHARE_NO FROM BOOK_SHARE_REPLY WHERE USER_ID=? UNION ALL SELECT '감상혜윰'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM MOVIE_RECOMMEND_REPLY WHERE USER_ID=? UNION ALL SELECT '관람혜윰'AS TYPE, REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO FROM SHOW_REVIEW_REPLY WHERE USER_ID=? ))WHERE NUM BETWEEN ? AND ?";
 		ArrayList<Reply> rList = null;
 		int recordCountPerPage = 10;
 		int start = currentPage*recordCountPerPage - (recordCountPerPage - 1);
@@ -419,7 +419,7 @@ public class ReplyDAO {
 	public int totalAllCount(Connection conn, String userId) { // 댓글 모아보기 총 개수
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM (SELECT 'BR'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_REVIEW_REPLY WHERE USER_ID=? UNION ALL SELECT 'BS'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_SHARE_REPLY WHERE USER_ID=? UNION ALL SELECT 'MR'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM MOVIE_RECOMMEND_REPLY WHERE USER_ID=? UNION ALL SELECT 'SR'AS TYPE, REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO FROM SHOW_REVIEW_REPLY WHERE USER_ID=?)";
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM (SELECT 'BR'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM BOOK_REVIEW_REPLY WHERE USER_ID=? UNION ALL SELECT 'BS'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,SHARE_NO FROM BOOK_SHARE_REPLY WHERE USER_ID=? UNION ALL SELECT 'MR'AS TYPE,REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,NO FROM MOVIE_RECOMMEND_REPLY WHERE USER_ID=? UNION ALL SELECT 'SR'AS TYPE, REPLY_NO,REPLY_CONTENTS,ENROLL_DATE,USER_ID,REVIEW_NO FROM SHOW_REVIEW_REPLY WHERE USER_ID=?)";
 		int recordTotalCount = 0;
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -496,6 +496,28 @@ public class ReplyDAO {
 		}
 		System.out.println("DAO에서 share replyList : "+replyList);
 		return replyList;
+	}
+
+	public int totalCountBookShare(Connection conn, int shareNo) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		System.out.println("totalcount shareNo DAO" + shareNo);
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM BOOK_SHARE_REPLY WHERE SHARE_NO = "+shareNo;
+		int recordTotalCount = 0;
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				recordTotalCount = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return recordTotalCount;
 	}
 
 }

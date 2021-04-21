@@ -50,18 +50,15 @@ public class QnaDetailServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset = UTF-8");
 
-		
-		
-		
 		int qnaNo = Integer.parseInt(request.getParameter("qna-no")); 
 		String qnaPass  = request.getParameter("qna-pass");
-		Qna qna = new QnaService().printOne(qnaNo, qnaPass);
+		Qna qna = null;
+		qna = new QnaService().printOne(qnaNo, qnaPass);
 		
 		
-		HttpSession session  = request.getSession();
-		//String userId = (String) session.getAttribute("userId");
 	
 		if(qna!=null) {
+			
 			new QnaService().addHitsCount(qnaNo);
 			request.setAttribute("qna", qna);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/qna/qnaDetailForm.jsp");
@@ -69,7 +66,7 @@ public class QnaDetailServlet extends HttpServlet {
 		} else {
 			
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('비밀번호가 일치하지 않습니다')</script>");
+			out.println("<script>alert('비밀번호가 일치하지 않습니다'); history.back(); </script>");
 		}
 		
 		} 

@@ -108,6 +108,8 @@ public class BookDAO {
 				review.setNick(rset.getString("NICK"));
 				review.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				review.setHits(rset.getInt("HITS"));
+				review.setLikes(getLikeCount(conn,rset.getInt("REVIEW_NO")));
+				review.setReplys(getReplyCount(conn,rset.getInt("REVIEW_NO")));
 				bList.add(review);
 				System.out.println("DAO review selectall, review : "+review );
 			}
@@ -152,6 +154,50 @@ public class BookDAO {
 		}
 		System.out.println("DAO selectOne, review : HIT값확인 " + review.getHits());
 		return review;
+	}
+	public int getLikeCount(Connection conn, int reviewNo) { // 좋아요 수 가져오기
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM BOOK_LIKES WHERE REVIEW_NO = ? AND IS_CHECK = 1";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
+	}
+
+	private int getReplyCount(Connection conn ,int reviewNo) { // 리플 수 가져오기
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM BOOK_REVIEW_REPLY WHERE REVIEW_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reviewNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return count ;
 	}
 	public int insertBookReview(Connection conn, BookReview review) { // 책리뷰 등록
 		PreparedStatement pstmt = null;
@@ -420,6 +466,8 @@ public class BookDAO {
 				share.setNick(rset.getString("NICK"));
 				share.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				share.setHits(rset.getInt("HITS"));
+				share.setLikes(getLikeCountShare(conn,rset.getInt("SHARE_NO")));
+				share.setReplys(getReplyCountShare(conn,rset.getInt("SHARE_NO")));
 				sList.add(share);
 //				System.out.println("DAO sList : " + sList);
 			}
@@ -591,6 +639,28 @@ public class BookDAO {
 		}
 		return recordTotalCount;
 	}
+	private int getReplyCountShare(Connection conn ,int shareNo) { // 나눔 리플 수 가져오기
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM BOOK_SHARE_REPLY WHERE SHARE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return count ;
+	}
 	public ArrayList<BookShare>selectSearchBookShare(Connection conn, int currentPage, String search, String searchCategory){
 		
 		return null;
@@ -602,8 +672,23 @@ public class BookDAO {
 	public int searchTotalShareCount(Connection conn, String search, String searchCategory ) {
 		return 0;
 	}
-	public int  updateHitsShare(Connection conn, int shareNo) { // 조회수
-		return 0;
+	public int  updateHitsShare(Connection conn, int shareNo) { // 조회수 증가
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE BOOK_SHARE SET HITS = (SELECT HITS FROM BOOK_SHARE WHERE SHARE_NO = ?)+1 WHERE SHARE_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			pstmt.setInt(2, shareNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		System.out.println("DAO hits, result : " + result);
+		return result;
 	}
 	
 	// Share 좋아요
@@ -684,5 +769,27 @@ public class BookDAO {
 		}
 		return check;
 	}
+	public int getLikeCountShare(Connection conn, int shareNo) { // 좋아요 수 가져오기
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*)AS TOTALCOUNT FROM BOOK_LIKES WHERE SHARE_NO = ? AND IS_CHECK = 1";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, shareNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				count = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
+	}
+
 
 }

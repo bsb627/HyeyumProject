@@ -78,3 +78,4 @@
 
 <%@include file="/footer.jsp"%>
 <script src="/assets/js/qna/qnaList.js"></script>
+<script src="/assets/js/qna/qnaWrite.js"></script>

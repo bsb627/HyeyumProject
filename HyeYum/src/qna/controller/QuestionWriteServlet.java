@@ -68,6 +68,7 @@ public class QuestionWriteServlet extends HttpServlet {
 			int result = new QnaService().registerQuestion(qna);
 			
 			if(result > 0 ) {
+				System.out.println("작성성공.. ");
 				response.sendRedirect("/qna/list");
 			} else {
 				RequestDispatcher view2 = request.getRequestDispatcher("/WEB-INF/views/qna/qnaError.html");

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import book.model.service.BookService;
 import book.model.vo.BookPageData;
 import book.model.vo.BookReview;
+import reply.model.service.ReplyService;
 
 /**
  * Servlet implementation class BookBoardEnrollServlet
@@ -44,11 +45,9 @@ public class BookReviewListServlet extends HttpServlet {
 				currentPage = Integer.parseInt(request.getParameter("currentPage")); 
 		} 
 		
-		
 		BookPageData pageData = new BookService().printAllBookReview(currentPage);
 		ArrayList<BookReview> bList = pageData.getReviewList(); 
 		String pageNavi = pageData.getPageNavi();
-		System.out.println("List 서블릿, bList : " + bList);
 		if(!bList.isEmpty()) { 
 			request.setAttribute("bList",bList);
 			request.setAttribute("pageNavi", pageNavi); 

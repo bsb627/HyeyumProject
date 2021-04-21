@@ -104,8 +104,7 @@
 							<!-- End blog sidebar -->
 						</div>
 										<div class="col-md-9 info-card">
-					
-					
+				
 									<table class="table" style="text-align: center;">
 									<tr>
 										<th>번호</th>
@@ -139,6 +138,10 @@
 					<%=pageNavi%>
 				</ul>
 			</div>
+			
+				<div align="center">
+					<img src="/assets/img/mypage/reply.jpg" class="img-fluid" alt="Responsive image">
+					</div>
 									
 					</div>
 					

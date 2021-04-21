@@ -130,6 +130,22 @@ public class DonateService {
 		return memberAllCount;
 	}
 
+	public int countAllCompany() {
+		Connection conn = null;
+		int companyrAllCount = 0;
+		
+		try {
+			conn = factory.createConnection();
+			companyrAllCount = new DonateDAO().countAllCompany(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return companyrAllCount;
+	}
+
 	
 
 

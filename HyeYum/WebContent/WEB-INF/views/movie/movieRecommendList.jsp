@@ -139,13 +139,17 @@
 							<td><%= mRecommend.getNick() %></td>
 							<td><%= mRecommend.getEnrollDate() %></td>
 							<td><%= mRecommend.getHits() %></td>
-							<%-- <td><%= mRecommend.getLikes() %></td>  --%>
+							
+							 <td><i class="bi bi-hand-thumbs-up" style="color:navy;"> <%= mRecommend.getLikes() %></i></td>
 							
 							
-							 <%for (MovieData likes : likesCount) { %>
-							<% if(mRecommend.getRowNo() == likes.getRecommendNo()) { %>  
+							<%--  <%for (MovieData likes : likesCount) { %>
+							<% if(mRecommend.getRowNo() == likes.getRecommendNo() && likes.getLikesCount() > 0) { %>  
 							<td><i class="bi bi-hand-thumbs-up" style="color:navy;"> <%= likes.getLikesCount()%></i></td>
-							 <% } } %>   
+							<%}else if(mRecommend.getRowNo() == likes.getRecommendNo() && likes.getLikesCount() < 0){ %>
+							<td><i class="bi bi-hand-thumbs-up" style="color:navy;">0</i></td>
+							
+							 <% } } %>    --%>
 							
 						</tr>
 						<% } %>

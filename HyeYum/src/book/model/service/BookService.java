@@ -175,11 +175,26 @@ public class BookService {
 		}
 		return pd;
 	}
-	
-	public int BookReviewHits(int reviewNo) {// 조회수 증가
-		int result=0;
+	public int addHitsCount(int reviewNo) { // Review 조회수 증가
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().updateHitsReview(conn, reviewNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
+
 	// Review 좋아요
 	public int checkLikesReview(int reviewNo, String userId) {
 		int result =0;
@@ -372,6 +387,21 @@ public class BookService {
 	}
 	public int addHitsCountShare(int shareNo) { // 조회수 증가
 		int result = 0;
+		Connection conn = null;
+		try {
+			conn = factory.createConnection();
+			result = new BookDAO().updateHitsShare(conn, shareNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
 		return result;
 	}
 	
@@ -461,29 +491,5 @@ public class BookService {
 		}
 		return likes;
 	}
-
-	public int addHitsCount(int reviewNo) {
-		int result = 0;
-		Connection conn = null;
-		try {
-			conn = factory.createConnection();
-			result = new BookDAO().updateHitsReview(conn, reviewNo);
-			if(result > 0) {
-				JDBCTemplate.commit(conn);
-			}else {
-				JDBCTemplate.rollback(conn);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(conn);
-		}
-		return result;
-	}
-
-
-
-
 
 }

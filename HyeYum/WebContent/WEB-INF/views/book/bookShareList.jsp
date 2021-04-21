@@ -56,14 +56,14 @@
 								<% for(BookShare share : sList) { %>
 								<tr>
 									<td><%=share.getNo() %></td>
-									<td><a href="/bookShare/detail?share-no=<%=share.getNo()%>">
+									<td><a href="/bookShare/addHits?share-no=<%=share.getNo()%>">
 										 [<%=share.getRegion() %>]
 										<%=share.getTitle()%></a>
 									</td>
 									<td><%=share.getNick() %></td>
 									<td><%=share.getEnrollDate() %></td>
 									<td><%=share.getHits() %></td>
-									<td><%=share.getHits() %></td>
+									<td><%=share.getLikes() %></td>
 								</tr>
 								<% } %>
 							<div>

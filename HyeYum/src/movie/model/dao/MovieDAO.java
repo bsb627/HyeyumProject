@@ -332,6 +332,7 @@ public class MovieDAO {
 			pstmt.setString(2, movieReview.getContents());
 			pstmt.setString(3, movieReview.getSpoiler());
 			pstmt.setInt(4, movieReview.getReNo());
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -413,6 +414,7 @@ public class MovieDAO {
 				mRecommend.setNick(rset.getString("NICK"));
 				mRecommend.setUserId(rset.getString("USER_ID"));
 				mRecommend.setLikes(getLikeCount(conn, rset.getInt("RECOMMEND_NO")));
+				
 				recommend.add(mRecommend);
 			}
 		} catch (SQLException e) {
@@ -538,6 +540,7 @@ public class MovieDAO {
 				mRecommend.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mRecommend.setNick(rset.getString("NICK"));
 				mRecommend.setUserId(rset.getString("USER_ID"));
+				mRecommend.setLikes(getLikeCount(conn, rset.getInt("RECOMMEND_NO")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

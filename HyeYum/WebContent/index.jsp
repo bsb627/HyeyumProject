@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="movie.model.vo.MovieInfo"%>
 <%@page import="book.model.vo.BookInfo"%>
 <%@page import="show.model.vo.ShowInfo"%>
@@ -8,10 +9,63 @@
 	ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>)request.getAttribute("iList");
 	ArrayList<BookInfo> bList = (ArrayList<BookInfo>)request.getAttribute("bList");
 	ArrayList<MovieInfo> mList = (ArrayList<MovieInfo>)request.getAttribute("mList");
+	
+	
+ 	String postAllCount = (String)request.getAttribute("postAllCount");  
+ 	String memberAllCount = (String)request.getAttribute("memberAllCount");
+ 	String companyAllCount = (String)request.getAttribute("companyAllCount");
+ 	String donateAllCount = (String)request.getAttribute("donateAllCount");
+ 	
+ 	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 <%@include file="/header.jsp"%>
-<script type="text/javascript"	src="/assets/js/index-ready.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/assets/js/index-ready.js"></script>
 <script>
+$(document).ready(function() {
+	
+		   console.log($(document).height() - $(window).height());
+	$(window).scroll(function(){ 
+	   if($(window).scrollTop() == 1 || $(window).scrollTop() == 100 || $(window).scrollTop() == 500 || $(window).scrollTop() == 1000 || $(window).scrollTop() == 1500 || $(window).scrollTop() == 2000){
+		   var memberCountConTxt= <%= donateAllCount %>;
+
+		   $({ val : 0 }).animate({ val : memberCountConTxt }, {
+		    duration: 2000,
+		   step: function() {
+		     var num = numberWithCommas(Math.floor(this.val));
+		     $(".memberCountCon").text(num);
+		   },
+		   complete: function() {
+		     var num = numberWithCommas(Math.floor(this.val));
+		     $(".memberCountCon").text(num);
+		   }
+		   });
+	   } 
+	});
+	  var memberCountConTxt= <%= donateAllCount %>;
+
+$({ val : 0 }).animate({ val : memberCountConTxt }, {
+ duration: 2000,
+step: function() {
+  var num = numberWithCommas(Math.floor(this.val));
+  $(".memberCountCon").text(num);
+},
+complete: function() {
+  var num = numberWithCommas(Math.floor(this.val));
+  $(".memberCountCon").text(num);
+}
+});
+
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+        
+});
+
+
 </script> 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero d-flex align-items-center">
@@ -38,6 +92,9 @@
 </section>
 <!-- End Hero -->
 
+<%if(iList == null) {%>
+					<script type="text/javascript">indexReady()</script>
+				<% }else{%>
 <!-- ======= Counts Section ======= -->
 <section id="counts" class="counts">
 	<div class="container" data-aos="fade-up">
@@ -48,8 +105,8 @@
 				<div class="count-box">
 					<i class="bi bi-emoji-heart-eyes"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="2567"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="<%= memberAllCount %>"
+							data-purecounter-duration="1" data-purecounter-delay="10" data-purecounter-once = "false" class="purecounter"></span>
 						<p>참여자 수</p>
 					</div>
 				</div>
@@ -59,8 +116,8 @@
 				<div class="count-box">
 					<i class="bi bi-journal-check" style="color: #ee6c20;"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="12789"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="<%= postAllCount %>"
+							data-purecounter-duration="1" data-purecounter-delay="10" data-purecounter-once = "false" class="purecounter"></span>
 						<p>게시글 수</p>
 					</div>
 				</div>
@@ -70,8 +127,9 @@
 				<div class="count-box">
 					<i class="bi bi-gift" style="color: #15be56;"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="1456321"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+						<%-- <span id = "donate" data-purecounter-start="0" data-purecounter-end="<%= donateAllCount %>"
+							data-purecounter-duration="1" data-purecounter-once = "false" data-purecounter-decimals="" class="purecounter"><%= donateAllCount %></span> --%>
+							<span class="memberCountCon"></span>
 						<p>총 기부금</p>
 					</div>
 				</div>
@@ -81,8 +139,8 @@
 				<div class="count-box">
 					<i class="bi bi-people" style="color: #bb0852;"></i>
 					<div>
-						<span data-purecounter-start="0" data-purecounter-end="1512"
-							data-purecounter-duration="1" data-purecounter-once = "false" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="<%= companyAllCount %>"
+							data-purecounter-duration="1" data-purecounter-delay="10" data-purecounter-once = "false" class="purecounter"></span>
 						<p>제휴기업</p>
 					</div>
 				</div>
@@ -116,9 +174,6 @@
 
 	<!--  ============ End Chart ============== -->
 
-<%if(iList == null) {%>
-					<script type="text/javascript">indexReady()</script>
-				<% }else{%>
 	<!-- ======= Portfolio Section ======= -->
 	 <section id="portfolio" class="portfolio">
 

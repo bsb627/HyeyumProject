@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.BookAdminService;
 import book.model.vo.BookReview;
+import file.model.service.BookFileService;
 import file.model.service.FileService;
 import file.model.vo.FileData;
 
@@ -36,12 +37,9 @@ public class BookAdminListServlet extends HttpServlet {
 		ArrayList<BookReview> rList = new BookAdminService().printAllBookReviewList();
 		FileData fd = new FileData();
 		fd.setFileType("book");
-		ArrayList<FileData> fList = new FileService().printShowReviewFileList();
 		System.out.println(rList);
-		System.out.println(fList);
 		if(!rList.isEmpty()) {
 			request.setAttribute("rList", rList);
-			request.setAttribute("fList", fList);
 			request.getRequestDispatcher("/WEB-INF/views/admin/board/bookList.jsp").forward(request, response);
 			
 		}else {
