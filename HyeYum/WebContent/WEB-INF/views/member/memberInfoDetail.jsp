@@ -133,7 +133,6 @@
 										</fieldset>
 									</div>
 
-									<hr>
 
 									<div class="form-group">
 										<!-- 이름 -->
@@ -144,22 +143,20 @@
 										</fieldset>
 									</div>
 
-									<hr>
 
-									<div class="form-group-pwd">
+									<div class="form-group has-success">
 										<!-- 비밀번호 -->
-										<label class="col-form-label" for="inputDefault"><h5>비밀번호</h5></label>
+										<label class="col-form-label" for="inputDefault"><h5>회원 비밀번호</h5></label>
 										<input type="password" class="form-control" placeholder=""
 											value="" id="user-pwd" name="userPwd"><span style="display: inline-block;" id="check-msg"><p></p></span>
 									</div>
 
-									<hr>
 
-									<div class="form-group-pwd">
+									<div class="form-group has-success">
 										<!-- 비밀번호 재확인 -->
-										<label class="col-form-label" for="inputDefault"><h5>비밀번호
+										<label class="col-form-label" for="inputDefault"><h5>회원 비밀번호
 												확인</h5></label> <input type="password" class="form-control"
-											placeholder="" value="" id="user-repwd" name="userRePwd"><span style="display: inline-block;" id="check-msg"><p></p></span>
+											placeholder="" value="" id="user-repwd" name="userRePwd"><span style="display: inline-block;" id="recheck-msg"><p></p></span>
 											
 											
 									<!-- 	<div id="alert-success" class="valid-feedback">Success!
@@ -169,7 +166,6 @@
  -->
 									</div>
 
-									<hr>
 
 									<div class="form-group">
 										<!-- 닉네임 -->
@@ -180,96 +176,38 @@
 										</fieldset>
 									</div>
 
-									<hr>
 
-									<div class="form-group">
+									<div class="form-group has-success">
 										<!-- 전화번호 -->
 										<label class="col-form-label" for="inputDefault"><h5>전화번호</h5></label>
 										<input type="text" class="form-control" placeholder=""
-											value="<%=member.getUserPhone()%>" id="inputDefault"
-											name="userPhone">
+											value="<%=member.getUserPhone()%>" id="user-phone"
+											name="userPhone"><span style="display: inline-block;" id="check-phone-msg"><p></p></span>
 									</div>
 
-									<hr>
 
-									<div class="form-group">
+									<div class="form-group has-success">
 										<!-- 이메일 -->
 										<label class="col-form-label" for="inputDefault"><h5>이메일</h5></label>
 										<input type="text" class="form-control" placeholder=""
-											value="<%=member.getUserEmail()%>" id="inputDefault"
-											name="userEmail">
+											value="<%=member.getUserEmail()%>" id="user-email"
+											name="userEmail"><span style="display: inline-block;" id="check-email-msg"><p></p></span>
 									</div>
 
-									<hr>
 
-
-
-									<div class="form-group">
-										<label class="col-form-label" for="inputDefault"><h5>주소</h5></label>
-										<label for="address"><i class="zmdi zmdi-email"></i></label> <input
-											type="text" class="form-control"
-											value="<%=member.getUserAddress() %> " id="inputDefault"
-											name="userAddress" required readonly>
-										<!-- <input type="text" name="user-address" id="user-address" placeholder="공백 포함하여 주소 입력" required /> -->
-										<input type="text" id="sample4_postcode" placeholder="우편번호">
-										<input type="button" id="address-btn" value="우편번호 찾기"><br>
-										<input type="text" id="sample4_roadAddress"
-											placeholder="도로명주소" name="userAddress1" size="50"><br>
-
-										<input type="hidden" id="sample4_jibunAddress"
-											placeholder="지번주소" size="50"> <span id="guide"
-											style="color: #999; display: none"></span> <input type="text"
-											id="sample4_detailAddress" placeholder="상세주소"
-											name="userAddress2" size="50"><br>
-									</div>
-
-									<hr>
-									<!-- 기입란 end -->
-									<!-- 	<h3>지울거</h3>
-								<div class="form-group">
-									<fieldset>
-										<label class="control-label" for="readOnlyInput">Readonly
-											input</label> <input class="form-control" id="readOnlyInput"
-											type="text" placeholder="Readonly input here..." readonly="">
-									</fieldset>
+									<div class="form-group has-success">
+								<label class="form-control-label" for="inputDefault"><h5>주소</h5></label>
+									<label for="address"><i class="zmdi zmdi-email"></i></label> 
+									<!-- <input type="text" name="user-address" id="user-address" placeholder="공백 포함하여 주소 입력" required /> --> 
+									<input type="text" id="sample4_postcode" placeholder="우편번호"> 
+									<input type="button" id="address-btn"  value="우편번호 찾기"><br> 
+									<input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" value="<%= member.getUserAddress() %>" name="userAddress1" size="50" autocomplete="none" required><br>
+									
+									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" size="50"> <span id="guide"
+										style="color: #999; display: none"></span> 
+										<input type="text"  class="form-control" id="sample4_detailAddress"  placeholder="상세주소" name="userAddress2" size="50" autocomplete="none" required><br>
 								</div>
 
-								<div class="form-group has-success">
-									<label class="form-control-label" for="inputValid">Valid
-										input</label> <input type="text" value="correct value"
-										class="form-control is-valid" id="inputValid">
-									<div class="valid-feedback">Success! You've done it.</div>
-								</div>
-
-								<div class="form-group has-danger">
-									<label class="form-control-label" for="inputInvalid">Invalid
-										input</label> <input type="text" value="wrong value"
-										class="form-control is-invalid" id="inputInvalid">
-									<div class="invalid-feedback">Sorry, that username's
-										taken. Try another?</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-form-label col-form-label-lg"
-										for="inputLarge">Large input</label> <input
-										class="form-control form-control-lg" type="text"
-										placeholder=".form-control-lg" id="inputLarge">
-								</div>
-
-								<div class="form-group">
-									<label class="col-form-label" for="inputDefault">Default
-										input</label> <input type="text" class="form-control"
-										placeholder="Default input" id="inputDefault">
-								</div>
-
-								<div class="form-group">
-									<label class="col-form-label col-form-label-sm"
-										for="inputSmall">Small input</label> <input
-										class="form-control form-control-sm" type="text"
-										placeholder=".form-control-sm" id="inputSmall">
-								</div>
-
- -->
 
 									<div class="entry-content" style="text-align: center">
 										<div class="out">
@@ -315,5 +253,5 @@
 <%@include file="/footer.jsp"%>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="/assets/js/memberInfoDatail.js"></script>
+<script src="/assets/js/member/memberInfoDetail.js"></script>
 <script src="/assets/js/member/enroll-address.js"></script>
