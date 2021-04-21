@@ -10,6 +10,9 @@
 <head>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <%
 	if (userId == null) {
 %>
@@ -70,6 +73,14 @@ a:hover.contents {
 	font-weight : bold;
 }
 
+
+/* #kakao {
+ 	position: fixed;
+    width: 50px;
+    height: 50px;
+    top: 450px;
+    right: 10px;
+} */
 </style>
 </head>
  <main id="main">
@@ -99,7 +110,19 @@ a:hover.contents {
 		</div>
 		
 		<!--  시작  -->
-		
+<!-- 		<div id="ex1" class="modal" style = "width:500px; height:500px; text-align: center ">
+  		<h2>QR코드를 스캔해 주세요</h2>
+  
+  		<img src = "/assets/img/qna/myqr.jpg" style = "width:300px; height:300px;"><br>
+  		<h3 style = "color:orange"><i class="bi bi-person-plus"></i>  문화나눔, 혜윰 고객센터</h3>
+  		<a href="#" rel="modal:close"><button class = "btn btn-primary">닫기</button></a>
+		</div>
+		<p><a href="#ex1" rel="modal:open"><img src = "/assets/img/qna/kakao.jpg" id = "kakao" ></a></p> -->
+
+
+
+
+
 
 		<div style = "float : right">
 			<form class="row g-3" action = "/qna/search" method = "get">
