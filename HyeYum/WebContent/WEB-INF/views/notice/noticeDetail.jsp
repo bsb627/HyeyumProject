@@ -77,8 +77,8 @@ word-wrap:break-word;
               </div>
 
              
-              <div class="entry-footer">
-                <i class="bi bi-folder"></i>
+              <!--<div class="entry-footer">
+                <i class="bi bi-folder"></i>  -->
               
               </div>
               </article>

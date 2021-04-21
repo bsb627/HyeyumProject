@@ -71,6 +71,8 @@
 									</div>
 								</div>
 
+   
+
 								<!-- 기업 비전과 방향 -->
 								<div class="member-info">
 									<h4>전문성</h4>
