@@ -16,6 +16,9 @@
 main * {
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
+.blank-content{
+word-wrap:break-word;
+}
 </style>
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css"
 	rel="stylesheet">
