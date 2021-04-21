@@ -89,7 +89,7 @@
 								<button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up-fill"></i> 좋아요 취소</button></a>
 								<%-- <i class="fa fa-thumbs-up fa-2x"></i><%= recommend.getLikes() %></a> --%>
 								 <% } %>
-								 
+								
 								 
 							<!-- 	 <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up-fill"></i> 좋아요 취소</button>
 								 <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up good"></i> 좋아요</button>
@@ -97,7 +97,7 @@
 								
 								
 							</div>
-					
+							 
 
 					</article>
 					<!-- End blog entry -->
@@ -168,6 +168,7 @@
 									<li><strong>조회수</strong> <%=recommend.getHits()%></li>
 									<li><strong>작성일</strong> <%=recommend.getEnrollDate()%></li>
 									<li><i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>&nbsp<span style="font-size:large;"><%=recommend.getLikes()%>명이 좋아합니다.</span></li>
+									<li><button type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-envelope-open"></i></button></li>
 									</ul>
 							</div>
 							
@@ -178,9 +179,9 @@
 									if (recommend.getUserId().equals(userId)) {
 								%>
 								<a href="/movieRecommend/modify?no=<%=recommend.getNo()%>">
-									<input type="button" class="btn btn-primary " value="수정">
+									<input type="button" class="btn btn-outline-warning" value="수정">
 								</a> <a href="/movieRecommend/delete?no=<%=recommend.getNo()%>"><input
-									type="button" class="btn btn-primary" id="recommend-delete-btn" value="삭제"></a>
+									type="button" class="btn btn-outline-danger" id="recommend-delete-btn" value="삭제"></a>
 								<%
 									}
 								%>

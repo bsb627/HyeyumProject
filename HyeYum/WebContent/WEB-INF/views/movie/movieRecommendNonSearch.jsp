@@ -58,7 +58,9 @@
 					<i class="bi bi-emoji-dizzy"></i>&nbsp; 검색 결과를 찾을 수 없습니다.
 				</p>
 				<br>
+				<form action="/movieRecommend/search" method="get">
 				<div style="width: 35%; float:none; margin:0 auto">
+				<div class="col-auto">
 					<div class="input-group">
 						<select name="search-category" class="form-select">
 							<option value="NICK">작성자</option>
@@ -66,15 +68,18 @@
 							<option value="CONTENTS">내용</option>
 						</select>
 						<!-- aria-label="Search" -->
-						<div class="col-auto">
+					
+						
 							<input type="text" name="search-keyword"
 								class="form-control rounded" placeholder="Search"
 								aria-describedby="search-addon" />
-						</div>
+						
 						<input type="submit" class="btn btn-primary" value="검색">
+						
+						</div>
 					</div>
 				</div>
-
+				</form>
 			</header>
 			<section class="inner-page blog">
 

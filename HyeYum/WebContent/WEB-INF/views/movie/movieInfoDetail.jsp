@@ -120,7 +120,8 @@
               <div class="post-img"><img src="/assets/img/movie/review.jpg" class="img-fluid" alt=""></div>
               <span class="post-date"><%= mInfo.getSynopsis() %></span>
               <!-- <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3> -->
-              <a href="/movieReview/list" class="readmore stretched-link mt-auto"><span>리뷰 작성하기</span><i class="bi bi-arrow-right"></i></a>
+              <a href="/movieReview/list" class="readmore stretched-link mt-auto"><span data-toggle="modal" data-target="#writeModal"
+						data-whatever="@getbootstrap" id="write-button">리뷰 작성하기</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
