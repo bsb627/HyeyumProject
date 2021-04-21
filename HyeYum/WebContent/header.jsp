@@ -37,10 +37,10 @@
   
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">
-
+<!-- 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <style>
 #kakao {
  	position: fixed;
@@ -61,15 +61,64 @@
 </head>
 
 <body>
-		<div id="ex1" class="modal" style = "width:500px; height:500px; text-align: center ">
+	<!-- 	<div id="ex1" class="modal" style = "width:500px; height:500px; text-align: center ">
   		<h2>QR코드를 스캔해 주세요</h2>
   
   		<img src = "/assets/img/qna/myqr.jpg" style = "width:300px; height:300px;"><br>
   		<h3 style = "color:orange"><i class="bi bi-person-plus"></i>  문화나눔, 혜윰 고객센터</h3>
   		<a href="#" rel="modal:close"><button class = "btn btn-primary">닫기</button></a>
 		</div>
-		<p><a href="#ex1" rel="modal:open"><img src = "/assets/img/qna/kakao.jpg" id = "kakao" ></a></p>
+		<p><a href="#ex1" rel="modal:open"><img src = "/assets/img/qna/kakao.jpg" id = "kakao" ></a></p> -->
 
+<!-- --------------------------------------------------------------------- -->
+
+<p><span class="btn btn-primary btn-write"
+						data-toggle="modal" data-target="#kakaoWriteModal"
+						data-whatever="@getbootstrap"><img src = "/assets/img/qna/kakao.jpg" id = "kakao" ></span></p>
+
+	<!-- <button type="button" class="btn btn-primary btn-write"
+						data-toggle="modal" data-target="#writeModal"
+						data-whatever="@getbootstrap">글쓰기</button> -->
+
+<div class="modal fade" id="kakaoWriteModal" tabindex="-1" role="dialog"
+	aria-labelledby="writeModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		
+			<div class="modal-header">
+				<h5 class="modal-title" id="writeModalLabel">혜윰 플러스친구 추가</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+				<div class="modal-body">
+				<div align="center">
+  		<h2>QR코드를 스캔해 주세요</h2>
+  
+  		<img src = "/assets/img/qna/myqr.jpg" style = "width:300px; height:300px;"><br>
+  		<h3 style = "color:orange"><i class="bi bi-person-plus"></i>  문화나눔, 혜윰 고객센터</h3>
+  		
+		
+				</div>
+		
+				</div>
+			
+		</div>
+		
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- -------------------------------------------------------------------- -->
 
 
 

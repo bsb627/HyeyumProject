@@ -137,7 +137,7 @@
 									<i class="ri-lock-2-line icon"></i>
 									<h3>비밀번호 변경</h3>
 									
-									<a href="#" class="read-more"><span>자세히 보기</span> <i class="bi bi-key-fill"></i></a>
+									<a href="/member/chagePwd" class="read-more"><span>자세히 보기</span> <i class="bi bi-key-fill"></i></a>
 								</div>
 							</div> 
 
