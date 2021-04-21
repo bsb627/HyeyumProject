@@ -140,7 +140,7 @@
 										if (review.getUserId().equals(userId)) {
 									%>
 									<a href="/showReview/delete?no=<%=review.getNo()%>"><button
-											type="button" class="btn btn-sm btn-outline-danger"
+											type="button" class="btn btn-sm btn-outline-danger" id="delete-btn"
 											data-mdb-ripple-color="dark">삭제</button> </a>
 									<%
 										}

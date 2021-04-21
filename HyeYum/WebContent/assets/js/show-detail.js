@@ -8,6 +8,16 @@ printLikes($("#review-no").val());
  $("#heart-btn").on("click",function(){
 	updateLikes();
 })
+
+ $("#delete-btn").on("click",function(){
+		 if (!confirm("정말 삭제하시겠습니까?")) {
+	        // 취소(아니오) 버튼 클릭 시 이벤트
+				return false;
+		    } else {
+		        // 확인(예) 버튼 클릭 시 이벤트
+		    }
+})
+
 	$("#comment-btn").on('click',function(){
 		if($("#comment").val() == "" || $("#comment").val() == null){
 			alert("내용을 입력해주세요.");

@@ -46,13 +46,13 @@ Calendar cal = Calendar.getInstance();
 
           <div class="col-lg-6 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="box">
-              <img src="/assets/img/pricing-free.png" class="img-fluid" alt="">
+              <img src="/assets/img/order/order.jpg" class="img-fluid" alt="">
               <ul>
                 <sub>결제일시</sub><li><strong><%= sdf.format(cal.getTime()) %></strong></li>
                 <sub>제품명</sub><li><strong>혜윰팔찌</strong></li>
               </ul>
-              <div class="price"><sup>￦</sup>15,000<span> / ko</span></div>
-              <h3 style="color: #07d5c0;">결제가 완료되었습니다.</h3>
+              <div class="price">15,000<span>원</span></div>
+              <h3 style="color: #4f52ff;">결제가 완료되었습니다.</h3>
               <a href="/order/list" class="btn-buy">주문 내역으로</a>
             </div>
           </div>
