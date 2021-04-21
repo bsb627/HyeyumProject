@@ -86,7 +86,7 @@ ArrayList<ShowInfo> iList = (ArrayList<ShowInfo>) request.getAttribute("iList");
 							<div class="form-outline show-form">
 								<input type="text" id="ticket-number" class="form-control"
 									name="ticket-number" value="<%=review.getTicketNumber()%>"
-									autocomplete="off" required /> <label class="form-label"
+									autocomplete="off" required readonly="readonly" /> <label class="form-label"
 									for="ticket-number">예매 일련번호</label>
 							</div>
 						</div>
