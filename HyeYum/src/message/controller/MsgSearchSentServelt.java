@@ -55,6 +55,8 @@ public class MsgSearchSentServelt extends HttpServlet {
 			request.setAttribute("searchList", searchList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.getRequestDispatcher("/WEB-INF/views/message/sentSearchListForm.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/views/message/noneSentSearch.jsp").forward(request, response);
 		}
 	}
 

@@ -58,6 +58,8 @@ public class MsgSearchReceivedServlet extends HttpServlet {
 			request.setAttribute("searchList", searchList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.getRequestDispatcher("/WEB-INF/views/message/receivedSearchListForm.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/views/message/noneReceivedSearch.jsp").forward(request, response);
 		}
 	}
 

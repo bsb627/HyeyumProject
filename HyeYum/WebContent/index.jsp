@@ -312,7 +312,7 @@ function numberWithCommas(x) {
               <span class="featured">혜윰굿즈</span>
               <h3 style="color: #65c600;">혜윰팔찌</h3>
               <div class="price">15,000<span>원</span></div>
-              <img src="/assets/img/product/palzzi4.png" class="img-fluid" alt="">
+              <img src="/assets/img/product/palzzi3-1.png" class="img-fluid" alt="">
               <ul>
                 <li>혜윰과 함께 불우 이웃 돕기에 동참해주세요!</li>
                 <li>불우 이웃 돕기에 동참해주신 분들께 감사 굿즈를 전달 드립니다.</li>
