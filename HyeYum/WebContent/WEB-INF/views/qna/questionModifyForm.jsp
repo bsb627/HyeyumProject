@@ -6,8 +6,9 @@
 <%
 	Qna qna = (Qna)request.getAttribute("qna");
 %>
+
 <head>
-<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 	 $(document).ready(function() {
 		$("#qna-form").submit(function() {
@@ -40,7 +41,7 @@
   <title>문화나눔, 혜윰 - QnA</title>
 
 </head>
-</head>
+
  <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->

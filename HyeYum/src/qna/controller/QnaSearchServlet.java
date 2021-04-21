@@ -50,6 +50,9 @@ public class QnaSearchServlet extends HttpServlet {
 			request.setAttribute("searchList", searchList);
 			request.setAttribute("pageNavi", pageNavi);
 			request.getRequestDispatcher("/WEB-INF/views/qna/qnaSearchList.jsp").forward(request, response);
+		} else {
+			System.out.println("qna 검색 결과가 없습니다");
+			request.getRequestDispatcher("/WEB-INF/views/qna/qnaSearchListNone.jsp").forward(request, response);
 		}
 	}
 

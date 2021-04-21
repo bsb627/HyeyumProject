@@ -170,9 +170,10 @@ public class DonateDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int companyAllCount = 0;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM COMPANY";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM COMPANY WHERE PARTNERSHIP = ?";
 		try {
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "Y");
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				companyAllCount = rset.getInt("TOTALCOUNT");

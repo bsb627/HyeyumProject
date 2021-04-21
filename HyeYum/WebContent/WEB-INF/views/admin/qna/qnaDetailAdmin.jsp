@@ -8,6 +8,21 @@
 	Qna qna = (Qna)request.getAttribute("qna");
 
 %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	 $(document).ready(function() {
+		$("#qna-form").submit(function() {
+			var contents = $("#contents");
+			if(contents.val() =="") {
+				alert("답변을 입력해주세요. ");
+				return false;
+			}
+			alert("등록하시겠습니까?");
+			return true;
+		});
+	 });
+		
+	</script>
     <%@include file="/admin/header.jsp"%>
       <!-- Begin Page Content -->
  <div class="container-fluid">
@@ -31,14 +46,14 @@
         	<% if (qna.getStep()==0) {%>
             <div class="card mb-4 py-3 border-bottom-primary">
             <div class="card-body">
-            <form action = "/admin/qna/write" method = "post">
+            <form action = "/admin/qna/write" method = "post" id = "qna-form">
             <input type = "hidden" value = "<%= qna.getQuestionPwd() %>" name = "qna-pwd">
             <input type = "hidden" value = "<%= qna.getCategory() %>" name = "category">
             <input type = "hidden" value = "<%= qna.getFamily() %>" name = "family">
            	<input type = "hidden" name = "title" class = "form-control">
            	
            	
-            답변 : <textarea name = "contents" class = "form-control"></textarea><br><br>
+            답변 : <textarea name = "contents" class = "form-control" id = "contents"></textarea><br><br>
             <input type = "submit" value ="등록" class="btn btn-primary" style = "float : right">
             </form>
 

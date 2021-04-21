@@ -34,7 +34,7 @@
         ]);
 
         var options = {
-          title: '분야별 기부금',
+          title: '',
           pieHole: 0.4,
         };
 
@@ -43,6 +43,24 @@
       }
     }
     </script>
+    
+  <style>
+  #mypost:hover {
+  
+  		background-color : orange;
+  		color : white;
+  		transition : 0.2s;
+  
+  }
+  
+  #mydonate:hover {
+  background-color : yellowgreen;
+  		color : white;
+  		transition : 0.2s;
+  
+  }
+  
+  </style>
 </head>
 
  <main id="main">
@@ -131,15 +149,15 @@
 										
 			<!--============== 여기에 작성하기================================ -->
 <div class="col-md-9 info-card">
-<article class="entry entry-single col-6" style = "text-align:center; float:left">   
+<article id = "mypost" class="entry entry-single col-6" style = "text-align:center; float:left">   
 <i class="bi bi-bookmark-heart-fill" style = "font-size : 50px"></i>
-<div style = "flot:left">
+<div style = "flot:left" >
 나의 기부 게시글 수 <br>
 <%= bookCount + movieCount + showCount %> 개
 </div>
 
 </article>
-<article class="entry entry-single col-6" style = "text-align:center; float:left">   
+<article  id = "mydonate" class="entry entry-single col-6" style = "text-align:center; float:left">   
 <i class="ri-hand-heart-line" style = "font-size : 50px"></i>
 <div style = "flot:left">
 나의 총 기부액 <br>
