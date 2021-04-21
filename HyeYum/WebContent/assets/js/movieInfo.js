@@ -3,14 +3,26 @@ $(document).ready(function() {
 				contentForm();
 				checkMovieTicket();
 			});
+			
+	$("#modify-btn").on("click",function(){
+		modifyForm();
+			});
 
 	
 });
 
 	
 function contentForm(){
-	console.log($('#review-content').val());
-	if($('#review-content').val()==""){
+	console.log($('#summernote').val());
+	if($('#summernote').val()==""){
+		alert("내용을 입력해주세요");
+		event.preventDefault();
+	}
+}
+
+function modifyForm(){
+	console.log($('#summernote-modify').val());
+	if($('#summernote-modify').val()==""){
 		alert("내용을 입력해주세요");
 		event.preventDefault();
 	}

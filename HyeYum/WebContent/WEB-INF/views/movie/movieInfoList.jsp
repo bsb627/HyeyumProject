@@ -15,8 +15,8 @@
 <title>문화나눔, 혜윰 - 영화</title>
 
 <%@include file="/header.jsp"%>
+<link rel="stylesheet" href="/assets/note/summernote-lite.css">
 <link href="/assets/css/movie/movieinfo.css" rel="stylesheet">
-
 </head>
 
 
@@ -280,10 +280,13 @@
 						<input type="number" min="1" max="5" class="form-control" id="recipient-name" name="star-rating">
 					</div>
 
-					<div class="form-group">
+					<!-- <div class="form-group"> -->
 						<label for="message-text" class="col-form-label"><b>감상평</b></label>
-						<textarea class="form-control" id="review-content" name="content"> </textarea>
-					</div>
+						<!-- <textarea class="form-control" id="review-content" name="content" > </textarea> -->
+							<div class="form-outline show-form">
+						<textarea id="summernote" name="content" required></textarea>
+						</div>
+					<!-- </div> -->
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">예매일련번호</label>
@@ -346,10 +349,13 @@
 						<input type="number" min="1" max="5" class="form-control" id="recipient-name" name="star-rating" value="<%= mReview.getStarRating() %>" >
 					</div>
 
-					<div class="form-group">
+					<!-- <div class="form-group"> -->
 						<label for="message-text" class="col-form-label"><b>감상평</b></label>
-						<textarea class="form-control" id="message-text" name="content"><%= mReview.getContents() %></textarea>
-					</div>
+						<%-- <textarea class="form-control" id="message-text" name="content"><%= mReview.getContents() %></textarea> --%>
+							<div class="form-outline show-form">
+						<textarea id="summernote-modify" name="content" required><%= mReview.getContents() %></textarea>
+						</div>
+					<!-- </div> -->
 
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">예매일련번호</label>
@@ -359,7 +365,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
-						<button type="submit" class="btn btn-primary">수정</button>
+						<button type="submit" id="modify-btn" class="btn btn-primary">수정</button>
 					</div>
 				</div>
 				</form>
@@ -373,4 +379,7 @@
 
 
 <%@include file="/footer.jsp"%>
+<script src="/assets/note/summernote-lite.js"></script>
+<script src="/assets/note//lang/summernote-ko-KR.js"></script>
+<script type="text/javascript"	src="/assets/js/note-ready.js"></script>
  <script type="text/javascript"	src="/assets/js/movieInfo.js"></script> 
