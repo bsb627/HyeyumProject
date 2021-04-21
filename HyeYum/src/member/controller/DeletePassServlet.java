@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,6 +56,9 @@ public class DeletePassServlet extends HttpServlet {
 			request.setAttribute("member", member);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/deleteMember.jsp");
 			view.forward(request, response);
+		} else {
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('비밀번호가 틀렸습니다. ');history.back(); </script>");
 		}
 	}
 
