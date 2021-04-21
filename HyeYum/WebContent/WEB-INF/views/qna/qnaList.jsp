@@ -171,8 +171,9 @@ a:hover.contents {
       					
       					<ul class = "box">
 							<li style = "text-align : left"><a onclick ="msg(event)"><%= qna.getUserId()%></a></li>
+							<% if(!qna.getUserId().equals("admin")) {%>
 							<li class = "msgbox" id="sendMsg" style="display:none;" onclick ="msgPop('<%= qna.getUserId() %>')">쪽지 보내기</li>
-							
+							<% } %>
       					</ul>
       				</td>
       				
