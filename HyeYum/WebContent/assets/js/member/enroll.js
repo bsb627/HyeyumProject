@@ -41,15 +41,20 @@ var regExp = /^[a-z][a-z0-9]{3,11}$/;
                    
 					console.log(result);
 					  if(!regExp.test(userId)) {
-						$("#check-id-msg").html("<p class='text-danger'>ID는 영소문자+숫자 4~12자리이며 영소문자로 시작해야합니다.</p>");
+						$("#user-id").removeClass('is-valid');
+						$("#user-id").addClass('is-invalid');
+						$("#check-id-msg").html("<p class='text-danger' >ID는 영소문자+숫자 4~12자리이며 영소문자로 시작해야합니다.</p>");
 						}else{
 							
 						
 						if(result > 0){
-							$("#check-id-msg").html("<p class='text-danger'>아이디 중복</p>");
+							$("#user-id").removeClass('is-valid');
+							$("#user-id").addClass('is-invalid');
+							$("#check-id-msg").html("<p class='text-danger'>중복된 아이디 입니다.</p>");
 						}else{
-							$("#check-id-msg").html("<p class='text-success'>사용 가능한 아이디입니다.</p>");
-							
+							$("#user-id").removeClass('is-invalid');
+							$("#user-id").addClass('is-valid');
+							$("#check-id-msg").html("<p class='text-success'>사용 가능한 아이디 입니다.</p>");
 						}
 					}
                 },
