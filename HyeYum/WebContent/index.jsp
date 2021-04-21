@@ -305,8 +305,9 @@ function numberWithCommas(x) {
         <div class="row gy-4" data-aos="fade-left">
 
 
-
-          <div class="col-lg-12 col-md-12" data-aos="zoom-in" data-aos-delay="200">
+ <div align="center">
+           <div class="col-lg-8 col-md-8" data-aos="zoom-in" data-aos-delay="200">
+          
             <div class="box">
               <span class="featured">혜윰굿즈</span>
               <h3 style="color: #65c600;">혜윰팔찌</h3>
@@ -319,6 +320,7 @@ function numberWithCommas(x) {
               <a href="/intro/product/productForm.jsp" class="btn-buy">참여하기</a>
             </div>
           </div>
+</div>
 
 
         </div>
@@ -333,7 +335,7 @@ function numberWithCommas(x) {
 		<div class="container" data-aos="fade-up">
 			<header class="section-header">
 				<h2>Partner</h2>
-				<p>함께하는 친구들</p>
+				<p>함께하는 기업</p>
 			</header>
 			<div class="clients-slider swiper-container">
 				<div class="swiper-wrapper align-items-center">

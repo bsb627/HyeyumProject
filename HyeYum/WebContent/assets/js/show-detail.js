@@ -62,7 +62,8 @@ function printReply(reviewNo){
 					console.log(data);
 					if(data ==null){
 							$("#replyCount").html("<i class='bi bi-chat-square-dots'> 0</i> ")
- 							$("#totalCount").html("<strong>댓글 0개</strong>");
+ 							$("#totalCount").html("<strong>댓글 0개</strong><br>");
+						$('.show-reply').html('');
 					}
 					else{
 					 for(var i=0; i<data.length; i++) {

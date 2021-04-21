@@ -127,3 +127,4 @@
 <script src="/assets/note//lang/summernote-ko-KR.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 <script type="text/javascript"	src="/assets/js/note-ready.js"></script>
+<script type="text/javascript"	src="/assets/js/show-ready.js"></script>

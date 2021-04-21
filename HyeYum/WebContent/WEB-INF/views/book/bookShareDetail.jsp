@@ -87,7 +87,7 @@ if (userId == null) {
 									<%} else { %>
 									<a href="/bookShare/minusLikes?share-no=<%=share.getNo()%>">
 									<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
-									<%}%> <%=totalCount%>
+									<%}%> <%=likes%>
                                 </span>
                                 </td>
                             </tr>
@@ -108,11 +108,11 @@ if (userId == null) {
 				</div>
 			</div>
 			</div>
-			<hr>
 			<!-- Start comment #1 -->
 			<!-- 좋아요 시작  -->
 			       <div class="icon-box" style='float:right'>
 
+					</div>
 					</div>
 			<!-- 좋아요 끝  -->	
 					<div class="reply-box">
@@ -131,12 +131,8 @@ if (userId == null) {
 								</button>
 							</div>
 						</form>
-						<br>
-						<span class="post-date">
-							<%-- <i class="bi bi-eye"> <%=review.getHits()%></i> --%>							
-						</span>
-					</div>
-					 <% for(Reply reply : rList){ %>
+
+				 <% for(Reply reply : rList){ %>
 						<div id="" class="show-reply">
 							<div class="show-contents">
 								<h6>
@@ -148,7 +144,6 @@ if (userId == null) {
 							</div>
 						</div>
 						<%} %>
-
 
 			<!-- 하단 버튼 시작-->
                    <table class="table table-condensed">
@@ -179,7 +174,6 @@ if (userId == null) {
                    </table>
                    <!-- 하단 버튼 끝 -->
 				</div>
-			</div>
 	<!-- End Main -->
 </section>
 <%@include file="/footer.jsp"%>    

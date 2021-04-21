@@ -89,14 +89,15 @@
 
 					<div class="reply-box">
 					<span id="likesTotalCount"></span>
-						
+						<br>
 							<%-- <strong>댓글 <%=totalCount %>개
 							</strong> --%>
 							<span id="totalCount"></span>
-							
+							<br>
 						
 
 								<span id="show-contents"></span>
+								
 						<% for(Reply reply : rList){ %>
 						<div id="" class="show-reply">
 							<div class="">
@@ -162,7 +163,8 @@
 
 								<div class="d-flex">
 									<div class="comment-img">
-										<img src="/assets/img/blog/comments-2.jpg" alt="">
+										 <!-- <img src="/assets/img/blog/profile.jpg" alt=""> -->
+										<i class="bi bi-person" style="font-size: 47px;"></i>
 									</div>
 									<div class="comment-form">
 										<h5>

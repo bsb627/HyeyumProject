@@ -362,12 +362,12 @@ public class BookDAO {
 	public int insertLikesReview(Connection conn, int reviewNo, String userId) { // 게시글 좋아요 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_REVIEW_LIKES.NEXTVAL,1,?,0,?)";
+		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_REVIEW_LIKES.NEXTVAL,1,?,?,0)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, reviewNo);
-			pstmt.setString(2, userId);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, reviewNo);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -458,6 +458,7 @@ public class BookDAO {
 			pstmt.setInt(2, end);
 			rset = pstmt.executeQuery();
 			sList = new ArrayList<BookShare>();
+			
 			while(rset.next()) {
 				BookShare share = new BookShare();
 				share.setNo(rset.getInt("SHARE_NO"));
@@ -478,6 +479,7 @@ public class BookDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
+		System.out.println("sList : " + sList);
 		return sList;
 	}
 	public BookShare selectOneBookShare(Connection conn, int shareNo) { // 책나눔 상세보기
@@ -695,11 +697,11 @@ public class BookDAO {
 	public int insertLikesShare(Connection conn, int shareNo, String userId) { // 좋아요 등록
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_SHARE_LIKES.NEXTVAL,1,0,?,?)";
+		String query = "INSERT INTO BOOK_LIKES VALUES(SEQ_BOOK_SHARE_LIKES.NEXTVAL,1,?,0,?)";
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, shareNo);
-			pstmt.setString(2, userId);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, shareNo);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

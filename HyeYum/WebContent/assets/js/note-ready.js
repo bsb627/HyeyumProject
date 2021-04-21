@@ -18,10 +18,10 @@ $(document).ready(function() {
 		  ]
 	});
 			
-			
+			/*
 			$("#write-btn").on("click",function(){
 				checkForm();
-			});
+			});*/
 	
 });
 

@@ -85,7 +85,7 @@ if (userId == null) {
 								<%} else { %>
 								<a href="/bookReview/minusLikes?review-no=<%=review.getNo()%>">
 								<i class="bi bi-heart-fill show-icon" style="color: #dc3545"></i></a> 
-								<%}%> <%=totalCount%>
+								<%=likes%> <%}%> 
                                 </span>
                                 </td>
                             </tr>
@@ -106,7 +106,6 @@ if (userId == null) {
 						<%=review.getContents()%>
 					</p>
 			</div>
-				<hr>
 				<!-- 댓글 시작 -->
 					<div class="reply-box">
 						<h6 class="comments-count">
