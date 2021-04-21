@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,8 +40,10 @@ public class EnrollServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		  request.setCharacterEncoding("UTF-8"); 
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+
 		  // user-id, user-pwd , user-repwd,user-name, user-nick, user-email,
 		   // user-address, 
 		  String address1 = request.getParameter("user-address1");
@@ -58,7 +62,11 @@ public class EnrollServlet extends HttpServlet {
 		  
 		 int result = new MemberService().registerMember(member); 
 		  if (result > 0) { //회원가입 성공 
-			  request.getRequestDispatcher("/main/Info/list").forward(request, response);
+			  PrintWriter out = response.getWriter();
+				
+			  out.println("<script> alert('회원가입이 완료되었습니다.');");
+			  out.println("location.href='/member/login';");
+			  out.println("</script>");
 		  } else {
 			  request.getRequestDispatcher("/WEB-INF/views/member/memberError.html").forward(request, response);
 		  }

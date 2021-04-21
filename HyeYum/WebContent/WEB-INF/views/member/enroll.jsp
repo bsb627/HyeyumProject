@@ -62,22 +62,19 @@
 							<br> <br>
 
 							<form action="/member/enroll" method="POST" class="register-form" id="register-form">
+							
 								<div class="form-group has-success">
 									<!-- 아이디 -->
-									
 									<label class="form-control-label" for="user-id"><h5>아이디</h5>
 									</label> <input class="form-control " name="user-id" id="user-id"
 										placeholder="아이디 입력(영어소문자로 시작하며 숫자포함 4~12자리)" autocomplete="none" >
 										<span id="check-id-msg"></span>
-										
-									
-										
 								</div>
 
 
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 이름 -->
-									<label class="control-label" for="disabledInput"><h5>이름</h5>
+									<label class="form-control-label" for="user-name"><h5>이름</h5>
 									</label> <input class="form-control" name="user-name" id="user-name"
 										placeholder="이름 입력" autocomplete="none">
 										<span id="check-name-msg"></span>
@@ -85,9 +82,9 @@
 								</div>
 
 
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 비밀번호 -->
-									<label class="col-form-label" for="inputDefault"><h5>비밀번호</h5></label>
+									<label class="form-control-label" for="user-pwd"><h5>비밀번호</h5></label>
 									<input type="password" class="form-control" name="user-pwd"
 										id="user-pwd" placeholder="비밀번호(숫자,영어대소문자 조합 8~12자리)" autocomplete="none"  />
 										<span id="check-pwd-msg"></span>
@@ -95,9 +92,9 @@
 								</div>
 
 
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 비밀번호 재확인 -->
-									<label class="col-form-label" for="inputDefault"><h5>비밀번호
+									<label class="form-control-label" for="user-repwd"><h5>비밀번호
 											확인</h5></label> <input type="password" class="form-control"
 										name="user-repwd" id="user-repwd" placeholder="비밀번호 확인" autocomplete="none"
 										/>
@@ -105,9 +102,9 @@
 
 								</div>
 
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 닉네임 -->
-									<label class="control-label" for="disabledInput"><h5>닉네임</h5>
+									<label class="form-control-label" for="user-nick"><h5>닉네임</h5>
 									</label> <input class="form-control" name="user-nick" id="user-nick"
 										placeholder="닉네임 입력(한글,영문,숫자 조합 최소2자~최대10자)" autocomplete="none" />
 									<span id="check-nick-msg"></span>
@@ -116,37 +113,38 @@
 								
 
 
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 전화번호 -->
-									<label class="col-form-label" for="inputDefault"><h5>전화번호</h5></label>
+									<label class="form-control-label" for="inputDefault"><h5>전화번호</h5></label>
 									<input type="text" class="form-control" name="user-phone"
 										id="user-phone" placeholder="-없이 연락 가능한 전화번호 입력(010포함 필수)" autocomplete="none"/>
 										 <span id="check-phone-msg"></span>
 								</div>
 
 
-								<div class="form-group">
+								<div class="form-group has-success">
 									<!-- 이메일 -->
-									<label class="col-form-label" for="inputDefault"><h5>이메일</h5></label>
+									<label class="form-control-label" for="user-email"><h5>이메일</h5></label>
 									<input type="email" class="form-control" name="user-email"
 										id="user-email"
-										placeholder="@포함하여 이메일 입력 (ex_ hyeyum@gmail.com)" autocomplete="none" required/>
+										placeholder="@포함하여 이메일 입력 (ex_ hyeyum@gmail.com)" autocomplete="none"/>
+										 <span id="check-email-msg"></span>
 								</div>
 
 								
 									<!-- 주소 -->
 											
-								<div class="form-group">
-								<label class="col-form-label" for="inputDefault"><h5>주소</h5></label>
+								<div class="form-group has-success">
+								<label class="form-control-label" for="inputDefault"><h5>주소</h5></label>
 									<label for="address"><i class="zmdi zmdi-email"></i></label> 
 									<!-- <input type="text" name="user-address" id="user-address" placeholder="공백 포함하여 주소 입력" required /> --> 
 									<input type="text" id="sample4_postcode" placeholder="우편번호"> 
 									<input type="button" id="address-btn"  value="우편번호 찾기"><br> 
-									<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="user-address1" size="60" autocomplete="none" required><br>
+									<input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소" name="user-address1" size="60" autocomplete="none" required><br>
 									
 									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" size="60"> <span id="guide"
 										style="color: #999; display: none"></span> 
-										<input type="text" id="sample4_detailAddress" placeholder="상세주소" name="user-address2" size="60" autocomplete="none" required><br>
+										<input type="text"  class="form-control" id="sample4_detailAddress"  placeholder="상세주소" name="user-address2" size="60" autocomplete="none" required><br>
 								</div>
 								
 

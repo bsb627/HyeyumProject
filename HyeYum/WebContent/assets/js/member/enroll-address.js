@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $("#address-btn").on("click",function(){
 	sample4_execDaumPostcode();
+	addressCheck();
 });
 
         });
