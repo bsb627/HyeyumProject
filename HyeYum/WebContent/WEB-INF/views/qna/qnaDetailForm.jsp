@@ -87,11 +87,13 @@
 
 		
 		<div align = "right" style = "width:90%">
+		<% if(qna.getStep()==0) {%>
 		<form action="/qna/modify" method = "get" id = "modify-form" style = "float:right">
 			<input type = "hidden" name = "qna-no" value = "<%= qna.getQnaNo() %>">
 			<input type = "hidden" name = "qna-pwd" value ="<%= qna.getQuestionPwd() %>" >
 			<input type = "submit" value = "수정" class= "btn btn-primary" id = "modify">
-		</form>     
+		</form>
+		
 		
 
 		<form action = "/qna/delete" method = "post" id = "delete-form" style ="float:right">
@@ -99,7 +101,7 @@
 			
 			<input type = "submit" value = "삭제" class = "btn btn-outline-primary" id="delete">
 		</form>
-		
+		<% } %>
 
 		</div>
 		<br>

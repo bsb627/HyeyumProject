@@ -17,7 +17,26 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="/assets/css/member/member.css">
-    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	 $(document).ready(function() {
+		$("#login-form").submit(function() {
+			var id = $("#your_id");
+			var pass = $("#your_pass");
+			
+			if(id.val() =="") {
+				alert("아이디를 입력해주세요. ");
+				return false;
+			}else if(pass.val() == "") {
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}
+			return true;
+		});
+	 });
+		
+	</script>
 </head>
 <body>
 
@@ -37,7 +56,7 @@
                         <form action="/member/login" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="user-id" id="your_name" placeholder="Your ID"/>
+                                <input type="text" name="user-id" id="your_id" placeholder="Your ID"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
