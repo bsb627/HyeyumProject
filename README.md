@@ -31,16 +31,17 @@
 
 ------------
 ## 사용기술 및 개발환경
-![image](https://user-images.githubusercontent.com/81937349/118357070-29345100-b5b3-11eb-9a8f-e692a8b2ba48.png)
+![혜윰 개발도구](https://user-images.githubusercontent.com/46438918/118755575-13b97280-b8a4-11eb-8798-bb574685001f.png)
+
 Category | Detail
 ---- | ----
-Laguage | HTML5, JS, CSS3, Java, JSP
-Library & API | Kakaomap, OpenWeather, Easy-pie-chart
-IDE | VisualStudio, Eclpise
+Laguage & Library | HTML5, JS, CSS3, Java, JSP, jQuery, Ajax
+API | KakaoMap, kakaoPay, googleMap, googleCharts, Emailjs
+IDE | Eclpise
 Server | Tomcat(v8.5)
-Document | Google Drive, Figma, ERDCloud, diagrams.net
+Document | draw.io, adobiXd, ERDCloud, StarUML
 CI | Github
-DataBase | AWS RDS, Oracle 
+DataBase | Oracle 11g
 
 ------------
 ## 프로젝트 기능 구현
