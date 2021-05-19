@@ -35,11 +35,11 @@
 
 Category | Detail
 ---- | ----
-Laguage & Library | HTML5, JS, CSS3, Java, JSP, jQuery, Ajax
-API | KakaoMap, kakaoPay, googleMap, googleCharts, Emailjs
+Laguage & Library | HTML5, JS, CSS, Java, JSP, jQuery, Ajax
+API | KakaoMap, kakaoPay, googleMap, googleCharts, EmailJS
 IDE | Eclpise
 Server | Tomcat(v8.5)
-Document | draw.io, adobiXd, ERDCloud, StarUML
+Document | draw.io, AdobeXd, ERDCloud, StarUML
 CI | Github
 DataBase | Oracle 11g
 
