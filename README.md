@@ -34,7 +34,7 @@
 ![image](https://user-images.githubusercontent.com/81937349/118357070-29345100-b5b3-11eb-9a8f-e692a8b2ba48.png)
 Category | Detail
 ---- | ----
-Laguage | HTML5, JS, CSS3, JQuery, JSP, Java
+Laguage | HTML5, JS, CSS3, Java, JSP
 Library & API | Kakaomap, OpenWeather, Easy-pie-chart
 IDE | VisualStudio, Eclpise
 Server | Tomcat(v8.5)
