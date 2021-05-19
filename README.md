@@ -93,6 +93,7 @@ DataBase | AWS RDS, Oracle
 ------------
 ## Document
 ### 1. 유스케이스
+![유스케이스_우리또자바조](https://user-images.githubusercontent.com/46438918/118754165-70675e00-b8a1-11eb-8530-c32797933ee5.jpg)
 
 ### 2. ERD
-
+![문화나눔 혜윰_ERD](https://user-images.githubusercontent.com/46438918/118754139-6180ab80-b8a1-11eb-8689-e564bb0a313f.png)
